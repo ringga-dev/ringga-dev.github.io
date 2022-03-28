@@ -1,0 +1,24 @@
+CRITICAL - 2022-03-25 02:10:38 --> Invalid file: base_ui/home.php
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('base_ui/home.ph...')
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Common.php(1089): CodeIgniter\View\View->render('base_ui/home', Array, true)
+#2 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\Home.php(9): view('base_ui/home')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#4 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-03-25 02:54:46 --> Object of class CodeIgniter\HTTP\Response could not be converted to string
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AjaxView->AjaxMenu()
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxView))
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-03-25 03:34:20 --> Invalid file: base_ui/menu/menu_view.php
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('base_ui/menu/me...')
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Common.php(1089): CodeIgniter\View\View->render('base_ui/menu/me...', Array, true)
+#2 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AjaxView.php(14): view('base_ui/menu/me...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AjaxView->Ajax_menu()
+#4 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxView))
+#5 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}

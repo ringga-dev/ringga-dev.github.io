@@ -1,0 +1,117 @@
+ERROR - 2022-03-28 03:23:59 --> Table 'nggaringhrm.user_token' doesn't exist
+CRITICAL - 2022-03-28 03:23:59 --> Table 'nggaringhrm.user_token' doesn't exist
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(13): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-03-28 03:24:39 --> Column 'badge_id' cannot be null
+CRITICAL - 2022-03-28 03:24:39 --> Column 'badge_id' cannot be null
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-03-28 03:25:19 --> Column 'badge_id' cannot be null
+CRITICAL - 2022-03-28 03:25:19 --> Column 'badge_id' cannot be null
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-03-28 03:25:46 --> Column 'badge_id' cannot be null
+CRITICAL - 2022-03-28 03:25:46 --> Column 'badge_id' cannot be null
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-03-28 03:27:57 --> Column 'badge_id' cannot be null
+CRITICAL - 2022-03-28 03:27:57 --> Column 'badge_id' cannot be null
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-03-28 03:28:57 --> Column 'badge_id' cannot be null
+CRITICAL - 2022-03-28 03:28:57 --> Column 'badge_id' cannot be null
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `ma...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ma...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ma...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ma...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(25): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(27): getToken(NULL)
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-03-28 03:54:29 --> Class "App\Models\RestApiModel" not found
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(809): App\Controllers\AuthClient->__construct()
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-03-28 03:55:41 --> Unknown column 'exp' in 'field list'
+CRITICAL - 2022-03-28 03:55:41 --> Unknown column 'exp' in 'field list'
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `mas_use...', 0)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `mas_use...')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `mas_use...')
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\Database\BaseBuilder.php(1913): CodeIgniter\Database\BaseConnection->query('UPDATE `mas_use...', Array, false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\app\Helpers\nggaRing_helper.php(15): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(34): getToken('cp11')
+#6 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#7 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#8 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-03-28 04:48:00 --> Unsupported operand types: array + string
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-03-28 04:49:11 --> Unclosed '(' does not match ']'
+#0 C:\wamp64\www\nggaringHRM\web\CI4\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('AuthClient')
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('AuthClient')
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-28 04:53:53 --> Undefined variable $messages
+#0 C:\wamp64\www\nggaringHRM\web\CI4\app\Controllers\AuthClient.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\wamp64\\www\\n...', 30)
+#1 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(832): App\Controllers\AuthClient->index()
+#2 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthClient))
+#3 C:\wamp64\www\nggaringHRM\web\CI4\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\wamp64\www\nggaringHRM\web\CI4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

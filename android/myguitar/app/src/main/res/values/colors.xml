@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- color palet pink-->
+    <color name="color_pink">#ff0080ff</color>
+    <color name="color_pink_dark">#ff004080</color>
+    <color name="color_pink_light">#ff00c0ff</color>
+    <color name="color_pink_light_dark">#ff0080c0</color>
+    <color name="color_pink_light_light">#ff00ffff</color>
+    <color name="color_pink_dark_dark">#ff004040</color>
+    <color name="color_pink_dark_light">#ff008080</color>
+
+    <!-- color palet blue-->
+    <color name="color_blue">#ff0000ff</color>
+    <color name="color_blue_dark_dark">#ff000040</color>
+    <color name="color_blue_dark_light">#ff000080</color>
+
+    <!-- color palet green-->
+    <color name="color_green">#ff008000</color>
+    <color name="color_green_dark">#ff004000</color>
+    <color name="color_green_light">#ff00c000</color>
+
+    <!-- color palet yellow-->
+    <color name="color_yellow">#FFD500</color>
+    <color name="color_yellow_light">#FFF000</color>
+
+    <!-- color palet orange-->
+    <color name="color_orange">#ffFFA500</color>
+    <color name="color_orange_dark">#ffFF8000</color>
+
+    <!-- color palet red-->
+    <color name="color_red">#ffFF0000</color>
+    <color name="color_red_dark">#ff800000</color>
+
+    <!-- color palet purple-->
+    <color name="color_purple">#ff800080</color>
+    <color name="color_purple_dark">#ff400040</color>
+    <color name="color_purple_light">#ffc000c0</color>
+
+    <!-- color palet brown-->
+    <color name="color_brown">#ffA52A2A</color>
+    <color name="color_brown_dark">#ff8B4513</color>
+
+    <!-- color palet black-->
+    <color name="color_black">#ff000000</color>
+    <color name="color_black_light">#ff404040</color>
+    <color name="color_black_dark">#ff808080</color>
+
+    <!-- color palet white-->
+    <color name="color_white">#ffffffff</color>
+    <color name="color_white_light">#ffffc0ff</color>
+    <color name="color_white_dark">#ffff8080</color>
+
+
+    <!-- color palet gray-->
+    <color name="color_gray">#ff808080</color>
+    <color name="color_gray_light">#ffc0c0c0</color>
+    <color name="color_gray_dark">#ff404040</color>
+
+
+
+
+
+
+
+</resources>
