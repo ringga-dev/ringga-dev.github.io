@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ringga Septia Pribadi,</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -30,10 +35,9 @@
           <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
           </li>
         </ul>
-        <button type="button" class="rounded-pill btn-rounded">
+        <button type="button" onclick="myFunction()" class="rounded-pill btn-rounded">
           +62 822-8462-1151
           <span>
-            <i class="fas fa-phone-alt"></i>
           </span>
         </button>
       </div>
@@ -56,7 +60,7 @@
           </span>
         </h1>
         <button onclick="myFunction()" href="" type="button" class="rounded-pill btn-rounded">Get in Touch
-          <span><i class="fas fa-arrow-right"></i></span>
+          <span></span>
         </button>
 
         <script>
@@ -90,21 +94,21 @@
 <section id="services" class="services">
   <div class="container">
     <div class="row text-center">
-      <h1 class="display-3 fw-bold">Services</h1>
+      <h1 class="display-3 fw-bold" style="font-size: 40px;">Services</h1>
       <div class="heading-line mb-1"></div>
     </div>
   <!-- START THE DESCRIPTION CONTENT  -->
     <div class="row pt-2 pb-2 mt-0 mb-3">
       <div class="col-md-6 border-right">
         <div class="bg-white p-3">
-          <h2 class="fw-bold text-capitalize text-center">
+          <h2 class="fw-bold text-capitalize text-center" style="font-size: 40px;">
            Build apps from basic to usable
           </h2>
         </div>
       </div>
       <div class="col-md-6">
         <div class="bg-white p-4 text-start">
-          <p class="fw-light">
+          <p class="fw-light" style="font-size: 30px;">
           I can build applications either independently or in a team, starting from
          back end & front end with short work, all apps that have been made
          will always be tested to minimize the emergence of bugs that can
@@ -123,8 +127,8 @@
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4">
         <div class="services__content">
           <div class="icon d-block fab fa-android"></div>
-          <h3 class="display-3--title mt-1">Android</h3>
-          <p class="lh-lg">
+          <h3 class="display-3--title mt-1" style="font-size: 40px;">Android</h3>
+          <p class="lh-lg" style="font-size: 30px;">
             build an android application that has a beautiful user interface 
             and easy to use.
           </p>
@@ -147,8 +151,8 @@
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4">
         <div class="services__content">
           <div class="icon d-block fas fa-code"></div>
-          <h3 class="display-3--title mt-1">web development</h3>
-          <p class="lh-lg">
+          <h3 class="display-3--title mt-1" style="font-size: 40px;">web development</h3>
+          <p class="lh-lg" style="font-size: 30px;">
           build web applications that have an attractive and responsive appearance on every screen display.
           </p>
          
@@ -166,7 +170,7 @@
                         <div class="col-md-12 col-md-offset-3 col-md-pull-3 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft">
                            <!--	<span class="heading-meta">My Specialty</span> -->
                             <div class="about-desc">
-                           <h1>Skills</h1>
+                           <h1 style="font-size: 40px;">Skills</h1>
                            <hr>
                             </div>
                         </div>
@@ -177,8 +181,8 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">Android Studio</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-1" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:85%">
-                                    <span>85%</span>
+                                 <div class="progres color-1 "  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:85%">
+                                    <span >85%</span>
                                  </div>
                               </div>
                            </div>
@@ -187,8 +191,8 @@
                         <div class="progress-wrap">
                            <h3 style="font-weight: 500;">javaScript</h3>
                            <div class="progress">
-                              <div class="progress-bar color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                                 <span>70%</span>
+                              <div class="progres color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                 <span >70%</span>
                               </div>
                            </div>
                         </div>
@@ -197,7 +201,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">Css</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-2" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                                 <div class="progres color-2" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">
                                     <span>60%</span>
                                  </div>
                               </div>
@@ -207,7 +211,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">Dagger Hilt</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-3" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                 <div class="progres color-3" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                                     <span>50%</span>
                                  </div>
                               </div>
@@ -217,7 +221,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">Kotlin</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                                 <div class="progres color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:75%">
                                     <span>75%</span>
                                  </div>
                               </div>
@@ -227,7 +231,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">MySQL Database</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-5" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%">
+                                 <div class="progres color-5" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%">
                                     <span>90%</span>
                                  </div>
                               </div>
@@ -237,7 +241,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">XML</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-4" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                 <div class="progres color-4" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
                                     <span>70%</span>
                                  </div>
                               </div>
@@ -247,7 +251,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">RESTfull API</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                                 <div class="progres color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:75%">
                                     <span>75%</span>
                                  </div>
                               </div>
@@ -257,7 +261,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">SQL Database</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                 <div class="progres color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%">
                                     <span>80%</span>
                                  </div>
                               </div>
@@ -267,7 +271,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">API Testing</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-3" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                 <div class="progres color-3" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:80%">
                                     <span>80%</span>
                                  </div>
                               </div>
@@ -277,7 +281,7 @@
                         <div class="progress-wrap">
                            <h3 style="font-weight: 500;">MVVM Pattern</h3>
                            <div class="progress">
-                              <div class="progress-bar color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                              <div class="progres color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
                                  <span>70%</span>
                               </div>
                            </div>
@@ -287,7 +291,7 @@
                         <div class="progress-wrap">
                            <h3 style="font-weight: 500;">Git / Github</h3>
                            <div class="progress">
-                              <div class="progress-bar color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                              <div class="progres color-6" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                                  <span>50%</span>
                               </div>
                            </div>
@@ -297,7 +301,7 @@
                            <div class="progress-wrap">
                               <h3 style="font-weight: 500;">Compose</h3>
                               <div class="progress">
-                                 <div class="progress-bar color-6" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                 <div class="progres color-6" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                                     <span>50%</span>
                                  </div>
                               </div>
@@ -307,7 +311,7 @@
                         <div class="progress-wrap">
                            <h3 style="font-weight: 500;">PHP(CI4/CI3)</h3>
                            <div class="progress">
-                              <div class="progress-bar color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                              <div class="progres color-7" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:75%">
                                  <span>75%</span>
                               </div>
                            </div>
@@ -331,85 +335,61 @@
 <section id="portfolio" class="portfolio">
   <div class="container">
     <div class="row text-center mt-5">
-      <h1 class="display-3 fw-bold text-capitalize">Latest work</h1>
+      <h1 class="display-3 fw-bold text-capitalize" style="font-size: 40px;">Latest work</h1>
       <div class="heading-line"></div>
-      <p class="lead">
+      <p class="lead" style="font-size: 30px;">
         these are some of the results of the work i have completed.
       </p>
     </div>
-   
+    
+  
 
-    <!-- START THE PORTFOLIO ITEMS  -->
-    <div class="row">
+  <div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active" style="background-color: blueviolet;"></li>
+      <li data-target="#myCarousel" data-slide-to="1" style="background-color: blueviolet;"></li>
+      <li data-target="#myCarousel" data-slide-to="2" style="background-color: blueviolet;"></li>
+    </ol>
 
-      <div class="col-lg-6 col-md-7 mb-4"  style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;" src="images/portfolio/pf1.jpg"  alt="portfolio 2 image" title="portfolio 2 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Web Ujian Online SMK Madani</h4>
-              <p>Web</p>
-            </div>
-          </div>
-        </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="inner">
+          <a href="https://vimeo.com/115041822" class="glightbox3" style="width: 50%;">
+              <img src="images/portfolio/pf3.jpg" alt="image" />
+          </a>
       </div>
-      <div class="col-lg-6 col-md-7 mb-4"  style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;"  src="images/portfolio/pf2.jpg" alt="portfolio 3 image" title="portfolio 3 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Android App Ujian Online SMK Madani</h4>
-              <p>Android App</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-7 mb-4"  style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;"  src="images/portfolio/pf3.jpg" alt="portfolio 4 image" title="portfolio 4 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Aplikasi Pelaporan Lokasi TPS Liar</h4>
-              <p>Android App</p>
-            </div>
-          </div>
-        </div>
-      </div>
-     <div class="col-lg-6 col-md-7 mb-4"  style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;" src="images/portfolio/pf4.jpg" alt="portfolio 5 image" title="portfolio 5 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>APP Scan Barang Keluar</h4>
-              <p>Web</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 mb-4" style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;" src="images/portfolio/pf5.jpg" alt="portfolio 6 image" title="portfolio 6 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>APP E-Voting untuk Kampus</h4>
-              <p>Android App</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 mb-4" style="height: 600px;">
-        <div class="portfolio-box shadow" style="height: 600px;">
-          <img  style="height: 600px;" src="images/portfolio/pf6.jpg" alt="portfolio 7 image" title="portfolio 7 picture" class="img-fluid">
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>project name goes here 7</h4>
-              <p>category project</p>
-            </div>
-          </div>
-        </div>
       </div>
 
+      <div class="item">
+        <div class="inner">
+          <a href="https://www.youtube-nocookie.com/embed/Ga6RYejo6Hk" class="glightbox3" style="width: 50%;">
+              <img src="images/portfolio/pf2.jpg" alt="image" />
+          </a>
+      </div>
+      </div>
+    
+      <div class="item">
+        <div class="inner">
+          <a href="./demo/pexels-video-1550080.mp4" class="glightbox3" style="width: 50%;">
+              <img src="images/portfolio/pf1.jpg" alt="image" />
+          </a>
+      </div>
+      </div>
     </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
   </div>
 </section>
 
@@ -515,7 +495,7 @@
     <script src="assets/vendors/js/glightbox.min.js"></script>
 
     <script type="text/javascript">
-      const lightbox = GLightbox({
+      const lightbox2 = GLightbox({
         'touchNavigation': true,
         'href': 'https://youtu.be/DD0b3db2li8',
         'type': 'video',
@@ -524,6 +504,64 @@
         'autoPlayVideos': 'true',
 });
     
+var lightbox = GLightbox();
+            lightbox.on('open', (target) => {
+                console.log('lightbox opened');
+            });
+            var lightboxDescription = GLightbox({
+                selector: '.glightbox2'
+            });
+            var lightboxVideo = GLightbox({
+                selector: '.glightbox3'
+            });
+            lightboxVideo.on('slide_changed', ({ prev, current }) => {
+                console.log('Prev slide', prev);
+                console.log('Current slide', current);
+
+                const { slideIndex, slideNode, slideConfig, player } = current;
+
+                if (player) {
+                    if (!player.ready) {
+                        // If player is not ready
+                        player.on('ready', (event) => {
+                            // Do something when video is ready
+                        });
+                    }
+
+                    player.on('play', (event) => {
+                        console.log('Started play');
+                    });
+
+                    player.on('volumechange', (event) => {
+                        console.log('Volume change');
+                    });
+
+                    player.on('ended', (event) => {
+                        console.log('Video ended');
+                    });
+                }
+            });
+
+            var lightboxInlineIframe = GLightbox({
+                selector: '.glightbox4'
+            });
+
+            /* var exampleApi = GLightbox({ selector: null });
+            exampleApi.insertSlide({
+                href: 'https://picsum.photos/1200/800',
+            });
+            exampleApi.insertSlide({
+                width: '500px',
+                content: '<p>Example</p>'
+            });
+            exampleApi.insertSlide({
+                href: 'https://www.youtube.com/watch?v=WzqrwPhXmew',
+            });
+            exampleApi.insertSlide({
+                width: '200vw',
+                content: document.getElementById('inline-example')
+            });
+            exampleApi.open(); */
     </script>
      <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>

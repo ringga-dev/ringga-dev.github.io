@@ -9,6 +9,13 @@
     opacity: 0;
   }
 }
+p {
+  font-size: 30px;
+}
+
+span{
+  font-size: 20px;
+}
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -450,7 +457,7 @@ summary {
   cursor: pointer;
 }
 
-progress {
+progres {
   vertical-align: baseline;
 }
 
@@ -4717,30 +4724,33 @@ textarea.form-control-lg {
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
+    width: 20px;
   }
+  
 }
-.progress {
+.progres {
   display: flex;
-  height: 1rem;
+  height: 2rem;
   overflow: hidden;
   font-size: 0.75rem;
   background-color: #e9ecef;
   border-radius: 0.25rem;
 }
 
-.progress-bar {
+.progres {
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   color: #fff;
+  width: 40px;
   text-align: center;
   white-space: nowrap;
   background-color: #9926f0;
   transition: width 0.6s ease;
 }
 @media (prefers-reduced-motion: reduce) {
-  .progress-bar {
+  .progres {
     transition: none;
   }
 }
