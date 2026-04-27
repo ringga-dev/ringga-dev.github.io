@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface text-slate-200 font-sans selection:bg-brand/30 m-0 p-0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-extrabold tracking-tight;
+  }
+
+  h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); }
+  h2 { font-size: clamp(2rem, 6vw, 4rem); }
+  h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface-card/40 backdrop-blur-xl border border-slate-800/50;
+  }
+  
+  .glass-card {
+    @apply bg-surface-card/30 backdrop-blur-md border border-slate-800/50 hover:border-brand/30 transition-all duration-500 hover:bg-surface-card/50;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-light;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-brand text-surface font-bold hover:bg-brand-light transition-all duration-300 shadow-lg shadow-brand/10 hover:shadow-brand/20 hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl border border-slate-800 hover:border-slate-700 hover:bg-slate-800/50 transition-all duration-300 active:scale-95 text-slate-300 font-bold;
+  }
+
+  .nav-link {
+    @apply text-slate-400 hover:text-brand transition-colors duration-300 font-bold tracking-wide;
+  }
+
+  /* Scroll Reveal System */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Shimmer Loading Effect */
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Background Effects */
+.bg-mesh {
+  @apply fixed inset-0 -z-10 bg-surface bg-grid-slate;
+}
+
+.bg-mesh::after {
+  @apply absolute inset-0 content-[''];
+  background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(2, 4, 8, 0.8) 100%);
+}
+
+.nebula-bg {
+  @apply fixed inset-0 -z-20;
+  background: 
+    radial-gradient(at 0% 0%, rgba(0, 220, 130, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(54, 228, 218, 0.03) 0px, transparent 50%);
+}
+
+.glow {
+  @apply absolute -z-10 rounded-full blur-[120px] pointer-events-none opacity-20 mix-blend-screen;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full border-2 border-surface hover:bg-slate-700 transition-colors;
+}
+
+/* Noise Texture Overlay */
+.noise-bg {
+  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.015];
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+}
+
