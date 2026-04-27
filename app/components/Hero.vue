@@ -9,12 +9,12 @@
     </div>
     
     <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-      Building Digital <br />
-      <span class="text-gradient">Masterpieces</span>
+      Ringga Septia <br />
+      <span class="text-gradient">Pribadi</span>
     </h1>
     
     <p class="text-white/60 max-w-2xl text-lg mb-10 leading-relaxed">
-      Crafting high-performance web applications and premium digital experiences with modern technologies. Let's turn your vision into reality.
+      I'm an Android & Web Developer with 3 years of experience in building high-performance applications and premium digital experiences.
     </p>
     
     <div class="flex flex-col sm:flex-row gap-4">
