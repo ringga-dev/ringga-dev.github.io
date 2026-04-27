@@ -201,7 +201,7 @@ const featuredProjects = [
   {
     title: 'Printer-ESC-POS',
     description: 'Premier Kotlin library for advanced thermal printing solutions on Android devices. Supports Bluetooth, USB, and TCP.',
-    image: '/images/projects/printer.png',
+    image: '/images/branding/logo-software.jpeg',
     category: 'Library / Android',
     tags: ['Kotlin', 'Bluetooth', 'Hardware'],
     github: 'https://github.com/ringga-dev/Printer-ESC-POS',
@@ -210,7 +210,7 @@ const featuredProjects = [
   {
     title: 'Diggo POS Android',
     description: 'Enterprise-grade point of sale application with real-time analytics, inventory sync, and multi-branch support.',
-    image: '/images/projects/diggo.png',
+    image: '/images/projects/project-pos-confirmation.png',
     category: 'Fintech / Mobile',
     tags: ['Android SDK', 'MVVM', 'SQLite'],
     github: 'https://github.com/ringga-dev/diggo-pos-android',

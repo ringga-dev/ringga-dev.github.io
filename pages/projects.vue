@@ -74,7 +74,7 @@ const projects = [
   {
     title: 'Printer-ESC-POS',
     description: 'A powerful Kotlin library for ESC/POS thermal printers, supporting Bluetooth, USB, and TCP connections.',
-    image: '/images/projects/printer.png',
+    image: '/images/branding/logo-software.jpeg',
     category: 'Kotlin Library',
     tags: ['Kotlin', 'Android', 'Hardware'],
     github: 'https://github.com/ringga-dev/Printer-ESC-POS',
@@ -83,7 +83,7 @@ const projects = [
   {
     title: 'Diggo POS Android',
     description: 'A comprehensive Point of Sale system for Android, featuring inventory management and transaction tracking.',
-    image: '/images/projects/diggo.png',
+    image: '/images/projects/project-pos-confirmation.png',
     category: 'Android App',
     tags: ['Kotlin', 'MVVM', 'Room'],
     github: 'https://github.com/ringga-dev/diggo-pos-android',
@@ -92,7 +92,7 @@ const projects = [
   {
     title: 'POS LaundryQ',
     description: 'Niche POS solution tailored for laundry businesses with order status monitoring and customer database.',
-    image: '/images/projects/laundryq.png',
+    image: '/images/projects/project-layout-preview.png',
     category: 'Android App',
     tags: ['Kotlin', 'Jetpack', 'Firebase'],
     github: 'https://github.com/ringga-dev/POS-LaundryQ',
@@ -101,7 +101,7 @@ const projects = [
   {
     title: 'Hotel BE',
     description: 'Robust back-end service for hotel management systems, handling bookings, room status, and guest data.',
-    image: '/images/projects/hotel.png',
+    image: '/images/branding/logo-hitech.jpeg',
     category: 'Backend',
     tags: ['Kotlin', 'Spring Boot', 'MySQL'],
     github: 'https://github.com/ringga-dev/hotel_be',
@@ -110,7 +110,7 @@ const projects = [
   {
     title: 'TV Schedule',
     description: 'Real-time television scheduling application with reminder notifications and channel listings.',
-    image: '/images/projects/tv.png',
+    image: '/images/branding/logo-initials.jpeg',
     category: 'Android App',
     tags: ['Kotlin', 'Retrofit', 'Coroutines'],
     github: 'https://github.com/ringga-dev/TV-schedule',
@@ -119,7 +119,7 @@ const projects = [
   {
     title: 'Synapse',
     description: 'Innovative development project focused on data processing and system synchronization.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1600',
+    image: '/images/hero/hero-bg-1.png',
     category: 'Development',
     tags: ['Kotlin', 'KMP', 'Architecture'],
     github: 'https://github.com/ringga-dev/Synapse',

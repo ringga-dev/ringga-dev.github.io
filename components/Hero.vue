@@ -15,7 +15,7 @@
         <div class="absolute inset-0 bg-brand rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
         <div class="relative p-1.5 rounded-full bg-gradient-to-tr from-brand to-brand-light">
           <img 
-            src="https://avatars.githubusercontent.com/u/76124039?v=4" 
+            src="/images/branding/logo-3d.jpeg" 
             alt="Ringga Septia Pribadi" 
             class="w-32 h-32 md:w-44 md:h-44 rounded-full object-cover border-4 border-surface shadow-2xl"
           />
