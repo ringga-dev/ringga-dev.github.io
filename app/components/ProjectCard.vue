@@ -1,28 +1,36 @@
 <template>
-  <div class="glass-card group relative overflow-hidden rounded-3xl p-1">
-    <div class="relative overflow-hidden rounded-[22px] aspect-video">
-      <img :src="image" :alt="title" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-60"></div>
+  <div class="glass-card group relative overflow-hidden rounded-[2rem] p-1.5 transition-all duration-500 hover:-translate-y-2">
+    <div class="relative overflow-hidden rounded-[1.7rem] aspect-video">
+      <img :src="image" :alt="title" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#020408]/90 via-[#020408]/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100"></div>
+      
+      <!-- Overlay Badge -->
+      <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#00DC82]/20 backdrop-blur-md border border-[#00DC82]/30 text-[#00DC82] text-[10px] font-black uppercase tracking-wider">
+        {{ category }}
+      </div>
     </div>
     
-    <div class="p-6">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-purple-400">{{ category }}</span>
-        <div class="flex gap-2">
-          <a v-if="github" :href="github" target="_blank" class="text-white/40 hover:text-white transition-colors">
-            <GithubIcon class="w-4 h-4" />
+    <div class="p-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-2xl font-black group-hover:text-[#00DC82] transition-colors duration-300 leading-tight">
+          {{ title }}
+        </h3>
+        <div class="flex gap-4">
+          <a v-if="github" :href="github" target="_blank" class="text-slate-400 hover:text-[#00DC82] transition-colors duration-300 transform hover:scale-110">
+            <GithubIcon class="w-5 h-5" />
           </a>
-          <a v-if="link" :href="link" target="_blank" class="text-white/40 hover:text-white transition-colors">
-            <ExternalLinkIcon class="w-4 h-4" />
+          <a v-if="link" :href="link" target="_blank" class="text-slate-400 hover:text-[#00DC82] transition-colors duration-300 transform hover:scale-110">
+            <ExternalLinkIcon class="w-5 h-5" />
           </a>
         </div>
       </div>
       
-      <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">{{ title }}</h3>
-      <p class="text-white/50 text-sm line-clamp-2 mb-4">{{ description }}</p>
+      <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-2 font-medium">
+        {{ description }}
+      </p>
       
-      <div class="flex flex-wrap gap-2">
-        <span v-for="tag in tags" :key="tag" class="text-[10px] px-2 py-1 rounded-md bg-white/5 text-white/60 border border-white/5">
+      <div class="flex flex-wrap gap-2.5">
+        <span v-for="tag in tags" :key="tag" class="text-[10px] px-3 py-1.5 rounded-lg bg-slate-900 text-[#00DC82] font-bold border border-slate-800 transition-all duration-300 hover:border-[#00DC82]/50">
           {{ tag }}
         </span>
       </div>
