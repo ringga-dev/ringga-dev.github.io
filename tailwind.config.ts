@@ -1,29 +1,36 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
   content: [
-    "./app/components/**/*.{js,vue,ts}",
-    "./app/layouts/**/*.vue",
-    "./app/pages/**/*.vue",
-    "./app/plugins/**/*.{js,ts}",
-    "./app/app.vue",
+    "./src/components/**/*.{js,vue,ts}",
+    "./src/features/**/*.{js,vue,ts}",
+    "./src/layouts/**/*.vue",
+    "./src/pages/**/*.vue",
+    "./src/plugins/**/*.{js,ts}",
+    "./src/app.vue",
+    "./src/error.vue",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#00DC82',
-          light: '#36E4DA',
-          dark: '#00B368',
+          DEFAULT: 'hsl(var(--brand-color) / <alpha-value>)',
+          light: 'hsl(var(--brand-light) / <alpha-value>)',
+          dark: 'hsl(var(--brand-dark) / <alpha-value>)',
         },
         surface: {
-          DEFAULT: '#020408',
-          card: '#0f172a',
-          elevated: '#1e293b',
-        }
+          DEFAULT: 'hsl(var(--bg-color) / <alpha-value>)',
+          card: 'hsl(var(--surface-card) / <alpha-value>)',
+          elevated: 'hsl(var(--surface-elevated) / <alpha-value>)',
+        },
+        main: 'hsl(var(--text-main) / <alpha-value>)',
+        muted: 'hsl(var(--text-muted) / <alpha-value>)',
+        border: 'hsl(var(--border-color) / <alpha-value>)',
       },
       fontFamily: {
-        sans: ['Nunito', 'sans-serif'],
-        heading: ['Inter', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        heading: ['"Space Grotesk"', 'sans-serif'],
       },
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
@@ -47,9 +54,11 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'grid-slate': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(51 65 85 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+        'grid-slate': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(99 102 241 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
       }
     },
   },
   plugins: [],
 }
+
+export default config

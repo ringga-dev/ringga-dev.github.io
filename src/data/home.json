@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "badge": "Available for Freelance & Technical Roles",
+    "title": "Crafting High-Performance",
+    "titleHighlight": "Digital Ecosystems",
+    "description": "Professional Multi-Platform Engineer specializing in Mobile, Desktop, and Systems. I bridge low-level hardware communication with sleek, responsive, and beautiful modern interfaces.",
+    "primaryCta": {
+      "text": "Let's Connect",
+      "url": "https://api.whatsapp.com/send?phone=+6282284621151&text=Hi%20Ringga,%20I'm%20interested%20in%20discussing%20a%20project%20with%20you!"
+    },
+    "secondaryCta": {
+      "text": "View Projects",
+      "url": "/projects"
+    }
+  },
+  "stats": [
+    { "label": "Years Experience", "value": "3", "suffix": "+", "icon": "CalendarIcon" },
+    { "label": "Projects Completed", "value": "25", "suffix": "+", "icon": "FolderIcon" },
+    { "label": "GitHub Stars", "value": "12", "suffix": "+", "icon": "StarIcon" },
+    { "label": "Repositories", "value": "24", "suffix": "+", "icon": "UsersIcon" }
+  ],
+  "services": [
+    {
+      "title": "Cross-Platform Apps",
+      "description": "Building high-performance apps for Mobile, Desktop, and Web using Kotlin Multiplatform & Compose Multiplatform.",
+      "icon": "SmartphoneIcon",
+      "features": ["Single Codebase Efficiency", "Native UI/UX Performance", "Shared Multiplatform Business Logic"]
+    },
+    {
+      "title": "Hardware & Systems",
+      "description": "Specialized in thermal printing solutions, low-level driver integrations, and external hardware APIs.",
+      "icon": "CpuIcon",
+      "features": ["ESC/POS Terminal Integration", "USB / Bluetooth / TCP Sockets", "Direct Command Buffer Controls"]
+    },
+    {
+      "title": "Enterprise Architecture",
+      "description": "Designing highly scalable structures utilizing Clean Architecture, SOLID, and reactive state management.",
+      "icon": "LayersIcon",
+      "features": ["Modular Design Patterns", "MVVM / MVI Clean Flow", "Offline-First Data Caching"]
+    }
+  ],
+  "techStack": {
+    "badge": "Elite Stack",
+    "title": "Built with",
+    "titleHighlight": "Technical Precision",
+    "description": "Leveraging modern industry-standard technologies to deliver seamless and scalable digital experiences.",
+    "techs": [
+      { "name": "Kotlin", "icon": "SmartphoneIcon", "color": "#7F52FF" },
+      { "name": "Vue / Nuxt", "icon": "LayersIcon", "color": "#00DC82" },
+      { "name": "Postgres", "icon": "DatabaseIcon", "color": "#336791" },
+      { "name": "Spring Boot", "icon": "Code2Icon", "color": "#6DB33F" },
+      { "name": "Android SDK", "icon": "CpuIcon", "color": "#3DDC84" },
+      { "name": "Tailwind", "icon": "BoxIcon", "color": "#38BDF8" }
+    ]
+  }
+}

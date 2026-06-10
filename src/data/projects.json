@@ -1,0 +1,169 @@
+{
+  "categories": ["All", "Android", "Library", "Backend"],
+  "projects": [
+    {
+      "title": "Printer-ESC-POS",
+      "slug": "printer-esc-pos",
+      "description": "A powerful Kotlin library for ESC/POS thermal printers, supporting Bluetooth, USB, and TCP connections.",
+      "image": "/images/projects/kmp-printer.jpg",
+      "category": "Kotlin Library",
+      "tags": ["Kotlin", "Android", "Hardware", "KMP"],
+      "github": "https://github.com/ringga-dev/Printer-ESC-POS",
+      "link": "https://github.com/ringga-dev/Printer-ESC-POS",
+      "media": {
+        "type": "video",
+        "src": "https://assets.mixkit.co/videos/preview/mixkit-code-running-on-a-computer-screen-animated-loop-35380-large.mp4",
+        "poster": "/images/projects/kmp-printer.jpg"
+      },
+      "details": {
+        "role": "Lead Open Source Maintainer",
+        "timeline": "2021 - Present",
+        "longDescription": "Printer-ESC-POS is a premier open-source Kotlin library built to solve the fragmentation of thermal printing APIs on Android. It handles character set mapping, bitmap rendering, barcode/QR configurations, and low-level byte-command packaging for various hardware channels.",
+        "features": [
+          "Universal ESC/POS byte generator for Bluetooth, USB, and TCP sockets",
+          "Advanced bitmap conversion algorithms for printing high-contrast logos",
+          "Comprehensive multi-language formatting and text alignment",
+          "Supports standard barcodes and high-density QR code prints"
+        ],
+        "techStack": ["Kotlin", "Android Sockets", "Bluetooth Serial API", "Coroutines"],
+        "challenges": "Fragmented thermal printer hardware support. Solved by implementing standard buffering, customizable line-feed delays, and custom character-encoding tables."
+      }
+    },
+    {
+      "title": "Diggo POS Android",
+      "slug": "diggo-pos-android",
+      "description": "A comprehensive Point of Sale system for Android, featuring inventory management and transaction tracking.",
+      "image": "/images/projects/project-pos-confirmation.png",
+      "category": "Android App",
+      "tags": ["Kotlin", "MVVM", "Room", "SQLite"],
+      "github": "https://github.com/ringga-dev/diggo-pos-android",
+      "link": "#",
+      "media": {
+        "type": "video",
+        "src": "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-developer-typing-on-a-keyboard-40618-large.mp4",
+        "poster": "/images/projects/project-pos-confirmation.png"
+      },
+      "details": {
+        "role": "Lead Android Engineer",
+        "timeline": "2022 - 2023",
+        "longDescription": "Diggo POS is a modern retail solution that aggregates inventory management, real-time sales reporting, and cash register flows. Built with standard clean design, it operates flawlessly offline and synchronizes data asynchronously when online.",
+        "features": [
+          "Offline-first operational state using SQLite/Room buffering",
+          "Dynamic pricing grids and tax computation matrices",
+          "Direct integration with Bluetooth ESC/POS receipt printers via Printer-ESC-POS",
+          "Analytics chart interface for daily and monthly sales reporting"
+        ],
+        "techStack": ["Kotlin", "Android Jetpack", "Room Database", "Retrofit", "MPAndroidChart"],
+        "challenges": "Data synchronization conflicts when running multiple POS terminals offline. Solved by implementing vector clocks and conflict-free replicated data strategies."
+      }
+    },
+    {
+      "title": "POS LaundryQ",
+      "slug": "pos-laundryq",
+      "description": "Niche POS solution tailored for laundry businesses with order status monitoring and customer database.",
+      "image": "/images/projects/project-layout-preview.png",
+      "category": "Android App",
+      "tags": ["Kotlin", "Jetpack", "Firebase", "Android"],
+      "github": "https://github.com/ringga-dev/POS-LaundryQ",
+      "link": "#",
+      "media": {
+        "type": "image",
+        "src": "/images/projects/project-layout-preview.png"
+      },
+      "details": {
+        "role": "Fullstack Mobile Developer",
+        "timeline": "2021 - 2022",
+        "longDescription": "POS LaundryQ is a dedicated workflow app for laundromat services, helping employees track orders through various stages (Received, Washing, Ironing, Ready for Pickup, Delivered) and keeping clients updated via SMS or WhatsApp notifications.",
+        "features": [
+          "Kanban-style laundry order status tracking board",
+          "Customer deposit packages and balance management",
+          "Automatic automated notification updates based on order status",
+          "Multi-employee role permissions management"
+        ],
+        "techStack": ["Kotlin", "Firebase Firestore", "Firebase Auth", "Coroutines", "WorkManager"],
+        "challenges": "Real-time sync of washing queue states across multiple mobile clients. Resolved via Firebase Firestore live query snapshot streams."
+      }
+    },
+    {
+      "title": "Hotel BE",
+      "slug": "hotel-be",
+      "description": "Robust back-end service for hotel management systems, handling bookings, room status, and guest data.",
+      "image": "/images/branding/logo-hitech.jpeg",
+      "category": "Backend",
+      "tags": ["Kotlin", "Spring Boot", "MySQL", "Spring"],
+      "github": "https://github.com/ringga-dev/hotel_be",
+      "link": "#",
+      "media": {
+        "type": "image",
+        "src": "/images/branding/logo-hitech.jpeg"
+      },
+      "details": {
+        "role": "Backend Software Architect",
+        "timeline": "2022",
+        "longDescription": "Hotel BE is a microservices backend serving as the central coordinator for reservation channels, room inventory databases, guest profiles, and invoice billing protocols.",
+        "features": [
+          "RESTful APIs for check-in/check-out allocations",
+          "JWT-based security filters and role management controls",
+          "Database transaction isolation to prevent double booking of suites",
+          "Automated PDF invoice email receipts generation"
+        ],
+        "techStack": ["Spring Boot", "Spring Security", "Hibernate/JPA", "MySQL", "JasperReports"],
+        "challenges": "Handling concurrent room reservation races at peak hours. Resolved using optimistic locking annotations on room records."
+      }
+    },
+    {
+      "title": "TV Schedule",
+      "slug": "tv-schedule",
+      "description": "Real-time television scheduling application with reminder notifications and channel listings.",
+      "image": "/images/branding/logo-initials.jpeg",
+      "category": "Android App",
+      "tags": ["Kotlin", "Retrofit", "Coroutines", "Android"],
+      "github": "https://github.com/ringga-dev/TV-schedule",
+      "link": "#",
+      "media": {
+        "type": "image",
+        "src": "/images/branding/logo-initials.jpeg"
+      },
+      "details": {
+        "role": "Android Developer",
+        "timeline": "2020",
+        "longDescription": "An android application that queries live schedule API providers to display channel showtimes, cataloging movies and series, and setting system notifications to alert users before shows start.",
+        "features": [
+          "Live show schedule timelines with smooth paging lists",
+          "Notification scheduler using Android AlarmManager API",
+          "Favorites lists caching utilizing local SQLite database",
+          "Material Design search filters for channels and categories"
+        ],
+        "techStack": ["Kotlin", "Retrofit", "AlarmManager", "SQLite/Room", "Glide"],
+        "challenges": "Alarm triggers not firing consistently on customized Android OEM OS skins. Solved using WorkManager and precise battery optimization whitelist intents."
+      }
+    },
+    {
+      "title": "Synapse",
+      "slug": "synapse",
+      "description": "Innovative development project focused on data processing and system synchronization.",
+      "image": "/images/hero/hero-bg-1.png",
+      "category": "Development",
+      "tags": ["Kotlin", "KMP", "Architecture", "CMP"],
+      "github": "https://github.com/ringga-dev/Synapse",
+      "link": "#",
+      "media": {
+        "type": "image",
+        "src": "/images/hero/hero-bg-1.png"
+      },
+      "details": {
+        "role": "System Integration Engineer",
+        "timeline": "2023 - Present",
+        "longDescription": "Synapse is a research project aiming to develop cross-platform background data synchronization libraries using Kotlin Multiplatform. It abstracts background workers across Android (WorkManager) and iOS (BackgroundTasks) to maintain consistent offline databases.",
+        "features": [
+          "Shared KMP business logic module compiled to iOS framework and Android AAR",
+          "Cross-platform SQLite database schema sharing via SQLDelight",
+          "Durable batch synchronization queues with automated exponential backoff retry",
+          "Low-battery network connection awareness"
+        ],
+        "techStack": ["Kotlin Multiplatform", "SQLDelight", "Ktor HTTP Client", "Coroutines Flow"],
+        "challenges": "Managing asynchronous threading consistency on iOS native dispatch queues within KMP. Solved using Coroutines Native-MT and state isolation wrappers."
+      }
+    }
+  ]
+}

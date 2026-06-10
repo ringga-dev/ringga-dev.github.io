@@ -1,0 +1,137 @@
+{
+  "bio": {
+    "badge": "Behind the Code",
+    "title": "I'm",
+    "titleHighlight": "Ringga Septia Pribadi",
+    "image": "https://avatars.githubusercontent.com/u/76124039?v=4",
+    "experienceYears": "3+",
+    "paragraphs": [
+      "A results-driven Multi-Platform Engineer specializing in Mobile, Desktop, and Web ecosystems. I bridge the gap between high-performance hardware and seamless user experiences using Kotlin Multiplatform.",
+      "My vision is centered on Connectivity—building systems that work everywhere, for everyone. From custom Android POS drivers to scalable Nuxt applications, I craft solutions that are as robust as they are intuitive."
+    ],
+    "cvUrl": "#"
+  },
+  "skills": [
+    { 
+      "name": "Android (Kotlin)", 
+      "slug": "android-kotlin",
+      "level": 95, 
+      "icon": "SmartphoneIcon",
+      "longDescription": "Building enterprise-grade mobile systems using modern Android SDK features. Specialized in clean-architecture layouts, background scheduling, hardware driver communication (USB, Bluetooth, Serial), and local databases.",
+      "yearsOfUse": "3+ Years",
+      "proficiency": "Expert"
+    },
+    { 
+      "name": "KMP / CMP", 
+      "slug": "kmp-cmp",
+      "level": 85, 
+      "icon": "ZapIcon",
+      "longDescription": "Sharing application logic and user interfaces seamlessly between Android, iOS, and Desktop platforms. Reducing development times by sharing up to 85% of code while preserving native UX standards.",
+      "yearsOfUse": "2 Years",
+      "proficiency": "Advanced"
+    },
+    { 
+      "name": "Nuxt / Vue", 
+      "slug": "nuxt-vue",
+      "level": 90, 
+      "icon": "LayersIcon",
+      "longDescription": "Developing premium, SEO-optimized, and lightning-fast web applications. Implementing glassmorphic user interfaces, fluid micro-interactions, responsive grids, and static generation builds for static hosting.",
+      "yearsOfUse": "3 Years",
+      "proficiency": "Expert"
+    },
+    { 
+      "name": "Spring Boot", 
+      "slug": "spring-boot",
+      "level": 80, 
+      "icon": "CodeIcon",
+      "longDescription": "Designing robust, microservices back-ends, securing APIs with JWT, managing database transactional integrity, and structuring high-throughput sockets.",
+      "yearsOfUse": "2 Years",
+      "proficiency": "Advanced"
+    },
+    { 
+      "name": "PostgreSQL", 
+      "slug": "postgresql",
+      "level": 85, 
+      "icon": "DatabaseIcon",
+      "longDescription": "Relational schema design, writing complex SQL queries, index optimization, structuring stored procedures, and ensuring read/write transaction isolation.",
+      "yearsOfUse": "3 Years",
+      "proficiency": "Advanced"
+    },
+    { 
+      "name": "Clean Architecture", 
+      "slug": "clean-architecture",
+      "level": 90, 
+      "icon": "CpuIcon",
+      "longDescription": "Adhering to strict SOLID design principles, decoupling business logic from external frameworks, separating code into Data, Domain, and Presentation layers, and ensuring testability.",
+      "yearsOfUse": "3+ Years",
+      "proficiency": "Expert"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Lead Fullstack Engineer",
+      "company": "Freelance & Open Source",
+      "slug": "lead-fullstack",
+      "period": "2021 - Present",
+      "description": "Leading technical strategy for complex POS implementations and maintaining mission-critical Kotlin libraries for thermal printing technologies.",
+      "achievements": [
+        "Designed, implemented, and maintained the Printer-ESC-POS library with 100+ forks and active application integrations.",
+        "Architected enterprise-grade cross-platform POS systems, reducing syncing latency by 45%.",
+        "Configured custom microservice APIs on Spring Boot, managing secure OAuth2 flows and webhooks integrations."
+      ],
+      "techUsed": ["Kotlin", "Kotlin Multiplatform", "Nuxt.js", "Spring Boot", "PostgreSQL", "Docker"]
+    },
+    {
+      "role": "Android Systems Developer",
+      "company": "Tech Solutions Global",
+      "slug": "android-systems",
+      "period": "2019 - 2021",
+      "description": "Focused on low-level hardware integration and building high-performance mobile applications with real-time data synchronization.",
+      "achievements": [
+        "Programmed local hardware serial interface communication drivers for peripheral payment systems.",
+        "Spearheaded Room database offline synchronization mechanisms using conflict-free timestamp synchronization.",
+        "Integrated custom Android system alerts, background services, and customized OEM battery scheduling setups."
+      ],
+      "techUsed": ["Kotlin", "Android SDK", "Room SQLite", "Retrofit", "AlarmManager", "Coroutines"]
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "Pixel Creative Agency",
+      "slug": "frontend-developer",
+      "period": "2018 - 2019",
+      "description": "Developed interactive and high-conversion web platforms using modern JavaScript frameworks and responsive design principles.",
+      "achievements": [
+        "Coded responsive layout landing pages with 95+ Google Lighthouse speed and SEO scores.",
+        "Created fluid CSS micro-animations, custom interactive scrollbars, and image filters.",
+        "Integrated complex payment checkout pages (Stripe, Paypal) with Vue.js modules."
+      ],
+      "techUsed": ["Vue.js", "Nuxt.js", "Tailwind CSS", "JavaScript ES6", "REST APIs"]
+    }
+  ],
+  "slider": {
+    "title": "Captured Moments",
+    "subtitle": "A glimpse into my professional journey and creative process",
+    "images": [
+      "/images/about/about-1.png",
+      "/images/about/about-2.png",
+      "/images/about/about-3.png",
+      "/images/about/about-4.png",
+      "/images/about/about-5.png",
+      "/images/about/about-6.png",
+      "/images/about/about-7.png",
+      "/images/about/about-8.png",
+      "/images/about/about-9.png",
+      "/images/about/about-10.png",
+      "/images/about/about-11.png",
+      "/images/about/about-12.png",
+      "/images/about/about-13.png",
+      "/images/about/about-14.png",
+      "/images/about/about-15.png",
+      "/images/about/about-16.png",
+      "/images/about/about-17.png",
+      "/images/about/about-18.png",
+      "/images/about/about-19.png",
+      "/images/about/about-20.png"
+    ]
+  }
+}

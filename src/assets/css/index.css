@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* HSL Color System for Light Mode - Soft Pale Emerald Hue */
+    --bg-color: 150 20% 98%;           /* Very pale soft green/gray background */
+    --surface-color: 150 20% 100%;       /* Pure White surface */
+    --surface-card: 150 20% 95%;        /* Frosted light green card */
+    --surface-elevated: 150 20% 90%;    /* Elevated light green */
+    --text-main: 160 50% 10%;           /* Deep forest green for main text */
+    --text-muted: 155 12% 43%;          /* Muted forest green/gray */
+    --border-color: 150 15% 88%;        /* Light green-tinted border */
+    
+    --brand-color: 156 100% 38%;        /* Emerald */
+    --brand-light: 165 95% 48%;         /* Cyan/Green */
+    --brand-dark: 156 100% 28%;         /* Dark Emerald */
+    
+    --glow-1: rgba(0, 198, 117, 0.08);
+    --glow-2: rgba(38, 212, 202, 0.05);
+  }
+
+  .dark {
+    /* HSL Color System for Dark Mode - Extremely Deep Black-Emerald */
+    --bg-color: 160 40% 3%;            /* Deep emerald black */
+    --surface-color: 160 30% 5%;       /* Card bg */
+    --surface-card: 160 25% 7%;        /* Frosted card */
+    --surface-elevated: 160 20% 11%;   /* Elevated */
+    --text-main: 150 20% 98%;          /* Light pale emerald text */
+    --text-muted: 155 10% 65%;         /* Muted text */
+    --border-color: 160 20% 12%;       /* Border slate-emerald */
+    
+    --brand-color: 156 100% 43%;        /* Neon Emerald */
+    --brand-light: 165 95% 55%;         /* Bright Cyan-Emerald */
+    --brand-dark: 156 100% 32%;         /* Deep Emerald */
+    
+    --glow-1: rgba(0, 220, 130, 0.15);
+    --glow-2: rgba(54, 228, 218, 0.08);
+  }
+
+  body {
+    background-color: hsl(var(--bg-color));
+    color: hsl(var(--text-main));
+    @apply font-sans selection:bg-brand/30 selection:text-brand-dark m-0 p-0 transition-colors duration-500;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-extrabold tracking-tight transition-colors duration-500;
+  }
+
+  h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); }
+  h2 { font-size: clamp(2rem, 6vw, 4rem); }
+  h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+}
+
+@layer components {
+  .glass {
+    background-color: hsl(var(--surface-color) / 0.45);
+    border-color: hsl(var(--border-color) / 0.6);
+    @apply backdrop-blur-2xl border shadow-lg;
+  }
+  
+  .glass-card {
+    background-color: hsl(var(--surface-color) / 0.4);
+    border-color: hsl(var(--border-color) / 0.6);
+    @apply backdrop-blur-xl border hover:border-brand/40 transition-all duration-500 hover:bg-surface-card/65 shadow-xl hover:shadow-brand/5;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-light;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-brand text-slate-950 font-bold hover:bg-brand-light transition-all duration-300 shadow-lg shadow-brand/10 hover:shadow-brand/20 hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-secondary {
+    border-color: hsl(var(--border-color));
+    color: hsl(var(--text-main));
+    @apply px-6 py-3 rounded-xl border hover:bg-surface-card/50 transition-all duration-300 active:scale-95 font-bold;
+  }
+
+  .nav-link {
+    color: hsl(var(--text-muted));
+    @apply hover:text-brand transition-colors duration-300 font-bold tracking-wide;
+  }
+
+  /* Scroll Reveal System */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Shimmer Loading Effect */
+  .shimmer {
+    background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Background Effects */
+.bg-mesh {
+  @apply fixed inset-0 -z-10 bg-grid-slate opacity-40 dark:opacity-20;
+}
+
+.bg-mesh::after {
+  @apply absolute inset-0 content-[''];
+  background: radial-gradient(circle at 50% 50%, transparent 0%, hsl(var(--bg-color)) 100%);
+}
+
+.nebula-bg {
+  @apply fixed inset-0 -z-20 transition-all duration-500;
+  background: 
+    radial-gradient(at 0% 0%, var(--glow-1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, var(--glow-2) 0px, transparent 50%);
+}
+
+.glow {
+  @apply absolute -z-10 rounded-full blur-[120px] pointer-events-none opacity-20 mix-blend-screen;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: hsl(var(--bg-color));
+}
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--surface-elevated));
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--bg-color));
+  @apply transition-colors hover:bg-brand;
+}
+
+/* Noise Texture Overlay */
+.noise-bg {
+  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.015];
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}

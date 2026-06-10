@@ -1,0 +1,24 @@
+{
+  "siteName": "RINGGA DEV",
+  "tagline": "Fullstack Engineer",
+  "navigation": [
+    { "name": "Home", "path": "/" },
+    { "name": "Projects", "path": "/projects" },
+    { "name": "About", "path": "/about" },
+    { "name": "Gallery", "path": "/gallery" },
+    { "name": "Contact", "path": "/contact" }
+  ],
+  "socials": {
+    "github": "https://github.com/ringga-dev",
+    "linkedin": "https://linkedin.com/in/ringga-dev",
+    "whatsapp": "https://api.whatsapp.com/send?phone=+6282284621151&text=Hallo",
+    "email": "mailto:ringga.dev@gmail.com"
+  },
+  "seo": {
+    "title": "Ringga Dev | Professional Multi-Platform Engineer",
+    "description": "Crafting premium Android & Web applications with performance and aesthetics in mind. Specialized in Kotlin Multiplatform and Clean Architecture.",
+    "themeColor": "#00DC82",
+    "ogImage": "/og-image.png",
+    "twitterSite": "@ringga_dev"
+  }
+}

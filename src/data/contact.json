@@ -1,0 +1,41 @@
+{
+  "badge": "Get in Touch",
+  "title": "Start a",
+  "titleHighlight": "Conversation",
+  "description": "Have a project in mind or want to collaborate? Send a message and let's create something exceptional together.",
+  "info": {
+    "title": "Contact Details",
+    "description": "Feel free to reach out via any of these channels. I'll get back to you within 24 hours.",
+    "items": [
+      {
+        "label": "Email",
+        "value": "ringga.dev@gmail.com",
+        "icon": "MailIcon",
+        "url": "mailto:ringga.dev@gmail.com"
+      },
+      {
+        "label": "WhatsApp",
+        "value": "+62 822 8462 1151",
+        "icon": "MessageSquareIcon",
+        "url": "https://api.whatsapp.com/send?phone=+6282284621151&text=Hallo"
+      },
+      {
+        "label": "Location",
+        "value": "Pekanbaru, Indonesia",
+        "icon": "MapPinIcon",
+        "url": "#"
+      }
+    ]
+  },
+  "form": {
+    "title": "Send a Message",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Your Email",
+    "emailPlaceholder": "john@example.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "submitText": "Send via WhatsApp",
+    "sendingText": "Preparing message..."
+  }
+}
