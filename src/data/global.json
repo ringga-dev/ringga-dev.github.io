@@ -4,6 +4,7 @@
   "navigation": [
     { "name": "Home", "path": "/" },
     { "name": "Projects", "path": "/projects" },
+    { "name": "Blog", "path": "/blog" },
     { "name": "About", "path": "/about" },
     { "name": "Gallery", "path": "/gallery" },
     { "name": "Contact", "path": "/contact" }

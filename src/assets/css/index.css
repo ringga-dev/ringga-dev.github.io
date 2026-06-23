@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    /* HSL Color System for Light Mode - Soft Pale Emerald Hue */
-    --bg-color: 150 20% 98%;           /* Very pale soft green/gray background */
-    --surface-color: 150 20% 100%;       /* Pure White surface */
-    --surface-card: 150 20% 95%;        /* Frosted light green card */
-    --surface-elevated: 150 20% 90%;    /* Elevated light green */
-    --text-main: 160 50% 10%;           /* Deep forest green for main text */
-    --text-muted: 155 12% 43%;          /* Muted forest green/gray */
-    --border-color: 150 15% 88%;        /* Light green-tinted border */
+    /* HSL Color System for Light Mode - Premium Neutral with Emerald Accent */
+    --bg-color: 0 0% 98%;              /* Clean almost white */
+    --surface-color: 0 0% 100%;        /* Pure White surface */
+    --surface-card: 0 0% 96%;          /* Subtle light gray card */
+    --surface-elevated: 0 0% 93%;      /* Elevated gray */
+    --text-main: 0 0% 10%;             /* Almost black for sharp contrast */
+    --text-muted: 0 0% 45%;            /* Clean mid-gray */
+    --border-color: 0 0% 90%;          /* Soft border */
     
-    --brand-color: 156 100% 38%;        /* Emerald */
-    --brand-light: 165 95% 48%;         /* Cyan/Green */
-    --brand-dark: 156 100% 28%;         /* Dark Emerald */
+    --brand-color: 156 85% 38%;        /* Professional Emerald */
+    --brand-light: 165 80% 48%;        /* Cyan/Green */
+    --brand-dark: 156 90% 28%;         /* Dark Emerald */
     
-    --glow-1: rgba(0, 198, 117, 0.08);
-    --glow-2: rgba(38, 212, 202, 0.05);
+    --glow-1: rgba(0, 198, 117, 0.05);
+    --glow-2: rgba(38, 212, 202, 0.03);
   }
 
   .dark {
-    /* HSL Color System for Dark Mode - Extremely Deep Black-Emerald */
-    --bg-color: 160 40% 3%;            /* Deep emerald black */
-    --surface-color: 160 30% 5%;       /* Card bg */
-    --surface-card: 160 25% 7%;        /* Frosted card */
-    --surface-elevated: 160 20% 11%;   /* Elevated */
-    --text-main: 150 20% 98%;          /* Light pale emerald text */
-    --text-muted: 155 10% 65%;         /* Muted text */
-    --border-color: 160 20% 12%;       /* Border slate-emerald */
+    /* HSL Color System for Dark Mode - True Premium Dark (OLED-friendly) */
+    --bg-color: 0 0% 2%;               /* Near absolute black */
+    --surface-color: 0 0% 5%;          /* Very dark gray */
+    --surface-card: 0 0% 7%;           /* Elevated dark card */
+    --surface-elevated: 0 0% 11%;      /* Higher elevated */
+    --text-main: 0 0% 95%;             /* Crisp white text */
+    --text-muted: 0 0% 60%;            /* Clean muted text */
+    --border-color: 0 0% 12%;          /* Subtle dark border */
     
-    --brand-color: 156 100% 43%;        /* Neon Emerald */
-    --brand-light: 165 95% 55%;         /* Bright Cyan-Emerald */
-    --brand-dark: 156 100% 32%;         /* Deep Emerald */
+    --brand-color: 156 100% 45%;       /* Neon Emerald (Pops on dark) */
+    --brand-light: 165 100% 55%;       /* Bright Cyan-Emerald */
+    --brand-dark: 156 100% 32%;        /* Deep Emerald */
     
-    --glow-1: rgba(0, 220, 130, 0.15);
-    --glow-2: rgba(54, 228, 218, 0.08);
+    --glow-1: rgba(0, 220, 130, 0.08);
+    --glow-2: rgba(54, 228, 218, 0.05);
   }
 
   body {
@@ -45,6 +45,8 @@
     @apply font-sans selection:bg-brand/30 selection:text-brand-dark m-0 p-0 transition-colors duration-500;
     overflow-x: hidden;
     width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -52,21 +54,33 @@
   }
 
   h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); }
-  h2 { font-size: clamp(2rem, 6vw, 4rem); }
-  h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+  h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: -0.01em; }
 }
 
 @layer components {
   .glass {
-    background-color: hsl(var(--surface-color) / 0.45);
-    border-color: hsl(var(--border-color) / 0.6);
-    @apply backdrop-blur-2xl border shadow-lg;
+    background-color: hsl(var(--surface-color) / 0.5);
+    border: 1px solid hsl(var(--border-color) / 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    @apply backdrop-blur-2xl transition-all duration-300;
+  }
+  
+  .dark .glass {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-top: 1px solid hsl(var(--border-color) / 1);
   }
   
   .glass-card {
-    background-color: hsl(var(--surface-color) / 0.4);
-    border-color: hsl(var(--border-color) / 0.6);
-    @apply backdrop-blur-xl border hover:border-brand/40 transition-all duration-500 hover:bg-surface-card/65 shadow-xl hover:shadow-brand/5;
+    background-color: hsl(var(--surface-card) / 0.6);
+    border: 1px solid hsl(var(--border-color) / 0.5);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    @apply backdrop-blur-xl hover:border-brand/30 transition-all duration-500 hover:bg-surface-elevated/40 hover:shadow-2xl hover:shadow-brand/5;
+  }
+
+  .dark .glass-card {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid hsl(var(--border-color) / 0.8);
   }
 
   .text-gradient {
@@ -74,25 +88,41 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 rounded-xl bg-brand text-slate-950 font-bold hover:bg-brand-light transition-all duration-300 shadow-lg shadow-brand/10 hover:shadow-brand/20 hover:-translate-y-0.5 active:scale-95;
+    @apply relative overflow-hidden px-6 py-3 rounded-xl bg-brand text-slate-950 font-bold transition-all duration-300 shadow-lg shadow-brand/20 hover:shadow-brand/40 hover:-translate-y-0.5 active:scale-95;
+  }
+  
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300;
+  }
+  .btn-primary:hover::after {
+    @apply translate-y-0;
   }
 
   .btn-secondary {
     border-color: hsl(var(--border-color));
     color: hsl(var(--text-main));
-    @apply px-6 py-3 rounded-xl border hover:bg-surface-card/50 transition-all duration-300 active:scale-95 font-bold;
+    @apply px-6 py-3 rounded-xl border hover:bg-surface-elevated/50 hover:border-brand/50 transition-all duration-300 active:scale-95 font-bold;
   }
 
   .nav-link {
     color: hsl(var(--text-muted));
-    @apply hover:text-brand transition-colors duration-300 font-bold tracking-wide;
+    @apply relative hover:text-main transition-colors duration-300 font-bold tracking-wide;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
   }
 
   /* Scroll Reveal System */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .reveal-active {
@@ -102,14 +132,14 @@
 
   /* Shimmer Loading Effect */
   .shimmer {
-    background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.15), transparent);
     animation: shimmer 2s infinite;
   }
 }
 
 /* Background Effects */
 .bg-mesh {
-  @apply fixed inset-0 -z-10 bg-grid-slate opacity-40 dark:opacity-20;
+  @apply fixed inset-0 -z-10 bg-grid-slate opacity-40 dark:opacity-10;
 }
 
 .bg-mesh::after {
@@ -120,12 +150,15 @@
 .nebula-bg {
   @apply fixed inset-0 -z-20 transition-all duration-500;
   background: 
-    radial-gradient(at 0% 0%, var(--glow-1) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, var(--glow-2) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, var(--glow-1) 0px, transparent 60%),
+    radial-gradient(at 100% 100%, var(--glow-2) 0px, transparent 60%);
 }
 
 .glow {
-  @apply absolute -z-10 rounded-full blur-[120px] pointer-events-none opacity-20 mix-blend-screen;
+  @apply absolute -z-10 rounded-full blur-[100px] pointer-events-none opacity-30 mix-blend-screen;
+}
+.dark .glow {
+  opacity: 15;
 }
 
 /* Animations */
@@ -140,25 +173,24 @@
 }
 
 .animate-reveal {
-  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background-color: hsl(var(--bg-color));
 }
 ::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--surface-elevated));
+  background-color: hsl(var(--border-color));
   border-radius: 9999px;
-  border: 2px solid hsl(var(--bg-color));
   @apply transition-colors hover:bg-brand;
 }
 
 /* Noise Texture Overlay */
 .noise-bg {
-  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.015];
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.02];
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

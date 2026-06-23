@@ -84,15 +84,15 @@
 
         <!-- RIGHT COLUMN: Interactive IDE Console simulator (5 cols on lg) -->
         <div class="lg:col-span-5 w-full animate-reveal" style="animation-delay: 150ms">
-          <div class="bg-[#0b0f19] border border-slate-800 rounded-[2rem] overflow-hidden shadow-2xl relative">
+          <div class="bg-[#0b0f19] border border-slate-800/80 rounded-[2rem] overflow-hidden shadow-2xl relative group/ide hover:shadow-brand/20 hover:border-brand/40 transition-all duration-700">
             <!-- Window Title bar -->
             <div class="bg-[#070a10] border-b border-slate-800/80 px-5 py-3.5 flex items-center justify-between">
-              <!-- Window control dots -->
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-red-500/80 block"></span>
-                <span class="w-3 h-3 rounded-full bg-yellow-500/80 block"></span>
-                <span class="w-3 h-3 rounded-full bg-green-500/80 block"></span>
-              </div>
+            <!-- Window control dots -->
+            <div class="flex items-center gap-2 group/dots">
+              <span class="w-3 h-3 rounded-full bg-red-500/40 group-hover/dots:bg-red-500/90 block transition-colors duration-300"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/40 group-hover/dots:bg-yellow-500/90 block transition-colors duration-300 delay-75"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/40 group-hover/dots:bg-green-500/90 block transition-colors duration-300 delay-150"></span>
+            </div>
               
               <!-- Tab File indicators -->
               <div class="flex gap-2">
@@ -201,14 +201,15 @@
             :style="{ '--glow-color': tech.color }"
           >
             <div 
-              class="p-4 bg-surface-card rounded-2xl border border-border group-hover:border-[var(--glow-color)] transition-all duration-300 transform group-hover:-translate-y-1 relative"
+              class="p-4 bg-surface-elevated/40 backdrop-blur-sm rounded-2xl border border-border group-hover:border-[var(--glow-color)] transition-all duration-500 transform group-hover:-translate-y-1.5 relative overflow-hidden"
               :style="{ 
                 boxShadow: '0 0 0 transparent', 
               }"
               @mouseenter="onHover(tech.color, $event)"
               @mouseleave="onLeave($event)"
             >
-              <component :is="getIcon(tech.icon)" class="w-6 h-6 text-muted group-hover:text-[var(--glow-color)] transition-colors duration-300" />
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500" :style="{ backgroundColor: tech.color }"></div>
+              <component :is="getIcon(tech.icon)" class="w-6 h-6 text-muted group-hover:text-[var(--glow-color)] transition-colors duration-500 relative z-10" />
             </div>
             <span class="text-[9px] font-black text-muted tracking-widest uppercase group-hover:text-main transition-colors duration-300">
               {{ tech.name }}

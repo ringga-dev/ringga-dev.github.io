@@ -12,36 +12,39 @@
     </SectionHeader>
 
     <!-- Grid Layout of Capability Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
       <div 
         v-for="(banner, index) in banners" 
         :key="banner.id"
         @click="openLightbox(index)"
-        class="group glass-card p-3 rounded-3xl bg-surface-card hover:-translate-y-1.5 transition-all duration-300 cursor-pointer border border-border hover:border-brand/30 scroll-reveal"
-        :style="{ transitionDelay: `${(index % 5 + 1) * 80}ms` }"
+        :class="[
+          'group glass-card p-3 rounded-3xl bg-surface-card hover:-translate-y-1.5 transition-all duration-300 cursor-pointer border border-border hover:border-brand/30 scroll-reveal',
+          (index === 0 || index === 5) ? 'lg:col-span-2' : 'lg:col-span-1'
+        ]"
+        :style="{ transitionDelay: `${(index % 4 + 1) * 80}ms` }"
       >
         <!-- Thumbnail -->
         <div class="aspect-[16/10] rounded-2xl overflow-hidden relative border border-border/40">
           <img 
             :src="banner.image" 
             :alt="banner.title"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
           />
           <!-- Hover Overlay -->
           <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div class="bg-surface-color/90 border border-brand/40 p-2.5 rounded-full text-brand shadow-lg">
-              <Maximize2Icon class="w-4 h-4" />
+            <div class="bg-surface-color/90 border border-brand/40 p-3 rounded-full text-brand shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <Maximize2Icon class="w-5 h-5" />
             </div>
           </div>
         </div>
 
         <!-- Meta info -->
-        <div class="mt-3.5 px-1 pb-1">
-          <span class="text-[8px] font-black uppercase tracking-widest text-brand block mb-1">
+        <div class="mt-3.5 px-2 pb-1">
+          <span class="text-[9px] font-black uppercase tracking-widest text-brand block mb-1.5 opacity-80">
             {{ banner.category }}
           </span>
-          <h4 class="text-xs font-black text-main group-hover:text-brand transition-colors line-clamp-1">
+          <h4 class="text-sm font-black text-main group-hover:text-brand transition-colors line-clamp-1">
             {{ banner.title }}
           </h4>
         </div>
