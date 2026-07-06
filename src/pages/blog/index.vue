@@ -220,51 +220,6 @@
         </button>
       </div>
 
-      <!-- PAGINATION -->
-      <div v-if="totalPages > 1" class="flex items-center justify-center gap-2 mt-12 animate-reveal">
-        <button 
-          @click="currentPage = Math.max(1, currentPage - 1)"
-          :disabled="currentPage === 1"
-          class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border transition-all duration-300 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-          :class="currentPage === 1 
-            ? 'bg-surface-elevated/40 border-border-color text-text-muted' 
-            : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
-        >
-          <ArrowLeft class="w-4 h-4" />
-        </button>
-        
-        <template v-for="page in visiblePages" :key="page">
-          <button 
-            v-if="page === '...'"
-            class="px-3 py-2 text-xs font-black uppercase tracking-wider text-text-muted cursor-default"
-            disabled
-          >
-            ...
-          </button>
-          <button 
-            v-else
-            @click="currentPage = page"
-            class="w-10 h-10 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border"
-            :class="currentPage === page 
-              ? 'bg-brand text-slate-950 border-brand shadow-lg shadow-brand/20' 
-              : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
-          >
-            {{ page }}
-          </button>
-        </template>
-        
-        <button 
-          @click="currentPage = Math.min(totalPages, currentPage + 1)"
-          :disabled="currentPage === totalPages"
-          class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border transition-all duration-300 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-          :class="currentPage === totalPages 
-            ? 'bg-surface-elevated/40 border-border-color text-text-muted' 
-            : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
-        >
-          <ArrowRight class="w-4 h-4" />
-        </button>
-      </div>
-
       <!-- EMPTY STATE -->
       <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border-color rounded-[2.5rem] shadow-2xl animate-reveal">
         <div class="w-16 h-16 rounded-full bg-surface-elevated/60 border border-border-color flex items-center justify-center mx-auto mb-6 text-text-muted/60">
