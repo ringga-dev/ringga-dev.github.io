@@ -187,6 +187,84 @@
         </div>
       </div>
 
+      <!-- PAGINATION -->
+      <div v-if="totalPages > 1" class="flex items-center justify-center gap-2 mt-10 animate-reveal" style="animation-delay: 400ms">
+        <button 
+          @click="currentPage--" 
+          :disabled="currentPage === 1"
+          class="px-4 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border disabled:opacity-50 disabled:cursor-not-allowed"
+          :class="currentPage === 1 ? 'bg-surface-elevated/40 border-border-color text-text-muted' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border-color text-text-muted hover:text-text-main hover:border-brand/20'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        
+        <div class="flex items-center gap-1">
+          <button 
+            v-for="page in visiblePages" 
+            :key="page"
+            @click="currentPage = page"
+            class="w-10 h-10 rounded-xl text-sm font-black transition-all duration-300 cursor-pointer active:scale-95 border"
+            :class="currentPage === page ? 'bg-brand text-slate-950 border-brand shadow-lg shadow-brand/10' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border-color text-text-muted hover:text-text-main hover:border-brand/20'"
+          >
+            {{ page }}
+          </button>
+        </div>
+        
+        <button 
+          @click="currentPage++" 
+          :disabled="currentPage === totalPages"
+          class="px-4 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border disabled:opacity-50 disabled:cursor-not-allowed"
+          :class="currentPage === totalPages ? 'bg-surface-elevated/40 border-border-color text-text-muted' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border-color text-text-muted hover:text-text-main hover:border-brand/20'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- PAGINATION -->
+      <div v-if="totalPages > 1" class="flex items-center justify-center gap-2 mt-12 animate-reveal">
+        <button 
+          @click="currentPage = Math.max(1, currentPage - 1)"
+          :disabled="currentPage === 1"
+          class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border transition-all duration-300 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+          :class="currentPage === 1 
+            ? 'bg-surface-elevated/40 border-border-color text-text-muted' 
+            : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
+        >
+          <ArrowLeft class="w-4 h-4" />
+        </button>
+        
+        <template v-for="page in visiblePages" :key="page">
+          <button 
+            v-if="page === '...'"
+            class="px-3 py-2 text-xs font-black uppercase tracking-wider text-text-muted cursor-default"
+            disabled
+          >
+            ...
+          </button>
+          <button 
+            v-else
+            @click="currentPage = page"
+            class="w-10 h-10 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border"
+            :class="currentPage === page 
+              ? 'bg-brand text-slate-950 border-brand shadow-lg shadow-brand/20' 
+              : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
+          >
+            {{ page }}
+          </button>
+        </template>
+        
+        <button 
+          @click="currentPage = Math.min(totalPages, currentPage + 1)"
+          :disabled="currentPage === totalPages"
+          class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border transition-all duration-300 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+          :class="currentPage === totalPages 
+            ? 'bg-surface-elevated/40 border-border-color text-text-muted' 
+            : 'bg-surface-elevated/40 hover:bg-brand/10 border-border-color hover:border-brand/30 text-text-main'"
+        >
+          <ArrowRight class="w-4 h-4" />
+        </button>
+      </div>
+
       <!-- EMPTY STATE -->
       <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border-color rounded-[2.5rem] shadow-2xl animate-reveal">
         <div class="w-16 h-16 rounded-full bg-surface-elevated/60 border border-border-color flex items-center justify-center mx-auto mb-6 text-text-muted/60">
@@ -209,7 +287,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { Search, Calendar, Clock, ArrowRight, BookOpen, X } from 'lucide-vue-next'
+import { Search, Calendar, Clock, ArrowRight, BookOpen, X, ArrowLeft } from 'lucide-vue-next'
 import globalData from '~/data/global.json'
 
 // Load all markdown files synchronously at build-time using Vite's glob import
@@ -296,17 +374,55 @@ const featuredPost = computed(() => {
   return posts[0] || null
 })
 
-const gridPosts = computed(() => {
-  if (featuredPost.value) {
-    return filteredPosts.value.filter(p => p.slug !== featuredPost.value.slug)
-  }
-  return filteredPosts.value
-})
-
 const resetFilters = () => {
   searchQuery.value = ''
   selectedCategory.value = 'All'
+  currentPage.value = 1
 }
+
+// Pagination
+const postsPerPage = 9
+const currentPage = ref(1)
+
+const totalPages = computed(() => Math.ceil(filteredPosts.value.length / postsPerPage))
+
+const paginatedPosts = computed(() => {
+  const start = (currentPage.value - 1) * postsPerPage
+  const end = start + postsPerPage
+  return filteredPosts.value.slice(start, end)
+})
+
+const gridPosts = computed(() => {
+  if (featuredPost.value) {
+    return paginatedPosts.value.filter(p => p.slug !== featuredPost.value.slug)
+  }
+  return paginatedPosts.value
+})
+
+const visiblePages = computed(() => {
+  const pages = []
+  const current = currentPage.value
+  const total = totalPages.value
+  
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) pages.push(i)
+  } else {
+    pages.push(1)
+    if (current > 3) pages.push('...')
+    
+    const start = Math.max(2, current - 1)
+    const end = Math.min(total - 1, current + 1)
+    
+    for (let i = start; i <= end; i++) {
+      if (i !== 1 && i !== total) pages.push(i)
+    }
+    
+    if (current < total - 2) pages.push('...')
+    pages.push(total)
+  }
+  
+  return pages
+})
 
 const formatDate = (dateStr) => {
   if (!dateStr) return ''
