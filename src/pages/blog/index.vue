@@ -381,7 +381,7 @@ const resetFilters = () => {
 }
 
 // Pagination
-const postsPerPage = 9
+const postsPerPage = 5
 const currentPage = ref(1)
 
 const totalPages = computed(() => Math.ceil(filteredPosts.value.length / postsPerPage))
