@@ -135,6 +135,37 @@
     background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.15), transparent);
     animation: shimmer 2s infinite;
   }
+
+  /* Futuristic Holo-Border Card */
+  .holo-border {
+    position: relative;
+    background-color: hsl(var(--surface-card) / 0.4);
+    border: 1px solid hsl(var(--border-color) / 0.6);
+    @apply backdrop-blur-xl transition-all duration-500;
+  }
+  .holo-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-60 transition-opacity duration-500;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--brand-color) / 0.6), transparent 40%, transparent 60%, hsl(var(--brand-light) / 0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .holo-border:hover::before { @apply opacity-100; }
+  .holo-border:hover { box-shadow: 0 0 40px -10px hsl(var(--brand-color) / 0.25); }
+
+  /* Holographic text glow */
+  .glow-text {
+    text-shadow: 0 0 18px hsl(var(--brand-color) / 0.35);
+  }
+
+  /* Animated gradient ring for avatars */
+  .tech-ring {
+    background: conic-gradient(from 0deg, hsl(var(--brand-color)), hsl(var(--brand-light)), #7F52FF, hsl(var(--brand-color)));
+    background-size: 200% 200%;
+    animation: gradient-x 6s ease infinite;
+  }
 }
 
 /* Background Effects */

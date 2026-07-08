@@ -17,7 +17,7 @@
     { "label": "Years Experience", "value": "3", "suffix": "+", "icon": "CalendarIcon" },
     { "label": "Projects Completed", "value": "25", "suffix": "+", "icon": "FolderIcon" },
     { "label": "GitHub Stars", "value": "12", "suffix": "+", "icon": "StarIcon" },
-    { "label": "Repositories", "value": "24", "suffix": "+", "icon": "UsersIcon" }
+    { "label": "Repositories", "value": "24", "suffix": "+", "icon": "BoxesIcon" }
   ],
   "services": [
     {

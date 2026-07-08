@@ -18,7 +18,7 @@
         :key="banner.id"
         @click="openLightbox(index)"
         :class="[
-          'group glass-card p-3 rounded-3xl bg-surface-card hover:-translate-y-1.5 transition-all duration-300 cursor-pointer border border-border hover:border-brand/30 scroll-reveal',
+          'group relative p-3 rounded-3xl bg-surface-card border border-border hover:border-brand/40 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer scroll-reveal overflow-hidden',
           (index === 0 || index === 5) ? 'lg:col-span-2' : 'lg:col-span-1'
         ]"
         :style="{ transitionDelay: `${(index % 4 + 1) * 80}ms` }"

@@ -1,22 +1,34 @@
 <template>
   <div class="bg-surface">
-    <!-- Hero Section -->
+    <!-- Hero -->
     <HomeHero />
-    
-    <!-- Services Section -->
-    <HomeServices />
-    
-    <!-- Stats Section -->
+
+    <!-- Divider -->
+    <div class="h-px max-w-7xl mx-auto bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+    <!-- Credibility stats -->
     <HomeStats />
 
-    <!-- Technical Methodology (Infographics) Section -->
-    <HomeCapabilities />
+    <!-- Divider -->
+    <div class="h-px max-w-7xl mx-auto bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
-    <!-- Showcase Banner Section -->
+    <!-- Services / Expertise -->
+    <HomeServices />
+
+    <!-- Divider -->
+    <div class="h-px max-w-7xl mx-auto bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+    <!-- Showcase slider -->
     <HomeShowcaseBanner />
 
-    <!-- Featured Projects Section -->
-    <section class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+    <!-- Divider -->
+    <div class="h-px max-w-7xl mx-auto bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+    <!-- Capabilities / Methodology -->
+    <HomeCapabilities />
+
+    <!-- Featured Projects -->
+    <section class="max-w-7xl mx-auto px-6 py-28 relative z-10">
       <SectionHeader 
         badge="Technical Milestones" 
         description="A curated selection of high-impact innovations across the digital landscape."
@@ -44,29 +56,32 @@
       </div>
     </section>
 
-    <!-- Built with Tech precision is now embedded in HomeHero.vue stack footer -->
-
     <!-- Call to Action -->
-    <section class="max-w-5xl mx-auto px-6 py-24 md:py-40 text-center relative z-10">
-      <div class="scroll-reveal">
-        <h2 class="mb-8 leading-[1.1] font-heading font-black text-main">
-          Let's build something <br/> 
-          <span class="text-gradient underline decoration-brand/30 underline-offset-8">Extraordinary.</span>
-        </h2>
-        <p class="text-muted text-lg md:text-2xl mb-16 max-w-2xl mx-auto font-medium leading-relaxed">
-          Available for freelance projects and technical collaborations. Ready to elevate your digital presence with world-class engineering?
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a :href="globalData.socials.whatsapp" target="_blank" class="btn-primary py-5 px-12 text-sm shadow-2xl w-full sm:w-auto font-black uppercase tracking-wider">
-            Start a Conversation
-          </a>
-          <a :href="globalData.socials.email" class="btn-secondary py-5 px-12 text-sm w-full sm:w-auto font-black uppercase tracking-wider">
-            Email Me
-          </a>
+    <section class="relative z-10">
+      <div class="max-w-5xl mx-auto px-6 pb-32 md:pb-40">
+        <div class="glass-card rounded-[3rem] px-8 py-16 md:px-16 md:py-24 text-center relative overflow-hidden scroll-reveal">
+          <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand/10 rounded-full blur-[90px] pointer-events-none"></div>
+          <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-brand-light/10 rounded-full blur-[90px] pointer-events-none"></div>
+
+          <h2 class="relative z-10 mb-6 leading-[1.1] font-heading font-black text-main text-3xl sm:text-4xl md:text-5xl">
+            Let's build something <br /> 
+            <span class="text-gradient underline decoration-brand/30 underline-offset-8">Extraordinary.</span>
+          </h2>
+          <p class="relative z-10 text-muted text-lg md:text-2xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            Available for freelance projects and technical collaborations. Ready to elevate your digital presence with world-class engineering?
+          </p>
+          <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a :href="globalData.socials.whatsapp" target="_blank" class="btn-primary py-5 px-12 text-sm shadow-2xl w-full sm:w-auto font-black uppercase tracking-wider">
+              Start a Conversation
+            </a>
+            <a :href="globalData.socials.email" class="btn-secondary py-5 px-12 text-sm w-full sm:w-auto font-black uppercase tracking-wider">
+              Email Me
+            </a>
+          </div>
         </div>
       </div>
     </section>
-    
+
     <BackToTop />
   </div>
 </template>

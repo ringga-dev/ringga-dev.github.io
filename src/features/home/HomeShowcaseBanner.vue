@@ -1,52 +1,54 @@
 <template>
-  <section class="max-w-7xl mx-auto px-6 py-20 relative z-10 bg-surface">
-    <!-- Slider Container -->
+  <section class="max-w-7xl mx-auto px-6 py-28 relative z-10">
+    <SectionHeader 
+      badge="Core Ecosystem" 
+      description="A rotating showcase of the systems, architectures, and integrations I build end-to-end."
+      centered
+    >
+      <template #title>
+        Showcase <span class="text-gradient">Highlights</span>
+      </template>
+    </SectionHeader>
+
     <div 
-      class="glass-card rounded-[3.5rem] overflow-hidden border border-border relative bg-surface-card hover:border-brand/30 transition-all duration-500 group shadow-2xl"
+      class="mt-16 glass-card rounded-[2.5rem] overflow-hidden border border-border relative group shadow-2xl"
       @mouseenter="pauseAutoplay"
       @mouseleave="startAutoplay"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
     >
-      <!-- Background neon glows that shift colors based on active slide -->
+      <!-- Background neon glows -->
       <div 
         class="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-[100px] pointer-events-none transition-all duration-1000"
         :class="activeSlideGlowClass"
       ></div>
       <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-light/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-brand-light/15 transition-colors"></div>
 
-      <!-- Slide Wrapper -->
-      <div class="relative min-h-[600px] lg:min-h-[500px] flex items-center">
+      <div class="relative min-h-[560px] lg:min-h-[460px] flex items-center">
         <Transition
           :name="slideTransitionName"
           mode="out-in"
         >
           <div 
             :key="currentSlideIndex"
-            class="grid grid-cols-1 lg:grid-cols-12 gap-12 p-8 sm:p-12 lg:p-16 items-center w-full"
+            class="grid grid-cols-1 lg:grid-cols-12 gap-10 p-8 sm:p-12 lg:p-16 items-center w-full"
           >
-            <!-- Left Column: Details -->
-            <div class="lg:col-span-7 space-y-6 md:space-y-8 text-left">
-              <!-- Category Badge -->
-              <div>
-                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-black tracking-widest uppercase shadow-sm">
-                  {{ currentSlide.category }}
-                </span>
-              </div>
+            <!-- Left: Details -->
+            <div class="lg:col-span-7 space-y-6 text-left">
+              <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-black tracking-widest uppercase">
+                {{ currentSlide.category }}
+              </span>
 
-              <!-- Main Title -->
               <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-black text-main leading-[1.15] tracking-tight">
                 {{ currentSlide.title }} <br />
                 <span class="text-gradient">{{ currentSlide.titleHighlight }}</span>
               </h2>
 
-              <!-- Description -->
               <p class="text-muted text-base md:text-lg font-medium leading-relaxed max-w-xl">
                 {{ currentSlide.description }}
               </p>
 
-              <!-- highlights info -->
-              <div class="grid grid-cols-2 gap-6 pt-4 border-t border-border/40">
+              <div class="grid grid-cols-2 gap-6 pt-2">
                 <div 
                   v-for="(hl, idx) in currentSlide.highlights" 
                   :key="idx" 
@@ -61,8 +63,7 @@
                 </div>
               </div>
 
-              <!-- CTA Buttons -->
-              <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <div class="flex flex-col sm:flex-row gap-4 pt-2">
                 <NuxtLink 
                   :to="currentSlide.ctaLink" 
                   class="btn-primary inline-flex items-center justify-center gap-3 px-8 py-4 text-xs font-black uppercase tracking-wider shadow-lg shadow-brand/10 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
@@ -80,11 +81,10 @@
               </div>
             </div>
 
-            <!-- Right Column: Banner Visual Image -->
+            <!-- Right: Visual -->
             <div class="lg:col-span-5 w-full flex justify-center">
-              <div class="relative group/image overflow-hidden rounded-[2.5rem] border border-border/80 shadow-2xl bg-surface-card w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-square flex items-center justify-center">
-                <!-- Decorative outline glow -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-light/0 opacity-0 group-hover/image:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
+              <div class="relative overflow-hidden rounded-[2rem] border border-border/80 shadow-2xl bg-surface-card w-full aspect-square flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-light/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10"></div>
                 
                 <img 
                   :src="currentSlide.image" 
@@ -92,7 +92,6 @@
                   class="w-full h-full object-cover transform hover:scale-[1.03] transition-transform duration-700 select-none pointer-events-none"
                 />
                 
-                <!-- Sleek label overlays -->
                 <div class="absolute bottom-4 left-4 right-4 glass px-5 py-3.5 rounded-2xl border border-border/40 flex items-center justify-between z-20">
                   <div class="flex items-center gap-2.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
@@ -126,13 +125,13 @@
         <ChevronRightIcon class="w-5 h-5" />
       </button>
 
-      <!-- Dots Indicators -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+      <!-- Progress dots -->
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-30">
         <button 
           v-for="(_, index) in slides" 
           :key="index"
           @click="setSlide(index)"
-          class="w-8 h-2 rounded-full transition-all duration-300 cursor-pointer"
+          class="w-8 h-1.5 rounded-full transition-all duration-300 cursor-pointer"
           :class="index === currentSlideIndex ? 'bg-brand w-12' : 'bg-border hover:bg-muted'"
           :aria-label="`Go to slide ${index + 1}`"
         ></button>
@@ -210,10 +209,9 @@ const slides = [
 ]
 
 const currentSlideIndex = ref(0)
-const direction = ref('next') // 'next' or 'prev'
+const direction = ref('next')
 const currentSlide = computed(() => slides[currentSlideIndex.value])
 
-// Shifts the background glow bubbles slightly to matches the active slide theme
 const activeSlideGlowClass = computed(() => {
   switch(currentSlideIndex.value) {
     case 1: return 'bg-cyan-500/10 group-hover:bg-cyan-500/15'
@@ -223,7 +221,6 @@ const activeSlideGlowClass = computed(() => {
   }
 })
 
-// Define sliding transition name
 const slideTransitionName = computed(() => {
   return direction.value === 'next' ? 'slide-next' : 'slide-prev'
 })
@@ -245,29 +242,26 @@ const stopAutoplay = () => {
   }
 }
 
-const pauseAutoplay = () => {
-  stopAutoplay()
-}
+const pauseAutoplay = () => stopAutoplay()
 
 const nextSlide = () => {
   direction.value = 'next'
   currentSlideIndex.value = (currentSlideIndex.value + 1) % slides.length
-  startAutoplay() // restart timer
+  startAutoplay()
 }
 
 const prevSlide = () => {
   direction.value = 'prev'
   currentSlideIndex.value = (currentSlideIndex.value - 1 + slides.length) % slides.length
-  startAutoplay() // restart timer
+  startAutoplay()
 }
 
 const setSlide = (index) => {
   direction.value = index > currentSlideIndex.value ? 'next' : 'prev'
   currentSlideIndex.value = index
-  startAutoplay() // restart timer
+  startAutoplay()
 }
 
-// Touch controls for mobile swipe gestures
 let touchStartX = 0
 let touchEndX = 0
 
@@ -282,12 +276,9 @@ const handleTouchEnd = (event) => {
 
 const handleSwipeGesture = () => {
   const diff = touchStartX - touchEndX
-  if (Math.abs(diff) > 50) { // threshold of 50px
-    if (diff > 0) {
-      nextSlide()
-    } else {
-      prevSlide()
-    }
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextSlide()
+    else prevSlide()
   }
 }
 
@@ -301,7 +292,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* slide-next transition */
 .slide-next-enter-active,
 .slide-next-leave-active,
 .slide-prev-enter-active,
@@ -318,7 +308,6 @@ onUnmounted(() => {
   transform: translateX(-40px);
 }
 
-/* slide-prev transition */
 .slide-prev-enter-from {
   opacity: 0;
   transform: translateX(-40px);
