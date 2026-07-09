@@ -51,9 +51,11 @@ onMounted(() => {
   // ============ SPIRAL ARMS (blue/white stars + dust lanes) ============
   const STAR_COUNT = 4500
   const BRANCHES = 6
-  const cBlue = new THREE.Color('#9fc4ff')
+  const cBlue = new THREE.Color('#3fa9ff') // electric blue
+  const cIndigo = new THREE.Color('#7b6bff') // cyan-indigo
   const cWhite = new THREE.Color('#fff8e8')
-  const cBrown = new THREE.Color('#b5713a')
+  const cCopper = new THREE.Color('#a85a32') // copper dust
+  const cCharcoal = new THREE.Color('#3a322c') // charcoal dust
   const mixed = new THREE.Color()
 
   for (let i = 0; i < STAR_COUNT; i++) {
@@ -68,11 +70,11 @@ onMounted(() => {
     const y = (Math.random() - 0.5) * (1.4 - t * 1.0) + scatter() * 0.2
     const z = Math.sin(angle) * radius + scatter()
 
-    // color: white-hot near core -> blue in arms, with occasional brown (dust glow)
+    // color: white-hot near core -> electric blue/indigo in arms
     const roll = Math.random()
     if (t < 0.4) mixed.copy(cWhite).lerp(cBlue, t / 0.4)
-    else mixed.copy(cBlue)
-    if (roll < 0.12) mixed.copy(cBrown).lerp(cWhite, 0.4)
+    else mixed.copy(roll < 0.5 ? cBlue : cIndigo)
+    if (roll < 0.12) mixed.copy(cCopper).lerp(cWhite, 0.35)
 
     const v = 0.85 + Math.random() * 0.15
     const size = 0.3 + Math.random() * 0.55
@@ -100,9 +102,10 @@ onMounted(() => {
     const z = Math.sin(angle) * radius + scatter()
 
     const size = 0.8 + Math.random() * 2.2
+    const dustCol = Math.random() < 0.6 ? '#2a160c' : '#241f1a' // copper / charcoal
     const mat = new THREE.SpriteMaterial({
       map: glowTex,
-      color: new THREE.Color('#1a0f0a'),
+      color: new THREE.Color(dustCol),
       transparent: true,
       opacity: 0.55 + Math.random() * 0.3, // opaque-ish, dark
       depthWrite: false,
@@ -140,9 +143,64 @@ onMounted(() => {
     }
   })
 
+  // ============ GAS FILAMENTS (spiral streams flowing to center) ============
+  for (let i = 0; i < 700; i++) {
+    const t = Math.pow(Math.random(), 1.3)
+    const radius = 2 + t * (RADIUS * 0.9)
+    const angle = spiralAngle(i, radius, 6) + Math.PI // counter-flow subtle
+    const x = Math.cos(angle) * radius
+    const y = (Math.random() - 0.5) * 0.5 * (1 - t)
+    const z = Math.sin(angle) * radius
+    const mat = new THREE.SpriteMaterial({
+      map: glowTex, color: new THREE.Color('#5a7bff'), transparent: true,
+      opacity: 0.06 + (1 - t) * 0.12, depthWrite: false, blending: THREE.AdditiveBlending,
+    })
+    const s = new THREE.Sprite(mat)
+    s.position.set(x, y, z)
+    const sz = 0.6 + (1 - t) * 1.5
+    s.scale.set(sz, sz * 0.35, sz)
+    root.add(s)
+  }
+
   // ============ SATELLITE GALAXIES (M32 / M110) ============
   addSatellite(root, { pos: [16, 3, -6], size: 3.2, tint: '#ffd9a0' })
   addSatellite(root, { pos: [-15, -4, 4], size: 4.5, tint: '#c9b6ff' })
+
+  // ============ DOUBLE NUCLEUS (Andromeda's odd core) ============
+  // oval ring of old RED stars surrounding a small blue disk
+  for (let i = 0; i < 220; i++) {
+    const a = (i / 220) * Math.PI * 2
+    const ex = 2.6 // oval eccentricity
+    const x = Math.cos(a) * ex
+    const z = Math.sin(a) * 1.5
+    const y = (Math.random() - 0.5) * 0.3
+    const mat = new THREE.SpriteMaterial({
+      map: dotTex, color: new THREE.Color('#ff5a3c'), transparent: true,
+      opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending,
+    })
+    const s = new THREE.Sprite(mat)
+    s.position.set(x, y, z)
+    const sz = 0.3 + Math.random() * 0.25
+    s.scale.set(sz, sz, sz)
+    root.add(s)
+  }
+  // small inner blue disk (young stars around the black hole)
+  for (let i = 0; i < 160; i++) {
+    const r = Math.random() * 1.4
+    const a = Math.random() * Math.PI * 2
+    const mat = new THREE.SpriteMaterial({
+      map: dotTex, color: new THREE.Color('#9fe0ff'), transparent: true,
+      opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+    })
+    const s = new THREE.Sprite(mat)
+    s.position.set(Math.cos(a) * r, (Math.random() - 0.5) * 0.2, Math.sin(a) * r)
+    const sz = 0.25 + Math.random() * 0.2
+    s.scale.set(sz, sz, sz)
+    root.add(s)
+  }
+
+  // ============ ACCRETION DISK + EVENT HORIZON (dramatic center) ============
+  addBlackHole(root, glowTex, dotTex)
 
   // ============ BULGE / CORE (bright yellow-white, strong glow) ============
   const coreSprites = [
@@ -168,7 +226,83 @@ onMounted(() => {
   const bulge = new THREE.Sprite(bulgeMat)
   bulge.scale.set(3.5, 3.5, 3.5)
   root.add(bulge)
+
+  // ============ HORIZONTAL LENS FLARE (thin, across core) ============
+  const flareMat = new THREE.SpriteMaterial({
+    map: makeFlareTexture(), color: new THREE.Color('#fff2c0'), transparent: true,
+    opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending,
+  })
+  const flare = new THREE.Sprite(flareMat)
+  flare.scale.set(60, 1.4, 1)
+  root.add(flare)
 })
+
+function addBlackHole(root, glowTex, dotTex) {
+  // Accretion disk: hot orange-red spinning ring (flat)
+  const disk = new THREE.Mesh(
+    new THREE.RingGeometry(0.9, 2.6, 64),
+    new THREE.MeshBasicMaterial({
+      color: new THREE.Color('#ff5a1e'),
+      transparent: true,
+      opacity: 0.9,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    })
+  )
+  disk.rotation.x = Math.PI / 2
+  root.add(disk)
+
+  // gravitational lensing glow ring (bright edge)
+  const lens = new THREE.Mesh(
+    new THREE.RingGeometry(2.6, 3.0, 64),
+    new THREE.MeshBasicMaterial({
+      color: new THREE.Color('#ffd27a'),
+      transparent: true,
+      opacity: 0.6,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    })
+  )
+  lens.rotation.x = Math.PI / 2
+  root.add(lens)
+
+  // Event horizon: perfect black sphere absorbing light
+  const bh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.85, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0x000000 })
+  )
+  root.add(bh)
+
+  // vertical lensed light (top/bottom arcs) for dramatic distortion look
+  const arcMat = new THREE.SpriteMaterial({
+    map: glowTex, color: new THREE.Color('#ff8a3c'), transparent: true,
+    opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending,
+  })
+  const arcTop = new THREE.Sprite(arcMat)
+  arcTop.position.set(0, 1.6, 0); arcTop.scale.set(2.5, 3, 1)
+  root.add(arcTop)
+  const arcBot = new THREE.Sprite(arcMat.clone())
+  arcBot.position.set(0, -1.6, 0); arcBot.scale.set(2.5, 3, 1)
+  root.add(arcBot)
+}
+
+function makeFlareTexture() {
+  const w = 256, h = 32
+  const canvas = document.createElement('canvas')
+  canvas.width = w; canvas.height = h
+  const ctx = canvas.getContext('2d')
+  const g = ctx.createLinearGradient(0, 0, w, 0)
+  g.addColorStop(0.0, 'rgba(255,240,190,0)')
+  g.addColorStop(0.5, 'rgba(255,242,200,0.7)')
+  g.addColorStop(1.0, 'rgba(255,240,190,0)')
+  ctx.fillStyle = g
+  ctx.fillRect(0, h / 2 - 2, w, 4)
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.needsUpdate = true
+  return tex
+}
 
 function addSatellite(root, { pos, size, tint }) {
   const mat = new THREE.SpriteMaterial({
