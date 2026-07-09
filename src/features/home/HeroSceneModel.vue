@@ -7,7 +7,10 @@
     </TresMesh>
   </TresGroup>
 
-  <!-- The 3D model (OBJ), placed on the right -->
+  <!-- Procedural 3D avatar of Ringga Dev -->
+  <HeroSceneAvatar />
+
+  <!-- Optional OBJ model overlay (loaded only if asset exists) -->
   <TresGroup :position="[0, -2, 0]" ref="modelGroup" />
 </template>
 
@@ -16,6 +19,7 @@ import { OBJLoader } from 'three/addons/loaders/OBJLoader.js'
 import { useLoop } from '@tresjs/core'
 import { Box3, Vector3, DoubleSide, MeshStandardMaterial } from 'three'
 import { shallowRef, ref } from 'vue'
+import HeroSceneAvatar from '~/features/home/HeroSceneAvatar.vue'
 
 // Ganti ke '/models/orbiter bugship.obj' jika mau model kapal luar angkasa
 const MODEL_URL = '/models/caiman-character.obj'
