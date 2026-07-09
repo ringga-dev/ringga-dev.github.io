@@ -1,9 +1,5 @@
 <template>
-  <TresGroup ref="galaxyRef" :position="[0, 0, 0]" :rotation="[Math.PI / 3.2, 0, 0]">
-    <TresPointLight :position="[0, 0, 0]" :color="'#fff0c0'" :intensity="6" :distance="70" :decay="1.3" />
-    <TresAmbientLight :color="'#2a3560'" :intensity="0.5" />
-    <TresDirectionalLight :position="[0, 0, -20]" :color="'#6fa8ff'" :intensity="1.0" />
-  </TresGroup>
+  <primitive v-if="galaxy" :object="galaxy" />
 </template>
 
 <script setup>
@@ -11,198 +7,166 @@ import { useLoop } from '@tresjs/core'
 import { shallowRef, onMounted } from 'vue'
 import * as THREE from 'three'
 
-const galaxyRef = shallowRef()
-
+const galaxy = shallowRef(null)
 const RADIUS = 19
+const BRANCHES = 6
 
-function spiralAngle(i, radius, branches) {
-  const branchAngle = ((i % branches) / branches) * Math.PI * 2
-  const spinAngle = Math.log(radius + 1.2) * 2.6
-  return branchAngle + spinAngle
+function spiralAngle(i, radius) {
+  const branch = i % BRANCHES
+  const branchAngle = (branch / BRANCHES) * Math.PI * 2 + (branch % 2 === 0 ? 0.3 : -0.2)
+  return branchAngle + Math.log(radius + 1.2) * 2.6
 }
 
 onMounted(() => {
-  const root = galaxyRef.value
-  if (!root) return
+  const root = new THREE.Group()
+  root.rotation.set(Math.PI / 3.2, 0, 0)
 
   const dotTex = makeDotTexture()
   const glowTex = makeGlowTexture()
 
-  // ============ FIELD STARS (background, deep space) ============
-  for (let i = 0; i < 1500; i++) {
-    const r = 30 + Math.random() * 40
-    const theta = Math.random() * Math.PI * 2
-    const phi = Math.acos(2 * Math.random() - 1)
-    const x = r * Math.sin(phi) * Math.cos(theta)
-    const y = r * Math.cos(phi) * 0.6
-    const z = r * Math.sin(phi) * Math.sin(theta)
-    const tint = Math.random() < 0.5 ? '#ffffff' : (Math.random() < 0.5 ? '#bcd2ff' : '#ffe6c0')
-    const size = 0.15 + Math.random() * 0.5
-    const mat = new THREE.SpriteMaterial({
-      map: dotTex, color: new THREE.Color(tint), transparent: true,
-      opacity: 0.4 + Math.random() * 0.6, depthWrite: false, blending: THREE.AdditiveBlending,
-    })
-    const s = new THREE.Sprite(mat)
-    s.position.set(x, y, z)
-    s.scale.set(size, size, size)
-    root.add(s)
+  const gauss = () => {
+    let u = 0, v = 0
+    while (u === 0) u = Math.random()
+    while (v === 0) v = Math.random()
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v)
   }
 
-  // ============ SPIRAL ARMS (blue/white stars + dust lanes) ============
-  const STAR_COUNT = 4500
-  const BRANCHES = 6
-  const cBlue = new THREE.Color('#3fa9ff') // electric blue
-  const cIndigo = new THREE.Color('#7b6bff') // cyan-indigo
-  const cWhite = new THREE.Color('#fff8e8')
-  const cCopper = new THREE.Color('#a85a32') // copper dust
-  const cCharcoal = new THREE.Color('#3a322c') // charcoal dust
+  // ---- bright core point light ----
+  const coreLight = new THREE.PointLight(0xfff0c0, 6, 70, 1.3)
+  root.add(coreLight)
+
+  // ============ DENSE STAR FIELD (3 layer PointsMaterial) ============
+  const LAYERS = [
+    { count: 90000, size: 0.16 },
+    { count: 22000, size: 0.3 },
+    { count: 8000, size: 0.55 },
+  ]
+  const cCore = new THREE.Color('#fff4d6')
+  const cBlue = new THREE.Color('#3fa9ff')
+  const cIndigo = new THREE.Color('#7b6bff')
+  const cCopper = new THREE.Color('#a85a32')
   const mixed = new THREE.Color()
 
-  for (let i = 0; i < STAR_COUNT; i++) {
-    const t = Math.pow(Math.random(), 1.7)
-    const radius = t * RADIUS
-    const angle = spiralAngle(i, radius, BRANCHES)
+  const starData = []
+  LAYERS.forEach((layer, layerIdx) => {
+    const positions = new Float32Array(layer.count * 3)
+    const colors = new Float32Array(layer.count * 3)
+    for (let i = 0; i < layer.count; i++) {
+      const i3 = i * 3
+      const radius = Math.pow(Math.random(), 2.2) * RADIUS
+      const angle = spiralAngle(i, radius)
+      const armWidth = 0.18 + radius * 0.045
+      const off = gauss() * armWidth
+      const wobble = Math.sin(radius * 0.6 + i * 0.0001) * 0.4 + gauss() * 0.25
+      const inArm = Math.random() > 0.25
+      const jitter = inArm ? 0 : gauss() * RADIUS * 0.4
+      const radial = radius + gauss() * 0.4 + jitter
+      const a = angle + wobble + (inArm ? 0 : Math.PI * Math.random())
+      const x = Math.cos(a) * radial - Math.sin(a) * off
+      const z = Math.sin(a) * radial + Math.cos(a) * off
+      const y = gauss() * (0.9 - (radius / RADIUS) * 0.6)
 
-    const scatter = () =>
-      Math.pow(Math.random(), 3.0) * (Math.random() < 0.5 ? 1 : -1) * radius * 0.4
+      const t = radius / RADIUS
+      const roll = Math.random()
+      if (t < 0.35) mixed.copy(cCore).lerp(cBlue, t / 0.35)
+      else mixed.copy(roll < 0.5 ? cBlue : cIndigo)
+      if (roll < 0.1) mixed.copy(cCopper).lerp(cCore, 0.4)
+      const v = 0.8 + Math.random() * 0.2
 
-    const x = Math.cos(angle) * radius + scatter()
-    const y = (Math.random() - 0.5) * (1.4 - t * 1.0) + scatter() * 0.2
-    const z = Math.sin(angle) * radius + scatter()
+      positions[i3] = x; positions[i3 + 1] = y; positions[i3 + 2] = z
+      colors[i3] = mixed.r * v; colors[i3 + 1] = mixed.g * v; colors[i3 + 2] = mixed.b * v
 
-    // color: white-hot near core -> electric blue/indigo in arms
-    const roll = Math.random()
-    if (t < 0.4) mixed.copy(cWhite).lerp(cBlue, t / 0.4)
-    else mixed.copy(roll < 0.5 ? cBlue : cIndigo)
-    if (roll < 0.12) mixed.copy(cCopper).lerp(cWhite, 0.35)
-
-    const v = 0.85 + Math.random() * 0.15
-    const size = 0.3 + Math.random() * 0.55
-    const mat = new THREE.SpriteMaterial({
-      map: dotTex, color: new THREE.Color(mixed.r * v, mixed.g * v, mixed.b * v),
-      transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+      // hanya layer terkecil (indeks 2) yang dianimasikan swirl -> ringan & aman
+      if (layerIdx === 2) {
+        starData.push({ geo: null, positions, i3, radius: radial, angle: a, y, inSpeed: 0.6 + Math.random() * 0.8 })
+      }
+    }
+    const geo = new THREE.BufferGeometry()
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    geo.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+    const mat = new THREE.PointsMaterial({
+      size: layer.size, map: dotTex, alphaTest: 0.02, transparent: true,
+      vertexColors: true, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true,
     })
-    const s = new THREE.Sprite(mat)
-    s.position.set(x, y, z)
-    s.scale.set(size, size, size)
-    root.add(s)
-  }
+    const points = new THREE.Points(geo, mat)
+    root.add(points)
+    // simpan geo ke data swirl setelah points dibuat
+    if (layerIdx === 2) {
+      for (const sd of starData) sd.geo = geo
+    }
+  })
 
-  // ============ DUST LANES (opaque dark, along arms) ============
-  const DUST_COUNT = 2200
+  // ============ DUST LANES (asymmetric, opaque dark) ============
+  const DUST_COUNT = 14000
+  const dPos = new Float32Array(DUST_COUNT * 3)
   for (let i = 0; i < DUST_COUNT; i++) {
+    const i3 = i * 3
     const t = 0.25 + Math.random() * 0.75
     const radius = t * RADIUS
-    const angle = spiralAngle(i, radius, BRANCHES) + 0.25 // offset to sit between star bands
-    const scatter = () =>
-      Math.pow(Math.random(), 2.2) * (Math.random() < 0.5 ? 1 : -1) * radius * 0.35
-
-    const x = Math.cos(angle) * radius + scatter()
-    const y = (Math.random() - 0.5) * 0.9
-    const z = Math.sin(angle) * radius + scatter()
-
-    const size = 0.8 + Math.random() * 2.2
-    const dustCol = Math.random() < 0.6 ? '#2a160c' : '#241f1a' // copper / charcoal
-    const mat = new THREE.SpriteMaterial({
-      map: glowTex,
-      color: new THREE.Color(dustCol),
-      transparent: true,
-      opacity: 0.55 + Math.random() * 0.3, // opaque-ish, dark
-      depthWrite: false,
-      blending: THREE.NormalBlending, // NOT additive -> reads as dark matter
-    })
-    const s = new THREE.Sprite(mat)
-    s.position.set(x, y, z)
-    s.scale.set(size, size * 0.5, size)
-    root.add(s)
+    const angle = spiralAngle(i, radius) + 0.25 + gauss() * 0.3
+    const scatter = () => gauss() * radius * 0.3
+    dPos[i3] = Math.cos(angle) * radius + scatter()
+    dPos[i3 + 1] = (Math.random() - 0.5) * 0.9
+    dPos[i3 + 2] = Math.sin(angle) * radius + scatter()
   }
+  const dustGeo = new THREE.BufferGeometry()
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dPos, 3))
+  root.add(new THREE.Points(dustGeo, new THREE.PointsMaterial({
+    size: 0.9, map: glowTex, color: new THREE.Color('#2a160c'),
+    transparent: true, opacity: 0.4, depthWrite: false, blending: THREE.NormalBlending,
+  })))
 
-  // ============ COSMIC HAZE (soft blue/pink glow) ============
+  // ============ FIELD STARS ============
+  const FIELD = 3000
+  const fPos = new Float32Array(FIELD * 3)
+  for (let i = 0; i < FIELD; i++) {
+    const i3 = i * 3
+    const r = 30 + Math.random() * 45
+    const th = Math.random() * Math.PI * 2
+    const ph = Math.acos(2 * Math.random() - 1)
+    fPos[i3] = r * Math.sin(ph) * Math.cos(th)
+    fPos[i3 + 1] = r * Math.cos(ph) * 0.6
+    fPos[i3 + 2] = r * Math.sin(ph) * Math.sin(th)
+  }
+  const fGeo = new THREE.BufferGeometry()
+  fGeo.setAttribute('position', new THREE.BufferAttribute(fPos, 3))
+  root.add(new THREE.Points(fGeo, new THREE.PointsMaterial({
+    size: 0.18, map: dotTex, color: new THREE.Color('#cfe0ff'),
+    transparent: true, opacity: 0.7, depthWrite: false, blending: THREE.AdditiveBlending,
+  })))
+
+  // ============ COSMIC HAZE (randomized thickness, swirling) ============
+  const hazeSprites = []
   const hazeLayers = [
-    { count: 320, size: 8, opacity: 0.028, tint: '#4f6bff' },
-    { count: 230, size: 12, opacity: 0.018, tint: '#ff7b9c' },
-    { count: 160, size: 19, opacity: 0.01, tint: '#7a5bff' },
+    { count: 320, baseSize: 8, opacity: 0.025, tint: '#4f6bff' },
+    { count: 230, baseSize: 12, opacity: 0.016, tint: '#ff7b9c' },
+    { count: 160, baseSize: 19, opacity: 0.009, tint: '#7a5bff' },
   ]
   hazeLayers.forEach((layer) => {
     for (let i = 0; i < layer.count; i++) {
       const t = Math.pow(Math.random(), 0.7)
       const radius = t * RADIUS * 1.05
-      const angle = spiralAngle(i, radius, BRANCHES) * 0.92
-      const x = Math.cos(angle) * radius + (Math.random() - 0.5) * radius * 0.6
-      const y = (Math.random() - 0.5) * 1.3
-      const z = Math.sin(angle) * radius + (Math.random() - 0.5) * radius * 0.6
+      const angle = spiralAngle(i, radius) * 0.92 + gauss() * 0.4
       const hc = new THREE.Color(layer.tint).lerp(new THREE.Color('#ffd9a0'), Math.random() * 0.3)
+      const sizeVar = layer.baseSize * (0.4 + Math.random() * 1.6)
+      const opVar = layer.opacity * (0.4 + Math.random() * 1.8)
       const mat = new THREE.SpriteMaterial({
-        map: glowTex, color: hc, transparent: true, opacity: layer.opacity,
+        map: glowTex, color: hc, transparent: true, opacity: opVar,
         depthWrite: false, blending: THREE.AdditiveBlending,
       })
       const s = new THREE.Sprite(mat)
-      s.position.set(x, y, z)
-      s.scale.set(layer.size, layer.size, layer.size)
+      s.position.set(Math.cos(angle) * radius, (Math.random() - 0.5) * 1.3, Math.sin(angle) * radius)
+      s.scale.set(sizeVar, sizeVar * (0.5 + Math.random() * 0.8), sizeVar)
       root.add(s)
+      hazeSprites.push({ sprite: s, radius, angle })
     }
   })
 
-  // ============ GAS FILAMENTS (spiral streams flowing to center) ============
-  for (let i = 0; i < 700; i++) {
-    const t = Math.pow(Math.random(), 1.3)
-    const radius = 2 + t * (RADIUS * 0.9)
-    const angle = spiralAngle(i, radius, 6) + Math.PI // counter-flow subtle
-    const x = Math.cos(angle) * radius
-    const y = (Math.random() - 0.5) * 0.5 * (1 - t)
-    const z = Math.sin(angle) * radius
-    const mat = new THREE.SpriteMaterial({
-      map: glowTex, color: new THREE.Color('#5a7bff'), transparent: true,
-      opacity: 0.06 + (1 - t) * 0.12, depthWrite: false, blending: THREE.AdditiveBlending,
-    })
-    const s = new THREE.Sprite(mat)
-    s.position.set(x, y, z)
-    const sz = 0.6 + (1 - t) * 1.5
-    s.scale.set(sz, sz * 0.35, sz)
-    root.add(s)
-  }
-
-  // ============ SATELLITE GALAXIES (M32 / M110) ============
+  // ============ SATELLITE GALAXIES ============
   addSatellite(root, { pos: [16, 3, -6], size: 3.2, tint: '#ffd9a0' })
   addSatellite(root, { pos: [-15, -4, 4], size: 4.5, tint: '#c9b6ff' })
 
-  // ============ DOUBLE NUCLEUS (Andromeda's odd core) ============
-  // oval ring of old RED stars surrounding a small blue disk
-  for (let i = 0; i < 220; i++) {
-    const a = (i / 220) * Math.PI * 2
-    const ex = 2.6 // oval eccentricity
-    const x = Math.cos(a) * ex
-    const z = Math.sin(a) * 1.5
-    const y = (Math.random() - 0.5) * 0.3
-    const mat = new THREE.SpriteMaterial({
-      map: dotTex, color: new THREE.Color('#ff5a3c'), transparent: true,
-      opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending,
-    })
-    const s = new THREE.Sprite(mat)
-    s.position.set(x, y, z)
-    const sz = 0.3 + Math.random() * 0.25
-    s.scale.set(sz, sz, sz)
-    root.add(s)
-  }
-  // small inner blue disk (young stars around the black hole)
-  for (let i = 0; i < 160; i++) {
-    const r = Math.random() * 1.4
-    const a = Math.random() * Math.PI * 2
-    const mat = new THREE.SpriteMaterial({
-      map: dotTex, color: new THREE.Color('#9fe0ff'), transparent: true,
-      opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
-    })
-    const s = new THREE.Sprite(mat)
-    s.position.set(Math.cos(a) * r, (Math.random() - 0.5) * 0.2, Math.sin(a) * r)
-    const sz = 0.25 + Math.random() * 0.2
-    s.scale.set(sz, sz, sz)
-    root.add(s)
-  }
-
-  // ============ ACCRETION DISK + EVENT HORIZON (dramatic center) ============
-  addBlackHole(root, glowTex, dotTex)
-
-  // ============ BULGE / CORE (bright yellow-white, strong glow) ============
+  // ============ BULGE / CORE GLOW ============
   const coreSprites = [
     { size: 5, color: '#fff6d8', opacity: 0.98 },
     { size: 10, color: '#ffe6a0', opacity: 0.55 },
@@ -210,99 +174,33 @@ onMounted(() => {
     { size: 34, color: '#88aaff', opacity: 0.18 },
   ]
   coreSprites.forEach((c) => {
-    const mat = new THREE.SpriteMaterial({
+    const m = new THREE.SpriteMaterial({
       map: glowTex, color: c.color, transparent: true, opacity: c.opacity,
       depthWrite: false, blending: THREE.AdditiveBlending,
     })
-    const s = new THREE.Sprite(mat)
-    s.scale.set(c.size, c.size, c.size)
+    const s = new THREE.Sprite(m); s.scale.set(c.size, c.size, c.size)
     root.add(s)
   })
-  // small solid bulge center
-  const bulgeMat = new THREE.SpriteMaterial({
+  const bulge = new THREE.Sprite(new THREE.SpriteMaterial({
     map: dotTex, color: new THREE.Color('#fff8e0'), transparent: true, opacity: 1,
     depthWrite: false, blending: THREE.AdditiveBlending,
-  })
-  const bulge = new THREE.Sprite(bulgeMat)
+  }))
   bulge.scale.set(3.5, 3.5, 3.5)
   root.add(bulge)
 
-  // ============ HORIZONTAL LENS FLARE (thin, across core) ============
-  const flareMat = new THREE.SpriteMaterial({
+  // ============ HORIZONTAL LENS FLARE ============
+  const flare = new THREE.Sprite(new THREE.SpriteMaterial({
     map: makeFlareTexture(), color: new THREE.Color('#fff2c0'), transparent: true,
     opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending,
-  })
-  const flare = new THREE.Sprite(flareMat)
+  }))
   flare.scale.set(60, 1.4, 1)
   root.add(flare)
+
+  galaxy.value = root
+  // expose for animation
+  galaxy.value.__haze = hazeSprites
+  galaxy.value.__stars = starData
 })
-
-function addBlackHole(root, glowTex, dotTex) {
-  // Accretion disk: hot orange-red spinning ring (flat)
-  const disk = new THREE.Mesh(
-    new THREE.RingGeometry(0.9, 2.6, 64),
-    new THREE.MeshBasicMaterial({
-      color: new THREE.Color('#ff5a1e'),
-      transparent: true,
-      opacity: 0.9,
-      side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  )
-  disk.rotation.x = Math.PI / 2
-  root.add(disk)
-
-  // gravitational lensing glow ring (bright edge)
-  const lens = new THREE.Mesh(
-    new THREE.RingGeometry(2.6, 3.0, 64),
-    new THREE.MeshBasicMaterial({
-      color: new THREE.Color('#ffd27a'),
-      transparent: true,
-      opacity: 0.6,
-      side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  )
-  lens.rotation.x = Math.PI / 2
-  root.add(lens)
-
-  // Event horizon: perfect black sphere absorbing light
-  const bh = new THREE.Mesh(
-    new THREE.SphereGeometry(0.85, 32, 32),
-    new THREE.MeshBasicMaterial({ color: 0x000000 })
-  )
-  root.add(bh)
-
-  // vertical lensed light (top/bottom arcs) for dramatic distortion look
-  const arcMat = new THREE.SpriteMaterial({
-    map: glowTex, color: new THREE.Color('#ff8a3c'), transparent: true,
-    opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending,
-  })
-  const arcTop = new THREE.Sprite(arcMat)
-  arcTop.position.set(0, 1.6, 0); arcTop.scale.set(2.5, 3, 1)
-  root.add(arcTop)
-  const arcBot = new THREE.Sprite(arcMat.clone())
-  arcBot.position.set(0, -1.6, 0); arcBot.scale.set(2.5, 3, 1)
-  root.add(arcBot)
-}
-
-function makeFlareTexture() {
-  const w = 256, h = 32
-  const canvas = document.createElement('canvas')
-  canvas.width = w; canvas.height = h
-  const ctx = canvas.getContext('2d')
-  const g = ctx.createLinearGradient(0, 0, w, 0)
-  g.addColorStop(0.0, 'rgba(255,240,190,0)')
-  g.addColorStop(0.5, 'rgba(255,242,200,0.7)')
-  g.addColorStop(1.0, 'rgba(255,240,190,0)')
-  ctx.fillStyle = g
-  ctx.fillRect(0, h / 2 - 2, w, 4)
-  const tex = new THREE.CanvasTexture(canvas)
-  tex.needsUpdate = true
-  return tex
-}
 
 function addSatellite(root, { pos, size, tint }) {
   const mat = new THREE.SpriteMaterial({
@@ -310,8 +208,7 @@ function addSatellite(root, { pos, size, tint }) {
     opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending,
   })
   const s = new THREE.Sprite(mat)
-  s.position.set(...pos)
-  s.scale.set(size, size * 0.7, size) // oval
+  s.position.set(...pos); s.scale.set(size, size * 0.7, size)
   root.add(s)
 }
 
@@ -325,10 +222,8 @@ function makeDotTexture() {
   g.addColorStop(0.35, 'rgba(255,255,255,0.85)')
   g.addColorStop(0.7, 'rgba(255,255,255,0.18)')
   g.addColorStop(1, 'rgba(255,255,255,0)')
-  ctx.fillStyle = g
-  ctx.fillRect(0, 0, size, size)
-  const tex = new THREE.CanvasTexture(canvas)
-  tex.needsUpdate = true
+  ctx.fillStyle = g; ctx.fillRect(0, 0, size, size)
+  const tex = new THREE.CanvasTexture(canvas); tex.needsUpdate = true
   return tex
 }
 
@@ -342,15 +237,30 @@ function makeGlowTexture() {
   g.addColorStop(0.2, 'rgba(255,244,214,0.7)')
   g.addColorStop(0.5, 'rgba(255,214,150,0.2)')
   g.addColorStop(1.0, 'rgba(255,200,120,0)')
-  ctx.fillStyle = g
-  ctx.fillRect(0, 0, size, size)
-  const tex = new THREE.CanvasTexture(canvas)
-  tex.needsUpdate = true
+  ctx.fillStyle = g; ctx.fillRect(0, 0, size, size)
+  const tex = new THREE.CanvasTexture(canvas); tex.needsUpdate = true
+  return tex
+}
+
+function makeFlareTexture() {
+  const w = 256, h = 32
+  const canvas = document.createElement('canvas')
+  canvas.width = w; canvas.height = h
+  const ctx = canvas.getContext('2d')
+  const g = ctx.createLinearGradient(0, 0, w, 0)
+  g.addColorStop(0.0, 'rgba(255,240,190,0)')
+  g.addColorStop(0.5, 'rgba(255,242,200,0.7)')
+  g.addColorStop(1.0, 'rgba(255,240,190,0)')
+  ctx.fillStyle = g; ctx.fillRect(0, h / 2 - 2, w, 4)
+  const tex = new THREE.CanvasTexture(canvas); tex.needsUpdate = true
   return tex
 }
 
 const { onBeforeRender } = useLoop()
 onBeforeRender(({ delta }) => {
-  if (galaxyRef.value) galaxyRef.value.rotation.y += delta * 0.05
+  const g = galaxy.value
+  if (!g) return
+  // unified swirl: whole galaxy rotates as one (no divergence, no double image)
+  g.rotation.y += delta * 0.08
 })
 </script>
