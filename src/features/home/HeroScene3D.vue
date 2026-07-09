@@ -3,18 +3,14 @@
     <ClientOnly>
       <TresCanvas alpha :dpr="[1, 2]">
         <TresPerspectiveCamera :position="[0, 0, 42]" :fov="55" :look-at="[0, 0, 0]" />
-        <TresAmbientLight :intensity="1.2" />
-        <TresDirectionalLight :position="[5, 10, 8]" :intensity="2.2" />
-        <TresDirectionalLight :position="[-8, -3, -6]" :intensity="1" color="#36e4da" />
+        <TresAmbientLight :intensity="0.6" />
 
         <OrbitControls
           :enable-pan="false"
-          :enable-zoom="false"
+          :enable-zoom="true"
           :enable-damping="true"
-          :min-azimuth-angle="-0.6"
-          :max-azimuth-angle="0.6"
-          :min-polar-angle="1.2"
-          :max-polar-angle="1.9"
+          :min-distance="8"
+          :max-distance="120"
         />
 
         <HeroSceneModel />
