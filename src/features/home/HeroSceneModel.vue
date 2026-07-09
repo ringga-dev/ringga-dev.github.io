@@ -7,8 +7,11 @@
     </TresMesh>
   </TresGroup>
 
-  <!-- Procedural 3D avatar of Ringga Dev -->
-  <HeroSceneAvatar />
+  <!-- Realistic GLB avatar (Ready Player Me) when available -->
+  <HeroSceneAvatarGLB v-if="hasGlb" />
+
+  <!-- Procedural fallback avatar of Ringga Dev -->
+  <HeroSceneAvatar v-else />
 
   <!-- Optional OBJ model overlay (loaded only if asset exists) -->
   <TresGroup :position="[0, -2, 0]" ref="modelGroup" />
@@ -20,6 +23,14 @@ import { useLoop } from '@tresjs/core'
 import { Box3, Vector3, DoubleSide, MeshStandardMaterial } from 'three'
 import { shallowRef, ref } from 'vue'
 import HeroSceneAvatar from '~/features/home/HeroSceneAvatar.vue'
+import HeroSceneAvatarGLB from '~/features/home/HeroSceneAvatarGLB.vue'
+
+// Detect whether a realistic GLB avatar has been provided
+const GLB_URL = '/models/ringga-avatar.glb'
+const hasGlb = ref(false)
+fetch(GLB_URL, { method: 'HEAD' })
+  .then((r) => { hasGlb.value = r.ok })
+  .catch(() => { hasGlb.value = false })
 
 // Ganti ke '/models/orbiter bugship.obj' jika mau model kapal luar angkasa
 const MODEL_URL = '/models/caiman-character.obj'
