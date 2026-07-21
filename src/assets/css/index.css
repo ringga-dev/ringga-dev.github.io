@@ -4,45 +4,45 @@
 
 @layer base {
   :root {
-    /* HSL Color System for Light Mode - Premium Emerald Zambrut Theme */
-    --bg-color: 0 0% 98%;              /* Clean almost white */
-    --surface-color: 0 0% 100%;        /* Pure White surface */
-    --surface-card: 156 50% 97%;       /* Subtle emerald tint card */
-    --surface-elevated: 156 40% 95%;   /* Elevated emerald gray */
-    --text-main: 156 60% 8%;           /* Deep emerald black for sharp contrast */
-    --text-muted: 156 20% 40%;         /* Muted emerald gray */
-    --border-color: 156 30% 88%;       /* Soft emerald border */
+    /* HSL Color System - Refined Minimalist Emerald */
+    --bg-color: 0 0% 100%;              /* Pure white */
+    --surface-color: 0 0% 98%;          /* Subtle gray surface */
+    --surface-card: 0 0% 96%;           /* Card surface */
+    --surface-elevated: 0 0% 100%;      /* Elevated elements */
+    --text-main: 156 45% 12%;           /* Deep emerald charcoal */
+    --text-muted: 156 15% 45%;          /* Soft muted text */
+    --border-color: 156 20% 90%;        /* Delicate border */
     
-    --brand-color: 156 85% 38%;        /* Professional Emerald */
-    --brand-light: 165 80% 48%;        /* Cyan/Green */
-    --brand-dark: 156 90% 28%;         /* Dark Emerald */
+    --brand-color: 156 70% 42%;         /* Refined emerald */
+    --brand-light: 165 65% 52%;         /* Soft cyan-emerald */
+    --brand-dark: 156 75% 32%;          /* Deep emerald */
     
-    --glow-1: rgba(0, 198, 117, 0.08);
-    --glow-2: rgba(38, 212, 202, 0.05);
+    --glow-1: rgba(0, 180, 120, 0.06);
+    --glow-2: rgba(38, 200, 190, 0.04);
   }
-
+  
   .dark {
-    /* HSL Color System for Dark Mode - Deep Emerald Darkness (OLED-friendly) */
-    --bg-color: 156 50% 3%;            /* Near black with emerald tint */
-    --surface-color: 156 40% 5%;       /* Very dark emerald gray */
-    --surface-card: 156 35% 7%;        /* Elevated dark emerald card */
-    --surface-elevated: 156 30% 10%;   /* Higher elevated emerald */
-    --text-main: 156 20% 95%;          /* Crisp white with emerald hint */
-    --text-muted: 156 15% 60%;         /* Clean muted emerald text */
-    --border-color: 156 25% 14%;       /* Subtle dark emerald border */
+    /* HSL Color System - Deep Elegant Dark */
+    --bg-color: 156 40% 4%;             /* Near black with hint */
+    --surface-color: 156 30% 6%;        /* Dark surface */
+    --surface-card: 156 25% 8%;         /* Card dark */
+    --surface-elevated: 156 20% 11%;    /* Elevated dark */
+    --text-main: 156 15% 92%;           /* Crisp light text */
+    --text-muted: 156 10% 55%;          /* Muted light text */
+    --border-color: 156 15% 16%;        /* Subtle dark border */
     
-    --brand-color: 156 100% 50%;       /* Neon Emerald (Pops on dark) */
-    --brand-light: 165 100% 60%;       /* Bright Cyan-Emerald */
-    --brand-dark: 156 100% 35%;        /* Deep Emerald */
+    --brand-color: 156 75% 52%;         /* Luminous emerald */
+    --brand-light: 165 70% 62%;         /* Bright cyan */
+    --brand-dark: 156 80% 40%;          /* Rich emerald */
     
-    --glow-1: rgba(0, 220, 130, 0.12);
-    --glow-2: rgba(54, 228, 218, 0.08);
+    --glow-1: rgba(0, 200, 140, 0.10);
+    --glow-2: rgba(54, 218, 208, 0.06);
   }
 
   body {
     background-color: hsl(var(--bg-color));
     color: hsl(var(--text-main));
-    @apply font-sans selection:bg-brand/30 selection:text-brand-dark m-0 p-0 transition-colors duration-500;
+    @apply font-sans selection:bg-brand/25 selection:text-brand-dark m-0 p-0 transition-colors duration-500;
     overflow-x: hidden;
     width: 100%;
     -webkit-font-smoothing: antialiased;
@@ -50,82 +50,80 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-extrabold tracking-tight transition-colors duration-500;
+    @apply font-heading font-bold tracking-tight leading-tight transition-colors duration-300;
   }
 
-  h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); }
-  h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -0.02em; }
-  h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.75rem, 7vw, 5rem); line-height: 1.05; letter-spacing: -0.03em; }
+  h2 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.02em; }
+  h3 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.01em; }
+  
+  p {
+    @apply leading-relaxed;
+  }
 }
 
 @layer components {
+  /* Premium Glass Effect */
   .glass {
-    background-color: hsl(var(--surface-color) / 0.5);
-    border: 1px solid hsl(var(--border-color) / 0.8);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-    @apply backdrop-blur-2xl transition-all duration-300;
+    background-color: hsl(var(--surface-color) / 0.6);
+    border: 1px solid hsl(var(--border-color) / 0.6);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.04);
+    @apply backdrop-blur-2xl transition-all duration-500;
   }
   
   .dark .glass {
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    border-top: 1px solid hsl(var(--border-color) / 1);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid hsl(var(--border-color) / 0.8);
   }
   
+  /* Elegant Card */
   .glass-card {
-    background-color: hsl(var(--surface-card) / 0.6);
-    border: 1px solid hsl(var(--border-color) / 0.5);
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-    @apply backdrop-blur-xl hover:border-brand/30 transition-all duration-500 hover:bg-surface-elevated/40 hover:shadow-2xl hover:shadow-brand/5;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--surface-card) / 0.5) 0%,
+      hsl(var(--surface-elevated) / 0.3) 100%
+    );
+    border: 1px solid hsl(var(--border-color) / 0.4);
+    box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.03);
+    @apply backdrop-blur-xl transition-all duration-500 hover:border-brand/25 hover:shadow-xl hover:shadow-brand/3;
   }
 
   .dark .glass-card {
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
-    border-top: 1px solid hsl(var(--border-color) / 0.8);
+    box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid hsl(var(--border-color) / 0.6);
   }
 
+  /* Sophisticated Gradient Text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand via-brand-light to-brand;
-    background-size: 200% auto;
-    animation: gradient-x 4s ease infinite;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-brand via-brand-light to-brand;
+    background-size: 180% auto;
+    animation: gradient-x 6s ease infinite;
   }
 
-  /* Enhanced Emerald Zambrut Gradient Text */
-  .text-gradient-zambrut {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      hsl(156 100% 50%) 0%,
-      hsl(165 100% 60%) 25%,
-      hsl(156 85% 45%) 50%,
-      hsl(165 90% 55%) 75%,
-      hsl(156 100% 50%) 100%
-    );
-    background-size: 300% auto;
-    animation: gradient-x 5s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px hsl(156 100% 50% / 0.3));
-  }
-
+  /* Subtle Glow Button */
   .btn-primary {
-    @apply relative overflow-hidden px-6 py-3 rounded-xl bg-brand text-slate-950 font-bold transition-all duration-300 shadow-lg shadow-brand/20 hover:shadow-brand/40 hover:-translate-y-0.5 active:scale-95;
+    @apply relative overflow-hidden px-7 py-3.5 rounded-2xl bg-brand text-white font-semibold transition-all duration-300 shadow-lg shadow-brand/15 hover:shadow-xl hover:shadow-brand/25 hover:-translate-y-0.5 active:scale-[0.98];
   }
   
   .btn-primary::after {
     content: '';
-    @apply absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300;
+    @apply absolute inset-0 bg-white/15 translate-y-full transition-transform duration-500;
   }
   .btn-primary:hover::after {
     @apply translate-y-0;
   }
 
+  /* Minimal Secondary Button */
   .btn-secondary {
     border-color: hsl(var(--border-color));
     color: hsl(var(--text-main));
-    @apply px-6 py-3 rounded-xl border hover:bg-surface-elevated/50 hover:border-brand/50 transition-all duration-300 active:scale-95 font-bold;
+    @apply px-7 py-3.5 rounded-2xl border bg-transparent hover:bg-surface-elevated/60 hover:border-brand/30 transition-all duration-300 active:scale-[0.98] font-semibold;
   }
 
+  /* Clean Navigation Link */
   .nav-link {
     color: hsl(var(--text-muted));
-    @apply relative hover:text-main transition-colors duration-300 font-bold tracking-wide;
+    @apply relative hover:text-brand transition-colors duration-300 font-medium tracking-wide;
   }
   
   .nav-link::after {
@@ -136,11 +134,11 @@
     @apply w-full;
   }
 
-  /* Scroll Reveal System */
+  /* Smooth Reveal Animation */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(24px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-active {
@@ -148,68 +146,68 @@
     transform: translateY(0);
   }
 
-  /* Shimmer Loading Effect */
+  /* Subtle Shimmer */
   .shimmer {
-    background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.15), transparent);
-    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg, transparent, hsl(var(--surface-elevated) / 0.1), transparent);
+    animation: shimmer 2.5s infinite;
   }
 
-  /* Futuristic Holo-Border Card */
+  /* Minimal Holo Border */
   .holo-border {
     position: relative;
-    background-color: hsl(var(--surface-card) / 0.4);
-    border: 1px solid hsl(var(--border-color) / 0.6);
+    background-color: hsl(var(--surface-card) / 0.3);
+    border: 1px solid hsl(var(--border-color) / 0.5);
     @apply backdrop-blur-xl transition-all duration-500;
   }
   .holo-border::before {
     content: '';
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-60 transition-opacity duration-500;
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-40 transition-opacity duration-500;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(var(--brand-color) / 0.6), transparent 40%, transparent 60%, hsl(var(--brand-light) / 0.5));
+    background: linear-gradient(135deg, hsl(var(--brand-color) / 0.4), transparent 45%, transparent 55%, hsl(var(--brand-light) / 0.3));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-  .holo-border:hover::before { @apply opacity-100; }
-  .holo-border:hover { box-shadow: 0 0 40px -10px hsl(var(--brand-color) / 0.25); }
+  .holo-border:hover::before { @apply opacity-80; }
+  .holo-border:hover { box-shadow: 0 0 32px -8px hsl(var(--brand-color) / 0.15); }
 
-  /* Holographic text glow */
+  /* Soft Glow Text */
   .glow-text {
-    text-shadow: 0 0 18px hsl(var(--brand-color) / 0.35);
+    text-shadow: 0 0 24px hsl(var(--brand-color) / 0.25);
   }
 
-  /* Animated gradient ring for avatars */
+  /* Elegant Animated Ring */
   .tech-ring {
     background: conic-gradient(from 0deg, hsl(var(--brand-color)), hsl(var(--brand-light)), #7F52FF, hsl(var(--brand-color)));
     background-size: 200% 200%;
-    animation: gradient-x 6s ease infinite;
+    animation: gradient-x 8s ease infinite;
   }
 
-  /* Emerald Zambrut Card Enhancement */
+  /* Premium Card */
   .zambrut-card {
     @apply relative overflow-hidden rounded-3xl;
     background: linear-gradient(
-      135deg,
-      hsl(var(--surface-card) / 0.8) 0%,
-      hsl(var(--surface-elevated) / 0.6) 100%
+      145deg,
+      hsl(var(--surface-card) / 0.6) 0%,
+      hsl(var(--surface-elevated) / 0.4) 100%
     );
-    border: 1px solid hsl(var(--border-color) / 0.5);
-    backdrop-filter: blur(20px);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid hsl(var(--border-color) / 0.4);
+    backdrop-filter: blur(16px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   .zambrut-card::before {
     content: '';
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-500;
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-600;
     background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      hsl(156 100% 50% / 0.15),
-      transparent 40%
+      600px circle at var(--mouse-x) var(--mouse-y),
+      hsl(156 70% 50% / 0.1),
+      transparent 45%
     );
   }
   
   .zambrut-card:hover {
-    @apply border-brand/40 -translate-y-2 shadow-2xl shadow-brand/10;
+    @apply border-brand/30 -translate-y-1.5 shadow-xl shadow-brand/5;
   }
   
   .zambrut-card:hover::before {
@@ -217,9 +215,9 @@
   }
 }
 
-/* Background Effects */
+/* Minimal Background Effects */
 .bg-mesh {
-  @apply fixed inset-0 -z-10 bg-grid-slate opacity-40 dark:opacity-10;
+  @apply fixed inset-0 -z-10 bg-grid-slate opacity-30 dark:opacity-8;
 }
 
 .bg-mesh::after {
@@ -228,17 +226,17 @@
 }
 
 .nebula-bg {
-  @apply fixed inset-0 -z-20 transition-all duration-500;
+  @apply fixed inset-0 -z-20 transition-all duration-700;
   background: 
     radial-gradient(at 0% 0%, var(--glow-1) 0px, transparent 60%),
     radial-gradient(at 100% 100%, var(--glow-2) 0px, transparent 60%);
 }
 
 .glow {
-  @apply absolute -z-10 rounded-full blur-[100px] pointer-events-none opacity-30 mix-blend-screen;
+  @apply absolute -z-10 rounded-full blur-[120px] pointer-events-none opacity-25 mix-blend-screen;
 }
 .dark .glow {
-  opacity: 15;
+  opacity: 18;
 }
 
 /* Animations */
@@ -248,17 +246,17 @@
 }
 
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-reveal {
-  animation: reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom Scrollbar */
+/* Elegant Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background-color: hsl(var(--bg-color));
@@ -266,11 +264,11 @@
 ::-webkit-scrollbar-thumb {
   background-color: hsl(var(--border-color));
   border-radius: 9999px;
-  @apply transition-colors hover:bg-brand;
+  @apply transition-colors hover:bg-brand/60;
 }
 
-/* Noise Texture Overlay */
+/* Subtle Noise Texture */
 .noise-bg {
-  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.02];
+  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.015];
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
