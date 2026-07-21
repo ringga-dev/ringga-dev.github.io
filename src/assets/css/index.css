@@ -142,7 +142,7 @@
 
   /* Cinematic Gradient Text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand via-accent-1 to-brand;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand via-brand-light to-brand;
     background-size: 200% auto;
     animation: gradient-flow 8s ease infinite;
     filter: drop-shadow(0 0 40px hsl(var(--brand-color) / 0.3));
