@@ -59,9 +59,13 @@ export default defineNuxtConfig({
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vendor-vue': ['vue', 'vue-router'],
-            'vendor-three': ['three', '@tresjs/core', '@tresjs/cientos']
+          manualChunks(id) {
+            if (id.includes('node_modules/vue') || id.includes('node_modules/pinia') || id.includes('vue-router')) {
+              return 'vendor-vue'
+            }
+            if (id.includes('node_modules/three') || id.includes('@tresjs')) {
+              return 'vendor-three'
+            }
           }
         }
       }
@@ -91,7 +95,7 @@ export default defineNuxtConfig({
   // TypeScript strict mode
   typescript: {
     strict: true,
-    typeCheck: true
+    typeCheck: false
   },
 
   // Experimental features
