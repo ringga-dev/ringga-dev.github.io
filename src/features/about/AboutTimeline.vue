@@ -15,7 +15,7 @@
         class="relative pl-12 md:pl-24 scroll-reveal group"
       >
         <!-- Timeline Dot -->
-        <div class="absolute left-0 md:left-8 -translate-x-1/2 top-0 w-4 h-4 rounded-full bg-surface border-2 border-brand shadow-[0_0_15px_rgba(0,220,130,0.3)] z-10 group-hover:scale-150 transition-transform duration-500">
+        <div class="absolute left-0 md:left-8 -translate-x-1/2 top-0 w-4 h-4 rounded-full bg-surface border-2 border-brand shadow-[0_0_15px_hsl(var(--brand-color)/0.4)] z-10 group-hover:scale-150 transition-transform duration-500">
           <div class="absolute inset-1 rounded-full bg-brand animate-pulse"></div>
         </div>
         

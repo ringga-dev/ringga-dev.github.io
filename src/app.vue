@@ -9,7 +9,7 @@
     <div class="glow w-[500px] h-[500px] bg-brand/5 top-[-100px] left-[-100px]"></div>
     <div class="glow w-[400px] h-[400px] bg-brand-light/5 bottom-[-50px] right-[-50px]"></div>
     
-    <NuxtLoadingIndicator color="#00DC82" :height="3" />
+    <NuxtLoadingIndicator :height="3" />
     
     <Navbar v-if="!hideNavAndFooter" />
     

@@ -214,9 +214,9 @@ const currentSlide = computed(() => slides[currentSlideIndex.value])
 
 const activeSlideGlowClass = computed(() => {
   switch(currentSlideIndex.value) {
-    case 1: return 'bg-cyan-500/10 group-hover:bg-cyan-500/15'
-    case 2: return 'bg-emerald-500/10 group-hover:bg-emerald-500/15'
-    case 3: return 'bg-teal-500/10 group-hover:bg-teal-500/15'
+    case 1: return 'bg-brand-light/10 group-hover:bg-brand-light/15'
+    case 2: return 'bg-accent-1/10 group-hover:bg-accent-1/15'
+    case 3: return 'bg-accent-2/10 group-hover:bg-accent-2/15'
     default: return 'bg-brand/10 group-hover:bg-brand/15'
   }
 })

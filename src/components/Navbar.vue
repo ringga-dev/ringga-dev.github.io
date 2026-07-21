@@ -23,8 +23,8 @@
           v-for="link in globalData.navigation" 
           :key="link.path"
           :to="link.path" 
-          class="px-6 py-2 rounded-xl text-sm font-black transition-all duration-300 uppercase tracking-wider hover:text-brand"
-          :class="[route.path === link.path ? 'bg-brand text-slate-950 shadow-md shadow-brand/20' : 'text-muted']"
+          class="px-6 py-2 rounded-xl text-sm font-black transition-all duration-300 uppercase tracking-wider"
+          :class="[route.path === link.path ? 'bg-brand text-white shadow-md shadow-brand/20' : 'text-muted hover:text-brand']"
         >
           {{ link.name }}
         </NuxtLink>

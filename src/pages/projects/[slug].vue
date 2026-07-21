@@ -50,8 +50,8 @@
           />
           
           <!-- Cinematic overlay gradients -->
-          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-black/60 z-10"></div>
-          <div class="absolute inset-0 bg-black/20 z-0"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-surface/80 z-10"></div>
+          <div class="absolute inset-0 bg-surface/30 z-0"></div>
         </div>
 
         <!-- Floating Hero Content -->
@@ -111,8 +111,8 @@
               />
               
               <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-slate-950/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-[2.5rem]">
-                <div class="bg-surface-color/90 border border-brand/30 p-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all text-brand flex items-center gap-2">
+              <div class="absolute inset-0 bg-surface/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-[2.5rem]">
+                <div class="bg-surface-card/90 border border-brand/30 p-4 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all text-brand flex items-center gap-2">
                   <Maximize2Icon class="w-5 h-5 animate-pulse" />
                   <span class="text-xs font-black uppercase tracking-wider pr-1">Fullscreen Preview</span>
                 </div>
@@ -168,7 +168,7 @@
                   v-if="project.github" 
                   :href="project.github" 
                   target="_blank" 
-                  class="btn-primary w-full flex items-center justify-center gap-3 px-6 py-4 text-xs font-black uppercase tracking-wider text-slate-950 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+                  class="btn-primary w-full flex items-center justify-center gap-3 px-6 py-4 text-xs font-black uppercase tracking-wider text-brand-dark hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
                 >
                   <GithubIcon class="w-4 h-4" />
                   GitHub Repository
@@ -300,7 +300,7 @@
                 loop
                 muted
                 playsinline
-                class="lightbox-media rounded-2xl max-w-full max-h-[80vh] shadow-2xl border border-white/10"
+                class="lightbox-media rounded-2xl max-w-full max-h-[80vh] shadow-2xl border border-border/30"
               ></video>
 
               <!-- Iframe embedded Video -->
@@ -310,7 +310,7 @@
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen
-                class="lightbox-media rounded-2xl w-[85vw] h-[55vw] max-w-[1000px] max-h-[600px] shadow-2xl border border-white/10"
+                class="lightbox-media rounded-2xl w-[85vw] h-[55vw] max-w-[1000px] max-h-[600px] shadow-2xl border border-border/30"
               ></iframe>
 
               <!-- Fallback Image -->
@@ -318,12 +318,12 @@
                 v-else
                 :src="project?.media?.src || project?.image"
                 :alt="project?.title"
-                class="lightbox-media rounded-2xl max-w-full max-h-[80vh] object-contain shadow-2xl border border-white/10"
+                class="lightbox-media rounded-2xl max-w-full max-h-[80vh] object-contain shadow-2xl border border-border/30"
                 draggable="false"
               />
             </div>
             
-            <div class="lightbox-info-caption text-xs text-white/50 absolute bottom-6 text-center w-full select-none pointer-events-none">
+            <div class="lightbox-info-caption text-xs text-muted/50 absolute bottom-6 text-center w-full select-none pointer-events-none">
               Click outside or press ESC to exit
             </div>
           </div>
@@ -457,8 +457,8 @@ onUnmounted(() => {
 .lightbox-ambient-glow {
   @apply absolute inset-0 pointer-events-none;
   background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(156 100% 43% / 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(165 95% 55% / 0.02) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--brand-color) / 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(var(--brand-light) / 0.03) 0%, transparent 50%);
 }
 
 .lightbox-topbar {
@@ -468,13 +468,14 @@ onUnmounted(() => {
 
 .lightbox-category-badge {
   @apply text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-lg shrink-0;
-  color: hsl(156 100% 43%);
-  background: rgba(0, 220, 130, 0.1);
-  border: 1px solid rgba(0, 220, 130, 0.25);
+  color: hsl(var(--brand-color));
+  background: hsl(var(--brand-color) / 0.1);
+  border: 1px solid hsl(var(--brand-color) / 0.25);
 }
 
 .lightbox-title {
-  @apply text-white text-sm sm:text-base font-heading font-bold leading-tight truncate;
+  @apply text-sm sm:text-base font-heading font-bold leading-tight truncate;
+  color: hsl(var(--text-main));
 }
 
 .lightbox-btn {
@@ -486,10 +487,10 @@ onUnmounted(() => {
 }
 
 .lightbox-btn:hover {
-  color: hsl(156 100% 43%);
+  color: hsl(var(--brand-color));
   background: rgba(15, 30, 22, 0.85);
-  border-color: rgba(0, 220, 130, 0.35);
-  box-shadow: 0 0 20px rgba(0, 220, 130, 0.12);
+  border-color: hsl(var(--brand-color) / 0.35);
+  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.15);
 }
 
 .lightbox-content-container {
@@ -503,6 +504,6 @@ onUnmounted(() => {
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.7),
     0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 80px rgba(0, 220, 130, 0.08);
+    0 0 80px hsl(var(--brand-color) / 0.08);
 }
 </style>

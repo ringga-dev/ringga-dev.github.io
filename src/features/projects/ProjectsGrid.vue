@@ -17,7 +17,7 @@
         :key="cat"
         @click="activeCategory = cat"
         class="px-8 py-2.5 rounded-xl text-xs font-black transition-all duration-300 border uppercase tracking-widest"
-        :class="[activeCategory === cat ? 'bg-brand border-brand text-slate-950 shadow-lg shadow-brand/20' : 'bg-surface-card border-border text-muted hover:border-brand/40 hover:text-brand']"
+        :class="[activeCategory === cat ? 'bg-brand border-brand text-brand-dark shadow-lg shadow-brand/20' : 'bg-surface-card border-border text-muted hover:border-brand/40 hover:text-brand']"
       >
         {{ cat }}
       </button>

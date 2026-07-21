@@ -17,7 +17,7 @@
         class="glass-card p-6 rounded-3xl scroll-reveal group bg-surface-card border border-border block hover:-translate-y-1 transition-all duration-300"
       >
         <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-brand/5 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-slate-950 transition-all duration-500 border border-brand/10">
+          <div class="w-10 h-10 rounded-xl bg-brand/5 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-brand-dark transition-all duration-500 border border-brand/10">
             <component :is="getIcon(skill.icon)" class="w-5 h-5" />
           </div>
           <div class="flex-1">

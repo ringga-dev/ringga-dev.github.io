@@ -7,12 +7,13 @@
       'group',
       className
     ]"
+    @mousemove="handleMouseMove"
   >
     <!-- Spotlight effect -->
     <div
       ref="spotlightRef"
       class="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      style="background: radial-gradient(600px circle at var(--x) var(--y), rgba(0, 220, 132, 0.1), transparent 40%)"
+      style="background: radial-gradient(600px circle at var(--x) var(--y), hsl(var(--brand-color) / 0.1), transparent 40%)"
     ></div>
     
     <!-- Content -->

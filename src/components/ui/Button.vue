@@ -51,9 +51,9 @@ const emit = defineEmits<{
 
 const variantClasses = {
   primary: 'bg-brand text-brand-dark hover:bg-brand/90 shadow-lg shadow-brand/25 focus:ring-brand',
-  secondary: 'bg-surface-emerald text-main hover:bg-surface-emerald/80 border border-border focus:ring-brand',
+  secondary: 'bg-surface-elevated text-main hover:bg-surface-elevated/80 border border-border focus:ring-brand',
   outline: 'bg-transparent text-main border-2 border-brand hover:bg-brand/10 focus:ring-brand',
-  ghost: 'bg-transparent text-main hover:bg-surface-emerald focus:ring-brand',
+  ghost: 'bg-transparent text-main hover:bg-surface-elevated focus:ring-brand',
   danger: 'bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/25 focus:ring-red-500'
 }
 

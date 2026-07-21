@@ -235,8 +235,8 @@ onUnmounted(() => {
 .lightbox-ambient-glow {
   @apply absolute inset-0 pointer-events-none;
   background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(156 100% 43% / 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(165 95% 55% / 0.02) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--brand-color) / 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(var(--brand-light) / 0.025) 0%, transparent 50%);
 }
 
 .lightbox-topbar {
@@ -246,9 +246,9 @@ onUnmounted(() => {
 
 .lightbox-category-badge {
   @apply text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-lg shrink-0;
-  color: hsl(156 100% 43%);
-  background: rgba(0, 220, 130, 0.1);
-  border: 1px solid rgba(0, 220, 130, 0.25);
+  color: hsl(var(--brand-color));
+  background: hsl(var(--brand-color) / 0.1);
+  border: 1px solid hsl(var(--brand-color) / 0.25);
 }
 
 .lightbox-title {
@@ -271,10 +271,10 @@ onUnmounted(() => {
 }
 
 .lightbox-btn:hover {
-  color: hsl(156 100% 43%);
+  color: hsl(var(--brand-color));
   background: rgba(15, 30, 22, 0.85);
-  border-color: rgba(0, 220, 130, 0.35);
-  box-shadow: 0 0 20px rgba(0, 220, 130, 0.12);
+  border-color: hsl(var(--brand-color) / 0.35);
+  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.15);
 }
 
 .lightbox-close-btn {
@@ -291,10 +291,10 @@ onUnmounted(() => {
 }
 
 .lightbox-nav-btn:hover {
-  color: hsl(156 100% 43%);
+  color: hsl(var(--brand-color));
   background: rgba(15, 30, 22, 0.85);
-  border-color: rgba(0, 220, 130, 0.35);
-  box-shadow: 0 0 30px rgba(0, 220, 130, 0.12);
+  border-color: hsl(var(--brand-color) / 0.35);
+  box-shadow: 0 0 30px hsl(var(--brand-color) / 0.15);
 }
 
 .lightbox-nav-prev {
@@ -330,7 +330,7 @@ onUnmounted(() => {
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 0 80px rgba(0, 220, 130, 0.05);
+    0 0 80px hsl(var(--brand-color) / 0.06);
 }
 
 @media (min-width: 640px) {
@@ -396,8 +396,8 @@ onUnmounted(() => {
 .lightbox-thumbnail-active {
   opacity: 1 !important;
   filter: grayscale(0) !important;
-  border-color: hsl(156 100% 43%) !important;
-  box-shadow: 0 0 12px rgba(0, 220, 130, 0.25);
+  border-color: hsl(var(--brand-color)) !important;
+  box-shadow: 0 0 12px hsl(var(--brand-color) / 0.3);
 }
 
 /* Swipe hint */

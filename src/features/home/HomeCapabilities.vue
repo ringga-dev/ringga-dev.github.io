@@ -23,30 +23,41 @@
         ]"
         :style="{ transitionDelay: `${(index % 4 + 1) * 80}ms` }"
       >
-        <!-- Thumbnail -->
-        <div class="aspect-[16/10] rounded-2xl overflow-hidden relative border border-border/40">
+        <!-- Thumbnail with dynamic aspect based on span -->
+        <div :class="['rounded-2xl overflow-hidden relative border border-border/40', (index === 0 || index === 5) ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[16/10]']">
           <img 
             :src="banner.image" 
             :alt="banner.title"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
-          <!-- Hover Overlay -->
-          <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div class="bg-surface-color/90 border border-brand/40 p-3 rounded-full text-brand shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <!-- Category Badge Overlay -->
+          <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-surface-card/80 backdrop-blur border border-border/50 text-[8px] font-black uppercase tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {{ banner.category }}
+          </div>
+          <!-- Hover Zoom Indicator -->
+          <div class="absolute inset-0 bg-surface/60 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div class="bg-brand text-brand-dark p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
               <Maximize2Icon class="w-5 h-5" />
             </div>
           </div>
         </div>
 
-        <!-- Meta info -->
-        <div class="mt-3.5 px-2 pb-1">
-          <span class="text-[9px] font-black uppercase tracking-widest text-brand block mb-1.5 opacity-80">
+        <!-- Content -->
+        <div class="mt-3 px-2 pb-2 flex flex-col gap-1.5">
+          <span class="text-[9px] font-black uppercase tracking-widest text-brand/70 block">
             {{ banner.category }}
           </span>
-          <h4 class="text-sm font-black text-main group-hover:text-brand transition-colors line-clamp-1">
+          <h4 :class="['text-sm font-black text-main group-hover:text-brand transition-colors leading-snug', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-2']">
             {{ banner.title }}
           </h4>
+          <p :class="['text-[11px] text-muted font-medium leading-relaxed mt-0.5', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-7']">
+            {{ banner.description }}
+          </p>
+          <div class="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-brand/60 group-hover:text-brand transition-colors mt-1">
+            View Details
+            <ChevronRightIcon class="w-3 h-3" />
+          </div>
         </div>
       </div>
     </div>
@@ -167,70 +178,70 @@ const banners = [
     title: "Secure & Reliable Systems",
     category: "Security & Operations",
     image: "/images/infographics/secure-reliable.png",
-    description: "Deep integration of secure local SQLite databases, biometric parameters, storage keys, and hardware data isolation."
+    description: "Deep integration of secure local SQLite databases with AES-256 encryption, biometric parameter validation, hardware-backed keystore isolation, and runtime integrity checks ensuring data remains protected even when fully offline."
   },
   {
     id: 2,
     title: "Product Launch & Operations",
     category: "Lifecycle Mgmt",
     image: "/images/infographics/launch-support.png",
-    description: "From conceptualization to automated releases, system updates, performant monitoring, and long-term support metrics."
+    description: "End-to-end lifecycle management from conceptualization and feature scoping to CI/CD automated releases, over-the-air system updates, real-time performance monitoring dashboards, and long-term support metrics tracking for sustained operational health."
   },
   {
     id: 3,
     title: "Retail & POS Business Apps",
     category: "Commercial POS",
     image: "/images/infographics/mobile-business.png",
-    description: "Mobile cash registers, offline-first transaction queues, tax matrices, and instant receipt printers."
+    description: "Mobile-first cash register systems with offline-first transaction queuing, multi-jurisdiction tax matrix calculations, instant Bluetooth and USB thermal receipt printing, and integrated payment gateway orchestration for seamless retail operations."
   },
   {
     id: 4,
     title: "Cloud Infrastructure & Backend APIs",
     category: "API & Infrastructure",
     image: "/images/infographics/backend-api.png",
-    description: "Multi-layered backend servers, relational databases, payment aggregations, and high-frequency webhook pipelines."
+    description: "Multi-layered backend server architecture spanning RESTful and GraphQL APIs, relational database replication and sharding, multi-provider payment aggregation, and high-frequency webhook pipelines with dead-letter queue resilience for maximum uptime."
   },
   {
     id: 5,
     title: "QA Delivery & Performance",
     category: "Quality Assurance",
     image: "/images/infographics/qa-performance.png",
-    description: "Automated test coverage checks (98%+), CI/CD build pipelines, clean code validation, and bug-free delivery checklists."
+    description: "Automated test coverage enforcement at 98%+, CI/CD build pipelines with gated quality checks, static analysis and clean code validation, comprehensive regression suites, and bug-free delivery checklists signed off per release cycle."
   },
   {
     id: 6,
     title: "Clean Code & Modular Architecture",
     category: "Software Design",
     image: "/images/infographics/clean-architecture.png",
-    description: "Strict layer separations (Presentation, Application, Domain, and Data) following SOLID engineering standards."
+    description: "Strict separation of concerns across Presentation, Application, Domain, and Data layers following SOLID principles, dependency injection patterns, repository abstractions, and interface-driven design for maximum testability and long-term maintainability."
   },
   {
     id: 7,
     title: "Mobile App Engineering",
     category: "Mobile Developer",
     image: "/images/infographics/mobile-developer.png",
-    description: "Optimized application builds compiling to native platforms via Android SDK, iOS Swift interfaces, and Flutter."
+    description: "Cross-platform application builds compiling to native platforms via Android SDK with Kotlin and Java, iOS Swift interfaces with UIKit and SwiftUI, and Flutter for unified codebase deployment across mobile, tablet, and desktop form factors."
   },
   {
     id: 8,
     title: "UI/UX Mobile System Design",
     category: "UI/UX Systems",
     image: "/images/infographics/ui-ux-design.png",
-    description: "Unified typography components, dynamic HSL color palettes, flow diagrams, and pixel-perfect responsiveness."
+    description: "Unified design systems with modular typography components, dynamic HSL color palette theming supporting dark and light modes, user flow diagrams, pixel-perfect responsiveness across device sizes, and accessibility-first interaction patterns for inclusive experiences."
   },
   {
     id: 9,
     title: "Performance Optimization",
     category: "Analysis & Metrics",
     image: "/images/infographics/optimize-scale.png",
-    description: "Analyzing loading benchmarks, minimizing layout shifts, checking crash ratios, and upgrading resource scaling."
+    description: "Systematic analysis of loading benchmarks and Core Web Vitals, minimization of Cumulative Layout Shift through optimized asset loading, crash ratio monitoring with root cause analysis, and proactive resource scaling based on usage pattern forecasting."
   },
   {
     id: 10,
     title: "Cross-Platform Mobile Integration",
     category: "Cross Platform",
     image: "/images/infographics/cross-platform.png",
-    description: "Single-codebase development using modern reactive libraries, deploying highly performant universal systems."
+    description: "Single-codebase development leveraging Vue.js, Nuxt, and React Native for universal app delivery, optimized rendering pipelines achieving 60fps even on mid-range devices, and shared business logic modules reducing cross-platform maintenance overhead by up to 40%."
   }
 ]
 
@@ -320,8 +331,8 @@ onUnmounted(() => {
 .lightbox-ambient-glow {
   @apply absolute inset-0 pointer-events-none;
   background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(156 100% 43% / 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(165 95% 55% / 0.02) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--brand-color) / 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(var(--brand-light) / 0.03) 0%, transparent 50%);
 }
 
 .lightbox-topbar {
@@ -331,9 +342,9 @@ onUnmounted(() => {
 
 .lightbox-category-badge {
   @apply text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-lg shrink-0;
-  color: hsl(156 100% 43%);
-  background: rgba(0, 220, 130, 0.1);
-  border: 1px solid rgba(0, 220, 130, 0.25);
+  color: hsl(var(--brand-color));
+  background: hsl(var(--brand-color) / 0.1);
+  border: 1px solid hsl(var(--brand-color) / 0.25);
 }
 
 .lightbox-title {
@@ -346,33 +357,33 @@ onUnmounted(() => {
 
 .lightbox-btn {
   @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-95 w-10 h-10;
-  color: rgba(180, 200, 190, 0.8);
-  background: rgba(15, 30, 22, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: hsl(var(--text-muted) / 0.8);
+  background: hsl(var(--surface-elevated) / 0.7);
+  border: 1px solid hsl(var(--border-color) / 0.2);
   backdrop-filter: blur(12px);
 }
 
 .lightbox-btn:hover {
-  color: hsl(156 100% 43%);
+  color: hsl(var(--brand-color));
   background: rgba(15, 30, 22, 0.85);
-  border-color: rgba(0, 220, 130, 0.35);
-  box-shadow: 0 0 20px rgba(0, 220, 130, 0.12);
+  border-color: hsl(var(--brand-color) / 0.35);
+  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.15);
 }
 
 .lightbox-nav-btn {
   @apply absolute top-1/2 -translate-y-1/2 w-12 h-12 z-20 hidden sm:flex;
   @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-90;
-  color: rgba(180, 200, 190, 0.8);
-  background: rgba(15, 30, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: hsl(var(--text-muted) / 0.8);
+  background: hsl(var(--surface-elevated) / 0.65);
+  border: 1px solid hsl(var(--border-color) / 0.2);
   backdrop-filter: blur(12px);
 }
 
 .lightbox-nav-btn:hover {
-  color: hsl(156 100% 43%);
+  color: hsl(var(--brand-color));
   background: rgba(15, 30, 22, 0.85);
-  border-color: rgba(0, 220, 130, 0.35);
-  box-shadow: 0 0 30px rgba(0, 220, 130, 0.12);
+  border-color: hsl(var(--brand-color) / 0.35);
+  box-shadow: 0 0 30px hsl(var(--brand-color) / 0.15);
 }
 
 .lightbox-nav-prev {
@@ -394,7 +405,7 @@ onUnmounted(() => {
   box-shadow: 
     0 25px 50px -12px rgba(0, 0, 0, 0.8),
     0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 80px rgba(0, 220, 130, 0.06);
+    0 0 80px hsl(var(--brand-color) / 0.08);
 }
 
 .lightbox-swipe-hint {

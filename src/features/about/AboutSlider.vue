@@ -3,24 +3,24 @@
     <div class="max-w-7xl mx-auto px-6 mb-12">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <span class="text-primary font-medium tracking-wider uppercase text-sm mb-3 block">
+          <span class="text-brand font-medium tracking-wider uppercase text-sm mb-3 block">
             {{ sliderData.title }}
           </span>
-          <h2 class="text-4xl md:text-5xl font-bold text-content-primary">
+          <h2 class="text-4xl md:text-5xl font-bold text-main">
             {{ sliderData.subtitle }}
           </h2>
         </div>
         <div class="flex gap-4">
           <button 
             @click="prev" 
-            class="p-4 rounded-full border border-content-secondary/20 hover:border-primary text-content-primary hover:text-primary transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
+            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
             aria-label="Previous slide"
           >
             <ChevronLeftIcon class="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
           </button>
           <button 
             @click="next" 
-            class="p-4 rounded-full border border-content-secondary/20 hover:border-primary text-content-primary hover:text-primary transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
+            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
             aria-label="Next slide"
           >
             <ChevronRightIcon class="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -47,7 +47,7 @@
         :style="{ width: `${100 / itemsPerView}%` }"
       >
         <div 
-          class="relative aspect-[4/3] rounded-3xl overflow-hidden group shadow-2xl shadow-primary/5"
+          class="relative aspect-[4/3] rounded-3xl overflow-hidden group shadow-2xl shadow-brand/5"
           :class="{ 'scale-95 opacity-50': index !== currentIndex && itemsPerView === 1 }"
         >
           <MediaLoader
@@ -55,10 +55,10 @@
             :alt-text="`About Image ${index + 1}`"
             class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-8 left-8">
-              <p class="text-white font-medium text-lg">Moments of Creation</p>
-              <p class="text-white/70 text-sm">Professional Journey</p>
+              <p class="text-main font-medium text-lg">Moments of Creation</p>
+              <p class="text-muted text-sm">Professional Journey</p>
             </div>
           </div>
         </div>
@@ -67,9 +67,9 @@
 
     <!-- Progress Bar -->
     <div class="max-w-7xl mx-auto px-6 mt-12">
-      <div class="h-1.5 w-full bg-content-secondary/10 rounded-full overflow-hidden">
+      <div class="h-1.5 w-full bg-border/10 rounded-full overflow-hidden">
         <div 
-          class="h-full bg-primary transition-all duration-500 ease-out"
+          class="h-full bg-brand transition-all duration-500 ease-out"
           :style="{ width: `${((currentIndex + 1) / sliderData.images.length) * 100}%` }"
         ></div>
       </div>

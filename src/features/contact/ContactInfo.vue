@@ -18,7 +18,7 @@
         class="flex items-center gap-6 group hover:-translate-x-1 transition-transform duration-300"
         :class="{ 'pointer-events-none': item.url === '#' }"
       >
-        <div class="w-14 h-14 rounded-2xl bg-brand/5 border border-brand/10 text-brand flex items-center justify-center group-hover:bg-brand group-hover:text-slate-950 transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-brand/5 border border-brand/10 text-brand flex items-center justify-center group-hover:bg-brand group-hover:text-brand-dark transition-all duration-300">
           <component :is="getIcon(item.icon)" class="w-6 h-6" />
         </div>
         <div>

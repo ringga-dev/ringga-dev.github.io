@@ -10,7 +10,7 @@
     <button 
       v-show="isVisible"
       @click="scrollToTop"
-      class="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-2xl bg-brand text-slate-950 shadow-2xl shadow-brand/20 flex items-center justify-center hover:bg-brand-light hover:-translate-y-1 transition-all active:scale-95 border border-brand/20"
+      class="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-2xl bg-brand text-brand-dark shadow-2xl shadow-brand/20 flex items-center justify-center hover:bg-brand-light hover:-translate-y-1 transition-all active:scale-95 border border-brand/20"
       aria-label="Back to Top"
     >
       <ArrowUpIcon class="w-6 h-6" />

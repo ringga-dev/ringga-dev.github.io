@@ -106,8 +106,8 @@ defineEmits<{
   @apply absolute inset-0 flex flex-col justify-end p-3 sm:p-4 opacity-0 transition-all duration-500;
   background: linear-gradient(
     to top,
-    rgba(2, 8, 5, 0.92) 0%,
-    rgba(2, 8, 5, 0.5) 40%,
+    hsl(var(--bg-color) / 0.95) 0%,
+    hsl(var(--bg-color) / 0.5) 40%,
     transparent 100%
   );
 }

@@ -21,7 +21,7 @@
           <!-- Headline -->
           <h1 class="font-heading font-black text-main leading-[1.02] tracking-tight">
             <span class="block text-2xl sm:text-3xl md:text-4xl lg:text-6xl">{{ homeData.hero.title }}</span>
-            <span class="block mt-2 text-gradient drop-shadow-[0_0_30px_rgba(0,220,130,0.25)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{ typedRole || homeData.hero.titleHighlight }}</span><span class="animate-pulse text-brand font-light">|</span>
+            <span class="block mt-2 text-gradient text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{ typedRole || homeData.hero.titleHighlight }}</span><span class="animate-pulse text-brand font-light">|</span>
           </h1>
 
           <!-- Description -->
@@ -71,7 +71,7 @@
                 <HeroScene3D class="absolute inset-0" />
 
                 <!-- Stage labels -->
-                <div class="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur border border-white/10 text-[10px] font-black uppercase tracking-widest text-brand">
+                <div class="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated/60 backdrop-blur border border-border/30 text-[10px] font-black uppercase tracking-widest text-brand">
                   <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
                   Interactive 3D
                 </div>

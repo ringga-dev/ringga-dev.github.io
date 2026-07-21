@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen relative bg-surface text-text-main pb-24 transition-colors duration-500">
+  <div class="min-h-screen relative bg-surface text-main pb-24 transition-colors duration-500">
     <!-- Reading Progress Bar -->
     <div 
       class="fixed top-0 left-0 h-1 bg-brand z-[100] origin-left transition-transform duration-75"
@@ -19,11 +19,11 @@
             class="w-full h-full object-cover scale-105"
           />
           <div v-else class="w-full h-full bg-surface-elevated flex items-center justify-center">
-            <BookOpen class="w-20 h-20 text-text-muted/30" />
+            <BookOpen class="w-20 h-20 text-muted/30" />
           </div>
           <!-- Cinema Overlay Gradients -->
-          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-black/60 z-10"></div>
-          <div class="absolute inset-0 bg-black/20 z-0"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-surface/80 z-10"></div>
+          <div class="absolute inset-0 bg-surface/30 z-0"></div>
         </div>
 
         <!-- Float Nav Controls & Metadata -->
@@ -31,7 +31,7 @@
           <!-- Back Link -->
           <NuxtLink 
             to="/blog" 
-            class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-color/40 border border-brand/20 backdrop-blur-md px-4 py-2.5 rounded-xl hover:border-brand/40"
+            class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 backdrop-blur-md px-4 py-2.5 rounded-xl hover:border-brand/40"
           >
             <ArrowLeft class="w-4 h-4" /> Back to Blog
           </NuxtLink>
@@ -40,21 +40,21 @@
             <span class="text-[9px] px-2.5 py-1 rounded-md bg-brand/10 border border-brand/25 text-brand font-black uppercase tracking-wider font-mono">
               {{ page.category }}
             </span>
-            <span class="text-xs text-text-muted font-mono flex items-center gap-1.5 ml-2">
+            <span class="text-xs text-muted font-mono flex items-center gap-1.5 ml-2">
               <Calendar class="w-3.5 h-3.5 text-brand/70" />
               {{ formatDate(page.date) }}
             </span>
-            <span class="text-xs text-text-muted font-mono flex items-center gap-1.5 ml-2">
+            <span class="text-xs text-muted font-mono flex items-center gap-1.5 ml-2">
               <Clock class="w-3.5 h-3.5 text-brand/70" />
               {{ readingTime }} min read
             </span>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-text-main leading-tight mb-4 max-w-4xl tracking-tight">
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-main leading-tight mb-4 max-w-4xl tracking-tight">
             {{ page.title }}
           </h1>
 
-          <p class="text-base sm:text-lg md:text-xl text-text-muted font-medium max-w-3xl leading-relaxed">
+          <p class="text-base sm:text-lg md:text-xl text-muted font-medium max-w-3xl leading-relaxed">
             {{ page.description }}
           </p>
         </div>
@@ -69,7 +69,7 @@
             <!-- Article Wrapper with Event Delegation for copying code -->
             <div @click="handleArticleClick">
               <article 
-                class="prose prose-brand prose-invert max-w-none prose-h2:text-text-main prose-h3:text-text-main prose-p:leading-relaxed"
+                class="prose prose-brand max-w-none prose-h2:text-main prose-h3:text-main prose-p:leading-relaxed"
                 v-html="renderedContent"
               ></article>
             </div>
@@ -79,8 +79,8 @@
           <div class="lg:col-span-4 space-y-8 lg:sticky lg:top-24 animate-reveal" style="animation-delay: 200ms">
             
             <!-- Table of Contents Widget -->
-            <div v-if="toc.length" class="glass-card p-6 md:p-8 rounded-[2rem] bg-surface-card border border-border-color">
-              <h3 class="text-xs font-black uppercase tracking-widest text-text-muted border-b border-border-color/60 pb-3.5 mb-5 font-mono">
+            <div v-if="toc.length" class="glass-card p-6 md:p-8 rounded-[2rem] bg-surface-card border border-border">
+              <h3 class="text-xs font-black uppercase tracking-widest text-muted border-b border-border/60 pb-3.5 mb-5 font-mono">
                 On This Page
               </h3>
               <nav class="space-y-3 max-h-[40vh] overflow-y-auto pr-2">
@@ -90,7 +90,7 @@
                   :href="`#${item.id}`"
                   class="block text-xs font-semibold leading-relaxed transition-all duration-300 hover:text-brand"
                   :class="[
-                    item.level === 3 ? 'pl-4 text-text-muted/80' : 'text-text-muted',
+                    item.level === 3 ? 'pl-4 text-muted/80' : 'text-muted',
                     activeHeading === item.id ? 'text-brand! font-black border-l-2 border-brand pl-2' : ''
                   ]"
                 >
@@ -100,30 +100,30 @@
             </div>
 
             <!-- Author & Share Info -->
-            <div class="glass-card p-6 md:p-8 rounded-[2rem] bg-surface-card border border-border-color space-y-6">
+            <div class="glass-card p-6 md:p-8 rounded-[2rem] bg-surface-card border border-border space-y-6">
               <!-- Author Card -->
               <div>
-                <h3 class="text-[10px] font-black uppercase tracking-widest text-text-muted mb-4 font-mono">Author</h3>
+                <h3 class="text-[10px] font-black uppercase tracking-widest text-muted mb-4 font-mono">Author</h3>
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-full bg-brand/10 border border-brand/30 flex items-center justify-center text-brand font-black font-mono text-sm shadow-inner">
                     {{ page.author.charAt(0) }}
                   </div>
                   <div>
-                    <h4 class="text-sm font-bold text-text-main leading-tight">{{ page.author }}</h4>
-                    <p class="text-[10px] text-text-muted font-bold tracking-wide mt-0.5">Software Engineer</p>
+                    <h4 class="text-sm font-bold text-main leading-tight">{{ page.author }}</h4>
+                    <p class="text-[10px] text-muted font-bold tracking-wide mt-0.5">Software Engineer</p>
                   </div>
                 </div>
               </div>
 
               <!-- Share Buttons -->
-              <div class="border-t border-border-color/50 pt-5">
-                <h3 class="text-[10px] font-black uppercase tracking-widest text-text-muted mb-4 font-mono">Share Article</h3>
+              <div class="border-t border-border/50 pt-5">
+                <h3 class="text-[10px] font-black uppercase tracking-widest text-muted mb-4 font-mono">Share Article</h3>
                 <div class="flex flex-wrap gap-2.5">
                   <!-- Twitter/X -->
                   <a 
                     :href="twitterShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border-color flex items-center justify-center text-text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
+                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
                     title="Share on Twitter / X"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -132,7 +132,7 @@
                   <a 
                     :href="linkedinShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border-color flex items-center justify-center text-text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
+                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
                     title="Share on LinkedIn"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -141,7 +141,7 @@
                   <a 
                     :href="whatsappShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border-color flex items-center justify-center text-text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
+                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90"
                     title="Share on WhatsApp"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.101-2.885-6.963C16.588 1.917 14.12 .891 11.5 .891 6.063.891 1.639 5.313 1.636 10.75c-.001 1.764.467 3.491 1.357 5.011l-.994 3.634 3.72-.975z"/></svg>
@@ -149,7 +149,7 @@
                   <!-- Copy Link -->
                   <button 
                     @click="copyLink"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border-color flex items-center justify-center text-text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90 cursor-pointer"
+                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 active:scale-90 cursor-pointer"
                     title="Copy Article URL"
                   >
                     <Check v-if="copiedLink" class="w-4 h-4 text-brand animate-pulse" />
@@ -175,14 +175,14 @@
         </div>
 
         <!-- RECOMMENDED POSTS FOOTER SECTION -->
-        <div v-if="recommendedPosts.length" class="mt-24 pt-16 border-t border-border-color/60 animate-reveal" style="animation-delay: 300ms">
-          <h2 class="text-xs font-black uppercase tracking-widest text-text-muted mb-8 font-mono">Recommended Articles</h2>
+        <div v-if="recommendedPosts.length" class="mt-24 pt-16 border-t border-border/60 animate-reveal" style="animation-delay: 300ms">
+          <h2 class="text-xs font-black uppercase tracking-widest text-muted mb-8 font-mono">Recommended Articles</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <NuxtLink 
               v-for="post in recommendedPosts" 
               :key="post.slug" 
               :to="post.path"
-              class="glass-card overflow-hidden group hover:border-brand/40 border border-border-color/80 rounded-3xl grid grid-cols-1 sm:grid-cols-12 gap-0 sm:gap-6 p-4 hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 hover:-translate-y-1 block"
+              class="glass-card overflow-hidden group hover:border-brand/40 border border-border/80 rounded-3xl grid grid-cols-1 sm:grid-cols-12 gap-0 sm:gap-6 p-4 hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 hover:-translate-y-1 block"
             >
               <!-- Image (Col Span 5) -->
               <div class="sm:col-span-5 relative aspect-[16/10] sm:aspect-auto rounded-2xl overflow-hidden min-h-[140px]">
@@ -193,22 +193,22 @@
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div v-else class="absolute inset-0 bg-surface-elevated flex items-center justify-center">
-                  <BookOpen class="w-10 h-10 text-text-muted/20" />
+                  <BookOpen class="w-10 h-10 text-muted/20" />
                 </div>
               </div>
 
               <!-- Content (Col Span 7) -->
               <div class="sm:col-span-7 p-4 flex flex-col justify-center">
-                <div class="flex items-center gap-2.5 mb-3 text-[10px] text-text-muted font-mono">
+                <div class="flex items-center gap-2.5 mb-3 text-[10px] text-muted font-mono">
                   <span class="px-2 py-0.5 rounded bg-brand/10 border border-brand/20 text-brand font-black uppercase tracking-wider text-[8px]">{{ post.category }}</span>
                   <span>{{ formatDate(post.date) }}</span>
                 </div>
                 
-                <h3 class="text-lg font-heading font-black text-text-main mb-2 leading-tight group-hover:text-brand transition-colors duration-300 line-clamp-2">
+                <h3 class="text-lg font-heading font-black text-main mb-2 leading-tight group-hover:text-brand transition-colors duration-300 line-clamp-2">
                   {{ post.title }}
                 </h3>
                 
-                <p class="text-text-muted text-xs leading-relaxed font-semibold mb-4 line-clamp-2">
+                <p class="text-muted text-xs leading-relaxed font-semibold mb-4 line-clamp-2">
                   {{ post.description }}
                 </p>
 
@@ -442,49 +442,49 @@ const renderedContent = computed(() => {
   html = html.replace(/^## (.*$)/gim, (match, title) => {
     const cleanTitle = title.trim()
     const id = cleanTitle.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
-    return `<h2 id="${id}" class="text-2xl font-bold mt-12 mb-6 border-b border-border-color pb-2 scroll-mt-24 text-text-main font-heading">${cleanTitle}</h2>`
+    return `<h2 id="${id}" class="text-2xl font-bold mt-12 mb-6 border-b border-border pb-2 scroll-mt-24 text-main font-heading">${cleanTitle}</h2>`
   })
   
   html = html.replace(/^### (.*$)/gim, (match, title) => {
     const cleanTitle = title.trim()
     const id = cleanTitle.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
-    return `<h3 id="${id}" class="text-xl font-bold mt-8 mb-4 scroll-mt-24 text-text-main font-heading">${cleanTitle}</h3>`
+    return `<h3 id="${id}" class="text-xl font-bold mt-8 mb-4 scroll-mt-24 text-main font-heading">${cleanTitle}</h3>`
   })
   
-  html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-12 mb-8 text-text-main font-heading">$1</h1>')
+  html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-12 mb-8 text-main font-heading">$1</h1>')
   
   // Blockquotes
-  html = html.replace(/^\> (.*$)/gim, '<blockquote class="border-l-4 border-brand pl-6 italic my-6 text-text-muted font-medium bg-brand/5 py-4 pr-4 rounded-r-xl border-t border-b border-r border-brand/10">$1</blockquote>')
+  html = html.replace(/^\> (.*$)/gim, '<blockquote class="border-l-4 border-brand pl-6 italic my-6 text-muted font-medium bg-brand/5 py-4 pr-4 rounded-r-xl border-t border-b border-r border-brand/10">$1</blockquote>')
   
   // Lists
-  html = html.replace(/^\* (.*$)/gim, '<li class="ml-6 list-disc my-2 text-text-muted font-medium">$1</li>')
-  html = html.replace(/^\- (.*$)/gim, '<li class="ml-6 list-disc my-2 text-text-muted font-medium">$1</li>')
-  html = html.replace(/^\d+\. (.*$)/gim, '<li class="ml-6 list-decimal my-2 text-text-muted font-medium">$1</li>')
+  html = html.replace(/^\* (.*$)/gim, '<li class="ml-6 list-disc my-2 text-muted font-medium">$1</li>')
+  html = html.replace(/^\- (.*$)/gim, '<li class="ml-6 list-disc my-2 text-muted font-medium">$1</li>')
+  html = html.replace(/^\d+\. (.*$)/gim, '<li class="ml-6 list-decimal my-2 text-muted font-medium">$1</li>')
   
   // Bold & Italic
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black text-text-main">$1</strong>')
-  html = html.replace(/\*(.*?)\*/g, '<em class="italic text-text-muted">$1</em>')
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black text-main">$1</strong>')
+  html = html.replace(/\*(.*?)\*/g, '<em class="italic text-muted">$1</em>')
   
   // Code Blocks
   html = html.replace(/```(\w+)?([\s\S]*?)```/gim, (match, lang, code) => {
     const cleanCode = code.trim()
     const displayLang = lang ? lang.toUpperCase() : 'CODE'
     return `
-      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border border-border-color rounded-2xl my-8 overflow-hidden font-mono text-sm shadow-xl">
-        <div class="flex items-center justify-between px-6 py-3 bg-surface-elevated border-b border-border-color/80 text-[10px] font-black text-text-muted uppercase tracking-widest">
+      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border border-border rounded-2xl my-8 overflow-hidden font-mono text-sm shadow-xl">
+        <div class="flex items-center justify-between px-6 py-3 bg-surface-elevated border-b border-border/80 text-[10px] font-black text-muted uppercase tracking-widest">
           <span>${displayLang}</span>
           <button class="copy-code-btn hover:text-brand transition-colors flex items-center gap-1.5 opacity-60 hover:opacity-100 cursor-pointer text-[10px] font-black uppercase tracking-wider">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>Copy Code</span>
           </button>
         </div>
-        <pre class="p-6 overflow-auto text-text-muted max-h-[500px]"><code>${cleanCode}</code></pre>
+        <pre class="p-6 overflow-auto text-muted max-h-[500px]"><code>${cleanCode}</code></pre>
       </div>
     `
   })
   
   // Inline code
-  html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded text-sm border border-border-color font-mono text-brand font-bold">$1</code>')
+  html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded text-sm border border-border font-mono text-brand font-bold">$1</code>')
   
   // Paragraphs
   const paragraphs = html.split(/\n\s*\n/)
@@ -492,7 +492,7 @@ const renderedContent = computed(() => {
     p = p.trim()
     if (!p) return ''
     if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<pre') || p.startsWith('<blockquote') || p.startsWith('<li')) return p
-    return `<p class="my-6 leading-relaxed text-text-muted font-medium text-base md:text-lg">${p}</p>`
+    return `<p class="my-6 leading-relaxed text-muted font-medium text-base md:text-lg">${p}</p>`
   }).join('\n')
   
   return html
