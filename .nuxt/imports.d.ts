@@ -38,7 +38,7 @@ export { useIntersectionObserver } from '../src/composables/useIntersectionObser
 export { useLazyImage, generateResponsiveSources, getOptimizedImageUrl, preloadImages, createBlurPlaceholder } from '../src/composables/useLazyImage';
 export { useLightbox, LightboxItem } from '../src/composables/useLightbox';
 export { useScrollReveal } from '../src/composables/useScrollReveal';
-export { useStructuredData, usePersonSchema, useArticleSchema } from '../src/composables/useSeo';
+export { usePageSeo, useStructuredData, usePersonSchema, useArticleSchema } from '../src/composables/useSeo';
 export { useTheme } from '../src/composables/useThemeEnhanced';
 export { formatDate, calculateReadingTime, truncateText, generateSlug, formatNumber, debounce, throttle, isInViewport, scrollToElement, copyToClipboard, downloadFile, getInitials, isValidEmail, getYouTubeVideoId, formatFileSize, randomInt, shuffleArray } from '../src/utils/index';
 export { useCameraManager, useGraph, useLoader, useLoop, useRendererManager, useTres, useTresContext, useTresContextProvider, extend as extendTres, TresObject } from '@tresjs/core';

@@ -13,7 +13,7 @@
 
 <script setup>
 import { SunIcon, MoonIcon } from 'lucide-vue-next'
-import { useTheme } from '~/composables/useTheme'
+import { useTheme } from '~/composables/useThemeEnhanced'
 
 const { isDark, toggleTheme } = useTheme()
 </script>

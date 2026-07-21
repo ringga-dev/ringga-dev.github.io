@@ -15,7 +15,7 @@ interface SeoOptions {
   tags?: string[]
 }
 
-export function useSeoMeta(options: SeoOptions = {}) {
+export function usePageSeo(options: SeoOptions = {}) {
   const config = useRuntimeConfig()
   const siteUrl = config.public.siteUrl || 'https://ringgadev.com'
   

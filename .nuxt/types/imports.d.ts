@@ -167,6 +167,7 @@ declare global {
   const useModel: typeof import('vue').useModel
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt').useNuxtApp
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').useNuxtData
+  const usePageSeo: typeof import('../../src/composables/useSeo').usePageSeo
   const usePersonSchema: typeof import('../../src/composables/useSeo').usePersonSchema
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview').usePreviewMode
   const useProgress: typeof import('@tresjs/cientos').useProgress
@@ -441,6 +442,7 @@ declare module 'vue' {
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
+    readonly usePageSeo: UnwrapRef<typeof import('../../src/composables/useSeo')['usePageSeo']>
     readonly usePersonSchema: UnwrapRef<typeof import('../../src/composables/useSeo')['usePersonSchema']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useProgress: UnwrapRef<typeof import('@tresjs/cientos')['useProgress']>

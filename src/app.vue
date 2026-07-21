@@ -25,7 +25,7 @@
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollReveal } from '~/composables/useScrollReveal'
-import { useTheme } from '~/composables/useTheme'
+import { useTheme } from '~/composables/useThemeEnhanced'
 
 const { reveal } = useScrollReveal()
 // Pre-initialize theme hooks
