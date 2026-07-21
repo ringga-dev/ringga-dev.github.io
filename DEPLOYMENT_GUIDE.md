@@ -47,24 +47,24 @@ src/
 
 ### Prerequisites
 - Node.js 18+ 
-- pnpm or npm
+- npm
 
 ### Setup
 ```bash
 # Install dependencies
-pnpm install
+npm install
 
 # Start development server
-pnpm dev
+npm run dev
 
 # Build for production
-pnpm build
+npm run build
 
 # Generate static site (for GitHub Pages)
-pnpm generate
+npm run generate
 
 # Preview production build
-pnpm preview
+npm run preview
 ```
 
 ## 🌐 GitHub Pages Deployment
@@ -73,16 +73,16 @@ pnpm preview
 
 1. **Generate static files:**
 ```bash
-pnpm generate
+npm run generate
 ```
 
 2. **Deploy to GitHub Pages:**
 ```bash
 # Using gh-pages package
-pnpm add -D gh-pages
+npm install -D gh-pages
 
 # Deploy dist folder to gh-pages branch
-pnpm exec gh-pages -d dist
+npx gh-pages -d dist
 ```
 
 ### Option 2: GitHub Actions (Recommended)
@@ -118,16 +118,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build
-        run: pnpm generate
+        run: npm run generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -243,8 +238,8 @@ Add interfaces to `src/types/index.ts`
 ```bash
 # Clear cache
 rm -rf .nuxt dist node_modules
-pnpm install
-pnpm generate
+npm install
+npm run generate
 ```
 
 ### GitHub Pages 404
