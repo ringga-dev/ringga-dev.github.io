@@ -1,51 +1,57 @@
-```
+```gitignore
+# Dependencies
+node_modules/
+
 # Environment
 .env
 .env.local
 .env.*
 
-# Logs and temporary files
+# Logs and temp files
 *.log
 *.tmp
-*.swp
-
-# Dependencies
-node_modules/
-.venv/
-venv/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
-.julia/
-zig*/
-julia-*/
-
-# Build artifacts
-dist/
-build/
-target/
-*.o
-*.obj
-*.out
-*.exe
-*.dll
-*.so
-*.a
-*.class
-*.pyc
 
 # Editors
 .vscode/
 .idea/
 
-# System files
-.DS_Store
-Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
 .coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.gitattributes
+.next
+.pytest_cache/
+.hypothesis/
+.coverage*
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Build artifacts
+dist/
+build/
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
 
 # Compressed files
 *.zip
@@ -70,4 +76,8 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
+# System files
+.DS_Store
+Thumbs.db
 ```
