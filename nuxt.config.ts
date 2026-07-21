@@ -5,19 +5,21 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   srcDir: 'src/',
-  
+
+  // Modules
   modules: ['@nuxtjs/tailwindcss', '@tresjs/nuxt'],
-  
+
+  // CSS
   css: ['~/assets/css/index.css'],
-  
+
+  // Static Site Generation for GitHub Pages
   ssr: true,
-
-  components: [
-    { path: '~/components', pathPrefix: false },
-    { path: '~/features', pathPrefix: false }
-  ],
-
+  
+  // App configuration
   app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    buildAssetsDir: '/_nuxt/',
+    
     head: {
       htmlAttrs: {
         lang: 'en'
@@ -34,6 +36,7 @@ export default defineNuxtConfig({
         { property: 'og:image', content: '/og-image.png' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@ringga_dev' },
+        { name: 'robots', content: 'index, follow' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
@@ -44,4 +47,56 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+
+  // Components auto-import
+  components: [
+    { path: '~/components', pathPrefix: false },
+    { path: '~/features', pathPrefix: false }
+  ],
+
+  // Vite optimization for better performance
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-vue': ['vue', 'vue-router'],
+            'vendor-three': ['three', '@tresjs/core', '@tresjs/cientos']
+          }
+        }
+      }
+    }
+  },
+
+  // Runtime config for environment variables
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://ringgadev.com',
+      githubUrl: process.env.NUXT_PUBLIC_GITHUB_URL || '',
+      analyticsId: process.env.NUXT_PUBLIC_ANALYTICS_ID || ''
+    }
+  },
+
+  // Nitro configuration for static generation
+  nitro: {
+    prerender: {
+      failOnError: false,
+      routes: ['/']
+    },
+    output: {
+      dir: 'dist'
+    }
+  },
+
+  // TypeScript strict mode
+  typescript: {
+    strict: true,
+    typeCheck: true
+  },
+
+  // Experimental features
+  experimental: {
+    viewTransition: true,
+    payloadExtraction: true
+  }
 })

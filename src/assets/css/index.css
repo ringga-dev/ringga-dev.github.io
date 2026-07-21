@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    /* HSL Color System for Light Mode - Premium Neutral with Emerald Accent */
+    /* HSL Color System for Light Mode - Premium Emerald Zambrut Theme */
     --bg-color: 0 0% 98%;              /* Clean almost white */
     --surface-color: 0 0% 100%;        /* Pure White surface */
-    --surface-card: 0 0% 96%;          /* Subtle light gray card */
-    --surface-elevated: 0 0% 93%;      /* Elevated gray */
-    --text-main: 0 0% 10%;             /* Almost black for sharp contrast */
-    --text-muted: 0 0% 45%;            /* Clean mid-gray */
-    --border-color: 0 0% 90%;          /* Soft border */
+    --surface-card: 156 50% 97%;       /* Subtle emerald tint card */
+    --surface-elevated: 156 40% 95%;   /* Elevated emerald gray */
+    --text-main: 156 60% 8%;           /* Deep emerald black for sharp contrast */
+    --text-muted: 156 20% 40%;         /* Muted emerald gray */
+    --border-color: 156 30% 88%;       /* Soft emerald border */
     
     --brand-color: 156 85% 38%;        /* Professional Emerald */
     --brand-light: 165 80% 48%;        /* Cyan/Green */
     --brand-dark: 156 90% 28%;         /* Dark Emerald */
     
-    --glow-1: rgba(0, 198, 117, 0.05);
-    --glow-2: rgba(38, 212, 202, 0.03);
+    --glow-1: rgba(0, 198, 117, 0.08);
+    --glow-2: rgba(38, 212, 202, 0.05);
   }
 
   .dark {
-    /* HSL Color System for Dark Mode - True Premium Dark (OLED-friendly) */
-    --bg-color: 0 0% 2%;               /* Near absolute black */
-    --surface-color: 0 0% 5%;          /* Very dark gray */
-    --surface-card: 0 0% 7%;           /* Elevated dark card */
-    --surface-elevated: 0 0% 11%;      /* Higher elevated */
-    --text-main: 0 0% 95%;             /* Crisp white text */
-    --text-muted: 0 0% 60%;            /* Clean muted text */
-    --border-color: 0 0% 12%;          /* Subtle dark border */
+    /* HSL Color System for Dark Mode - Deep Emerald Darkness (OLED-friendly) */
+    --bg-color: 156 50% 3%;            /* Near black with emerald tint */
+    --surface-color: 156 40% 5%;       /* Very dark emerald gray */
+    --surface-card: 156 35% 7%;        /* Elevated dark emerald card */
+    --surface-elevated: 156 30% 10%;   /* Higher elevated emerald */
+    --text-main: 156 20% 95%;          /* Crisp white with emerald hint */
+    --text-muted: 156 15% 60%;         /* Clean muted emerald text */
+    --border-color: 156 25% 14%;       /* Subtle dark emerald border */
     
-    --brand-color: 156 100% 45%;       /* Neon Emerald (Pops on dark) */
-    --brand-light: 165 100% 55%;       /* Bright Cyan-Emerald */
-    --brand-dark: 156 100% 32%;        /* Deep Emerald */
+    --brand-color: 156 100% 50%;       /* Neon Emerald (Pops on dark) */
+    --brand-light: 165 100% 60%;       /* Bright Cyan-Emerald */
+    --brand-dark: 156 100% 35%;        /* Deep Emerald */
     
-    --glow-1: rgba(0, 220, 130, 0.08);
-    --glow-2: rgba(54, 228, 218, 0.05);
+    --glow-1: rgba(0, 220, 130, 0.12);
+    --glow-2: rgba(54, 228, 218, 0.08);
   }
 
   body {
@@ -84,7 +84,25 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand-light;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand via-brand-light to-brand;
+    background-size: 200% auto;
+    animation: gradient-x 4s ease infinite;
+  }
+
+  /* Enhanced Emerald Zambrut Gradient Text */
+  .text-gradient-zambrut {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(156 100% 50%) 0%,
+      hsl(165 100% 60%) 25%,
+      hsl(156 85% 45%) 50%,
+      hsl(165 90% 55%) 75%,
+      hsl(156 100% 50%) 100%
+    );
+    background-size: 300% auto;
+    animation: gradient-x 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px hsl(156 100% 50% / 0.3));
   }
 
   .btn-primary {
@@ -165,6 +183,37 @@
     background: conic-gradient(from 0deg, hsl(var(--brand-color)), hsl(var(--brand-light)), #7F52FF, hsl(var(--brand-color)));
     background-size: 200% 200%;
     animation: gradient-x 6s ease infinite;
+  }
+
+  /* Emerald Zambrut Card Enhancement */
+  .zambrut-card {
+    @apply relative overflow-hidden rounded-3xl;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--surface-card) / 0.8) 0%,
+      hsl(var(--surface-elevated) / 0.6) 100%
+    );
+    border: 1px solid hsl(var(--border-color) / 0.5);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .zambrut-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-500;
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      hsl(156 100% 50% / 0.15),
+      transparent 40%
+    );
+  }
+  
+  .zambrut-card:hover {
+    @apply border-brand/40 -translate-y-2 shadow-2xl shadow-brand/10;
+  }
+  
+  .zambrut-card:hover::before {
+    @apply opacity-100;
   }
 }
 
