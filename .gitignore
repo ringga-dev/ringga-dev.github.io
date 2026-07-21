@@ -1,8 +1,19 @@
-```gitignore
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
 # Dependencies
 node_modules/
-
-# Environment
+venv/
+.venv/
 .env
 .env.local
 .env.*
@@ -10,48 +21,31 @@ node_modules/
 # Logs and temp files
 *.log
 *.tmp
+*.swp
+*.swo
 
 # Editors
 .vscode/
 .idea/
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.gitattributes
-.next
-.pytest_cache/
-.hypothesis/
-.coverage*
-.eggs/
-*.egg-info/
-.installed.cfg
-*.egg
+# System files
+.DS_Store
+Thumbs.db
 
-# Build artifacts
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Build directories
 dist/
 build/
-*.so
-*.dylib
-*.dll
-*.exe
-*.out
+target/
+.gradle/
+
+# Python specific
+.mypy_cache/
+.pytest_cache/
 
 # Compressed files
 *.zip
@@ -76,8 +70,3 @@ build/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-
-# System files
-.DS_Store
-Thumbs.db
-```
