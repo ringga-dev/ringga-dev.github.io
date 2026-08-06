@@ -1,7 +1,7 @@
 ---
 title: "Zero Trust Architecture 2026: Membangun Keamanan Tanpa Perimeter"
 description: "Panduan lengkap menerapkan Zero Trust Architecture di 2026 — mulai dari konsep, komponen utama, implementasi di cloud, hingga best practice untuk organisasi modern."
-date: "2025-07-25"
+date: "2026-07-25"
 author: "Ringga Septia Pribadi"
 tags: ["Cybersecurity", "Zero Trust", "Cloud Security", "Network Security", "IAM"]
 category: "Cybersecurity"
