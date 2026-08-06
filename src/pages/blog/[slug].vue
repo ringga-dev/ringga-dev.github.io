@@ -485,7 +485,15 @@ const renderedContent = computed(() => {
   
   // Inline code
   html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded text-sm border border-border font-mono text-brand font-bold">$1</code>')
-  
+
+  // Tables (GFM markdown tables -> HTML tables)
+  html = html.replace(/^(\|[^\n]+\|)\n(\|[\-\t :|]+)\n((?:\|[^\n]+\|\n?)*)/gm, (match, header, sep, body) => {
+    const parseRow = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim())
+    const thead = parseRow(header).map(h => `<th>${h}</th>`).join('')
+    const rows = body.trim().split('\n').map(row => `<tr>${parseRow(row).map(c => `<td>${c}</td>`).join('')}</tr>`).join('')
+    return `<div class="overflow-x-auto my-8"><table class="w-full text-sm border-collapse"><thead><tr>${thead}</tr></thead><tbody>${rows}</tbody></table></div>`
+  })
+
   // Paragraphs
   const paragraphs = html.split(/\n\s*\n/)
   html = paragraphs.map(p => {
