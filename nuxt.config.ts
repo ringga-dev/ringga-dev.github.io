@@ -1,4 +1,17 @@
+import { readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
+
+// Enumerate semua blog posts supaya di-prerender semua (bukan cuma yang ke-crawl
+// dari halaman 1 /blog — sebelumnya post di luar page 1 jadi 404)
+const blogDir = resolve(process.cwd(), 'src/data/blog')
+const blogPostRoutes = readdirSync(blogDir)
+  .filter(f => f.endsWith('.md'))
+  .map(f => `/blog/${f.replace(/\.md$/, '')}`)
+const POSTS_PER_PAGE = 5
+const blogIndexRoutes = Array.from(
+  { length: Math.max(1, Math.ceil(blogPostRoutes.length / POSTS_PER_PAGE)) },
+  (_, i) => (i === 0 ? '/blog' : `/blog?page=${i + 1}`)
+)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -85,7 +98,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       failOnError: false,
-      routes: ['/']
+      routes: ['/', ...blogIndexRoutes, ...blogPostRoutes]
     },
     output: {
       dir: 'dist'

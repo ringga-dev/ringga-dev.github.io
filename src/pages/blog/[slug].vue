@@ -438,6 +438,14 @@ const renderedContent = computed(() => {
   
   let html = page.value.body
   
+  // Code blocks diekstrak dulu (placeholder) — isi kode tidak diproses regex lain
+  // dan di-escape saat restore supaya tidak bisa mengeksekusi script
+  const codeBlocks = []
+  html = html.replace(/```(\w+)?([\s\S]*?)```/gim, (match, lang, code) => {
+    codeBlocks.push({ lang: lang || '', code: code.trim() })
+    return `\n@@CODEBLOCK_${codeBlocks.length - 1}@@\n`
+  })
+  
   // Headers with IDs
   html = html.replace(/^## (.*$)/gim, (match, title) => {
     const cleanTitle = title.trim()
@@ -465,29 +473,11 @@ const renderedContent = computed(() => {
   html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black text-main">$1</strong>')
   html = html.replace(/\*(.*?)\*/g, '<em class="italic text-muted">$1</em>')
   
-  // Code Blocks
-  html = html.replace(/```(\w+)?([\s\S]*?)```/gim, (match, lang, code) => {
-    const cleanCode = code.trim()
-    const displayLang = lang ? lang.toUpperCase() : 'CODE'
-    return `
-      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border border-border rounded-2xl my-8 overflow-hidden font-mono text-sm shadow-xl">
-        <div class="flex items-center justify-between px-6 py-3 bg-surface-elevated border-b border-border/80 text-[10px] font-black text-muted uppercase tracking-widest">
-          <span>${displayLang}</span>
-          <button class="copy-code-btn hover:text-brand transition-colors flex items-center gap-1.5 opacity-60 hover:opacity-100 cursor-pointer text-[10px] font-black uppercase tracking-wider">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copy Code</span>
-          </button>
-        </div>
-        <pre class="p-6 overflow-auto text-muted max-h-[500px]"><code>${cleanCode}</code></pre>
-      </div>
-    `
-  })
-  
   // Inline code
   html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded text-sm border border-border font-mono text-brand font-bold">$1</code>')
 
   // Tables (GFM markdown tables -> HTML tables)
-  html = html.replace(/^(\|[^\n]+\|)\n(\|[\-\t :|]+)\n((?:\|[^\n]+\|\n?)*)/gm, (match, header, sep, body) => {
+  html = html.replace(/^(\|[^\n]+\|)\n(\|[\-\t :|]+)\n((?:\|[^\n]+\|\n)*\|[^\n]+\|)/gm, (match, header, sep, body) => {
     const parseRow = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim())
     const thead = parseRow(header).map(h => `<th>${h}</th>`).join('')
     const rows = body.trim().split('\n').map(row => `<tr>${parseRow(row).map(c => `<td>${c}</td>`).join('')}</tr>`).join('')
@@ -499,10 +489,40 @@ const renderedContent = computed(() => {
   html = paragraphs.map(p => {
     p = p.trim()
     if (!p) return ''
-    if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<pre') || p.startsWith('<blockquote') || p.startsWith('<li')) return p
+    if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<pre') || p.startsWith('<blockquote') || p.startsWith('<li') || p.startsWith('@@CODEBLOCK_')) return p
     return `<p class="my-6 leading-relaxed text-muted font-medium text-base md:text-lg">${p}</p>`
   }).join('\n')
-  
+
+  // Sanitize — batasi eksekusi script dari konten markdown
+  html = html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<script[^>]*\/?>/gi, '')
+    .replace(/<\/?(iframe|object|embed|link|style|meta|base|form|input|button|textarea|select|option|frame|frameset|applet|svg|math)[^>]*>/gi, '')
+    .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+    .replace(/(href|src|xlink:href)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, (m, attr, val) => {
+      const v = val.replace(/^["']|["']$/g, '')
+      return /^\s*javascript:/i.test(v) ? `${attr}="#"` : m
+    })
+
+  // Restore code blocks (HTML-escaped — isi kode tidak bisa dieksekusi)
+  html = html.replace(/@@CODEBLOCK_(\d+)@@/g, (match, idx) => {
+    const { lang, code } = codeBlocks[+idx] || { lang: '', code: '' }
+    const displayLang = lang ? lang.toUpperCase() : 'CODE'
+    const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    return `
+      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border border-border rounded-2xl my-8 overflow-hidden font-mono text-sm shadow-xl">
+        <div class="flex items-center justify-between px-6 py-3 bg-surface-elevated border-b border-border/80 text-[10px] font-black text-muted uppercase tracking-widest">
+          <span>${displayLang}</span>
+          <button class="copy-code-btn hover:text-brand transition-colors flex items-center gap-1.5 opacity-60 hover:opacity-100 cursor-pointer text-[10px] font-black uppercase tracking-wider">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy Code</span>
+          </button>
+        </div>
+        <pre class="p-6 overflow-auto text-muted max-h-[500px]"><code>${escaped}</code></pre>
+      </div>
+    `
+  })
+
   return html
 })
 
