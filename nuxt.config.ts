@@ -1,23 +1,59 @@
-import { readdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { readdirSync, readFileSync } from 'node:fs'
+import { resolve, join } from 'node:path'
 
 // Enumerate semua blog posts supaya di-prerender semua (bukan cuma yang ke-crawl
 // dari halaman 1 /blog — sebelumnya post di luar page 1 jadi 404)
 const blogDir = resolve(process.cwd(), 'src/data/blog')
-const blogPostRoutes = readdirSync(blogDir)
-  .filter(f => f.endsWith('.md'))
+const blogFiles = readdirSync(blogDir).filter(f => f.endsWith('.md'))
+const blogPostRoutes = blogFiles
   .map(f => `/blog/${f.replace(/\.md$/, '')}`)
+
+// Collect all unique tags for /tag/[tag] prerendering
+const tagSet = new Set<string>()
+const slugify = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+for (const f of blogFiles) {
+  const raw = readFileSync(join(blogDir, f), 'utf-8')
+  const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if (!fmMatch) continue
+  const tagLine = fmMatch[1].split('\n').find(l => l.trim().startsWith('tags:'))
+  if (!tagLine) continue
+  const val = tagLine.split(':').slice(1).join(':').trim().replace(/^\[|\]$/g, '')
+  val.split(',').forEach(t => {
+    const tag = t.trim().replace(/^["']|["']$/g, '')
+    if (tag) tagSet.add(tag)
+  })
+}
+const tagRoutes = Array.from(tagSet).map(t => `/tag/${slugify(t)}`)
+
 const POSTS_PER_PAGE = 5
 const blogIndexRoutes = Array.from(
   { length: Math.max(1, Math.ceil(blogPostRoutes.length / POSTS_PER_PAGE)) },
   (_, i) => (i === 0 ? '/blog' : `/blog?page=${i + 1}`)
 )
 
+// Explicitly register the dynamic tag route so Nitro prerender can resolve it
+// regardless of page-dir auto-scan quirks.
+const tagPageFile = resolve(process.cwd(), 'src/pages/tags/[tag].vue')
+function registerTagRoute(pages: any[]) {
+  pages.push({
+    name: 'tag-tag',
+    path: '/tag/:tag',
+    file: tagPageFile
+  })
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   srcDir: 'src/',
+
+  // Register the dynamic tag route explicitly
+  hooks: {
+    'pages:extend'(pages) {
+      registerTagRoute(pages)
+    }
+  },
 
   // Modules
   modules: ['@nuxtjs/tailwindcss', '@tresjs/nuxt'],
@@ -97,8 +133,12 @@ export default defineNuxtConfig({
   // Nitro configuration for static generation
   nitro: {
     prerender: {
+      crawlLinks: true,
       failOnError: false,
-      routes: ['/', ...blogIndexRoutes, ...blogPostRoutes]
+      routes: ['/', '/sitemap.xml', '/feed.xml', ...blogIndexRoutes, ...blogPostRoutes, ...tagRoutes]
+    },
+    routeRules: {
+      '/tag/**': { prerender: true }
     },
     output: {
       dir: 'dist'

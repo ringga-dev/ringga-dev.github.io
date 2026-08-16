@@ -50,6 +50,18 @@
             </span>
           </div>
 
+          <!-- Tags -->
+          <div v-if="page.tags && page.tags.length" class="flex flex-wrap gap-2 mb-6">
+            <NuxtLink
+              v-for="tag in page.tags"
+              :key="tag"
+              :to="`/tag/${slugifyTag(tag)}`"
+              class="text-[10px] px-2.5 py-1 rounded-md bg-surface-card/60 border border-border text-muted hover:text-brand hover:border-brand/40 font-semibold transition-colors"
+            >
+              #{{ tag }}
+            </NuxtLink>
+          </div>
+
           <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-main leading-tight mb-4 max-w-4xl tracking-tight">
             {{ page.title }}
           </h1>
@@ -230,6 +242,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ArrowLeft, Calendar, Clock, BookOpen, Link2, Check } from 'lucide-vue-next'
 import { useRoute } from '#imports'
 import globalData from '~/data/global.json'
+import { slugifyTag } from '~/utils'
 
 const route = useRoute()
 const slug = route.params.slug

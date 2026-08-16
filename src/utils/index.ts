@@ -203,13 +203,14 @@ export function randomInt(min: number, max: number): number {
 }
 
 /**
- * Shuffle array
+ * Slugify a blog tag for use in URLs (lowercase, hyphen-separated).
+ * Consistent between prerender routes and in-app links.
  */
-export function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
+export function slugifyTag(tag: string): string {
+  return tag
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
 }
+
+
