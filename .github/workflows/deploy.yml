@@ -33,6 +33,7 @@ jobs:
         run: npm run generate
         env:
           NUXT_APP_BASE_URL: ${{ vars.BASE_URL || '/' }}
+          NUXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || 'https://ringga-dev.github.io' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
