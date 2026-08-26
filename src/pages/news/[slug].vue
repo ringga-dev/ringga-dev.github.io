@@ -13,7 +13,9 @@
           <div class="absolute inset-0 bg-surface/30 z-0"></div>
         </div>
 
+        <!-- Float Nav Controls & Metadata -->
         <div class="max-w-7xl mx-auto w-full px-6 pb-12 relative z-20 animate-reveal">
+          <!-- Back Link -->
           <NuxtLink
             to="/news"
             class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 backdrop-blur-md px-4 py-2.5 rounded-xl hover:border-brand/40"

@@ -33,7 +33,10 @@ useTheme()
 
 const route = useRoute()
 const hideNavAndFooter = computed(() => {
-  return route.path.startsWith('/projects/') && route.params.slug
+  const p = route.path
+  return (p.startsWith('/projects/') && route.params.slug) ||
+         p.startsWith('/blog') ||
+         p.startsWith('/news')
 })
 
 onMounted(() => {
