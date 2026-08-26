@@ -1,4 +1,6 @@
 import { readdirSync, readFileSync } from 'node:fs'
+// eslint-disable-next-line @typescript-eslint/no-duplicate-imports
+import { readFileSync as readJsonSync } from 'node:fs'
 import { resolve, join } from 'node:path'
 
 // Enumerate semua blog posts supaya di-prerender semua (bukan cuma yang ke-crawl
@@ -24,6 +26,11 @@ for (const f of blogFiles) {
   })
 }
 const tagRoutes = Array.from(tagSet).map(t => `/tag/${slugify(t)}`)
+
+// News routes (static data in src/data/news.json)
+const newsRaw = readJsonSync(resolve(process.cwd(), 'src/data/news.json'), 'utf-8')
+const newsSlugs = (JSON.parse(newsRaw).items || []).map((n: any) => `/news/${n.slug}`)
+const newsRoutes = ['/news', ...newsSlugs]
 
 const POSTS_PER_PAGE = 5
 const blogIndexRoutes = Array.from(
@@ -135,7 +142,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
-      routes: ['/', '/sitemap.xml', '/feed.xml', ...blogIndexRoutes, ...blogPostRoutes, ...tagRoutes]
+      routes: ['/', '/sitemap.xml', '/feed.xml', ...blogIndexRoutes, ...blogPostRoutes, ...tagRoutes, ...newsRoutes]
     },
     routeRules: {
       '/tag/**': { prerender: true }

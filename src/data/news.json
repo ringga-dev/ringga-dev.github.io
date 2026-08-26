@@ -1,0 +1,79 @@
+{
+  "title": "Berita Terkini",
+  "subtitle": "Kompilasi berita terbaru seputar kebakaran hutan dan lahan (karhutla) di Pulau Kalimantan, dihimpun dari sumber terpercaya.",
+  "updatedAt": "2026-08-26",
+  "items": [
+    {
+      "slug": "karhutla-kalimantan-meluas-ribuan-hektare",
+      "title": "Karhutla 2026 Meluas dan Hanguskan Ribuan Hektare di Tengah El Nino Godzilla",
+      "excerpt": "Kebakaran hutan dan lahan melanda Kalimantan, Sumatra, Jawa hingga Sulawesi. Kalimantan Barat catat 17.236 hotspot dengan luas bakar 28.680 hektare. Sebagian besar disebut akibat ulah manusia.",
+      "category": "Bencana",
+      "source": "BBC News Indonesia",
+      "sourceUrl": "https://www.bbc.com/indonesia/articles/c4gdxlxwr27o",
+      "date": "2026-08-12",
+      "image": "/images/news/kalbar-pemadaman-1.webp",
+      "tags": ["Karhutla", "Kalimantan Barat", "El Nino", "BNPB"],
+      "summary": "Fenomena El Nino Godzilla yang disebut paling kuat dalam 150 tahun terakhir memicu kekeringan ekstrem. Di Kalimantan, Walhi mencatat 34.262 hotspot dan 33.837 hektar terbakar sejak Januari hingga Juli 2026. BMKG mencatat lonjakan titik panas: dari tak lebih 74 per bulan (Apr-Jun) melonjak ke 615 pada Juli. Kabut asap menyelimuti 14 kabupaten/kota di Kalbar, terparah di Ketapang, Kubu Raya, Mempawah, dan Sanggau. Pemerhati lingkungan menyebut 90% karhutla berasal dari ulah manusia, sebagian besar di konsesi perusahaan.",
+      "keyFacts": [
+        "Kalimantan Barat: 17.236 hotspot, luas bakar ~28.680 hektare (tertinggi)",
+        "Total Kalimantan: 34.262 hotspot, 33.837 hektar terbakar (Jan–Jul 2026)",
+        "Nasional: 118.420 hotspot, 107.649 hektare indikatif terbakar",
+        "Kabut asap meliburkan murid TK–SMA di Pontianak"
+      ]
+    },
+    {
+      "slug": "karhutla-menggila-kalimantan-walhi",
+      "title": "Ketika Kebakaran Hutan dan Lahan Menggila di Kalimantan",
+      "excerpt": "Walhi mencatat Kalimantan jadi episentrum karhutla 2026 dengan 34.262 titik panas. Anggaran BNPB hanya Rp3–4 triliun, jauh di bawah masa krisis sebelumnya.",
+      "category": "Lingkungan",
+      "source": "Mongabay Indonesia",
+      "sourceUrl": "https://mongabay.co.id/2026/08/06/ketika-kebakaran-hutan-dan-lahan-menggila-di-kalimantan/",
+      "date": "2026-08-06",
+      "image": "/images/news/mongabay-kalimantan.jpg",
+      "tags": ["Karhutla", "Walhi", "Konsesi", "Kalimantan Tengah"],
+      "summary": "Menurut Walhi, Kalimantan menjadi episentrum bencana karhutla 2026 dengan 34.262 titik panas dan 33.837 hektar area terbakar per Juli. Kalbar tertinggi (17.236 hotspot). Lonjakan tajam terjadi pada Juli dengan 615 hotspot, di mana 778 hotspot di Kalbar setara 65% total hotspots skala tinggi di Kalimantan. Uli Artha Siagian (Walhi Nasional) menyebut anggaran BNPB 2026 hanya Rp3–4 triliun, jauh di bawah alokasi krisis 2015, 2019, dan 2022–2024. Mayoritas kebakaran terjadi di ekosistem gambut dan diduga kesengajaan perusahaan.",
+      "keyFacts": [
+        "Hotspot Kalbar Juli: 778 (≈65% total hotspot tinggi Kalimantan)",
+        "Anggaran BNPB 2026: Rp3–4 triliun (terpangkas)",
+        "Kalteng: suhu bisa mencapai 45°C, udara paling buruk",
+        "Sebagian besar pemicu diduga kesengajaan korporasi di konsesi"
+      ]
+    },
+    {
+      "slug": "kebakaran-hutan-parah-kepung-kalimantan-bnpb",
+      "title": "Kebakaran Hutan Parah Kepung Kalimantan, BNPB Buka Suara",
+      "excerpt": "Pulau Kalimantan dipenuhi penanda 'severe fire' di Google Maps. BNPB menyatakan risiko makin tereskalasi memasuki musim kemarau dengan ancaman api bawah permukaan di lahan gambut.",
+      "category": "Bencana",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20260820130846-37-760912/kebakaran-hutan-parah-kepung-kalimantan-bnpb-buka-suara",
+      "date": "2026-08-20",
+      "image": "/images/news/google-maps-titik-api.jpeg",
+      "tags": ["Karhutla", "Google Maps", "Kabut Asap", "PrayForKalimantan"],
+      "summary": "Pulau Kalimantan tampak dipenuhi lingkaran merah 'severe fire' di Google Maps, tersebar dari Kalimantan Utara hingga Selatan, paling padat di Kalimantan Selatan. Fenomena ini viral di X dengan tagar #PrayForKalimantan. Warga membagikan video asap tebal menutup ruas jalan. BNPB menyatakan risiko makin tereskalasi memasuki musim kemarau. Pembukaan kanal di lahan gambut mengeringkan ekosistem dan memicu subsurface fire — api di bawah permukaan tanah yang sulit dideteksi dan lama dipadamkan.",
+      "keyFacts": [
+        "Penanda 'severe fire' merah di Google Maps menyebar di seluruh Kalimantan",
+        "Tagar #PrayForKalimantan viral di media sosial X",
+        "Subsurface fire (api bawah permukaan) di lahan gambut sulit dipadamkan",
+        "Kaltara hingga Kalsel terdampak kabut asap"
+      ]
+    },
+    {
+      "slug": "karhutla-dimana-mana-kalimantan-daftar-wilayah",
+      "title": "Karhutla di Mana-mana di Kalimantan, Ini Daftar Titik Wilayahnya",
+      "excerpt": "Kabut asap karhutla kembali menyelimuti Pangkalan Bun, Kotawaringin Barat. Titik panas terbanyak di Kalteng berada di Kotawaringin Timur (149), Kapuas (78), Palangka Raya (59), dan Pulang Pisau (57).",
+      "category": "Bencana",
+      "source": "Detik News",
+      "sourceUrl": "https://news.detik.com/berita/d-8626896/karhutla-di-mana-mana-di-kalimantan-ini-daftar-titik-wilayahnya",
+      "date": "2026-08-21",
+      "image": "/images/news/reuters-pulang-pisau.jpeg",
+      "tags": ["Karhutla", "Kalteng", "Pulang Pisau", "Kotawaringin"],
+      "summary": "Karhutla melanda sejumlah wilayah Kalimantan. Di Kotawaringin Barat, kabut asap menyelimuti Pangkalan Bun. BMKG Kalbar mencatat 3.242 titik panas per 8 Agustus 2026 tersebar di 14 kabupaten. Untuk Kalteng, sebaran terbanyak ada di Kotawaringin Timur (149 titik), Kapuas (78), Palangka Raya (59), dan Pulang Pisau (57). BPBD Palangka Raya menangani 151 kejadian kebakaran lahan dengan luasan jelas di atas 40 hektare akibat kendala pasokan air.",
+      "keyFacts": [
+        "Kotawaringin Timur: 149 titik panas (terbanyak Kalteng)",
+        "Kapuas 78, Palangka Raya 59, Pulang Pisau 57 titik",
+        "BMKG Kalbar: 3.242 titik panas per 8 Agustus 2026",
+        "BPBD Palangka Raya tangani 151 kejadian, luas >40 hektare"
+      ]
+    }
+  ]
+}
