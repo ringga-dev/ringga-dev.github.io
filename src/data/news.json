@@ -1,78 +1,267 @@
 {
   "title": "Berita Terkini",
   "subtitle": "Kompilasi berita terbaru seputar kebakaran hutan dan lahan (karhutla) di Pulau Kalimantan, dihimpun dari sumber terpercaya.",
-  "updatedAt": "2026-08-26",
+  "updatedAt": "2026-09-28",
   "items": [
     {
-      "slug": "karhutla-kalimantan-meluas-ribuan-hektare",
-      "title": "Karhutla 2026 Meluas dan Hanguskan Ribuan Hektare di Tengah El Nino Godzilla",
-      "excerpt": "Kebakaran hutan dan lahan melanda Kalimantan, Sumatra, Jawa hingga Sulawesi. Kalimantan Barat catat 17.236 hotspot dengan luas bakar 28.680 hektare. Sebagian besar disebut akibat ulah manusia.",
-      "category": "Bencana",
-      "source": "BBC News Indonesia",
-      "sourceUrl": "https://www.bbc.com/indonesia/articles/c4gdxlxwr27o",
-      "date": "2026-08-12",
-      "image": "/images/news/kalbar-pemadaman-1.webp",
-      "tags": ["Karhutla", "Kalimantan Barat", "El Nino", "BNPB"],
-      "summary": "Fenomena El Nino Godzilla yang disebut paling kuat dalam 150 tahun terakhir memicu kekeringan ekstrem. Di Kalimantan, Walhi mencatat 34.262 hotspot dan 33.837 hektar terbakar sejak Januari hingga Juli 2026. BMKG mencatat lonjakan titik panas: dari tak lebih 74 per bulan (Apr-Jun) melonjak ke 615 pada Juli. Kabut asap menyelimuti 14 kabupaten/kota di Kalbar, terparah di Ketapang, Kubu Raya, Mempawah, dan Sanggau. Pemerhati lingkungan menyebut 90% karhutla berasal dari ulah manusia, sebagian besar di konsesi perusahaan.",
+      "slug": "Detik-menkes-hingga-dirut-bpjs-dipanggil-prabowo-ke-istana-bahas-apa",
+      "title": "Menkes hingga Dirut BPJS Dipanggil Prabowo ke Istana, Bahas Apa?",
+      "excerpt": "Presiden Prabowo Subianto memanggil menteri dan Dirut BPJS untuk evaluasi pelayanan. Fokus pada anggaran dan peningkatan kualitas layanan BPJS ke masyarakat.",
+      "category": "Berita",
+      "source": "Detik",
+      "sourceUrl": "https://news.detik.com/berita/d-8682786/menkes-hingga-dirut-bpjs-dipanggil-prabowo-ke-istana-bahas-apa",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Detik"
+      ],
+      "summary": "Presiden Prabowo Subianto memanggil menteri dan Dirut BPJS untuk evaluasi pelayanan. Fokus pada anggaran dan peningkatan kualitas layanan BPJS ke masyarakat.",
       "keyFacts": [
-        "Kalimantan Barat: 17.236 hotspot, luas bakar ~28.680 hektare (tertinggi)",
-        "Total Kalimantan: 34.262 hotspot, 33.837 hektar terbakar (Jan–Jul 2026)",
-        "Nasional: 118.420 hotspot, 107.649 hektare indikatif terbakar",
-        "Kabut asap meliburkan murid TK–SMA di Pontianak"
+        "Presiden Prabowo Subianto memanggil menteri dan Dirut BPJS untuk evaluasi pelayanan",
+        "Fokus pada anggaran dan peningkatan kualitas layanan BPJS ke masyarakat."
       ]
     },
     {
-      "slug": "karhutla-menggila-kalimantan-walhi",
-      "title": "Ketika Kebakaran Hutan dan Lahan Menggila di Kalimantan",
-      "excerpt": "Walhi mencatat Kalimantan jadi episentrum karhutla 2026 dengan 34.262 titik panas. Anggaran BNPB hanya Rp3–4 triliun, jauh di bawah masa krisis sebelumnya.",
-      "category": "Lingkungan",
-      "source": "Mongabay Indonesia",
-      "sourceUrl": "https://mongabay.co.id/2026/08/06/ketika-kebakaran-hutan-dan-lahan-menggila-di-kalimantan/",
-      "date": "2026-08-06",
-      "image": "/images/news/mongabay-kalimantan.jpg",
-      "tags": ["Karhutla", "Walhi", "Konsesi", "Kalimantan Tengah"],
-      "summary": "Menurut Walhi, Kalimantan menjadi episentrum bencana karhutla 2026 dengan 34.262 titik panas dan 33.837 hektar area terbakar per Juli. Kalbar tertinggi (17.236 hotspot). Lonjakan tajam terjadi pada Juli dengan 615 hotspot, di mana 778 hotspot di Kalbar setara 65% total hotspots skala tinggi di Kalimantan. Uli Artha Siagian (Walhi Nasional) menyebut anggaran BNPB 2026 hanya Rp3–4 triliun, jauh di bawah alokasi krisis 2015, 2019, dan 2022–2024. Mayoritas kebakaran terjadi di ekosistem gambut dan diduga kesengajaan perusahaan.",
+      "slug": "Detik-bareskrim-bongkar-clandestine-lab-vape-narkoba-di-jakut-6-wna-ditangkap",
+      "title": "Bareskrim Bongkar Clandestine Lab Vape Narkoba di Jakut, 6 WNA Ditangkap!",
+      "excerpt": "Bareskrim Polri membongkar laboratorium narkoba etomidate di Jakarta Utara, menangkap 6 WNA.",
+      "category": "Kriminal",
+      "source": "Detik",
+      "sourceUrl": "https://news.detik.com/berita/d-8682731/bareskrim-bongkar-clandestine-lab-vape-narkoba-di-jakut-6-wna-ditangkap",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Detik"
+      ],
+      "summary": "Bareskrim Polri membongkar laboratorium narkoba etomidate di Jakarta Utara, menangkap 6 WNA.",
       "keyFacts": [
-        "Hotspot Kalbar Juli: 778 (≈65% total hotspot tinggi Kalimantan)",
-        "Anggaran BNPB 2026: Rp3–4 triliun (terpangkas)",
-        "Kalteng: suhu bisa mencapai 45°C, udara paling buruk",
-        "Sebagian besar pemicu diduga kesengajaan korporasi di konsesi"
+        "Bareskrim Polri membongkar laboratorium narkoba etomidate di Jakarta Utara, menangkap 6 WNA."
       ]
     },
     {
-      "slug": "kebakaran-hutan-parah-kepung-kalimantan-bnpb",
-      "title": "Kebakaran Hutan Parah Kepung Kalimantan, BNPB Buka Suara",
-      "excerpt": "Pulau Kalimantan dipenuhi penanda 'severe fire' di Google Maps. BNPB menyatakan risiko makin tereskalasi memasuki musim kemarau dengan ancaman api bawah permukaan di lahan gambut.",
-      "category": "Bencana",
+      "slug": "Detik-polisi-kejar-maling-yang-gigit-telinga-wanita-hingga-putus-di-jaktim",
+      "title": "Polisi Kejar Maling yang Gigit Telinga Wanita hingga Putus di Jaktim",
+      "excerpt": "Wanita di Jakarta Timur menjadi korban pencurian dengan kekerasan, telinganya putus saat pelaku melarikan diri setelah mencuri uang. Polisi sedang menyelidiki.",
+      "category": "Kriminal",
+      "source": "Detik",
+      "sourceUrl": "https://news.detik.com/berita/d-8682725/polisi-kejar-maling-yang-gigit-telinga-wanita-hingga-putus-di-jaktim",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Detik"
+      ],
+      "summary": "Wanita di Jakarta Timur menjadi korban pencurian dengan kekerasan, telinganya putus saat pelaku melarikan diri setelah mencuri uang. Polisi sedang menyelidiki.",
+      "keyFacts": [
+        "Wanita di Jakarta Timur menjadi korban pencurian dengan kekerasan, telinganya putus saat pelaku melarikan diri setelah mencuri uang",
+        "Polisi sedang menyelidiki."
+      ]
+    },
+    {
+      "slug": "CNBC Indonesia-elon-musk-luncurkan-roket-setinggi-monas-ke-orbit-senin-sore",
+      "title": "Elon Musk Luncurkan Roket Setinggi Monas ke Orbit Senin Sore",
+      "excerpt": "SpaceX bersiap meluncurkan Starship, roket terbesar yang pernah ada, ke orbit Bumi. Peluncuran bersejarah ini juga akan melepas 26 satelit Starlink terbaru.",
+      "category": "Berita",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/tech/20260820130846-37-760912/kebakaran-hutan-parah-kepung-kalimantan-bnpb-buka-suara",
-      "date": "2026-08-20",
-      "image": "/images/news/google-maps-titik-api.jpeg",
-      "tags": ["Karhutla", "Google Maps", "Kabut Asap", "PrayForKalimantan"],
-      "summary": "Pulau Kalimantan tampak dipenuhi lingkaran merah 'severe fire' di Google Maps, tersebar dari Kalimantan Utara hingga Selatan, paling padat di Kalimantan Selatan. Fenomena ini viral di X dengan tagar #PrayForKalimantan. Warga membagikan video asap tebal menutup ruas jalan. BNPB menyatakan risiko makin tereskalasi memasuki musim kemarau. Pembukaan kanal di lahan gambut mengeringkan ekosistem dan memicu subsurface fire — api di bawah permukaan tanah yang sulit dideteksi dan lama dipadamkan.",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20260928144712-37-771486/elon-musk-luncurkan-roket-setinggi-monas-ke-orbit-senin-sore",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "CNBC Indonesia"
+      ],
+      "summary": "SpaceX bersiap meluncurkan Starship, roket terbesar yang pernah ada, ke orbit Bumi. Peluncuran bersejarah ini juga akan melepas 26 satelit Starlink terbaru.",
       "keyFacts": [
-        "Penanda 'severe fire' merah di Google Maps menyebar di seluruh Kalimantan",
-        "Tagar #PrayForKalimantan viral di media sosial X",
-        "Subsurface fire (api bawah permukaan) di lahan gambut sulit dipadamkan",
-        "Kaltara hingga Kalsel terdampak kabut asap"
+        "SpaceX bersiap meluncurkan Starship, roket terbesar yang pernah ada, ke orbit Bumi",
+        "Peluncuran bersejarah ini juga akan melepas 26 satelit Starlink terbaru."
       ]
     },
     {
-      "slug": "karhutla-dimana-mana-kalimantan-daftar-wilayah",
-      "title": "Karhutla di Mana-mana di Kalimantan, Ini Daftar Titik Wilayahnya",
-      "excerpt": "Kabut asap karhutla kembali menyelimuti Pangkalan Bun, Kotawaringin Barat. Titik panas terbanyak di Kalteng berada di Kotawaringin Timur (149), Kapuas (78), Palangka Raya (59), dan Pulang Pisau (57).",
-      "category": "Bencana",
-      "source": "Detik News",
-      "sourceUrl": "https://news.detik.com/berita/d-8626896/karhutla-di-mana-mana-di-kalimantan-ini-daftar-titik-wilayahnya",
-      "date": "2026-08-21",
-      "image": "/images/news/reuters-pulang-pisau.jpeg",
-      "tags": ["Karhutla", "Kalteng", "Pulang Pisau", "Kotawaringin"],
-      "summary": "Karhutla melanda sejumlah wilayah Kalimantan. Di Kotawaringin Barat, kabut asap menyelimuti Pangkalan Bun. BMKG Kalbar mencatat 3.242 titik panas per 8 Agustus 2026 tersebar di 14 kabupaten. Untuk Kalteng, sebaran terbanyak ada di Kotawaringin Timur (149 titik), Kapuas (78), Palangka Raya (59), dan Pulang Pisau (57). BPBD Palangka Raya menangani 151 kejadian kebakaran lahan dengan luasan jelas di atas 40 hektare akibat kendala pasokan air.",
+      "slug": "CNBC Indonesia-dpr-ngotot-nilai-tukar-rupiah-harus-menguat-gubernur-bi-jawab-begini",
+      "title": "DPR Ngotot Nilai Tukar Rupiah Harus Menguat, Gubernur BI Jawab Begini",
+      "excerpt": "DPR mendesak jajaran dewan gubernur BI untuk memperkuat nilai tukar rupiah di bawah kepemimpinan baru Gubernur BI Destry Damayanti.",
+      "category": "Politik",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/market/20260928152531-17-771502/dpr-ngotot-nilai-tukar-rupiah-harus-menguat-gubernur-bi-jawab-begini",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "CNBC Indonesia",
+        "Politik"
+      ],
+      "summary": "DPR mendesak jajaran dewan gubernur BI untuk memperkuat nilai tukar rupiah di bawah kepemimpinan baru Gubernur BI Destry Damayanti.",
       "keyFacts": [
-        "Kotawaringin Timur: 149 titik panas (terbanyak Kalteng)",
-        "Kapuas 78, Palangka Raya 59, Pulang Pisau 57 titik",
-        "BMKG Kalbar: 3.242 titik panas per 8 Agustus 2026",
-        "BPBD Palangka Raya tangani 151 kejadian, luas >40 hektare"
+        "DPR mendesak jajaran dewan gubernur BI untuk memperkuat nilai tukar rupiah di bawah kepemimpinan baru Gubernur BI Destry Damayanti."
+      ]
+    },
+    {
+      "slug": "CNBC Indonesia-tinggi-anak-lebih-pendek-dari-teman-sebaya-perlu-diperiksa",
+      "title": "Tinggi Anak Lebih Pendek dari Teman Sebaya, Perlu Diperiksa?",
+      "excerpt": "Orang tua perlu memantau pertumbuhan anak secara berkala. Konsultasikan ke dokter jika ada tanda gangguan. Mayapada Hospital siap membantu tumbuh kembang anak.",
+      "category": "Berita",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/lifestyle/20260928151034-33-771493/tinggi-anak-lebih-pendek-dari-teman-sebaya-perlu-diperiksa",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "CNBC Indonesia"
+      ],
+      "summary": "Orang tua perlu memantau pertumbuhan anak secara berkala. Konsultasikan ke dokter jika ada tanda gangguan. Mayapada Hospital siap membantu tumbuh kembang anak.",
+      "keyFacts": [
+        "Orang tua perlu memantau pertumbuhan anak secara berkala",
+        "Konsultasikan ke dokter jika ada tanda gangguan",
+        "Mayapada Hospital siap membantu tumbuh kembang anak."
+      ]
+    },
+    {
+      "slug": "Politik-saat-anak-muda-mulai-memahami-indonesia-partai-nasdem",
+      "title": "Saat Anak Muda Mulai Memahami Indonesia - Partai NasDem",
+      "excerpt": "Saat Anak Muda Mulai Memahami Indonesia Partai NasDem",
+      "category": "Politik",
+      "source": "Politik",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPXzJnbHc4eWpWY0JFOGNQVWp5SmZqYVJrU0lkbzgyWnVTdEkyLTEwdE9LUVBJLTJ6Zy1uMjFwaXY2SzdwM3k1enNkTWhuNFpHamRDd2hzNFFJQ0pwbWpmUVUweUNEcDRSbUQwaFRteUluMm9BYXIzMjU4ZmRsZXVYdA?oc=5",
+      "date": "2026-09-27",
+      "image": "",
+      "tags": [
+        "Politik"
+      ],
+      "summary": "Saat Anak Muda Mulai Memahami Indonesia Partai NasDem",
+      "keyFacts": [
+        "Saat Anak Muda Mulai Memahami Indonesia Partai NasDem"
+      ]
+    },
+    {
+      "slug": "Politik-ada-link-dana-kaget-rp500000-hari-ini-28-september-2026-juga-saldo-dana-gratis-h",
+      "title": "Ada Link DANA Kaget Rp500.000 Hari Ini 28 September 2026, Juga Saldo DANA Gratis Hingga Rp2 Juta - politikindonesia.id",
+      "excerpt": "Ada Link DANA Kaget Rp500.000 Hari Ini 28 September 2026, Juga Saldo DANA Gratis Hingga Rp2 Juta politikindonesia.id",
+      "category": "Politik",
+      "source": "Politik",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSjZnYXRHNGhIMEptal9iVVhwbWxVRUlHd0g2ZlNzTTJCRE5NeUhNdlpwbmJwV2RXWS1SVHhEUEJQcUlwLUJNNEpwWE02MXJyQkZLTTlhaERxdzBIMHM0TEdKR3plME5KZjk1c1E5OHBPTWhBU1NUWEZKUS1zQWFVbkNZdE5Xcko0TTNOVlFncGdkSTFPYjNucnhWaDljYmU0WmNSSUJTTWNiMExOUk9GeGltYjdYdEJDYjhhLWRxMEphbHFlcEE?oc=5",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Politik"
+      ],
+      "summary": "Ada Link DANA Kaget Rp500.000 Hari Ini 28 September 2026, Juga Saldo DANA Gratis Hingga Rp2 Juta politikindonesia.id",
+      "keyFacts": [
+        "Ada Link DANA Kaget Rp500.000 Hari Ini 28 September 2026, Juga Saldo DANA Gratis Hingga Rp2 Juta politikindonesia.id"
+      ]
+    },
+    {
+      "slug": "Politik-mengapa-di-era-kolonialisme-politik-indonesia-lebih-hidup-tempoco",
+      "title": "Mengapa di Era Kolonialisme Politik Indonesia Lebih Hidup - Tempo.co",
+      "excerpt": "Mengapa di Era Kolonialisme Politik Indonesia Lebih Hidup Tempo.co",
+      "category": "Politik",
+      "source": "Politik",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNbE44QkloZURpa1BYYzJfa2lfbkVUQlFYUTQ2cDdtNFVmRWdXOER1REVHX3AweEs3LUh4eXFRY2U1NGVlck9hZDh1Vi1GUFJvSjg0c3ZmVHpVS0hlOGNhYmtxVnJIdlowNGJUNFJwX2k1dDBWNkVsZzJxdXRhamNHX3ZMaUg3SFlvbWVZ?oc=5",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Politik"
+      ],
+      "summary": "Mengapa di Era Kolonialisme Politik Indonesia Lebih Hidup Tempo.co",
+      "keyFacts": [
+        "Mengapa di Era Kolonialisme Politik Indonesia Lebih Hidup Tempo.co"
+      ]
+    },
+    {
+      "slug": "Viral-no-viral-no-justice-peringatan-keras-bagi-sistem-hukum-indonesia-antara-news",
+      "title": "\"No viral no justice\" peringatan keras bagi sistem hukum Indonesia - ANTARA News",
+      "excerpt": "\"No viral no justice\" peringatan keras bagi sistem hukum Indonesia ANTARA News",
+      "category": "Viral",
+      "source": "Viral",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOOUhMY0ZTSHc3QVZUQktyTUlPWXlPX05KdnpLRWRnZW9oNTRGRzU0Vm83NGZ0aUk2c25VX1VoX1BnVGZscERKTjlFUVgwV2lWQXJoMUQ4NG91RTU4VnNnVHZZb0NMcThGRXVLeTJ4WnFYZVNKRjFCUEJvSjJOX3RRb3hGZWk3U1FMeF8zYng2UFBEU29PVW0tU21OMGNhN1BFSElsYlRCbHpqUG9C?oc=5",
+      "date": "2026-03-07",
+      "image": "",
+      "tags": [
+        "Viral"
+      ],
+      "summary": "\"No viral no justice\" peringatan keras bagi sistem hukum Indonesia ANTARA News",
+      "keyFacts": [
+        "\"No viral no justice\" peringatan keras bagi sistem hukum Indonesia ANTARA News"
+      ]
+    },
+    {
+      "slug": "Viral-bmkg-minta-warga-tak-terpengaruh-video-viral-ramalan-gempa-m-9-detiknews",
+      "title": "BMKG Minta Warga Tak Terpengaruh Video Viral Ramalan Gempa M 9 - detikNews",
+      "excerpt": "BMKG Minta Warga Tak Terpengaruh Video Viral Ramalan Gempa M 9 detikNews",
+      "category": "Viral",
+      "source": "Viral",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPLU9TLVZERlQxWmNjTXhLNURsSWdUZTBnTFNtVTdhSThIZVZIUFVfVkNFMk4ydXRFS1NNWldxckFiaVlGNFVfWG4wRmJxQ1FXVnhUY01XMHRySGVpX0MtZjRhcEJWWHloSy03VHVCUzdKZ09Td1p1QWNneDJBdlNydkJyUTFPc09tamRWRVpsWWJwZHZmc0hRNXBkcFJ2eTE0MWhqWNIBqgFBVV95cUxOUjNodG9EOVJGWFNfdmJGOVM2MXlGaTZOVll3WmcxSU9nMERXcl8zWjZmZG02aHZ4MC1Kd3VOOU1zSnprRmFVRVgzODQxaFYxOV9fNUlPU0duTGxDaVBZZlBPV0Rvb2hkQ0FTZjZHME9PaEFHUWVqbHNoX0VzRmg4eUU3cEU2MlJqNHlzZlhnLVRmbTRSalNod1hKQkdLWmxPM215elhqc1I4QQ?oc=5",
+      "date": "2026-09-08",
+      "image": "",
+      "tags": [
+        "Viral"
+      ],
+      "summary": "BMKG Minta Warga Tak Terpengaruh Video Viral Ramalan Gempa M 9 detikNews",
+      "keyFacts": [
+        "BMKG Minta Warga Tak Terpengaruh Video Viral Ramalan Gempa M 9 detikNews"
+      ]
+    },
+    {
+      "slug": "Viral-ui-angkat-bicara-tanggapi-viral-suma-ui-yang-diduga-kampanyekan-lgbt-mui-majelis",
+      "title": "UI Angkat Bicara Tanggapi Viral SUMA UI yang Diduga Kampanyekan LGBT - MUI - Majelis Ulama Indonesia",
+      "excerpt": "UI Angkat Bicara Tanggapi Viral SUMA UI yang Diduga Kampanyekan LGBT MUI - Majelis Ulama Indonesia",
+      "category": "Viral",
+      "source": "Viral",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPTGRzbVdMMEdXa0hETVdzWWt0ZnpIRkNvc0h5R1g5ZmNnZ3prUV9QS0VGdHh0dU9vdmNVNEJCd3FwSEZhaG1rZXB4RkpqcUNWLW1PNTB3azViWFI1S0tCMWxscmxFMmdfR1pTSFJ4QndrcWpSX1lhaWZXZkRJNG5HN3Z1QXVSdU4wRGlQcWFzWUhUQ2dDTF9Nc1luNDZDQVk1MVlnSWVRM1pmUVE1NVZoREVKSFZKUQ?oc=5",
+      "date": "2026-06-14",
+      "image": "",
+      "tags": [
+        "Viral"
+      ],
+      "summary": "UI Angkat Bicara Tanggapi Viral SUMA UI yang Diduga Kampanyekan LGBT MUI - Majelis Ulama Indonesia",
+      "keyFacts": [
+        "UI Angkat Bicara Tanggapi Viral SUMA UI yang Diduga Kampanyekan LGBT MUI - Majelis Ulama Indonesia"
+      ]
+    },
+    {
+      "slug": "Kriminal-huawei-terbukti-pindahkan-rp20-t-per-5-hari-setelah-didakwa-kriminal-cnbc-indone",
+      "title": "Huawei Terbukti Pindahkan Rp20 T per 5 Hari Setelah Didakwa Kriminal - CNBC Indonesia",
+      "excerpt": "Huawei Terbukti Pindahkan Rp20 T per 5 Hari Setelah Didakwa Kriminal CNBC Indonesia",
+      "category": "Kriminal",
+      "source": "Kriminal",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPS0dPWjRrQk0tME1XOG93WDR2RmVMMkx2UnlzQVVzQmJfSVlNaHktc1pyY2VEQ3FDSERiLUpzaHVYQV9KY0VXbFQ0ckhDXzJlX1huc0p5dXZMV2VEYlU2N2JFeE0zUHhDdFVHMUZsQ2RDcHMtYjZONmdJSkRQV291d0JQOVV0eXdUWEhtaTRVTHhWaTlBS0N4MjU2Qi15R01hOXloQ0t5NmlqcE1wUk1UaDBCNkEycUJKSWVQQ0tqTlNUZU1PS3l3?oc=5",
+      "date": "2026-09-26",
+      "image": "",
+      "tags": [
+        "Kriminal"
+      ],
+      "summary": "Huawei Terbukti Pindahkan Rp20 T per 5 Hari Setelah Didakwa Kriminal CNBC Indonesia",
+      "keyFacts": [
+        "Huawei Terbukti Pindahkan Rp20 T per 5 Hari Setelah Didakwa Kriminal CNBC Indonesia"
+      ]
+    },
+    {
+      "slug": "Kriminal-usut-tuntas-kejahatan-persekusi-terhadap-transpuan-di-kota-bogor-amnesty-indones",
+      "title": "Usut Tuntas Kejahatan Persekusi terhadap Transpuan di Kota Bogor - Amnesty Indonesia",
+      "excerpt": "Usut Tuntas Kejahatan Persekusi terhadap Transpuan di Kota Bogor Amnesty Indonesia",
+      "category": "Berita",
+      "source": "Kriminal",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcjZmSTFUc18xLURQLXRzOUhWejcwQ2NEWERwYjFUTHJyczV2VlhvbENHUGNKM1lwYXZkdENLYkJJdW5CUmxsb3RvNlQ2bnR3MUkxWUNPQXBRQjlGMGJhTEJkQkRxX0tTcXZoUGw0YzhmWXpjZl9yaDBiaVR3QUpMaExwOU41T2JzbnlXYjZmYnhNVmZvMEhpS1lXUGwxTkd5NW5pTFhMM0R1TXc1YkJQY05jRmotUjc5QmNvaU10aw?oc=5",
+      "date": "2026-07-17",
+      "image": "",
+      "tags": [
+        "Kriminal"
+      ],
+      "summary": "Usut Tuntas Kejahatan Persekusi terhadap Transpuan di Kota Bogor Amnesty Indonesia",
+      "keyFacts": [
+        "Usut Tuntas Kejahatan Persekusi terhadap Transpuan di Kota Bogor Amnesty Indonesia"
+      ]
+    },
+    {
+      "slug": "Kriminal-kkp-ri-perketat-penegakan-hukum-perikanan-rumpon-ilegal-hingga-bom-ikan-ditindak",
+      "title": "KKP RI Perketat Penegakan Hukum Perikanan, Rumpon Ilegal hingga Bom Ikan Ditindak - AFU.id",
+      "excerpt": "KKP RI Perketat Penegakan Hukum Perikanan, Rumpon Ilegal hingga Bom Ikan Ditindak AFU.id",
+      "category": "Kriminal",
+      "source": "Kriminal",
+      "sourceUrl": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOVkhnVHhMdV9DRzJPSkZqX244SnNPZkJOYzRfdjVsb1BNS1ZUYzA4Z1JmX0loV3hCQTJodGxRbVQzbk9uakhuS0hac1NYaUJXNE1CMnBBMmxiRXYyRXZSTF9OektWQ0hEWWVseVU1S1Z2TTA1b0R5NF9XTFZlcE96TFNFSXVhRHQycUVhY05oNW5saDFoSThDV3BDUDdPWGZDNEE1RHZCeEphNm1oelZJ?oc=5",
+      "date": "2026-09-28",
+      "image": "",
+      "tags": [
+        "Kriminal"
+      ],
+      "summary": "KKP RI Perketat Penegakan Hukum Perikanan, Rumpon Ilegal hingga Bom Ikan Ditindak AFU.id",
+      "keyFacts": [
+        "KKP RI Perketat Penegakan Hukum Perikanan, Rumpon Ilegal hingga Bom Ikan Ditindak AFU.id"
       ]
     }
   ]
