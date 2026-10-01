@@ -5,7 +5,7 @@ date: "2026-09-30"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "RSS", "Teknologi"]
 category: "Teknologi Informasi"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab6c?w=800&q=80"
+image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80"
 ---
 
 

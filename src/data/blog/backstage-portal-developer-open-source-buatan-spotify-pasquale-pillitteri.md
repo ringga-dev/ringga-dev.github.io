@@ -5,7 +5,7 @@ date: "2026-09-22"
 author: "Ringga Septia Pribadi"
 tags: ["Open Source", "RSS"]
 category: "Open Source"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab6c?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80"
 ---
 
 

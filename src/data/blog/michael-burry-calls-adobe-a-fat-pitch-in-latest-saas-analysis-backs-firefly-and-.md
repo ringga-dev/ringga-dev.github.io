@@ -5,7 +5,7 @@ date: "2026-05-28"
 author: "Ringga Septia Pribadi"
 tags: ["Keamanan Siber", "RSS", "AI"]
 category: "Artificial Intelligence"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab6c?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
 ---
 
 
