@@ -72,6 +72,26 @@ MAX_NEWS_ITEMS = 15        # maks total items di news.json
 MAX_BLOG_NEW = 6           # maks blog post baru per hari
 PAST_DAYS = 1              # hanya ambil dalam 24 jam terakhir
 
+# ── Gambar berita berdasarkan kategori (Unsplash) ─────────────────────────
+NEWS_CATEGORY_IMAGES = {
+    "Politik":   "https://images.unsplash.com/photo-154091041924-61ee2e0ecbe0?w=800&q=80",
+    "Viral":     "https://images.unsplash.com/photo-1611162628261-77db5d85da06?w=800&q=80",
+    "Kriminal":  "https://images.unsplash.com/photo-1453873180542-38603c87bafb?w=800&q=80",
+    "Ekonomi":   "https://images.unsplash.com/photo-1560473095-bd965c5e214a?w=800&q=80",
+    "Bencana":   "https://images.unsplash.com/photo-1547430901-4b75b2fbcce0?w=800&q=80",
+    "Berita":    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+}
+
+# ── Gambar blog berdasarkan kategori (Unsplash) ────────────────────────────
+TECH_CATEGORY_IMAGES = {
+    "Artificial Intelligence":  "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    "Cybersecurity":            "https://images.unsplash.com/photo-1550751827-4bd374147f8f?w=800&q=80",
+    "Cloud & DevOps":          "https://images.unsplash.com/photo-1451187580459-43490279c0e6?w=800&q=80",
+    "Open Source":             "https://images.unsplash.com/photo-1526374965838-5ff589f10c0d?w=800&q=80",
+    "Mobile & Apps":           "https://images.unsplash.com/photo-1512941957619-1b47ace876e0?w=800&q=80",
+    "Teknologi Informasi":      "https://images.unsplash.com/photo-1555066931-4365d14bab6c?w=800&q=80",
+}
+
 JUNK_KEYWORDS_IN_TITLE = [
     "lowongan kerja", "lowongan", "universitas", "kampus",
     "pegawai", "staf", "bidang", "program studi",
@@ -436,7 +456,7 @@ def build_news_item(item: dict, source_label: str, index: int) -> dict:
         "source": source_label,
         "sourceUrl": url,
         "date": date_str,
-        "image": "",
+        "image": NEWS_CATEGORY_IMAGES.get(category, NEWS_CATEGORY_IMAGES["Berita"]),
         "tags": tags,
         "summary": desc[:600] if desc else title[:300],
         "keyFacts": key_facts,
@@ -501,7 +521,7 @@ def build_blog_frontmatter(item: dict, source_label: str) -> str:
         f"author: \"Ringga Septia Pribadi\"\n"
         f'tags: [{", ".join(json.dumps(t) for t in tags)}]\n'
         f"category: \"{category}\"\n"
-        f"image: \"https://images.unsplash.com/photo-1555066931-4365d14bab6c?q=80&w=2070&auto=format&fit=crop\"\n"
+        f"image: \"{TECH_CATEGORY_IMAGES.get(category, TECH_CATEGORY_IMAGES['Teknologi Informasi'])}\"\n"
         "---\n"
     )
 
