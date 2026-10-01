@@ -5,7 +5,7 @@ date: "2026-09-04"
 author: "Ringga Septia Pribadi"
 tags: ["Android", "AI", "Mobile", "NPU", "On-Device"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
 ---
 
 ## Pendahuluan

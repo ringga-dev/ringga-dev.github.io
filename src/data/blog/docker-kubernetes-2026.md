@@ -5,7 +5,7 @@ date: "2026-06-25"
 author: "Ringga Septia Pribadi"
 tags: ["Docker", "Kubernetes", "DevOps", "Cloud"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80"
 ---
 
 ## Pendahuluan

@@ -5,7 +5,7 @@ date: "2026-07-18"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "Agent", "Orchestration", "Automation", "DevOps", "Multi-Agent"]
 category: "Technology"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 reading_time: "10 min read"
 ---
 

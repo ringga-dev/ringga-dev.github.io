@@ -5,7 +5,7 @@ date: "2026-07-06"
 author: "Ringga Septia Pribadi"
 tags: ["Android", "Jetpack Compose", "Kotlin", "Mobile Development"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
 ---
 
 ## Pendahuluan

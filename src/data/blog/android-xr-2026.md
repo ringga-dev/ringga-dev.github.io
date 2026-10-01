@@ -5,7 +5,7 @@ date: "2026-08-11"
 author: "Ringga Septia Pribadi"
 tags: ["Android XR", "AR/VR", "Spatial Computing", "Kotlin", "Mobile Development"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80"
 ---
 
 ## Pendahuluan

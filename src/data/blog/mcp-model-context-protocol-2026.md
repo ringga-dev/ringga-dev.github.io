@@ -5,7 +5,7 @@ date: "2026-07-22"
 author: "Ringga Septia Pribadi"
 tags: ["MCP", "Model Context Protocol", "AI", "LLM", "Tools", "Integration", "Open Source"]
 category: "AI & ML"
-image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 reading_time: "10 min read"
 ---
 

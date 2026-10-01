@@ -5,7 +5,7 @@ date: "2026-07-18"
 author: "Ringga Septia Pribadi"
 tags: ["Platform Engineering", "Backstage", "DevOps", "Cloud Infrastructure", "IDP", "Kubernetes"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 ---
 
 ## Pendahuluan

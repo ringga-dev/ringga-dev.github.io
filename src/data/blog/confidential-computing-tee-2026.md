@@ -5,7 +5,7 @@ date: "2026-08-26"
 author: "Ringga Septia Pribadi"
 tags: ["Cloud", "Cybersecurity", "Infrastructure", "TEE"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 ---
 
 ## Pendahuluan

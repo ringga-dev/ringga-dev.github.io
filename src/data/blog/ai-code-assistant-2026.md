@@ -5,7 +5,7 @@ date: "2026-07-03"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "Machine Learning", "Coding", "Developer Tools"]
 category: "AI & Machine Learning"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
 ---
 
 ## Pendahuluan

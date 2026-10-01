@@ -5,7 +5,7 @@ date: "2026-06-28"
 author: "Ringga Septia Pribadi"
 tags: ["Security", "Bug Bounty", "Recon", "Penetration Testing"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
 ---
 
 ## Pendahuluan

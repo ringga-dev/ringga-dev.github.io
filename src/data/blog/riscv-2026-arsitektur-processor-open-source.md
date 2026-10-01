@@ -5,7 +5,7 @@ date: "2026-09-10"
 author: "Ringga Septia Pribadi"
 tags: ["RISC-V", "Arsitektur", "Open Source", "Hardware", "IoT", "Cloud"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=80"
 ---
 
 ## Pendahuluan

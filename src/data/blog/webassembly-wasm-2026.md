@@ -5,7 +5,7 @@ date: "2026-07-07"
 author: "Ringga Septia Pribadi"
 tags: ["WebAssembly", "WASM", "Web Development", "Performance", "Rust", "Edge Computing"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
 ---
 
 ## Pendahuluan

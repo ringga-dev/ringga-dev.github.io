@@ -5,7 +5,7 @@ date: "2026-06-30"
 author: "Ringga Septia Pribadi"
 tags: ["Flutter", "Kotlin", "KMP", "Cross-Platform", "Perbandingan"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
 ---
 
 ## Pendahuluan

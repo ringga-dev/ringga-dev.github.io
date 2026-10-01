@@ -72,24 +72,79 @@ MAX_NEWS_ITEMS = 15        # maks total items di news.json
 MAX_BLOG_NEW = 6           # maks blog post baru per hari
 PAST_DAYS = 1              # hanya ambil dalam 24 jam terakhir
 
+# ── Gambar berita: sub-tema granular (dicek sebelum kategori) ────────────
+# Dipakai kalau RSS tidak menyediakan gambar sendiri (mis. Google News RSS).
+NEWS_THEME_IMAGES = [
+    (["game", "gim", "gacha", "free fire", "pubg", "valorant",
+      "esport", "kode redeem", "gameplay", "steam", "mlbb", "ff ",
+      "playstation", "xbox", "nintendo", "genshin", "honor of kings"],
+     "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"),
+    (["belanja", "tokopedia", "shopee", "lazada", "bukalapak", "blibli",
+      "jualan", "murah", "diskon", "promo", "beli", "gratis ongkir",
+      "e-commerce", "checkout", "keranjang"],
+     "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"),
+    (["viral", "trending", "heboh", "terbongkar", "kejutan", "menyala",
+      "gergeviral", "nampar", "dilukai", "salah paham"],
+     "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80"),
+    (["pembunuhan", "tewas", "bunuh", "korban", "jasad", "lambak",
+      "polisi", "tertangkap", "tersangka", "peliburan",
+      "pemerasan", "perampokan", "kekerasan", "cidik", "siksa"],
+     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"),
+    (["fifa", "sepak bola", "bola", "liga", "persib", "persija", "tim nasional",
+      "asian cup", "piala", "badminton", "tenis", "atletik", "marathon",
+      "turnamen", "kejuaraan", "sea games", "olimpiade", "formula 1"],
+     "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80"),
+    (["gempa", "banjir", "kebakaran", "bencana", "erupsi", "gunung", "merapi",
+      "krakatau", "tsunami", "tanah longsor", "angin=topan", "puting belah",
+      "meteor", "hujan ekstrem", "kekeringan"],
+     "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&q=80"),
+    (["sekolah", "universitas", "kampus", "mahasiswa", "guru", "murid",
+      "pendidikan", "beasiswa", "ujian", "kelas", "sma", "sd", "smp"],
+     "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80"),
+    (["obat", "rumah sakit", "hospital", "kesehatan", "dokter", "vaksin",
+      "penyakit", "gizi", "medis", "klinik", "imunisasi"],
+     "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"),
+    (["teknologi", "aplikasi", "gadget", "smartphone", "internet", "sinyal",
+      "startup", "chip", "laptop", "komputer", "robot", "otomotif", "mobil",
+      "motor", "pesawat", "kereta api", " whatsapp", "telegram",
+      "siber", "hp android", "ai", "kecerdasan buatan", "otomatis"],
+     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"),
+    (["rupiah", "bursa", "saham", "bank", "ekonomi", "usaha", "bisnis",
+      "investasi", "gaji", "upah", "harga", "warung", "dagang", "ekspor",
+      "impor", "pajak", "umkm", "biaya", "subsidi", "pasar"],
+     "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"),
+    (["hiburan", "musik", "film", "artis", "seleb", "drama", "konser",
+      "sinema", "layar", "kreatif", "desain", "fesyen", "baju", "kebaya"],
+     "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80"),
+    (["cafe", "resto", "restaurant", "makan", "kuliner", "food", "goreng",
+      "minum", "coffee", "hidangan", "dagel", "jajan"],
+     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"),
+    (["jalan", "transport", "terminal", "bandar", "pelabuhan", "lalu lintas",
+      "tol", "parkir", "armada", "bus", "mikrolet", "kereta"],
+     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"),
+    (["pertanian", "padi", "tani", "ikan", "peternakan", "sawit",
+      "kelapa", "panen"],
+     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80"),
+]
+
 # ── Gambar berita berdasarkan kategori (Unsplash) ─────────────────────────
 NEWS_CATEGORY_IMAGES = {
-    "Politik":   "https://images.unsplash.com/photo-154091041924-61ee2e0ecbe0?w=800&q=80",
-    "Viral":     "https://images.unsplash.com/photo-1611162628261-77db5d85da06?w=800&q=80",
-    "Kriminal":  "https://images.unsplash.com/photo-1453873180542-38603c87bafb?w=800&q=80",
-    "Ekonomi":   "https://images.unsplash.com/photo-1560473095-bd965c5e214a?w=800&q=80",
-    "Bencana":   "https://images.unsplash.com/photo-1547430901-4b75b2fbcce0?w=800&q=80",
-    "Berita":    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+    "Politik":   "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+    "Viral":     "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
+    "Kriminal":  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+    "Ekonomi":   "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
+    "Bencana":   "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&q=80",
+    "Berita":    "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80",
 }
 
 # ── Gambar blog berdasarkan kategori (Unsplash) ────────────────────────────
 TECH_CATEGORY_IMAGES = {
     "Artificial Intelligence":  "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    "Cybersecurity":            "https://images.unsplash.com/photo-1550751827-4bd374147f8f?w=800&q=80",
-    "Cloud & DevOps":          "https://images.unsplash.com/photo-1451187580459-43490279c0e6?w=800&q=80",
-    "Open Source":             "https://images.unsplash.com/photo-1526374965838-5ff589f10c0d?w=800&q=80",
-    "Mobile & Apps":           "https://images.unsplash.com/photo-1512941957619-1b47ace876e0?w=800&q=80",
-    "Teknologi Informasi":      "https://images.unsplash.com/photo-1555066931-4365d14bab6c?w=800&q=80",
+    "Cybersecurity":            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+    "Cloud & DevOps":          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    "Open Source":             "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+    "Mobile & Apps":           "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    "Teknologi Informasi":      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
 }
 
 JUNK_KEYWORDS_IN_TITLE = [
@@ -295,11 +350,25 @@ def fetch_rss(url: str) -> list[dict]:
         if not link and guid:
             link = guid
 
+        img = ""
+        enc_el = item.find("enclosure")
+        if enc_el is not None and enc_el.get("url"):
+            if "image" in enc_el.get("type", "").lower():
+                img = enc_el.get("url")
+        if not img:
+            # <media:content>/<media:thumbnail> (namespace media)
+            for child in item:
+                if child.tag.endswith("}content") or child.tag.endswith("}thumbnail"):
+                    if child.get("url"):
+                        img = child.get("url")
+                        break
+
         items.append({
             "title": title,
             "url": link,
             "description": desc,
             "pubDate": pub,
+            "image": img,
         })
 
     # Atom: entry di bawah feed (jika RSS gagal dapat item)
@@ -343,6 +412,7 @@ def fetch_rss(url: str) -> list[dict]:
                 "url": link,
                 "description": desc,
                 "pubDate": pub,
+                "image": "",
             })
 
     return items
@@ -383,6 +453,31 @@ def update_news_json(new_items: list[dict]) -> dict:
     return existing
 
 
+def pick_news_image(item: dict, title: str, category: str) -> str:
+    """Pilih gambar berita: gambar asli RSS > sub-tema keyword > kategori.
+
+    Google News RSS tidak menyertakan gambar, jadi butuh fallback tema.
+    """
+    # 1. Gambar asli dari RSS (paling relevan dengan judul)
+    rss_img = (item.get("image") or "").strip()
+    if rss_img.startswith("http"):
+        return rss_img.replace("&amp;", "&")
+
+    # 2. Sub-tema granular berdasarkan keyword di judul (word-boundary,
+    #    supaya "ai" tidak match di "capai" dan "sd" tidak match di "sdri")
+    title_lower = title.lower()
+    for keywords, img in NEWS_THEME_IMAGES:
+        for kw in keywords:
+            kw = kw.strip().lower()
+            if not kw:
+                continue
+            if re.search(rf"(?<!\w){re.escape(kw)}(?!\w)", title_lower):
+                return img
+
+    # 3. Fallback kategori
+    return NEWS_CATEGORY_IMAGES.get(category, NEWS_CATEGORY_IMAGES["Berita"])
+
+
 def build_news_item(item: dict, source_label: str, index: int) -> dict:
     """Convert RSS item ke format news.json."""
     title = trim_title(item["title"])
@@ -416,7 +511,7 @@ def build_news_item(item: dict, source_label: str, index: int) -> dict:
     elif any(kw in title_lower for kw in [
         "ekonomi", "harga", "rupiah", "bank", "bursa",
         "financial", "stock", "IHSG", "swasta", "usaha",
-        "bisnis", "investasi", "uang", "nekonняn",
+        "bisnis", "investasi", "uang", "rupiah",
     ]):
         category = "Ekonomi"
     elif any(kw in title_lower for kw in [
@@ -456,7 +551,7 @@ def build_news_item(item: dict, source_label: str, index: int) -> dict:
         "source": source_label,
         "sourceUrl": url,
         "date": date_str,
-        "image": NEWS_CATEGORY_IMAGES.get(category, NEWS_CATEGORY_IMAGES["Berita"]),
+        "image": pick_news_image(item, title, category),
         "tags": tags,
         "summary": desc[:600] if desc else title[:300],
         "keyFacts": key_facts,
@@ -504,6 +599,10 @@ def build_blog_frontmatter(item: dict, source_label: str) -> str:
     else:
         category = "Teknologi Informasi"
 
+    rss_img = (item.get("image") or "").strip().replace("&amp;", "&")
+    if not rss_img.startswith("http"):
+        rss_img = ""
+
     tags = [source_label, "RSS"]
     if any(kw in title_lower for kw in ["ai", "artificial intelligence"]):
         tags.append("AI")
@@ -521,7 +620,7 @@ def build_blog_frontmatter(item: dict, source_label: str) -> str:
         f"author: \"Ringga Septia Pribadi\"\n"
         f'tags: [{", ".join(json.dumps(t) for t in tags)}]\n'
         f"category: \"{category}\"\n"
-        f"image: \"{TECH_CATEGORY_IMAGES.get(category, TECH_CATEGORY_IMAGES['Teknologi Informasi'])}\"\n"
+        f"image: \"{rss_img or TECH_CATEGORY_IMAGES.get(category, TECH_CATEGORY_IMAGES['Teknologi Informasi'])}\"\n"
         "---\n"
     )
 

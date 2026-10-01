@@ -5,7 +5,7 @@ date: "2026-07-04"
 author: "Ringga Septia Pribadi"
 tags: ["Kotlin", "KMP", "Enterprise", "Cross-Platform"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80"
 ---
 
 ## Pendahuluan

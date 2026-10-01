@@ -5,7 +5,7 @@ date: "2026-09-25"
 author: "Ringga Septia Pribadi"
 tags: ["Teknologi", "Google News"]
 category: "Artificial Intelligence"
-image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
+image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80"
 ---
 
 

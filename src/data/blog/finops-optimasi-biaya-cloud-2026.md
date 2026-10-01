@@ -5,7 +5,7 @@ date: "2026-08-14"
 author: "Ringga Septia Pribadi"
 tags: ["FinOps", "Cloud", "Cost Optimization", "DevOps", "Infrastructure"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
 ---
 
 ## Pendahuluan
