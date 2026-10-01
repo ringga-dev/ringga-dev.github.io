@@ -4,8 +4,8 @@ description: "Perbandingan mendalam AI coding assistant terbaru — GitHub Copil
 date: "2026-07-03"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "Machine Learning", "Coding", "Developer Tools"]
-category: "AI & Machine Learning"
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
+category: "Artificial Intelligence"
+image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&q=80"
 ---
 
 ## Pendahuluan

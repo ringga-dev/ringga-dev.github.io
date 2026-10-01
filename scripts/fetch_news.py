@@ -219,15 +219,166 @@ NEWS_THEME_KEYWORDS = [
 #    berbeda dari pool tema itu, jadi tidak ada dua item berbagi satu foto.
 _theme_cursor: dict[str, int] = {}
 
-# ── Gambar blog berdasarkan kategori (Unsplash) ────────────────────────────
-TECH_CATEGORY_IMAGES = {
-    "Artificial Intelligence":  "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    "Cybersecurity":            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
-    "Cloud & DevOps":          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    "Open Source":             "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
-    "Mobile & Apps":           "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-    "Teknologi Informasi":      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+# ── Pool gambar per tema TEKNOLOGI (semua ID diverifikasi HTTP 200) ────
+# Aturan yang sama seperti berita: satu post blog = satu gambar berbeda.
+# Picking rotary per tema + fallback silang, dijamin uniqueness oleh
+# rebalance_unique_blog_images().
+TECH_IMAGE_POOL = {
+    "ai": [
+        f"{UNSPLASH_PREFIX}1677442136019-21780ecad995?w=800&q=80", f"{UNSPLASH_PREFIX}1620712943543-bcc4688e7485?w=800&q=80", f"{UNSPLASH_PREFIX}1451187580459-43490279c0fa?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1555949963-aa79dcee981c?w=800&q=80", f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80", f"{UNSPLASH_PREFIX}1593508512255-86ab42a8e620?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1507146426996-ef05306b995a?w=800&q=80", f"{UNSPLASH_PREFIX}1639762681485-074b7f938ba0?w=800&q=80", f"{UNSPLASH_PREFIX}1581091226825-a6a2a5aee158?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80", f"{UNSPLASH_PREFIX}1591453089816-0fbb971b454c?w=800&q=80", f"{UNSPLASH_PREFIX}1518770660439-4636190af475?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1485827404703-89b55fcc595e?w=800&q=80", f"{UNSPLASH_PREFIX}1531746790731-6c087fecd65a?w=800&q=80", f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1638913662180-afc4334cf422?w=800&q=80", f"{UNSPLASH_PREFIX}1635070041078-e363dbe005cb?w=800&q=80",
+    ],
+    "cloud": [
+        f"{UNSPLASH_PREFIX}1451187580459-43490279c0fa?w=800&q=80", f"{UNSPLASH_PREFIX}1558494949-ef010cbdcc31?w=800&q=80", f"{UNSPLASH_PREFIX}1667372393119-3d4c48d07fc9?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80", f"{UNSPLASH_PREFIX}1454165804606-c3d57bc86b40?w=800&q=80", f"{UNSPLASH_PREFIX}1544197150-b99a580bb7a8?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1573804633927-bfcbcd909acd?w=800&q=80", f"{UNSPLASH_PREFIX}1560472354-b33ff0c44a43?w=800&q=80", f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1531497865144-0464ef8fb9a9?w=800&q=80", f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80", f"{UNSPLASH_PREFIX}1487058792275-0ad4aaf24ca7?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1573164713988-8665fc963095?w=800&q=80", f"{UNSPLASH_PREFIX}1605379399642-870262d3d051?w=800&q=80", f"{UNSPLASH_PREFIX}1518770660439-4636190af475?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1543722530-d2c3201371e7?w=800&q=80", f"{UNSPLASH_PREFIX}1614064641938-3bbee52942c7?w=800&q=80", f"{UNSPLASH_PREFIX}1607472586893-edb57bdc0e39?w=800&q=80",
+    ],
+    "security": [
+        f"{UNSPLASH_PREFIX}1550751827-4bd374c3f58b?w=800&q=80", f"{UNSPLASH_PREFIX}1563986768609-322da13575f3?w=800&q=80", f"{UNSPLASH_PREFIX}1563013544-824ae1b704d3?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1635070041078-e363dbe005cb?w=800&q=80", f"{UNSPLASH_PREFIX}1614064641938-3bbee52942c7?w=800&q=80", f"{UNSPLASH_PREFIX}1544197150-b99a580bb7a8?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80", f"{UNSPLASH_PREFIX}1451187580459-43490279c0fa?w=800&q=80", f"{UNSPLASH_PREFIX}1667372393119-3d4c48d07fc9?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1560419015-7c427e8ae5ba?w=800&q=80", f"{UNSPLASH_PREFIX}1573164713988-8665fc963095?w=800&q=80", f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1531746790731-6c087fecd65a?w=800&q=80", f"{UNSPLASH_PREFIX}1605379399642-870262d3d051?w=800&q=80", f"{UNSPLASH_PREFIX}1543722530-d2c3201371e7?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80",
+    ],
+    "mobile": [
+        f"{UNSPLASH_PREFIX}1512941937669-90a1b58e7e9c?w=800&q=80", f"{UNSPLASH_PREFIX}1511707171634-5f897ff02aa9?w=800&q=80", f"{UNSPLASH_PREFIX}1555774698-0b77e0d5fac6?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1518709268805-4e9042af9f23?w=800&q=80", f"{UNSPLASH_PREFIX}1533228100845-08145b01de14?w=800&q=80", f"{UNSPLASH_PREFIX}1510557880182-3d4d3cba35a5?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1523206489230-c012c64b2b48?w=800&q=80", f"{UNSPLASH_PREFIX}1517336714731-489689fd1ca8?w=800&q=80", f"{UNSPLASH_PREFIX}1461749280684-dccba630e2f6?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1484417894907-623942c8ee29?w=800&q=80", f"{UNSPLASH_PREFIX}1499951360447-b19be8fe80f5?w=800&q=80", f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80", f"{UNSPLASH_PREFIX}1593508512255-86ab42a8e620?w=800&q=80", f"{UNSPLASH_PREFIX}1581091226825-a6a2a5aee158?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1573804633927-bfcbcd909acd?w=800&q=80", f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80", f"{UNSPLASH_PREFIX}1521737711867-e3b97375f902?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80", f"{UNSPLASH_PREFIX}1519389950473-47ba0277781c?w=800&q=80", f"{UNSPLASH_PREFIX}1523275335684-37898b6baf30?w=800&q=80",
+    ],
+    "web": [
+        f"{UNSPLASH_PREFIX}1555066931-4365d14bab8c?w=800&q=80", f"{UNSPLASH_PREFIX}1627398242454-45a1465c2479?w=800&q=80", f"{UNSPLASH_PREFIX}1633356122544-f134324a6cee?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1518770660439-4636190af475?w=800&q=80", f"{UNSPLASH_PREFIX}1498050108023-c5249f4df085?w=800&q=80", f"{UNSPLASH_PREFIX}1487058792275-0ad4aaf24ca7?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1484417894907-623942c8ee29?w=800&q=80", f"{UNSPLASH_PREFIX}1499951360447-b19be8fe80f5?w=800&q=80", f"{UNSPLASH_PREFIX}1467232004584-a241de8bcf5d?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80", f"{UNSPLASH_PREFIX}1521737711867-e3b97375f902?w=800&q=80", f"{UNSPLASH_PREFIX}1542838132-92c53300491e?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1552664730-d307ca884978?w=800&q=80", f"{UNSPLASH_PREFIX}1553877522-43269d4ea984?w=800&q=80", f"{UNSPLASH_PREFIX}1523474253046-8cd2748b5fd2?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80", f"{UNSPLASH_PREFIX}1504639725590-34d0984388bd?w=800&q=80", f"{UNSPLASH_PREFIX}1461749280684-dccba630e2f6?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80", f"{UNSPLASH_PREFIX}1618477388954-7852f32655ec?w=800&q=80",
+    ],
+    "opensource": [
+        f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80", f"{UNSPLASH_PREFIX}1531297484001-80022131f5a1?w=800&q=80", f"{UNSPLASH_PREFIX}1461749280684-dccba630e2f6?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1556075798-4825dfaaf498?w=800&q=80", f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80", f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1484417894907-623942c8ee29?w=800&q=80", f"{UNSPLASH_PREFIX}1517180102446-f3ece451e9d8?w=800&q=80", f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1611162617474-5b21e879e113?w=800&q=80", f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80", f"{UNSPLASH_PREFIX}1498050108023-c5249f4df085?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1467232004584-a241de8bcf5d?w=800&q=80", f"{UNSPLASH_PREFIX}1573804633927-bfcbcd909acd?w=800&q=80", f"{UNSPLASH_PREFIX}1552664730-d307ca884978?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1544197150-b99a580bb7a8?w=800&q=80", f"{UNSPLASH_PREFIX}1618477388954-7852f32655ec?w=800&q=80", f"{UNSPLASH_PREFIX}1518432031352-d6fc5c10da5a?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1581091226825-a6a2a5aee158?w=800&q=80",
+    ],
+    "data": [
+        f"{UNSPLASH_PREFIX}1551288049-bebda4e38f71?w=800&q=80", f"{UNSPLASH_PREFIX}1633356122544-f134324a6cee?w=800&q=80", f"{UNSPLASH_PREFIX}1518186285589-2f7649de83e0?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1543286386-713bdd548da4?w=800&q=80", f"{UNSPLASH_PREFIX}1454165804606-c3d57bc86b40?w=800&q=80", f"{UNSPLASH_PREFIX}1544197150-b99a580bb7a8?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1504868584819-f8e8b4b6d7e3?w=800&q=80", f"{UNSPLASH_PREFIX}1523474253046-8cd2748b5fd2?w=800&q=80", f"{UNSPLASH_PREFIX}1543722530-d2c3201371e7?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1605379399642-870262d3d051?w=800&q=80", f"{UNSPLASH_PREFIX}1519389950473-47ba0277781c?w=800&q=80", f"{UNSPLASH_PREFIX}1553877522-43269d4ea984?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80", f"{UNSPLASH_PREFIX}1618477388954-7852f32655ec?w=800&q=80", f"{UNSPLASH_PREFIX}1573164713988-8665fc963095?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1552664730-d307ca884978?w=800&q=80", f"{UNSPLASH_PREFIX}1518432031352-d6fc5c10da5a?w=800&q=80", f"{UNSPLASH_PREFIX}1531297484001-80022131f5a1?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1460925895917-afdab827c52f?w=800&q=80", f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80",
+    ],
+    "iot": [
+        f"{UNSPLASH_PREFIX}1518770660439-4636190af475?w=800&q=80", f"{UNSPLASH_PREFIX}1581091226825-a6a2a5aee158?w=800&q=80", f"{UNSPLASH_PREFIX}1516116216624-53e697fedbea?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1544197150-b99a580bb7a8?w=800&q=80", f"{UNSPLASH_PREFIX}1531297484001-80022131f5a1?w=800&q=80", f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1519389950473-47ba0277781c?w=800&q=80", f"{UNSPLASH_PREFIX}1558494949-ef010cbdcc31?w=800&q=80", f"{UNSPLASH_PREFIX}1573164713988-8665fc963095?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1552664730-d307ca884978?w=800&q=80", f"{UNSPLASH_PREFIX}1605379399642-870262d3d051?w=800&q=80", f"{UNSPLASH_PREFIX}1526628953301-3e589a6a8b74?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1531746790731-6c087fecd65a?w=800&q=80", f"{UNSPLASH_PREFIX}1620712943543-bcc4688e7485?w=800&q=80", f"{UNSPLASH_PREFIX}1451187580459-43490279c0fa?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1593508512255-86ab42a8e620?w=800&q=80", f"{UNSPLASH_PREFIX}1485827404703-89b55fcc595e?w=800&q=80", f"{UNSPLASH_PREFIX}1553877522-43269d4ea984?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1607799279861-4dd421887fb3?w=800&q=80", f"{UNSPLASH_PREFIX}1523275335684-37898b6baf30?w=800&q=80", f"{UNSPLASH_PREFIX}1498049794561-7780e7231661?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1550009158-9ebf69173e03?w=800&q=80",
+    ],
+    "umum": [
+        f"{UNSPLASH_PREFIX}1497366216548-37526070297c?w=800&q=80", f"{UNSPLASH_PREFIX}1521737711867-e3b97375f902?w=800&q=80", f"{UNSPLASH_PREFIX}1454165804606-c3d57bc86b40?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1519389950473-47ba0277781c?w=800&q=80", f"{UNSPLASH_PREFIX}1495020689067-958852a7765e?w=800&q=80", f"{UNSPLASH_PREFIX}1504711434969-e33886168f5c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1497215728101-856f4ea42174?w=800&q=80", f"{UNSPLASH_PREFIX}1524758631624-e2822e304c36?w=800&q=80", f"{UNSPLASH_PREFIX}1497366754035-f200968a6e72?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1517245386807-bb43f82c33c4?w=800&q=80", f"{UNSPLASH_PREFIX}1541746972996-4e0b0f43e02a?w=800&q=80", f"{UNSPLASH_PREFIX}1531973576160-7125cd663d86?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1560472354-b33ff0c44a43?w=800&q=80", f"{UNSPLASH_PREFIX}1486406146926-c627a92ad1ab?w=800&q=80", f"{UNSPLASH_PREFIX}1522071820081-009f0129c71c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1600607687939-ce8a6c25118c?w=800&q=80", f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80", f"{UNSPLASH_PREFIX}1521737604893-d14cc237f11d?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1522202176988-66273c2fd55f?w=800&q=80", f"{UNSPLASH_PREFIX}1600880292203-757bb62b4baf?w=800&q=80", f"{UNSPLASH_PREFIX}1556761175-b413da4baf72?w=800&q=80",
+    ],
 }
+
+TECH_IMAGE_POOL["default"] = TECH_IMAGE_POOL["umum"]
+
+# ── Nama kategori blog (lama & baru) -> nama pool tema ────────────────────
+# Kategori lama ("AI & ML", "AI & Machine Learning", "Artificial Intelligence")
+# dinormalkan ke satu tema supaya tidak ada 3 nama untuk 1 hal.
+TECH_CATEGORY_THEME = {
+    "ai": "ai",
+    "ai & ml": "ai",
+    "ai & machine learning": "ai",
+    "artificial intelligence": "ai",
+    "machine learning": "ai",
+    "cloud": "cloud",
+    "cloud & infrastructure": "cloud",
+    "cloud & devops": "cloud",
+    "infrastructure": "cloud",
+    "devops": "cloud",
+    "cybersecurity": "security",
+    "security": "security",
+    "keamanan siber": "security",
+    "mobile": "mobile",
+    "mobile engineering": "mobile",
+    "mobile & apps": "mobile",
+    "android": "mobile",
+    "ios": "mobile",
+    "web": "web",
+    "web development": "web",
+    "frontend": "web",
+    "open source": "opensource",
+    "opensource": "opensource",
+    "data": "data",
+    "data engineering": "data",
+    "database": "data",
+    "backend": "data",
+    "iot": "iot",
+    "embedded": "iot",
+    "edge": "iot",
+}
+
+# ── Keyword -> nama pool tema, dipakai kalau kategori tidak dikenali ───────
+TECH_THEME_KEYWORDS = [
+    ("ai", ["ai", "artificial intelligence", "machine learning", "llm", "gpt",
+            "neural", "deep learning", "chatbot", "agent", "model", "training",
+            "inference", "transformer", "diffusion", "prompt", "openai",
+            "anthropic", "gemini", "claude", "llama"]),
+    ("security", ["cyber", "security", "keamanan", "serangan", "hack",
+                  "malware", "ransomware", "threat", "vulnerability", "exploit",
+                  "bug bounty", "forensic", "siber", "zero trust", "passkey",
+                  "passkeys", "auth", "enkripsi", "kriptografi"]),
+    ("cloud", ["cloud", "devops", "server", "aws", "azure", "gcp", "docker",
+               "kubernetes", "microservice", "container", "terraform",
+               "serverless", "s3", "lambda", "sre", "cluster", "infrastruktur",
+               "on-premise", "hosting"]),
+    ("mobile", ["android", "ios", "mobile", "smartphone", "app", "aplikasi",
+                "play store", "app store", "flutter", "kotlin", "swift",
+                "jetpack", "compose", "react native", "xr", "watch"]),
+    ("web", ["web", "browser", "css", "html", "javascript", "typescript",
+             "vue", "nuxt", "react", "svelte", "frontend", "wasm", "webassembly",
+             "webgpu", "sveltekit", "nextjs", "tailwind", "dom"]),
+    ("opensource", ["open source", "opensource", "github", "gitlab", "repo",
+                    "library", "framework", "apache", "linux", "bsd", "gnu",
+                    "contributor", "pull request", "backstage", "spi"]),
+    ("data", ["data", "database", "sql", "postgresql", "postgres", "mysql",
+              "mongodb", "redis", "kafka", "pipeline", "etl", "big data",
+              "analytics", "olap", "schema", "query", "storage"]),
+    ("iot", ["iot", "embedded", "edge computing", "edge ai", "sensor",
+             "raspberry", "arduino", "firmware", "telemetri", "perangkat",
+             "wearable", "robotika", "robot"]),
+]
+
+# Cursor rotary per tema + pencatat gambar yang sudah dipakai di run ini.
+_tech_cursor: dict[str, int] = {}
+_tech_assigned: set[str] = set()
+
+
 
 JUNK_KEYWORDS_IN_TITLE = [
     "lowongan kerja", "lowongan", "universitas", "kampus",
@@ -720,6 +871,104 @@ def build_news_item(item: dict, source_label: str, index: int) -> dict:
 
 # ─── Blog Markdown ─────────────────────────────────────────────────────────
 
+def _tech_theme_for(category: str, title: str) -> str:
+    """Tentukan pool tema dari kategori frontmatter, lalu keyword judul."""
+    cat = (category or "").strip().lower()
+    if cat in TECH_CATEGORY_THEME:
+        return TECH_CATEGORY_THEME[cat]
+
+    title_lower = (title or "").lower()
+    for theme, keywords in TECH_THEME_KEYWORDS:
+        for kw in keywords:
+            kw = kw.strip().lower()
+            if kw and re.search(rf"(?<!\w){re.escape(kw)}(?!\w)", title_lower):
+                return theme
+    return "default"
+
+
+def _blog_images_in_use(exclude_slug: str = "") -> set[str]:
+    """Gambar yang dipakai post blog lain (dari frontmatter file)."""
+    used: set[str] = set()
+    for f in BLOG_DIR.glob("*.md"):
+        if exclude_slug and f.stem == exclude_slug:
+            continue
+        try:
+            head = f.read_text(encoding="utf-8")[:1200]
+        except Exception:
+            continue
+        mm = re.search(r'^image:\s*"(.*?)"', head, re.M)
+        if mm:
+            used.add(mm.group(1))
+    return used
+
+
+def pick_blog_image(item: dict, category: str, title: str, slug: str) -> str:
+    """Pilih gambar blog: RSS asli > pool rotary per tema > fallback silang."""
+    rss_img = (item.get("image") or "").strip()
+    if rss_img.startswith("http"):
+        return rss_img.replace("&amp;", "&")
+
+    theme = _tech_theme_for(category, title)
+    pool = TECH_IMAGE_POOL.get(theme) or TECH_IMAGE_POOL["default"]
+    used = _blog_images_in_use() | _tech_assigned
+
+    for step in range(len(pool) * 2):
+        idx = (_tech_cursor.get(theme, 0) + step) % len(pool)
+        url = pool[idx]
+        if url not in used:
+            _tech_cursor[theme] = idx + 1
+            _tech_assigned.add(url)
+            return url
+
+    for name, plist in TECH_IMAGE_POOL.items():
+        for url in plist:
+            if url not in used:
+                _tech_assigned.add(url)
+                return url
+
+    return pool[_tech_cursor.get(theme, 0) % len(pool)]
+
+
+def rebalance_unique_blog_images() -> int:
+    """Jaminan: tiap post blog punya gambar BERBEDA. Kembalikan jumlah yang diubah."""
+    posts = sorted(BLOG_DIR.glob("*.md"))
+    seen: set[str] = set()
+    changed = 0
+
+    for f in posts:
+        try:
+            txt = f.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        m_img = re.search(r'^image:\s*"(.*?)"', txt, re.M)
+        m_cat = re.search(r'^category:\s*"(.*?)"', txt, re.M)
+        m_ttl = re.search(r'^title:\s*"(.*?)"', txt, re.M)
+        if not m_img:
+            continue
+
+        img = m_img.group(1)
+        if img and img not in seen:
+            seen.add(img)
+            continue
+
+        theme = _tech_theme_for(m_cat.group(1) if m_cat else "",
+                                m_ttl.group(1) if m_ttl else "")
+        pool = TECH_IMAGE_POOL.get(theme) or TECH_IMAGE_POOL["default"]
+        repl = next((u for u in pool if u not in seen), None)
+        if repl is None:
+            for name, plist in TECH_IMAGE_POOL.items():
+                repl = next((u for u in plist if u not in seen), None)
+                if repl:
+                    break
+        if repl:
+            txt = txt[:m_img.start()] + f'image: "{repl}"' + txt[m_img.end():]
+            f.write_text(txt, encoding="utf-8")
+            seen.add(repl)
+            changed += 1
+
+    return changed
+
+
 def build_blog_frontmatter(item: dict, source_label: str) -> str:
     """Build YAML frontmatter untuk blog post teknologi."""
     title = trim_title(item["title"])
@@ -759,9 +1008,7 @@ def build_blog_frontmatter(item: dict, source_label: str) -> str:
     else:
         category = "Teknologi Informasi"
 
-    rss_img = (item.get("image") or "").strip().replace("&amp;", "&")
-    if not rss_img.startswith("http"):
-        rss_img = ""
+    blog_image = pick_blog_image(item, category, title, slug)
 
     tags = [source_label, "RSS"]
     if any(kw in title_lower for kw in ["ai", "artificial intelligence"]):
@@ -780,7 +1027,7 @@ def build_blog_frontmatter(item: dict, source_label: str) -> str:
         f"author: \"Ringga Septia Pribadi\"\n"
         f'tags: [{", ".join(json.dumps(t) for t in tags)}]\n'
         f"category: \"{category}\"\n"
-        f"image: \"{rss_img or TECH_CATEGORY_IMAGES.get(category, TECH_CATEGORY_IMAGES['Teknologi Informasi'])}\"\n"
+        f"image: \"{blog_image}\"\n"
         "---\n"
     )
 
@@ -851,6 +1098,11 @@ def write_new_blog_posts(new_items: list[dict]) -> int:
         written += 1
         print(f"  [blog] Created: {filename}")
 
+    if written:
+        fixed = rebalance_unique_blog_images()
+        if fixed:
+            print(f"  [blog] {fixed} post diberi gambar unik baru")
+
     return written
 
 
@@ -860,6 +1112,8 @@ def main() -> None:
     # reset cache gambar supaya tiap run menghasilkan rotasi baru
     _theme_cursor.clear()
     _assigned_this_run.clear()
+    _tech_cursor.clear()
+    _tech_assigned.clear()
 
     print(f"[*] RSS News Fetcher — {utc_now().strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"[*] Repo root: {REPO_ROOT}")

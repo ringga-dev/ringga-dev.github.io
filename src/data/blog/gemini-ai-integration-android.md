@@ -4,8 +4,8 @@ description: "Tutorial step-by-step mengintegrasikan Gemini AI API ke aplikasi A
 date: "2026-06-22"
 author: "Ringga Septia Pribadi"
 tags: ["Gemini", "AI", "Android", "Kotlin", "Ktor"]
-category: "AI & Machine Learning"
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
+category: "Artificial Intelligence"
+image: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=800&q=80"
 ---
 
 ## Pendahuluan

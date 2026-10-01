@@ -5,7 +5,7 @@ date: "2026-07-16"
 author: "Ringga Septia Pribadi"
 tags: ["Android", "Android 17", "Kotlin", "Mobile Development", "AI"]
 category: "Mobile Engineering"
-image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&q=80"
+image: "https://images.unsplash.com/photo-1533228100845-08145b01de14?w=800&q=80"
 ---
 
 ## Pendahuluan

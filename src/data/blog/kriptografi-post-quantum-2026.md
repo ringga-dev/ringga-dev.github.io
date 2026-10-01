@@ -5,7 +5,7 @@ date: "2026-07-19"
 author: "Ringga Septia Pribadi"
 tags: ["Cryptography", "Quantum Computing", "Cybersecurity", "Encryption", "Post-Quantum", "Security"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
+image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=800&q=80"
 ---
 
 ## Pendahuluan

@@ -5,7 +5,7 @@ date: "2026-08-28"
 author: "Ringga Septia Pribadi"
 tags: ["PostgreSQL", "Database", "Cloud", "AI", "Backend"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80"
+image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&q=80"
 ---
 
 ## Pendahuluan

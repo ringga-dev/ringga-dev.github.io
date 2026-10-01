@@ -5,7 +5,7 @@ date: "2026-07-02"
 author: "Ringga Septia Pribadi"
 tags: ["Nuxt", "Vue", "Web Development", "Frontend"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80"
+image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80"
 ---
 
 ## Pendahuluan

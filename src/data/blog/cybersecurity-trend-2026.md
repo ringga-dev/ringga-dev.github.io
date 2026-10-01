@@ -5,7 +5,7 @@ date: "2026-07-05"
 author: "Ringga Septia Pribadi"
 tags: ["Cybersecurity", "AI Security", "Quantum", "Penetration Testing"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
 ---
 
 ## Pendahuluan

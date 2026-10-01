@@ -4,8 +4,8 @@ description: "SMKN 13 Bandung Empat Tahun Beruntun Wakili Jabar di LKS Nasional 
 date: "2026-07-28"
 author: "Ringga Septia Pribadi"
 tags: ["DevOps", "RSS"]
-category: "Cloud & DevOps"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+category: "Cloud & Infrastructure"
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
 ---
 
 

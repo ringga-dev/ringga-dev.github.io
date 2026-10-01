@@ -5,7 +5,7 @@ date: "2026-07-11"
 author: "Ringga Septia Pribadi"
 tags: ["Kotlin", "KMP", "Android", "iOS", "ESC/POS", "Thermal Printer", "Bluetooth", "Library", "Open Source"]
 category: "Development"
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
+image: "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=800&q=80"
 reading_time: "10 min read"
 github: "https://github.com/ringga-dev/kmp-printer"
 ---

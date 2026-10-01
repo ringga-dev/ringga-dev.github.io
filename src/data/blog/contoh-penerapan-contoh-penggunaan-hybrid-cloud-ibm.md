@@ -4,8 +4,8 @@ description: "Contoh, Penerapan & Contoh Penggunaan Hybrid Cloud IBM"
 date: "2024-10-15"
 author: "Ringga Septia Pribadi"
 tags: ["DevOps", "RSS"]
-category: "Cloud & DevOps"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+category: "Cloud & Infrastructure"
+image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80"
 ---
 
 

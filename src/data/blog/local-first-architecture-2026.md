@@ -5,7 +5,7 @@ date: "2026-08-06"
 author: "Ringga Septia Pribadi"
 tags: ["Local-First", "Web Development", "CRDT", "Offline-First", "Sync"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
+image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
 ---
 
 ## Pendahuluan

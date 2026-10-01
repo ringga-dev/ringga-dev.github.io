@@ -5,7 +5,7 @@ date: "2026-07-10"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "OpenRouter", "AI Gateway", "Automation", "DevOps"]
 category: "Technology"
-image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+image: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=800&q=80"
 reading_time: "10 min read"
 ---
 

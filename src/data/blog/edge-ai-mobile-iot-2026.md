@@ -4,8 +4,8 @@ description: "Eksplorasi mendalam tentang Edge AI — bagaimana model kecerdasan
 date: "2026-07-31"
 author: "Ringga Septia Pribadi"
 tags: ["Edge AI", "Mobile", "IoT", "Machine Learning", "Android", "On-Device AI", "TensorFlow Lite", "ML Kit"]
-category: "AI & Machine Learning"
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
+category: "Artificial Intelligence"
+image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
 ---
 
 ## Pendahuluan

@@ -4,8 +4,8 @@ description: "Google dan Kominfo luncurkan pelatihan gratis untuk berkarir di Cl
 date: "2024-08-20"
 author: "Ringga Septia Pribadi"
 tags: ["DevOps", "RSS"]
-category: "Cloud & DevOps"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+category: "Cloud & Infrastructure"
+image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80"
 ---
 
 

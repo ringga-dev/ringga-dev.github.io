@@ -4,8 +4,8 @@ description: "MCP menjadi protokol standar yang menghubungkan AI agents dengan t
 date: "2026-07-22"
 author: "Ringga Septia Pribadi"
 tags: ["MCP", "Model Context Protocol", "AI", "LLM", "Tools", "Integration", "Open Source"]
-category: "AI & ML"
-image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+category: "Artificial Intelligence"
+image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80"
 reading_time: "10 min read"
 ---
 

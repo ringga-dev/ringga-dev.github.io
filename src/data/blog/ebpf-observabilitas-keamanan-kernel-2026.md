@@ -5,7 +5,7 @@ date: "2026-08-16"
 author: "Ringga Septia Pribadi"
 tags: ["eBPF", "Cloud Native", "Kubernetes", "Observability", "Cybersecurity"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop"
+image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
 ---
 
 ## Pendahuluan

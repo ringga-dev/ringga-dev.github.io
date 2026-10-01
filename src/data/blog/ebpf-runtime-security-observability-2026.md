@@ -5,7 +5,7 @@ date: "2026-09-07"
 author: "Ringga Septia Pribadi"
 tags: ["eBPF", "Security", "Cloud", "Observability", "Linux"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80"
+image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=800&q=80"
 ---
 
 ## Awal Mula: Dari Observabilitas ke Keamanan

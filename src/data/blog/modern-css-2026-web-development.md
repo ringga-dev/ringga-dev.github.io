@@ -5,7 +5,7 @@ date: "2026-08-19"
 author: "Ringga Septia Pribadi"
 tags: ["CSS", "Web Development", "Frontend", "Container Queries", "Responsive Design"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
+image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80"
 ---
 
 ## Pendahuluan

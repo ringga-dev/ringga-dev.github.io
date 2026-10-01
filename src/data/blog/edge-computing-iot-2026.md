@@ -5,7 +5,7 @@ date: "2026-07-01"
 author: "Ringga Septia Pribadi"
 tags: ["Edge Computing", "IoT", "Cloud", "5G", "Infrastructure"]
 category: "Cloud & Infrastructure"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+image: "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=800&q=80"
 ---
 
 ## Pendahuluan

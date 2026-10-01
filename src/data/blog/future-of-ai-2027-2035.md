@@ -5,7 +5,7 @@ date: "2026-07-11"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "Future Technology", "AGI", "Machine Learning", "Prediction"]
 category: "Technology"
-image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80"
+image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80"
 reading_time: "11 min read"
 ---
 

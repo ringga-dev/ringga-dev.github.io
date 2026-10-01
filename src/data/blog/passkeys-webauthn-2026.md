@@ -5,7 +5,7 @@ date: "2026-08-14"
 author: "Ringga Septia Pribadi"
 tags: ["Passkeys", "WebAuthn", "FIDO2", "Cybersecurity", "Web Development"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
+image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
 ---
 
 ## Pendahuluan
