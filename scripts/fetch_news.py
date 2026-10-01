@@ -72,70 +72,152 @@ MAX_NEWS_ITEMS = 15        # maks total items di news.json
 MAX_BLOG_NEW = 6           # maks blog post baru per hari
 PAST_DAYS = 1              # hanya ambil dalam 24 jam terakhir
 
-# ── Gambar berita: sub-tema granular (dicek sebelum kategori) ────────────
-# Dipakai kalau RSS tidak menyediakan gambar sendiri (mis. Google News RSS).
-NEWS_THEME_IMAGES = [
-    (["game", "gim", "gacha", "free fire", "pubg", "valorant",
-      "esport", "kode redeem", "gameplay", "steam", "mlbb", "ff ",
-      "playstation", "xbox", "nintendo", "genshin", "honor of kings"],
-     "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80"),
-    (["belanja", "tokopedia", "shopee", "lazada", "bukalapak", "blibli",
-      "jualan", "murah", "diskon", "promo", "beli", "gratis ongkir",
-      "e-commerce", "checkout", "keranjang"],
-     "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"),
-    (["viral", "trending", "heboh", "terbongkar", "kejutan", "menyala",
-      "gergeviral", "nampar", "dilukai", "salah paham"],
-     "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80"),
-    (["pembunuhan", "tewas", "bunuh", "korban", "jasad", "lambak",
-      "polisi", "tertangkap", "tersangka", "peliburan",
-      "pemerasan", "perampokan", "kekerasan", "cidik", "siksa"],
-     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"),
-    (["fifa", "sepak bola", "bola", "liga", "persib", "persija", "tim nasional",
-      "asian cup", "piala", "badminton", "tenis", "atletik", "marathon",
-      "turnamen", "kejuaraan", "sea games", "olimpiade", "formula 1"],
-     "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80"),
-    (["gempa", "banjir", "kebakaran", "bencana", "erupsi", "gunung", "merapi",
-      "krakatau", "tsunami", "tanah longsor", "angin=topan", "puting belah",
-      "meteor", "hujan ekstrem", "kekeringan"],
-     "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&q=80"),
-    (["sekolah", "universitas", "kampus", "mahasiswa", "guru", "murid",
-      "pendidikan", "beasiswa", "ujian", "kelas", "sma", "sd", "smp"],
-     "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80"),
-    (["obat", "rumah sakit", "hospital", "kesehatan", "dokter", "vaksin",
-      "penyakit", "gizi", "medis", "klinik", "imunisasi"],
-     "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"),
-    (["teknologi", "aplikasi", "gadget", "smartphone", "internet", "sinyal",
-      "startup", "chip", "laptop", "komputer", "robot", "otomotif", "mobil",
-      "motor", "pesawat", "kereta api", " whatsapp", "telegram",
-      "siber", "hp android", "ai", "kecerdasan buatan", "otomatis"],
-     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"),
-    (["rupiah", "bursa", "saham", "bank", "ekonomi", "usaha", "bisnis",
-      "investasi", "gaji", "upah", "harga", "warung", "dagang", "ekspor",
-      "impor", "pajak", "umkm", "biaya", "subsidi", "pasar"],
-     "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"),
-    (["hiburan", "musik", "film", "artis", "seleb", "drama", "konser",
-      "sinema", "layar", "kreatif", "desain", "fesyen", "baju", "kebaya"],
-     "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80"),
-    (["cafe", "resto", "restaurant", "makan", "kuliner", "food", "goreng",
-      "minum", "coffee", "hidangan", "dagel", "jajan"],
-     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"),
-    (["jalan", "transport", "terminal", "bandar", "pelabuhan", "lalu lintas",
-      "tol", "parkir", "armada", "bus", "mikrolet", "kereta"],
-     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"),
-    (["pertanian", "padi", "tani", "ikan", "peternakan", "sawit",
-      "kelapa", "panen"],
-     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80"),
+# ── Pool gambar per tema (semua ID diverifikasi HTTP 200) ───────────────
+# Syarat: satu item berita harus punya gambar BERBEDA dari item lain.
+# Picking memakai index Rotary per tema + fallback silang antar tema
+# supaya tetap unik walau banyak beritabertema sama.
+UNSPLASH_PREFIX = "https://images.unsplash.com/photo-"
+
+NEWS_IMAGE_POOL = {
+    "game": [
+        f"{UNSPLASH_PREFIX}1542751371-adc38448a05e?w=800&q=80", f"{UNSPLASH_PREFIX}1511512578047-dfb367046420?w=800&q=80", f"{UNSPLASH_PREFIX}1493711662062-fa541adb3fc8?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1550745165-9bc0b252726f?w=800&q=80", f"{UNSPLASH_PREFIX}1600080972464-8e5f35f63d08?w=800&q=80", f"{UNSPLASH_PREFIX}1598550476439-6847785fcea6?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1612287230202-1ff1d85d1bdf?w=800&q=80", f"{UNSPLASH_PREFIX}1538481199705-c710c4e965fc?w=800&q=80", f"{UNSPLASH_PREFIX}1547394765-185e1e68f34e?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1560419015-7c427e8ae5ba?w=800&q=80",
+    ],
+    "ecommerce": [
+        f"{UNSPLASH_PREFIX}1556742049-0cfed4f6a45d?w=800&q=80", f"{UNSPLASH_PREFIX}1556742044-3c52d6e88c62?w=800&q=80", f"{UNSPLASH_PREFIX}1563013544-824ae1b704d3?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1523205771623-e0faa4d2813d?w=800&q=80", f"{UNSPLASH_PREFIX}1607083206869-4c7672e72a8a?w=800&q=80", f"{UNSPLASH_PREFIX}1441986300917-64674bd600d8?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1472851294608-062f824d29cc?w=800&q=80", f"{UNSPLASH_PREFIX}1519996529931-28324d5a630e?w=800&q=80",
+    ],
+    "viral": [
+        f"{UNSPLASH_PREFIX}1513151233558-d860c5398176?w=800&q=80", f"{UNSPLASH_PREFIX}1522075469751-3a6694fb2f61?w=800&q=80", f"{UNSPLASH_PREFIX}1516467508483-a7212febe31a?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1517245386807-bb43f82c33c4?w=800&q=80", f"{UNSPLASH_PREFIX}1495020689067-958852a7765e?w=800&q=80", f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1517841905240-472988babdf9?w=800&q=80", f"{UNSPLASH_PREFIX}1522071820081-009f0129c71c?w=800&q=80",
+    ],
+    "kriminal": [
+        f"{UNSPLASH_PREFIX}1450101499163-c8848c66ca85?w=800&q=80", f"{UNSPLASH_PREFIX}1589829545856-d10d557cf95f?w=800&q=80", f"{UNSPLASH_PREFIX}1589578527966-fdac0f44566c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1568454537842-d933259bb258?w=800&q=80", f"{UNSPLASH_PREFIX}1505664194779-8beaceb93744?w=800&q=80", f"{UNSPLASH_PREFIX}1519681393784-d120267933ba?w=800&q=80",
+    ],
+    "olahraga": [
+        f"{UNSPLASH_PREFIX}1579952363873-27f3bade9f55?w=800&q=80", f"{UNSPLASH_PREFIX}1461896836934-ffe607ba8211?w=800&q=80", f"{UNSPLASH_PREFIX}1574629810360-7efbbe195018?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1531415074968-036ba1b575da?w=800&q=80", f"{UNSPLASH_PREFIX}1546519638-68e109498ffc?w=800&q=80", f"{UNSPLASH_PREFIX}1519861531473-9200262188bf?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1517649763962-0c623066013b?w=800&q=80", f"{UNSPLASH_PREFIX}1526232761682-d26e03ac148e?w=800&q=80", f"{UNSPLASH_PREFIX}1553778263-73a83bab9b0c?w=800&q=80",
+    ],
+    "bencana": [
+        f"{UNSPLASH_PREFIX}1547683905-f686c993aae5?w=800&q=80", f"{UNSPLASH_PREFIX}1611273426858-450d8e3c9fce?w=800&q=80", f"{UNSPLASH_PREFIX}1473445361085-b9a07f55608b?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1500534314209-a25ddb2bd429?w=800&q=80", f"{UNSPLASH_PREFIX}1534274988757-a28bf1a57c17?w=800&q=80", f"{UNSPLASH_PREFIX}1621451537084-482c73073a0f?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1519681393784-d120267933ba?w=800&q=80",
+    ],
+    "pendidikan": [
+        f"{UNSPLASH_PREFIX}1509062522246-3755977927d7?w=800&q=80", f"{UNSPLASH_PREFIX}1497633762265-9d179a990aa6?w=800&q=80", f"{UNSPLASH_PREFIX}1503676260728-1c00da094a0b?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1546410531-bb4caa6b424d?w=800&q=80", f"{UNSPLASH_PREFIX}1571260899304-425eee4c7efc?w=800&q=80", f"{UNSPLASH_PREFIX}1588072432836-e10032774350?w=800&q=80",
+    ],
+    "kesehatan": [
+        f"{UNSPLASH_PREFIX}1576091160399-112ba8d25d1d?w=800&q=80", f"{UNSPLASH_PREFIX}1516841273335-e39b37888115?w=800&q=80", f"{UNSPLASH_PREFIX}1631217868264-e5b90bb7e133?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1584982751601-97dcc096659c?w=800&q=80", f"{UNSPLASH_PREFIX}1505751172876-fa1923c5c528?w=800&q=80", f"{UNSPLASH_PREFIX}1579684385127-1ef15d508118?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1538108149393-fbbd81895907?w=800&q=80", f"{UNSPLASH_PREFIX}1559757175-0eb30cd8c063?w=800&q=80",
+    ],
+    "teknologi": [
+        f"{UNSPLASH_PREFIX}1518770660439-4636190af475?w=800&q=80", f"{UNSPLASH_PREFIX}1550751827-4bd374c3f58b?w=800&q=80", f"{UNSPLASH_PREFIX}1555066931-4365d14bab8c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1526374965328-7f61d4dc18c5?w=800&q=80", f"{UNSPLASH_PREFIX}1558494949-ef010cbdcc31?w=800&q=80", f"{UNSPLASH_PREFIX}1555949963-aa79dcee981c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1531297484001-80022131f5a1?w=800&q=80", f"{UNSPLASH_PREFIX}1512941937669-90a1b58e7e9c?w=800&q=80", f"{UNSPLASH_PREFIX}1487058792275-0ad4aaf24ca7?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1461749280684-dccba630e2f6?w=800&q=80", f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80", f"{UNSPLASH_PREFIX}1451187580459-43490279c0fa?w=800&q=80",
+    ],
+    "ekonomi": [
+        f"{UNSPLASH_PREFIX}1611974789855-9c2a0a7236a3?w=800&q=80", f"{UNSPLASH_PREFIX}1590283603385-17ffb3a7f29f?w=800&q=80", f"{UNSPLASH_PREFIX}1526304640581-d334cdbbf45e?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1579621970563-ebec7560ff3e?w=800&q=80", f"{UNSPLASH_PREFIX}1559526324-4b87b5e36e44?w=800&q=80", f"{UNSPLASH_PREFIX}1541354329998-f4d9a9f9297f?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1618044733300-9472054094ee?w=800&q=80",
+    ],
+    "hiburan": [
+        f"{UNSPLASH_PREFIX}1485846234645-a62644f84728?w=800&q=80", f"{UNSPLASH_PREFIX}1492684223066-81342ee5ff30?w=800&q=80", f"{UNSPLASH_PREFIX}1470225620780-dba8ba36b745?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1516450360452-9312f5e86fc7?w=800&q=80", f"{UNSPLASH_PREFIX}1459749411175-04bf5292ceea?w=800&q=80", f"{UNSPLASH_PREFIX}1493225457124-a3eb161ffa5f?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1506157786151-b8491531f063?w=800&q=80", f"{UNSPLASH_PREFIX}1514525253161-7a46d19cd819?w=800&q=80",
+    ],
+    "kuliner": [
+        f"{UNSPLASH_PREFIX}1414235077428-338989a2e8c0?w=800&q=80", f"{UNSPLASH_PREFIX}1504674900247-0877df9cc836?w=800&q=80", f"{UNSPLASH_PREFIX}1467003909585-2f8a72700288?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1546069901-ba9599a7e63c?w=800&q=80", f"{UNSPLASH_PREFIX}1551782450-a2132b4ba21d?w=800&q=80", f"{UNSPLASH_PREFIX}1555939594-58d7cb561ad1?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1482049016688-2d3e1b311543?w=800&q=80", f"{UNSPLASH_PREFIX}1565299624946-b28f40a0ae38?w=800&q=80",
+    ],
+    "transportasi": [
+        f"{UNSPLASH_PREFIX}1544620347-c4fd4a3d5957?w=800&q=80", f"{UNSPLASH_PREFIX}1494412685616-a5d310fbb07d?w=800&q=80", f"{UNSPLASH_PREFIX}1473445361085-b9a07f55608b?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1513828583688-c52646db42da?w=800&q=80", f"{UNSPLASH_PREFIX}1541888946425-d81bb19240f5?w=800&q=80", f"{UNSPLASH_PREFIX}1502920917128-1aa500764cbd?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1533473359331-0135ef1b58bf?w=800&q=80",
+    ],
+    "pertanian": [
+        f"{UNSPLASH_PREFIX}1500382017468-9049fed747ef?w=800&q=80", f"{UNSPLASH_PREFIX}1625246333195-78d9c38ad449?w=800&q=80", f"{UNSPLASH_PREFIX}1464226184884-fa280b87c399?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1495107334309-fcf20504a5ab?w=800&q=80", f"{UNSPLASH_PREFIX}1523741543316-beb7fc7023d8?w=800&q=80", f"{UNSPLASH_PREFIX}1471193945509-9ad0617afabf?w=800&q=80",
+    ],
+    "umum": [
+        f"{UNSPLASH_PREFIX}1495020689067-958852a7765e?w=800&q=80", f"{UNSPLASH_PREFIX}1504711434969-e33886168f5c?w=800&q=80", f"{UNSPLASH_PREFIX}1485846234645-a62644f84728?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1497366216548-37526070297c?w=800&q=80", f"{UNSPLASH_PREFIX}1521737711867-e3b97375f902?w=800&q=80", f"{UNSPLASH_PREFIX}1522071820081-009f0129c71c?w=800&q=80",
+        f"{UNSPLASH_PREFIX}1504384308090-c894fdcc538d?w=800&q=80", f"{UNSPLASH_PREFIX}1454165804606-c3d57bc86b40?w=800&q=80",
+    ],
+}
+NEWS_IMAGE_POOL["default"] = NEWS_IMAGE_POOL["umum"]
+NEWS_IMAGE_POOL.setdefault("politik", NEWS_IMAGE_POOL["umum"])
+
+# Kategori berita -> pool tema, untuk judul yang tidak kena keyword tema.
+CATEGORY_THEME_MAP = {
+    "Politik": "politik",
+    "Viral": "viral",
+    "Kriminal": "kriminal",
+    "Ekonomi": "ekonomi",
+    "Bencana": "bencana",
+    "Berita": "umum",
+}
+
+# ── Keyword → nama pool gambar (dicek berurutan; yang pertama cocok) ─────
+NEWS_THEME_KEYWORDS = [
+    ("game", ["game", "gim", "gacha", "mlbb", "free fire", "pubg", "valorant",
+              "esport", "kode redeem", "gameplay", "steam", "playstation",
+              "xbox", "nintendo", "genshin", "honor of kings", "mobile legends"]),
+    ("ecommerce", ["belanja", "tokopedia", "shopee", "lazada", "bukalapak",
+                   "blibli", "jualan", "murah", "diskon", "promo",
+                   "gratis ongkir", "e-commerce", "checkout", "keranjang"]),
+    ("viral", ["viral", "trending", "heboh", "terbongkar", "kejutan", "menyala",
+               "dilukai", "salah paham", "ramai dibicarakan", "nampar"]),
+    ("kriminal", ["pembunuhan", "tewas", "bunuh", "korban", "jasad", "lambak",
+                  "polisi", "tertangkap", "tersangka", "pemerasan", "perampokan",
+                  "kekerasan", "cidik", "siksa", "jerat"]),
+    ("olahraga", ["fifa", "sepak bola", "bola", "liga", "persib", "persija",
+                  "tim nasional", "asian cup", "piala", "badminton", "tenis",
+                  "atletik", "marathon", "turnamen", "kejuaraan", "sea games",
+                  "olimpiade", "formula 1", "timnas"]),
+    ("bencana", ["gempa", "banjir", "kebakaran", "bencana", "erupsi", "gunung",
+                 "merapi", "krakatau", "tsunami", "tanah longsor", "puting belah",
+                 "meteor", "hujan ekstrem", "kekeringan", "evakuasi", "korban jiwa"]),
+    ("pendidikan", ["sekolah", "universitas", "kampus", "mahasiswa", "guru",
+                    "murid", "pendidikan", "beasiswa", "ujian", "kelas", "sma",
+                    "smp", "sd", "rektor", "fakultas", "dosen"]),
+    ("kesehatan", ["obat", "rumah sakit", "hospital", "kesehatan", "dokter",
+                   "vaksin", "penyakit", "gizi", "medis", "klinik", "imunisasi",
+                   "stunting", "centering", "pasien"]),
+    ("teknologi", ["teknologi", "aplikasi", "gadget", "smartphone", "internet",
+                   "sinyal", "startup", "chip", "laptop", "komputer", "robot",
+                   "otomotif", "mobil", "motor", "pesawat", " whatsapp",
+                   "telegram", "siber", "hp android", "ai",
+                   "kecerdasan buatan", "otomatis", "satelit", "antena"]),
+    ("ekonomi", ["rupiah", "bursa", "saham", "bank", "ekonomi", "usaha",
+                 "bisnis", "investasi", "gaji", "upah", "harga", "warung",
+                 "dagang", "ekspor", "impor", "pajak", "umkm", "biaya",
+                 "subsidi", "pasar", "ihsg", "inflasi", "devisa"]),
+    ("hiburan", ["hiburan", "musik", "film", "artis", "seleb", "drama",
+                 "konser", "sinema", "layar", "kreatif", "desain", "fesyen",
+                 "baju", "kebaya", "penyanyi", "band", "album"]),
+    ("kuliner", ["cafe", "resto", "restaurant", "makan", "kuliner", "food",
+                 "goreng", "minum", "coffee", "hidangan", "jajan", "bakso",
+                 "sate", "nasi", "restoran"]),
+    ("transportasi", ["jalan", "transport", "terminal", "bandar", "pelabuhan",
+                      "lalu lintas", "tol", "parkir", "armada", "bus",
+                      "mikrolet", "kereta"]),
+    ("pertanian", ["pertanian", "padi", "tani", "ikan", "peternakan", "sawit",
+                   "kelapa", "panen", "peranian"])
 ]
 
-# ── Gambar berita berdasarkan kategori (Unsplash) ─────────────────────────
-NEWS_CATEGORY_IMAGES = {
-    "Politik":   "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
-    "Viral":     "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
-    "Kriminal":  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
-    "Ekonomi":   "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
-    "Bencana":   "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&q=80",
-    "Berita":    "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80",
-}
+# ── Rotary counter per tema: item berikutnya dalam tema sama dapat gambar
+#    berbeda dari pool tema itu, jadi tidak ada dua item berbagi satu foto.
+_theme_cursor: dict[str, int] = {}
 
 # ── Gambar blog berdasarkan kategori (Unsplash) ────────────────────────────
 TECH_CATEGORY_IMAGES = {
@@ -420,6 +502,39 @@ def fetch_rss(url: str) -> list[dict]:
 
 # ─── News JSON ─────────────────────────────────────────────────────────────
 
+def rebalance_unique_images(data: dict) -> int:
+    """Pastikan tiap item berita punya gambar BERBEDA.
+
+    some item masih berbagi satu foto (mis. dua berita ekonomi dapat gambar
+    yang sama). Ganti duplikat dengan gambar lain dari pool temaJudulnya.
+    """
+    items = data.get("items", [])
+    seen: set[str] = set()
+    changed = 0
+
+    for it in items:
+        img = it.get("image", "")
+        if img and img not in seen:
+            seen.add(img)
+            continue
+
+        # duplikat (atau kosong) -> pilih gambar lain dari pool tema
+        theme = _theme_for(it.get("title", ""), it.get("category", "Berita"))
+        pool = NEWS_IMAGE_POOL.get(theme) or NEWS_IMAGE_POOL["default"]
+        replacement = next((u for u in pool if u not in seen), None)
+        if replacement is None:
+            for name, plist in NEWS_IMAGE_POOL.items():
+                replacement = next((u for u in plist if u not in seen), None)
+                if replacement:
+                    break
+        if replacement:
+            it["image"] = replacement
+            seen.add(replacement)
+            changed += 1
+
+    return changed
+
+
 def update_news_json(new_items: list[dict]) -> dict:
     """Update news.json: prepend items baru, skip duplikat, batasi maks."""
     if NEWS_JSON_PATH.exists():
@@ -447,35 +562,80 @@ def update_news_json(new_items: list[dict]) -> dict:
     merged = merged + existing.get("items", [])
     existing["items"] = merged[:MAX_NEWS_ITEMS]
 
+    rebalanced = rebalance_unique_images(existing)
+    if rebalanced:
+        print(f"  [image] {rebalanced} item diberi gambar unik baru")
+
     with open(NEWS_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(existing, f, indent=2, ensure_ascii=False)
 
     return existing
 
 
-def pick_news_image(item: dict, title: str, category: str) -> str:
-    """Pilih gambar berita: gambar asli RSS > sub-tema keyword > kategori.
-
-    Google News RSS tidak menyertakan gambar, jadi butuh fallback tema.
-    """
-    # 1. Gambar asli dari RSS (paling relevan dengan judul)
-    rss_img = (item.get("image") or "").strip()
-    if rss_img.startswith("http"):
-        return rss_img.replace("&amp;", "&")
-
-    # 2. Sub-tema granular berdasarkan keyword di judul (word-boundary,
-    #    supaya "ai" tidak match di "capai" dan "sd" tidak match di "sdri")
+def _theme_for(title: str, category: str) -> str:
+    """Tentukan nama pool gambar dari keyword di judul (word-boundary)."""
     title_lower = title.lower()
-    for keywords, img in NEWS_THEME_IMAGES:
+    for theme, keywords in NEWS_THEME_KEYWORDS:
         for kw in keywords:
             kw = kw.strip().lower()
-            if not kw:
-                continue
-            if re.search(rf"(?<!\w){re.escape(kw)}(?!\w)", title_lower):
-                return img
+            if kw and re.search(rf"(?<!\w){re.escape(kw)}(?!\w)", title_lower):
+                return theme
+    # tidak ada keyword tema -> pakai pool berdasarkan kategori berita
+    return CATEGORY_THEME_MAP.get(category, "default")
 
-    # 3. Fallback kategori
-    return NEWS_CATEGORY_IMAGES.get(category, NEWS_CATEGORY_IMAGES["Berita"])
+
+def pick_news_image(item: dict, title: str, category: str) -> str:
+    """Pilih gambar berita. Prioritas:
+
+    1. Gambar asli dari RSS (paling relevan dengan judul).
+    2. Pool gambar per tema, dipilih rotary supaya tiap item dalam tema
+       yang sama dapat foto BERBEDA.
+    3. Kalau pool tema habis, ambil dari pool tema lain yang belum terpakai.
+    """
+    # 1. Gambar asli RSS
+    rss_img = (item.get("image") or "").strip()
+    if rss_img.startswith("http"):
+        rss_img = rss_img.replace("&amp;", "&")
+        _assigned_this_run.add(rss_img)
+        return rss_img
+
+    # 2/3. Pool tema dengan rotary + fallback silang
+    theme = _theme_for(title, category)
+    pool = NEWS_IMAGE_POOL.get(theme) or NEWS_IMAGE_POOL["default"]
+
+    used = _used_images()
+    for step in range(len(pool) * 2):
+        idx = (_theme_cursor.get(theme, 0) + step) % len(pool)
+        url = pool[idx]
+        if url not in used:
+            _theme_cursor[theme] = idx + 1
+            _assigned_this_run.add(url)
+            return url
+
+    # semua gambar tema terpakai -> scan semua pool sampai ketemu yang belum dipakai
+    for name, plist in NEWS_IMAGE_POOL.items():
+        for url in plist:
+            if url not in used:
+                _assigned_this_run.add(url)
+                return url
+
+    # pool benar-benar habis (tidak mungkin: 118 gambar vs max 15 item)
+    return pool[_theme_cursor.get(theme, 0) % len(pool)]
+
+
+_assigned_this_run: set[str] = set()
+
+
+def _used_images() -> set[str]:
+    """Gambar yang sudah dipakai: item lain di news.json + item run ini."""
+    try:
+        with open(NEWS_JSON_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return set()
+    items = data if isinstance(data, list) else data.get("items", [])
+    used = {it.get("image", "") for it in items if it.get("image")}
+    return used | _assigned_this_run
 
 
 def build_news_item(item: dict, source_label: str, index: int) -> dict:
@@ -697,6 +857,10 @@ def write_new_blog_posts(new_items: list[dict]) -> int:
 # ─── Main ───────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    # reset cache gambar supaya tiap run menghasilkan rotasi baru
+    _theme_cursor.clear()
+    _assigned_this_run.clear()
+
     print(f"[*] RSS News Fetcher — {utc_now().strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"[*] Repo root: {REPO_ROOT}")
     print()
