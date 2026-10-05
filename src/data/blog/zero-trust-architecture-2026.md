@@ -5,7 +5,7 @@ date: "2026-07-25"
 author: "Ringga Septia Pribadi"
 tags: ["Cybersecurity", "Zero Trust", "Cloud Security", "Network Security", "IAM"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80"
+image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
 ---
 
 ## Mengapa Zero Trust Menjadi Standar di 2026?

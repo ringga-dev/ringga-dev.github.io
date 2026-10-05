@@ -5,7 +5,7 @@ date: "2026-10-01"
 author: "Ringga Septia Pribadi"
 tags: ["Keamanan Siber", "RSS"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
 ---
 
 

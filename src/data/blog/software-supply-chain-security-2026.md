@@ -5,7 +5,7 @@ date: "2026-08-01"
 author: "Ringga Septia Pribadi"
 tags: ["Cybersecurity", "Supply Chain", "SBOM", "SLSA", "Sigstore", "DevSecOps"]
 category: "Cybersecurity"
-image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"
 ---
 
 ## Pendahuluan

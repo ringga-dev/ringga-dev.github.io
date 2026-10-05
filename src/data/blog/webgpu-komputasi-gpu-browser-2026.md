@@ -5,7 +5,7 @@ date: "2026-07-28"
 author: "Ringga Septia Pribadi"
 tags: ["WebGPU", "GPU", "Web Development", "AI Inference", "Graphics", "WASM", "Machine Learning"]
 category: "Web Development"
-image: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80"
+image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
 ---
 
 ## Pendahuluan

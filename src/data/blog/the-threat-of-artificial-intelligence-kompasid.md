@@ -5,7 +5,7 @@ date: "2026-09-27"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "RSS"]
 category: "Artificial Intelligence"
-image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
+image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80"
 ---
 
 

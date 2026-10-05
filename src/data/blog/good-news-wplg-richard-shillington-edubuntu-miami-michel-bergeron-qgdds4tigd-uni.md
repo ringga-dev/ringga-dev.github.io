@@ -5,7 +5,7 @@ date: "2026-10-04"
 author: "Ringga Septia Pribadi"
 tags: ["Open Source", "RSS"]
 category: "Teknologi Informasi"
-image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80"
+image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2026-07-11"
 author: "Ringga Septia Pribadi"
 tags: ["AI", "Self-Hosted", "ARM", "DevOps", "Docker", "Infrastructure"]
 category: "Technology"
-image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80"
 reading_time: "12 min read"
 ---
 
