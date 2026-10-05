@@ -13,6 +13,7 @@ export interface BlogPost {
   tags: string[]
   author: string
   category: string
+  readTime: number
 }
 
 export function slugifyTag(tag: string): string {
@@ -71,7 +72,9 @@ export function collectBlogPosts(): BlogPost[] {
       image: meta.image || '',
       tags: Array.isArray(meta.tags) ? meta.tags : [],
       author: meta.author || 'Ringga Dev',
-      category: meta.category || 'Engineering'
+      category: meta.category || 'Engineering',
+      // ~200 kata/menit, minimal 1 supaya tidak tampil "0 min"
+      readTime: Math.max(1, Math.ceil(raw.split(/\s+/).length / 200))
     }
   }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

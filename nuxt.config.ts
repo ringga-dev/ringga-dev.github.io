@@ -32,19 +32,26 @@ const newsRaw = readJsonSync(resolve(process.cwd(), 'src/data/news.json'), 'utf-
 const newsSlugs = (JSON.parse(newsRaw).items || []).map((n: any) => `/news/${n.slug}`)
 const newsRoutes = ['/news', ...newsSlugs]
 
-// Harus sama dengan BLOG_POSTS_PER_PAGE di src/pages/blog/index.vue
+// Harus sama dengan BLOG_POSTS_PER_PAGE di src/components/BlogListing.vue
+// dan NEWS_PER_PAGE di src/components/NewsListing.vue
+//
+// PENTING: pakai PATH segment (`/blog/page/2`), bukan query string
+// (`/blog?page=2`). GitHub Pages menyajikan file statis, jadi `?page=2`
+// selalu menunjuk ke blog/index.html yang sama dan setiap halaman akan
+// menampilkan page 1. Path segment di-prerender jadi file terpisah.
 const POSTS_PER_PAGE = 9
-const blogIndexRoutes = Array.from(
-  { length: Math.max(1, Math.ceil(blogPostRoutes.length / POSTS_PER_PAGE)) },
-  (_, i) => (i === 0 ? '/blog' : `/blog?page=${i + 1}`)
-)
+const blogPageCount = Math.max(1, Math.ceil(blogPostRoutes.length / POSTS_PER_PAGE))
+const blogIndexRoutes = [
+  '/blog',
+  ...Array.from({ length: blogPageCount - 1 }, (_, i) => `/blog/page/${i + 2}`)
+]
 
-// News juga dipaginate 9 per halaman -> prerender /news?page=N
 const NEWS_PER_PAGE = 9
-const newsIndexRoutes = Array.from(
-  { length: Math.max(1, Math.ceil(newsSlugs.length / NEWS_PER_PAGE)) },
-  (_, i) => (i === 0 ? '/news' : `/news?page=${i + 1}`)
-)
+const newsPageCount = Math.max(1, Math.ceil(newsSlugs.length / NEWS_PER_PAGE))
+const newsIndexRoutes = [
+  '/news',
+  ...Array.from({ length: newsPageCount - 1 }, (_, i) => `/news/page/${i + 2}`)
+]
 
 // Explicitly register the dynamic tag route so Nitro prerender can resolve it
 // regardless of page-dir auto-scan quirks.
