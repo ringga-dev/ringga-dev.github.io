@@ -35,6 +35,18 @@ jobs:
           NUXT_APP_BASE_URL: ${{ vars.BASE_URL || '/' }}
           NUXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || 'https://ringga-dev.github.io' }}
 
+      # Gerbang mutu konten. Menjalankan SETELAH generate karena perlu
+      # memeriksa route di dist/public. Exit non-zero memblokir upload
+      # artifact, jadi deploy tidak mungkin jalan dengan konten rusak.
+      #
+      # Ini menutup kelas bug yang pernah lolos:
+      #   - post/berita di bawah ambang kata (51 stub pernah tayang)
+      #   - field news.json level-level hilang -> /news 500 padahal build sukses
+      #   - route gagal prerender tapi build tetap "sukses" (failOnError: false)
+      #   - gambar rusak / duplikat / kosong
+      - name: Content quality gate
+        run: python3 scripts/content_gate.py
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
