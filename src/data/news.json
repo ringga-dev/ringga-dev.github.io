@@ -1,272 +1,332 @@
 {
-  "title": "Berita Terkini",
-  "subtitle": "Kompilasi berita terbaru seputar kebakaran hutan dan lahan (karhutla) di Pulau Kalimantan, dihimpun dari sumber terpercaya.",
-  "updatedAt": "2026-10-05",
   "items": [
     {
-      "slug": "Detik-eskalator-stasiun-duri-masih-diperbaiki-penumpang-krl-antre-panjang",
-      "title": "Eskalator Stasiun Duri Masih Diperbaiki, Penumpang KRL Antre Panjang",
-      "excerpt": "PT KAI Commuter masih perbaiki eskalator di Stasiun Duri setelah insiden yang melukai 12 penumpang. Antrean panjang terjadi akibat satu eskalator yang berfungsi",
-      "category": "Berita",
-      "source": "Detik",
-      "sourceUrl": "https://news.detik.com/berita/d-8692452/eskalator-stasiun-duri-masih-diperbaiki-penumpang-krl-antre-panjang",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/community/media/visual/2026/10/05/eskalator-stasiun-duri-ditutup-usai-mendadak-balik-arah-anker-antre-panjang-1791165936548_169.jpeg?w=360&q=90",
-      "tags": [
-        "Detik"
-      ],
-      "summary": "PT KAI Commuter masih perbaiki eskalator di Stasiun Duri setelah insiden yang melukai 12 penumpang. Antrean panjang terjadi akibat satu eskalator yang berfungsi",
-      "keyFacts": [
-        "PT KAI Commuter masih perbaiki eskalator di Stasiun Duri setelah insiden yang melukai 12 penumpang",
-        "Antrean panjang terjadi akibat satu eskalator yang berfungsi"
-      ]
-    },
-    {
-      "slug": "CNBC Indonesia-setelah-terpisah-sekian-lama-bersatu-lagi-akibat-tsunami",
-      "title": "Setelah Terpisah Sekian Lama, Bersatu Lagi Akibat Tsunami",
-      "excerpt": "Tsunami Jepang 2011 menciptakan eksperimen alam unik, mempertemukan dua spesies ikan terpisah selama 680.000 tahun.",
-      "category": "Berita",
+      "slug": "pertama-dalam-sejarah-astronom-tangkap-sinyal-radio-dari-planet-jauh",
+      "title": "Pertama dalam Sejarah, Astronom Tangkap Sinyal Radio dari Planet Jauh",
+      "excerpt": "Sinyal tersebut terdeteksi dari Beta Pictoris b, sebuah planet raksasa gas dengan massa sekitar 12 kali Jupiter. Planet ini mengorbit bintang muda Beta Pictoris yang memiliki massa",
+      "category": "Sains",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261005090357-37-773252/setelah-terpisah-sekian-lama-bersatu-lagi-akibat-tsunami",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/visual/2026/04/21/foto-udara-menujukkan-garis-pantai-tomakomai-prefektur-hokkaido-jepang-setelah-peringatan-tsunami-dikeluarkan-menyusul-gempa-b-1776728111016_169.jpeg?w=1200&q=90",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003092944-37-773029/pertama-dalam-sejarah-astronom-tangkap-sinyal-radio-dari-planet-jauh",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80",
       "tags": [
-        "CNBC Indonesia"
+        "Astronomi",
+        "Sains",
+        "Teleskop"
       ],
-      "summary": "Tsunami Jepang 2011 menciptakan eksperimen alam unik, mempertemukan dua spesies ikan terpisah selama 680.000 tahun.",
+      "summary": "Sinyal tersebut terdeteksi dari Beta Pictoris b, sebuah planet raksasa gas dengan massa sekitar 12 kali Jupiter. Planet ini mengorbit bintang muda Beta Pictoris yang memiliki massa sekitar 1,75 kali Matahari. Penemuan itu dilakukan tim peneliti menggunakan MeerKAT, jaringan 64 antena teleskop radio di Afrika Selatan. Para astronom menemukan semburan radio yang berulang dan berhasil melokalisasi sumbernya pada Beta Pictoris b, bukan pada bintang induknya. Profesor astronomi Harvard, Edo Berger, mengatakan emisi tersebut berkaitan dengan medan magnet planet. Prosesnya diduga mirip dengan pembentukan aurora di Bumi. \"Untuk mendeteksi gelombang radio pada frekuensi yang kami amati, diperlukan medan magnet yang sangat kuat,\" ujar Berger, dikutip dari CNN , Sabtu (3/10/2026). Medan magnet Beta Pictoris b diperkirakan setidaknya 200 kali lebih kuat dibandingkan medan magnet Jupiter. Ketika partikel bermuatan bergerak secara spiral di dalam medan magnet yang kuat, proses tersebut dapat menghasilkan aurora sekaligus memancarkan gelombang radio. Fenomena ini dikenal sebagai emisi radio aurora. Sebelumnya, fenomena serupa telah diamati pada Jupiter, Saturnus, Matahari, sejumlah bintang, dan katai cokelat. Deteksi tersebut dinilai penting karena salah satu tantangan utama dalam pencarian emisi radio dari eksoplanet adalah memastikan sumber sinyal. Sebelumnya, indikasi emisi radio dari planet di luar tata surya pernah ditemukan, tetapi para astronom belum dapat sepenuhnya menyingkirkan kemungkinan bahwa sinyal berasal dari bintang induknya. Joseph Callingham dari Anton Pannekoek Institute for Astronomy, Universitas Amsterdam, yang tidak terlibat dalam penelitian, menilai aspek tersebut menjadi salah satu keunikan studi terbaru. Menurut Callingham, tim penelitian berhasil melokalisasi emisi pada planet itu sendiri dan memisahkannya dari bintang induknya.",
       "keyFacts": [
-        "Tsunami Jepang 2011 menciptakan eksperimen alam unik, mempertemukan dua spesies ikan terpisah selama 680.000 tahun."
+        "\"Untuk mendeteksi gelombang radio pada frekuensi yang kami amati, diperlukan medan magnet yang sangat kuat,\" ujar Berger, dikutip dari CNN , Sabtu (3/10/2026).",
+        "Beta Pictoris b berada dalam sistem keplanetan yang diperkirakan baru berusia sekitar 23 juta tahun, jauh lebih muda dibandingkan tata surya yang berusia sekitar 4,5 miliar tahun.",
+        "Sinyal yang datang dari jarak 63 tahun cahaya itu bukan bukti kehidupan alien, melainkan menjadi petunjuk kuat bahwa planet tersebut memiliki medan magnet luar biasa besar.",
+        "Sinyal tersebut terdeteksi dari Beta Pictoris b, sebuah planet raksasa gas dengan massa sekitar 12 kali Jupiter."
       ]
     },
     {
-      "slug": "CNBC Indonesia-djp-buka-suara-soal-pph-22-marketplace-untuk-pedagang-omzet-rp500-juta",
-      "title": "DJP Buka Suara soal PPh 22 Marketplace untuk Pedagang Omzet Rp500 Juta",
-      "excerpt": "Bos Pajak Bimo Wijayanto menegaskan pelaku usaha dengan penghasilan di bawah Rp500 juta tidak dikenai PPh Pasal 22 oleh marketplace mulai 1 Oktober 2026.",
-      "category": "Berita",
+      "slug": "ilmuwan-dunia-waspadai-mirror-life-ancaman-wabah-tak-terkendali",
+      "title": "Ilmuwan Dunia Waspadai \"Mirror Life\", Ancaman Wabah Tak Terkendali",
+      "excerpt": "Mengutip laporan The Economist , jika organisme semacam ini lolos dari laboratorium, ia berpotensi memicu wabah yang sulit dihentikan atau merusak ekosistem secara luas. Banyak mol",
+      "category": "Sains",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/news/20261005082619-4-773243/djp-buka-suara-soal-pph-22-marketplace-untuk-pedagang-omzet-rp500-juta",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/visual/2026/09/30/pedagang-melakukan-siaran-langsung-saat-menjual-pakaian-melalui-aplikasi-belanja-daring-e-commerce-di-thamrin-city-jakarta-rab-1790748787031_169.jpeg?w=1200&q=90",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003174359-37-773075/ilmuwan-dunia-waspadai-mirror-life-ancaman-wabah-tak-terkendali",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80",
       "tags": [
-        "CNBC Indonesia"
+        "Bioteknologi",
+        "Kesehatan",
+        "Riset"
       ],
-      "summary": "Bos Pajak Bimo Wijayanto menegaskan pelaku usaha dengan penghasilan di bawah Rp500 juta tidak dikenai PPh Pasal 22 oleh marketplace mulai 1 Oktober 2026.",
+      "summary": "Mengutip laporan The Economist , jika organisme semacam ini lolos dari laboratorium, ia berpotensi memicu wabah yang sulit dihentikan atau merusak ekosistem secara luas. Banyak molekul penting dalam tubuh makhluk hidup memiliki dua bentuk yang saling berkebalikan seperti tangan kanan dan kiri. Kehidupan di Bumi umumnya hanya memakai satu bentuk. Asam amino penyusun protein pada umumnya berbentuk \"kidal\", sedangkan gula, yang menjadi tulang punggung DNA dan RNA, berbentuk \"kanan\". Mirror life berarti sel, kemungkinan besar bakteri, yang dibangun dengan bentuk sebaliknya. Para ilmuwan menyebut sifat ini dengan istilah kiralitas. Kekhawatiran soal ini mulai menjadi perhatian publik lewat makalah di jurnal Science pada akhir 2024. Para penulisnya menilai bakteri cermin bisa lolos dari sistem imun manusia maupun makhluk lain, sehingga berkembang biak tanpa kendali. Bakteri semacam itu juga diperkirakan sulit dimangsa predator alaminya, seperti amuba, dan tahan terhadap virus pemakan bakteri (bakteriofage) yang selama ini menekan populasi bakteri. Artinya, ia berpotensi berkembang biak tanpa batas. Alam memang tidak sepenuhnya tanpa hambatan. Mirror life tidak bisa memetabolisme semua molekul dari organisme alami. Namun banyak biomolekul tidak memiliki kiralitas, sehingga bisa dimanfaatkan sebagai sumber makanan. Saat ini, pembuatan mirror life di laboratorium masih dianggap jauh. Namun, biologi sintetis berkembang pesat, apalagi dengan penerapan kecerdasan buatan (AI). Pada 2024, teknologi ini diperkirakan setidaknya masih 15 tahun lagi, tetapi kini bisa tiba lebih cepat.",
       "keyFacts": [
-        "Bos Pajak Bimo Wijayanto menegaskan pelaku usaha dengan penghasilan di bawah Rp500 juta tidak dikenai PPh Pasal 22 oleh marketplace mulai 1 Oktober 2026."
+        "Pada 2024, teknologi ini diperkirakan setidaknya masih 15 tahun lagi, tetapi kini bisa tiba lebih cepat.",
+        "Kekhawatiran soal ini mulai menjadi perhatian publik lewat makalah di jurnal Science pada akhir 2024.",
+        "George Church dari Harvard Medical School, salah satu penulis makalah 2024, menyebut dua perkembangan penting.",
+        "Sel itu memiliki tujuh plasmid yang mengodekan 36 enzim, dan mampu makan, tumbuh, serta membelah diri."
       ]
     },
     {
-      "slug": "Ekonomi-mensos-target-50-persen-penduduk-indonesia-terdata-perlinsos-di-2026-antara-news",
-      "title": "Mensos target 50 persen penduduk Indonesia terdata Perlinsos di 2026 - ANTARA News Sulteng",
-      "excerpt": "Mensos target 50 persen penduduk Indonesia terdata Perlinsos di 2026 ANTARA News Sulteng",
-      "category": "Berita",
-      "source": "Ekonomi",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNak8zZll6eDJObFROUUdJaW01SnNwbnJ6N2x6VWJWTE9Ob1R6aEJLSFF3MDJwNDB6YUJDa2RrUVBLdVNjaTRNNl9MX2dBZWFNNG9seXZIMmxHaVZrbDloOE54dWNCNWswM1hGV2NwN1BTd0tPR0xUM1dsYjZNLWdqcFpyYlBZbXJjeUhSWnUzQ1M1VUdvSlUyaGtVVTZkN2NlcVRudW5zQ1E1SGl4ZVBXUlJKVQ?oc=5",
-      "date": "2026-10-05",
-      "image": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800&q=80",
-      "tags": [
-        "Ekonomi"
-      ],
-      "summary": "Mensos target 50 persen penduduk Indonesia terdata Perlinsos di 2026 ANTARA News Sulteng",
-      "keyFacts": [
-        "Mensos target 50 persen penduduk Indonesia terdata Perlinsos di 2026 ANTARA News Sulteng"
-      ]
-    },
-    {
-      "slug": "CNBC Indonesia-ihsg-sesi-i-dibuka-menguat-030-ke-level-6055",
-      "title": "IHSG Sesi I Dibuka Menguat 0,30% ke Level 6.055",
-      "excerpt": "IHSG dibuka menguat di level 6.055,26 pada 5 Oktober 2026, melanjutkan tren positif. Pasar diharapkan stabil meski dipengaruhi ketegangan global.",
-      "category": "Berita",
+      "slug": "trump-resmi-angkat-bos-intelijen-as-jadi-kaisar-ai",
+      "title": "Trump Resmi Angkat Bos Intelijen AS Jadi Kaisar AI",
+      "excerpt": "Trump juga telah menunjuk pimpinan satgas itu yang ia pernah sebut akan menjadi seperti Kaisar AI (AI Czar) Gugus Tugas AI, yang Trump anggap menjadi Pasukan AI nya, memiliki targe",
+      "category": "Artificial Intelligence",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/market/20261005084940-17-773251/ihsg-sesi-i-dibuka-menguat-030-ke-level-6055",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/visual/2026/06/30/layar-menampilkan-pergerakan-indeks-harga-saham-gabungan-ihsg-di-bursa-efek-indonesia-bei-jakarta-selasa-3062026-1782797019885_169.jpeg?w=1200&q=90",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261004062153-37-773103/trump-resmi-angkat-bos-intelijen-as-jadi-kaisar-ai",
+      "date": "2026-10-04",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
       "tags": [
-        "CNBC Indonesia"
+        "AI",
+        "Geopolitik",
+        "Kebijakan"
       ],
-      "summary": "IHSG dibuka menguat di level 6.055,26 pada 5 Oktober 2026, melanjutkan tren positif. Pasar diharapkan stabil meski dipengaruhi ketegangan global.",
+      "summary": "Trump juga telah menunjuk pimpinan satgas itu yang ia pernah sebut akan menjadi seperti Kaisar AI (AI Czar) Gugus Tugas AI, yang Trump anggap menjadi Pasukan AI nya, memiliki target untuk membuat laporan pengawasan pengembangan teknologi artificial intelligence dalam waktu 120 hari. \"Gedung Putih telah membentuk gugus tugas untuk meneliti risiko dan peluang AI serta merekomendasikan peran apa yang harus dimainkan pemerintah federal dalam mengawasi teknologi tersebut,\" dikutip dari laporan Reuters, Minggu (4/10/2026). Wall Street Journal pada Sabtu, melaporkan bahwa Trump juga telah menunjuk kepala gugus tugas tersebut, yaitu Jay Clayton. Ia mengatakan akan memimpin kelompok yang dikenal sebagai \"Pasukan Intelijen Super,\" yang secara efektif bertindak sebagai penanggung jawab AI Presiden AS Donald Trump. Dalam wawancara dengan CNBC Internasional sebelum beredarnya informasi penunjukkanya sebagai Kaisar AI Trump, Clayton mengatakan \"kecerdasan super (AI) adalah masalah keamanan nasional.\" Dia menyarankan bahwa lembaga federal, termasuk Departemen Kehakiman dan Komisi Perdagangan Federal, paling cocok untuk mengawasi perusahaan AI, dan bukan sistem gugatan perdata. Clayton berbicara sehari setelah Trump bertemu di Gedung Putih dengan para pemimpin perusahaan teknologi terkemuka, termasuk raksasa AI Anthropic dan OpenAI . Trump dalam pertemuan itu mengatakan dia dan para eksekutif perusahaan I sepakat industri tersebut akan \"mengawasi diri sendiri,\" dan bertanggung jawab untuk mengembangkan teknologi mereka dengan aman.",
       "keyFacts": [
-        "IHSG dibuka menguat di level 6.055,26 pada 5 Oktober 2026, melanjutkan tren positif",
-        "Pasar diharapkan stabil meski dipengaruhi ketegangan global."
+        "\"Gedung Putih telah membentuk gugus tugas untuk meneliti risiko dan peluang AI serta merekomendasikan peran apa yang harus dimainkan pemerintah federal dalam mengawasi teknologi tersebut,\" dikutip dari laporan Reuters, Minggu (4/10/2026).",
+        "Trump juga telah menunjuk pimpinan satgas itu yang ia pernah sebut akan menjadi seperti Kaisar AI (AI Czar) Gugus Tugas AI, yang Trump anggap menjadi Pasukan AI nya, memiliki target untuk membuat laporan pengawasan pengembangan teknologi artificial intelligence dalam waktu 120 hari.",
+        "(Ken Cedeno / AFP) Jakarta, CNBC Indonesia - Presiden Amerika Serikat (AS) Donald Trump telah resmi membentuk Satuan Tugas (Satgas) yang mengawasi pengembangan sistem kecerdasan buatan atau AI.",
+        "Wall Street Journal pada Sabtu, melaporkan bahwa Trump juga telah menunjuk kepala gugus tugas tersebut, yaitu Jay Clayton."
       ]
     },
     {
-      "slug": "Detik-ledakan-gas-di-jakut-bikin-atap-rumah-warga-porak-poranda-1-orang-terluka",
-      "title": "Ledakan Gas di Jakut Bikin Atap Rumah Warga Porak-poranda, 1 Orang Terluka",
-      "excerpt": "Ledakan tabung gas di Kalibaru, Jakarta Utara, melukai seorang penghuni. Kebocoran LPG 3 Kg diduga penyebabnya. Polisi imbau warga lebih hati-hati.",
-      "category": "Berita",
-      "source": "Detik",
-      "sourceUrl": "https://news.detik.com/berita/d-8692433/ledakan-gas-di-jakut-bikin-atap-rumah-warga-porak-poranda-1-orang-terluka",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/community/media/visual/2016/02/23/267bfe58-78ed-42ba-bbc5-e2e07b1df3b1_169.jpg?w=360&q=90",
-      "tags": [
-        "Detik"
-      ],
-      "summary": "Ledakan tabung gas di Kalibaru, Jakarta Utara, melukai seorang penghuni. Kebocoran LPG 3 Kg diduga penyebabnya. Polisi imbau warga lebih hati-hati.",
-      "keyFacts": [
-        "Ledakan tabung gas di Kalibaru, Jakarta Utara, melukai seorang penghuni",
-        "Kebocoran LPG 3 Kg diduga penyebabnya",
-        "Polisi imbau warga lebih hati-hati."
-      ]
-    },
-    {
-      "slug": "Detik-asa-dari-semangkuk-bubur-dan-nasi-kuning-di-bahodopi",
-      "title": "Asa dari Semangkuk Bubur dan Nasi Kuning di Bahodopi",
-      "excerpt": "Ruslan dan Mak Indah, pelaku UMKM di Bahodopi, sukses berkat permintaan pekerja IMIP. Bubur Ayam dan nasi kuning jadi favorit, mendukung ekonomi lokal.",
-      "category": "Berita",
-      "source": "Detik",
-      "sourceUrl": "https://news.detik.com/berita/d-8692422/asa-dari-semangkuk-bubur-dan-nasi-kuning-di-bahodopi",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/community/media/visual/2026/10/05/asa-dari-semangkuk-bubur-dan-nasi-kuning-di-bahodopi-1791163767228.jpeg?w=360&q=90",
-      "tags": [
-        "Detik"
-      ],
-      "summary": "Ruslan dan Mak Indah, pelaku UMKM di Bahodopi, sukses berkat permintaan pekerja IMIP. Bubur Ayam dan nasi kuning jadi favorit, mendukung ekonomi lokal.",
-      "keyFacts": [
-        "Ruslan dan Mak Indah, pelaku UMKM di Bahodopi, sukses berkat permintaan pekerja IMIP",
-        "Bubur Ayam dan nasi kuning jadi favorit, mendukung ekonomi lokal."
-      ]
-    },
-    {
-      "slug": "Detik-sopir-truk-penabrak-pasutri-hingga-tewas-di-tol-klaten-ditangkap",
-      "title": "Sopir Truk Penabrak Pasutri hingga Tewas di Tol Klaten Ditangkap",
-      "excerpt": "Pasangan suami istri tewas ditabrak truk saat ganti ban di Tol Jogja-Solo. Sopir truk telah ditangkap polisi di Surabaya. Investigasi masih berlanjut.",
-      "category": "Berita",
-      "source": "Detik",
-      "sourceUrl": "https://news.detik.com/berita/d-8692421/sopir-truk-penabrak-pasutri-hingga-tewas-di-tol-klaten-ditangkap",
-      "date": "2026-10-05",
-      "image": "https://akcdn.detik.net.id/community/media/visual/2026/10/04/truk-yang-menabrak-pasutri-di-jalan-tol-jogja-solo-ruas-karanganom-diamankan-di-sat-lantas-polresta-klaten-minggu-4102026-1791123944191_169.jpeg?w=360&q=90",
-      "tags": [
-        "Detik"
-      ],
-      "summary": "Pasangan suami istri tewas ditabrak truk saat ganti ban di Tol Jogja-Solo. Sopir truk telah ditangkap polisi di Surabaya. Investigasi masih berlanjut.",
-      "keyFacts": [
-        "Pasangan suami istri tewas ditabrak truk saat ganti ban di Tol Jogja-Solo",
-        "Sopir truk telah ditangkap polisi di Surabaya",
-        "Investigasi masih berlanjut."
-      ]
-    },
-    {
-      "slug": "CNBC Indonesia-kabarnya-ada-demo-siang-ini-5-oktober-hindari-jalan-ini",
-      "title": "Kabarnya Ada Demo Siang Ini 5 Oktober, Hindari Jalan Ini",
-      "excerpt": "BEM SI akan menggelar Aksi Nasional Pendidikan di DPR RI pada 5 Juni 2026. Mahasiswa menuntut revisi UU Sisdiknas dan jaminan untuk PTS.",
-      "category": "Politik",
+      "slug": "mantan-karyawan-bocorkan-kondisi-perusahaan-ai-budayanya-rusak",
+      "title": "Mantan Karyawan Bocorkan Kondisi Perusahaan AI: Budayanya Rusak",
+      "excerpt": "Seorang mantan karyawan itu menyebu budaya serba cepat yang berfokus pada pengembangan pesat di perusahaan AI saat ini meningkatkan risiko kegagalan. Dalam artikel berjudul \"Saya K",
+      "category": "Artificial Intelligence",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/news/20261005075755-4-773226/kabarnya-ada-demo-siang-ini-5-oktober-hindari-jalan-ini",
-      "date": "2026-10-05",
-      "image": "https://awsimages.detik.net.id/visual/2026/08/18/ratusan-mahasiswa-yang-menggelar-aksi-unjuk-rasa-di-kawasan-jalan-jenderal-sudirman-jakarta-pusat-selasa-1882026-menyebabkan-a-1787048440764_169.jpeg?w=1200&q=90",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261004055442-37-773095/mantan-karyawan-bocorkan-kondisi-perusahaan-ai-budayanya-rusak",
+      "date": "2026-10-04",
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
       "tags": [
-        "CNBC Indonesia"
+        "AI",
+        "Kultur Kerja",
+        "OpenAI"
       ],
-      "summary": "BEM SI akan menggelar Aksi Nasional Pendidikan di DPR RI pada 5 Juni 2026. Mahasiswa menuntut revisi UU Sisdiknas dan jaminan untuk PTS.",
+      "summary": "Seorang mantan karyawan itu menyebu budaya serba cepat yang berfokus pada pengembangan pesat di perusahaan AI saat ini meningkatkan risiko kegagalan. Dalam artikel berjudul \"Saya Keluar dari OpenAI Karena Budayanya Rusak,\" yang diterbitkan oleh Atlantic pada Sabtu, David Robinson mengatakan perusahaan AI, termasuk OpenAI, tidak \"cukup berhati-hati\" dan seharusnya lebih menekankan pada keahlian dan penelitian keselamatan sebelum mengembangkan sistem yang lebih mumpuni. Robinson berpendapat sistem AI canggih membutuhkan pengamanan yang lebih mirip dengan yang digunakan di industri seperti tenaga nuklir dan penerbangan. Alih-alih memperkuat sistem pengamanan sebelum memperkenalkan produk ke publi, perusahaan AI seperti OpenAI kata dia cenderung sangat bergantung pada apa \"penyebaran iteratif,\" yaitu merilis sistem dan memperkuat pengamanan ketika masalah muncul. Di tengah kondisi kerja yang dilaporkan Robinson itu, OpenAI dan pesaingnya, Anthropic, sebetulnya telah menghadapi pengawasan ketat oleh otoritas di AS, setelah insiden kontrol keselamatan gagal, atau sistem eksperimental berperilaku di luar dugaan. Robinson, yang mengatakan telah menghabiskan 3,5 tahun di OpenAI, membantu menyusun kerangka kerja kesiapan perusahaan dan mengawasi laporan keselamatan untuk 12 peluncuran model perintis. Namun, ia mengklaim: \"Saat perusahaan berpacu dari satu peluncuran ke peluncuran berikutnya, perusahaan gagal mencapai tingkat kehati-hatian yang menurut saya dibutuhkan.\" Merespons pengakuan mantan karyawan itu, OpenAI dalam sebuah pernyataan menegaskan, \"Kami memastikan model kami tidak menjadi lebih canggih daripada yang dapat kami kelola dan amankan dengan aman, dan kami menghentikan sementara pelatihan atau menahan model ketika kami perlu memperlambatnya.\" Robinson memperingatkan kemampuan AI berkembang lebih cepat daripada pemahaman para peneliti tentang keselarasan, sebuah bidang yang berfokus pada memastikan sistem AI bertindak sesuai dengan tujuan dan nilai-nilai manusia.",
       "keyFacts": [
-        "BEM SI akan menggelar Aksi Nasional Pendidikan di DPR RI pada 5 Juni 2026",
-        "Mahasiswa menuntut revisi UU Sisdiknas dan jaminan untuk PTS."
+        "\"Era coba-coba sudah berakhir,\" tulis Robinson sebagaimana dilansir Reuters, dikutip Minggu (4/10/2026).",
+        "Robinson, yang mengatakan telah menghabiskan 3,5 tahun di OpenAI, membantu menyusun kerangka kerja kesiapan perusahaan dan mengawasi laporan keselamatan untuk 12 peluncuran model perintis.",
+        "Robinson berpendapat sistem AI canggih membutuhkan pengamanan yang lebih mirip dengan yang digunakan di industri seperti tenaga nuklir dan penerbangan.",
+        "Alih-alih memperkuat sistem pengamanan sebelum memperkenalkan produk ke publi, perusahaan AI seperti OpenAI kata dia cenderung sangat bergantung pada apa \"penyebaran iteratif,\" yaitu merilis sistem dan memperkuat pengamanan ketika masalah muncul."
       ]
     },
     {
-      "slug": "CNBC Indonesia-harga-saham-naik-gila-gilaan-perdagangan-emiten-ini-digembok-bursa",
-      "title": "Harga Saham Naik Gila-gilaan, Perdagangan Emiten Ini Digembok Bursa",
-      "excerpt": "BEI menghentikan sementara perdagangan saham PT Bank of India Indonesia (BSWD) mulai 5 Oktober 2026, setelah lonjakan harga signifikan.",
+      "slug": "data-center-microsoft-bikin-polusi-ramai-ramai-warga-protes",
+      "title": "Data Center Microsoft Bikin Polusi, Ramai-Ramai Warga Protes",
+      "excerpt": "Temuan tersebut berdasarkan catatan publik yang diperoleh Floodlight. DataOne mengoperasikan 62 generator berbahan bakar gas di fasilitasnya di Vineland, New Jersey. Floodlight kem",
+      "category": "Teknologi",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003123049-37-773045/data-center-microsoft-bikin-polusi-ramai-ramai-warga-protes",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&q=80",
+      "tags": [
+        "Data Center",
+        "Lingkungan",
+        "Energi"
+      ],
+      "summary": "Temuan tersebut berdasarkan catatan publik yang diperoleh Floodlight. DataOne mengoperasikan 62 generator berbahan bakar gas di fasilitasnya di Vineland, New Jersey. Floodlight kemudian memberikan data teknis generator tersebut kepada Xiaomeng Jin, profesor di Rutgers University, dan Bruce Buckheit, mantan kepala divisi penegakan hukum udara Badan Perlindungan Lingkungan AS (EPA). Jin memperkirakan generator DataOne telah menghasilkan sekitar 140 ton nitrogen oksida (NOx). Jika mengacu pada data EPA, jumlah tersebut akan menempatkan DataOne sebagai salah satu dari lima sumber emisi NOx terbesar di New Jersey pada 2025. \"Perkiraan kami adalah generator tersebut mengeluarkan sekitar 140 ton NOx,\" kata Jin, dikutip dari The Guardian, Sabtu (3/10/2026). NOx merupakan kelompok gas pencemar yang dapat membentuk kabut asap dan berkaitan dengan asma, serangan jantung hingga kematian dini. Jin menyebut NOx sebagai polutan udara di AS yang berdampak pada sebagian besar masyarakat. Dampaknya juga dirasakan warga sekitar. Tiffany Leone-Vespa, warga Vineland yang tinggal sekitar 1,6 kilometer dari pusat data, mengatakan suara generator terdengar seperti pesawat di belakang rumahnya. \"Masalah kesehatan apa yang mungkin saya hadapi di masa depan? Karena saya telah terpapar semua itu. Anak-anak saya juga telah terpapar,\" ujarnya. Potensi polusi DataOne bahkan jauh lebih besar. Jin dan Buckheit memperkirakan 62 generator tersebut dapat menghasilkan lebih dari 1.500 ton NOx per tahun jika beroperasi penuh. Buckheit mengatakan pengoperasian generator itu \"menghasilkan tingkat polusi udara yang sangat tinggi\" dan potensi emisinya \"jauh melampaui ambang batas regulasi untuk sumber utama baru\".",
+      "keyFacts": [
+        "\"Perkiraan kami adalah generator tersebut mengeluarkan sekitar 140 ton NOx,\" kata Jin, dikutip dari The Guardian, Sabtu (3/10/2026).",
+        "Sebanyak 16 generator mulai beroperasi pada Oktober 2025, disusul 16 generator lainnya pada Februari 2026.",
+        "Fasilitas bernama DataOne itu bahkan baru dikenai denda US$1 juta atau sekitar Rp17,9 miliar setelah otoritas menemukan puluhan generator beroperasi tanpa izin.",
+        "Jin dan Buckheit memperkirakan 62 generator tersebut dapat menghasilkan lebih dari 1.500 ton NOx per tahun jika beroperasi penuh."
+      ]
+    },
+    {
+      "slug": "warga-ri-punya-startup-ai-kini-dicaplok-perusahaan-amerika",
+      "title": "Warga RI Punya Startup AI, Kini Dicaplok Perusahaan Amerika",
+      "excerpt": "Salah satu pendiri Dokai, Rio Atmadja, mengatakan tim Dokai juga akan bergabung dengan organisasi AI dan machine learning Bolt.new setelah akuisisi tersebut. \"Setelah akuisisi ini,",
+      "category": "Artificial Intelligence",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261004100639-37-773127/warga-ri-punya-startup-ai-kini-dicaplok-perusahaan-amerika",
+      "date": "2026-10-04",
+      "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+      "tags": [
+        "Startup",
+        "AI",
+        "Akuisisi"
+      ],
+      "summary": "Salah satu pendiri Dokai, Rio Atmadja, mengatakan tim Dokai juga akan bergabung dengan organisasi AI dan machine learning Bolt.new setelah akuisisi tersebut. \"Setelah akuisisi ini, tim Dokai bergabung dengan organisasi AI dan machine learning Bolt.new,\" kata Rio kepada CNBC Indonesia, dikutip Minggu (4/10/2026). Menurut Rio, teknologi AI agent yang dikembangkan Dokai akan menjadi bagian dari Bolt.new untuk memperkuat kemampuan platform tersebut dalam menangani kebutuhan perusahaan yang semakin kompleks. \"Teknologi Dokai akan membantu memperkuat kemampuan AI agent Bolt.new dalam menangani pekerjaan enterprise yang semakin kompleks, sekaligus membantu aplikasi yang dibangun di Bolt.new terhubung dengan sistem perusahaan yang sudah digunakan pelanggan, mulai dari CRM hingga data internal,\" jelasnya. Rio menjelaskan Bolt.new merupakan platform pengembangan software berbasis AI yang memungkinkan pengguna membangun, menjalankan hingga menerapkan aplikasi web full-stack. Platform tersebut dapat digunakan untuk membuat beragam aplikasi, mulai dari website dan landing page hingga aplikasi bisnis yang terhubung dengan database serta sistem perusahaan. \"Yang sederhana seperti website dan landing page, hingga aplikasi bisnis yang sangat kompleks seperti aplikasi yang terhubung dengan database dan sistem perusahaan, customer portal, internal dashboard, SaaS, dan lain-lain,\" ujarnya. Pengguna dapat membangun aplikasi dengan berinteraksi menggunakan bahasa sehari-hari tanpa harus melakukan coding secara konvensional. Setelah aplikasi dibuat, pengguna juga bisa memberikan instruksi lanjutan kepada AI untuk menambah fitur, mengubah tampilan, menghubungkan database, hingga menambahkan sistem login dan pembayaran. Pertumbuhan Bolt.new sendiri berlangsung cepat sejak diluncurkan. Rio menyebut platform tersebut berhasil mencapai annual recurring revenue (ARR) sebesar US$20 juta atau sekitar Rp356 miliar hanya dalam waktu dua bulan.",
+      "keyFacts": [
+        "\"Setelah akuisisi ini, tim Dokai bergabung dengan organisasi AI dan machine learning Bolt.new,\" kata Rio kepada CNBC Indonesia, dikutip Minggu (4/10/2026).",
+        "Rio menyebut platform tersebut berhasil mencapai annual recurring revenue (ARR) sebesar US$20 juta atau sekitar Rp356 miliar hanya dalam waktu dua bulan.",
+        "Akuisisi ini akan mengintegrasikan teknologi AI agent Dokai ke dalam platform Bolt.new milik StackBlitz.",
+        "Salah satu pendiri Dokai, Rio Atmadja, mengatakan tim Dokai juga akan bergabung dengan organisasi AI dan machine learning Bolt.new setelah akuisisi tersebut."
+      ]
+    },
+    {
+      "slug": "situs-pre-order-iphone-duo-palsu-mengintai-curi-data-hingga-dompet",
+      "title": "Situs Pre-order iPhone Duo Palsu Mengintai, Curi Data hingga Dompet",
+      "excerpt": "Temuan tersebut diungkapkan Malwarebytes. Situs palsu itu dibuat menyerupai halaman Apple dan menawarkan voucher US$500 atau sekitar Rp8,9 juta serta layanan AppleCare+ bagi penggu",
+      "category": "Cybersecurity",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003132954-37-773049/situs-pre-order-iphone-duo-palsu-mengintai-curi-data-hingga-dompet",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80",
+      "tags": [
+        "Phishing",
+        "iPhone",
+        "Malware"
+      ],
+      "summary": "Temuan tersebut diungkapkan Malwarebytes. Situs palsu itu dibuat menyerupai halaman Apple dan menawarkan voucher US$500 atau sekitar Rp8,9 juta serta layanan AppleCare+ bagi pengguna yang melakukan pre-order. Namun, Malwarebytes menemukan bahwa situs tersebut menyisipkan rantai eksploit DarkSword yang dapat mencoba menembus sistem iPhone yang belum diperbarui. Jika berhasil, malware dapat berupaya mencuri kredensial, data dompet kripto, hingga isi Apple Notes. \"Anda tidak perlu mengisi formulir, mengetuk unduhan, atau menyetujui apa pun. Membuka halaman tersebut sudah cukup untuk memulai upaya serangan,\" tulis Malwarebytes dalam laporannya, dikutip Sabtu (3/10/2026). Padahal, Apple baru membuka pre-order iPhone Duo pada 16 Oktober. Malwarebytes juga menemukan sejumlah kejanggalan, seperti pilihan warna yang tidak tersedia untuk iPhone Duo, penghitung waktu yang kembali dari awal setiap kali halaman dibuka, serta tautan kebijakan privasi dan penjualan yang tidak berfungsi. Yang lebih berbahaya, serangan sudah dimulai ketika halaman dibuka. Formulir tersebut sebenarnya tidak memproses data yang dimasukkan pengguna dan hanya menampilkan pesan \"Pre-Order Successful\". Malwarebytes menemukan halaman itu menggunakan kode tersembunyi untuk memeriksa versi iOS dan mencoba mengarahkan pengguna iPhone ke Safari, browser yang menjadi sasaran rantai eksploit DarkSword. Jika eksploit berhasil, payload dapat mencoba mengirim informasi perangkat, daftar aplikasi, serta isi Apple Notes ke server penyerang. Kode tersebut juga mencari data dompet kripto seperti MetaMask, Phantom, Trust Wallet, Coinbase Wallet, Exodus, dan Tonkeeper. Selain itu, malware berupaya mengambil kredensial yang tersimpan di keychain iPhone serta file dompet dan data lainnya. Payload juga dapat mencoba mengakses pesan, riwayat panggilan, kontak, voicemail, email, kalender, hingga data lokasi yang tersimpan dalam cache.",
+      "keyFacts": [
+        "Membuka halaman tersebut sudah cukup untuk memulai upaya serangan,\" tulis Malwarebytes dalam laporannya, dikutip Sabtu (3/10/2026).",
+        "Situs palsu itu dibuat menyerupai halaman Apple dan menawarkan voucher US$500 atau sekitar Rp8,9 juta serta layanan AppleCare+ bagi pengguna yang melakukan pre-order.",
+        "Namun, Malwarebytes menemukan bahwa situs tersebut menyisipkan rantai eksploit DarkSword yang dapat mencoba menembus sistem iPhone yang belum diperbarui.",
+        "Jika berhasil, malware dapat berupaya mencuri kredensial, data dompet kripto, hingga isi Apple Notes."
+      ]
+    },
+    {
+      "slug": "sakit-hati-dipecat-eks-karyawan-balas-dendam-hapus-server-perusahaan",
+      "title": "Sakit Hati Dipecat, Eks Karyawan Balas Dendam Hapus Server Perusahaan",
+      "excerpt": "Ia memanfaatkan akses lamanya untuk masuk ke sistem pengujian dan menghapus 180 server virtual perusahaan. Aksi tersebut menyebabkan kerugian besar bagi perusahaan teknologi yang b",
+      "category": "Cybersecurity",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003130319-37-773046/sakit-hati-dipecat-eks-karyawan-balas-dendam-hapus-server-perusahaan",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+      "tags": [
+        "Keamanan",
+        "Server",
+        "Insiden"
+      ],
+      "summary": "Ia memanfaatkan akses lamanya untuk masuk ke sistem pengujian dan menghapus 180 server virtual perusahaan. Aksi tersebut menyebabkan kerugian besar bagi perusahaan teknologi yang berbasis di Singapura itu Karena perbuatannya, perusahaan ditaksir mengalami kerugian sekitar S$918.000 atau setara Rp11,1 miliar. Kasus ini pun berujung pada proses hukum, di mana pelaku dijatuhi hukuman penjara selama dua tahun delapan bulan. Dalam persidangan terungkap, pelaku merasa tidak terima atas pemutusan kontraknya. Ia mengaku kecewa karena merasa telah bekerja dengan baik selama bergabung di perusahaan tersebut. Melansir Channel News Asia , kontrak Kandula dengan NCS dihentikan pada Oktober 2022 karena kinerja yang buruk. Dia terakhir kali bekerja pada 16 November 2022. Menurut dokumen pengadilan, Kandula merasa bingung dan kesal ketika dia dipecat, karena dia merasa telah bekerja dengan baik dan memberikan kontribusi yang baik kepada NCS selama bekerja. Setelah keluar dari NCS, ia tidak memiliki pekerjaan lain di Singapura dan harus kembali ke India. Sekitar November 2021 hingga Oktober 2022, Kandula adalah bagian dari tim beranggotakan 20 orang yang mengelola sistem komputer jaminan kualitas (QA) di NCS. NCS adalah perusahaan yang menawarkan layanan informasi, komunikasi, dan teknologi. Sistem yang dikelola mantan tim Kandula digunakan untuk menguji perangkat lunak dan program baru sebelum diluncurkan. Dalam sebuah pernyataan kepada CNA pada Rabu, NCS mengatakan itu adalah \"sistem pengujian mandiri\". Ini terdiri dari sekitar 180 server virtual, dan tidak ada informasi sensitif yang disimpan di dalamnya. Setelah kontraknya diputus dan kembali di India, Kandula menggunakan laptopnya untuk mendapatkan akses ilegal ke sistem menggunakan kredensial login administrator. Dia melakukannya enam kali antara 6 Januari dan 17 Januari 2023.",
+      "keyFacts": [
+        "Sekitar November 2021 hingga Oktober 2022, Kandula adalah bagian dari tim beranggotakan 20 orang yang mengelola sistem komputer jaminan kualitas (QA) di NCS.",
+        "Pada tanggal 18 dan 19 Maret, dia menjalankan skrip yang diprogram untuk menghapus 180 server virtual di sistem.",
+        "Aksi tersebut menyebabkan kerugian besar bagi perusahaan teknologi yang berbasis di Singapura itu Karena perbuatannya, perusahaan ditaksir mengalami kerugian sekitar S$918.000 atau setara Rp11,1 miliar.",
+        "Dia menyewa kamar dengan mantan rekannya di NCS dan menggunakan jaringan Wi-Fi miliknya untuk mengakses sistem NCS satu kali pada tanggal 23 Februari 2023."
+      ]
+    },
+    {
+      "slug": "waspada-ini-ciri-ciri-whatsapp-disadap-dan-cara-tanganinya",
+      "title": "Waspada! Ini Ciri-Ciri WhatsApp Disadap dan Cara Tanganinya",
+      "excerpt": "Penyadapan tentu akan merugikan pengguna karena peretas juga dapat mengawasi aktivitas di WhatsApp Anda, seperti pesan pribadi dan isi kontak. Hal yang mengerikan lainnya dari akun",
+      "category": "Cybersecurity",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261004122549-37-773137/waspada-ini-ciri-ciri-whatsapp-disadap-dan-cara-tanganinya",
+      "date": "2026-10-04",
+      "image": "https://images.unsplash.com/photo-1593642532400-2682810df593?w=800&q=80",
+      "tags": [
+        "WhatsApp",
+        "Keamanan",
+        "Privasi"
+      ],
+      "summary": "Penyadapan tentu akan merugikan pengguna karena peretas juga dapat mengawasi aktivitas di WhatsApp Anda, seperti pesan pribadi dan isi kontak. Hal yang mengerikan lainnya dari akun WhatsApp disadap, bisa berujung isi rekening terkuras. Cara peretas untuk melakukan pembajakan dan memata-matai ada banyak. Seperti memasang aplikasi pihak ketiga, memanfaatkan WhatsApp Web, hingga mengirimkan malware ke ponsel. Hal ini bisa sangat membahayakan terlebih Whatsapp kini juga digunakan untuk menerima One Time Password dari berbagai aplikasi, termasuk aplikasi belanja online dan finansial. 1. OTP One Time Password (OTP) merupakan enam angka kode dan biasanya dikirimkan ke SMS saat akan mengakses WhatsApp. Artinya jika ada pesan yang masuk ada yang berusaha masuk ke akun WhatsApp. Jangan berikan kode OTP ini pada siapapun. 2. Keluar dari WhatsApp Salah satu ciri yang bisa dikenali adalah tiba-tiba keluar dari WhatsApp. Bisa jadi ada perangkat lain yang mencoba masuk ke akun WhatsApp. Anda bisa mengetahui perangkat lain itu dengan menekan ikon tiga titik dan pilih WhatsApp Web. 4. Pesan Terkirim Sendiri Ciri ini sama seperti sebelumnya. Waspadalah jika tiba-tiba ada pesan yang terkirim sendiri padahal Anda tak pernah mengirimkannya. 5. Status WA Asing Terdapat status WA yang tiba-tiba muncul, padahal bukan dibuat oleh pengguna sendiri. 6. Melakukan panggilan telepon Terdapat panggilan telepon asing di WhatsApp yang bukan dibuat oleh pengguna sendiri. Sebelum penyadapan seperti di atas terjadi pada Anda, ada cara yang bisa dilakukan yakni dengan melakukan verifikasi dua langkah atau two-step verification.",
+      "keyFacts": [
+        "Pengguna punya waktu 30 hari untuk mengaktifkan kembali akun sebelum dihapus selamanya.",
+        "Penyadapan tentu akan merugikan pengguna karena peretas juga dapat mengawasi aktivitas di WhatsApp Anda, seperti pesan pribadi dan isi kontak.",
+        "Hal yang mengerikan lainnya dari akun WhatsApp disadap, bisa berujung isi rekening terkuras.",
+        "Seperti memasang aplikasi pihak ketiga, memanfaatkan WhatsApp Web, hingga mengirimkan malware ke ponsel."
+      ]
+    },
+    {
+      "slug": "gen-z-mulai-tinggalkan-smartphone-kompak-pindah-ke-penggantinya",
+      "title": "Gen Z Mulai Tinggalkan Smartphone, Kompak Pindah ke Penggantinya",
+      "excerpt": "Fenomena tersebut mulai terlihat di Amerika Serikat (AS) dalam beberapa tahun terakhir. Influencer yang dikenal mendorong penggunaan 'dumb phone', Jose Briones, mengatakan sebagian",
+      "category": "Teknologi",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261004144616-37-773141/gen-z-mulai-tinggalkan-smartphone-kompak-pindah-ke-penggantinya",
+      "date": "2026-10-04",
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+      "tags": [
+        "Smartphone",
+        "Tren",
+        "Generasi Z"
+      ],
+      "summary": "Fenomena tersebut mulai terlihat di Amerika Serikat (AS) dalam beberapa tahun terakhir. Influencer yang dikenal mendorong penggunaan 'dumb phone', Jose Briones, mengatakan sebagian Gen Z kini mulai mencari alternatif dari smartphone. \"Saya pikir Anda bisa melihatnya dengan populasi Gen Z tertentu, mereka bosan dengan layar (smartphone),\" kata Briones, dikutip dari CNBC International, Minggu (4/10/2026). Menurut Briones, kejenuhan terhadap smartphone tersebut turut mendorong anak muda untuk melirik kembali ponsel jadul atau feature phone yang memiliki fungsi lebih terbatas dibandingkan smartphone. HMD Global menjadi salah satu perusahaan yang ketiban durian runtuh. Perusahaan diketahui memiliki merek ponsel sejuta umat Nokia yang banyak menjual ponsel awal tahun 2000-an lalu. Penjualan feature phone di AS sendiri telah melonjak mencapai puluhan ribu perbulannya pada 2022. Hal ini terjadi saat penjualan global juga mengalami penutunan. Sementara itu, pasar feature phone didominasi masyarakat di Timur Tengah, Afrika dan India. Counterpoint Research melaporkan pasar negara tersebut mencapai 80% di tahun lalu. Di sisi lain, pasar smartphone Indonesia tercatat tidak begitu baik. Daya beli masyarakat diketahui mengalami penurunan sejak beberapa tahun lalu. IDC dalam laporan Worldwide Quaterly Mobile Phone Tracker menyebutkan pasar smartphone Indonesia menurun 14,3% pada 2023. Jumlah unit yang dikirimkan hanya 35 juta unit saja.",
+      "keyFacts": [
+        "\"Saya pikir Anda bisa melihatnya dengan populasi Gen Z tertentu, mereka bosan dengan layar (smartphone),\" kata Briones, dikutip dari CNBC International, Minggu (4/10/2026).",
+        "IDC dalam laporan Worldwide Quaterly Mobile Phone Tracker menyebutkan pasar smartphone Indonesia menurun 14,3% pada 2023.",
+        "Perusahaan diketahui memiliki merek ponsel sejuta umat Nokia yang banyak menjual ponsel awal tahun 2000-an lalu.",
+        "Penjualan feature phone di AS sendiri telah melonjak mencapai puluhan ribu perbulannya pada 2022."
+      ]
+    },
+    {
+      "slug": "paket-internet-tak-hangus-jadi-lebih-mahal-ini-kata-komdigi",
+      "title": "Paket Internet Tak Hangus Jadi Lebih Mahal? Ini Kata Komdigi",
+      "excerpt": "Kementerian Komunikasi dan Digital (Komdigi) menegaskan perlindungan terhadap sisa kuota pelanggan tidak boleh dikenakan biaya tambahan dengan alasan atau persyaratan apa pun. \"Jad",
+      "category": "Teknologi",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003145726-37-773056/paket-internet-tak-hangus-jadi-lebih-mahal-ini-kata-komdigi",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "tags": [
+        "Internet",
+        "Kebijakan",
+        "Operator"
+      ],
+      "summary": "Kementerian Komunikasi dan Digital (Komdigi) menegaskan perlindungan terhadap sisa kuota pelanggan tidak boleh dikenakan biaya tambahan dengan alasan atau persyaratan apa pun. \"Jadi jelas di dalam eksplisif, di dalam putusan MK bahwa dalam hal melakukan perlindungan substantif terkait kuota, itu tidak boleh dikenakan biaya apapun dengan alasan dan persyaratan apapun,\" kata Evan Fathurokhman Adiwidjaja, Sekretaris Ditjen Infrastruktur Digital Komdigi, saat konferensi pers di Kantor Komdigi, Sabtu (3/10/2026). Akan tetapi jika harga itu naik, lanjutnya, Komdigi akan melakukan evaluasi dari sisi bagaimana operator itu melakukan penerapan terhadap formulasi tarif yang sudah diterapkan oleh pemerintah. Beberapa waktu terakhir isu soal kuota internet tersisa yang hangus ramai dibahas. Kemudian masalah ini dibawa ke Mahkamah Konstitusi dan diputuskan bahwa tidak boleh internet tersisa hangus. Kemudian, Kementerian Komunikasi dan Digital menerbitkan Surat Edaran Nomor 4 Tahun 2026 sebagai tindak lanjut keputusan MK. SE tersebut melarang adanya tambahan biaya untuk pelanggan agar sisa kuotanya bisa dipertahankan. Selain itu, SE juga mewajibkan adanya pelaporan pemenuhan kewajiban hingga 28 September 2026. Begitu juga adanya laporan perkembangan pemenuhan kewajiban satu kali setiap bulannya.",
+      "keyFacts": [
+        "\"Jadi jelas di dalam eksplisif, di dalam putusan MK bahwa dalam hal melakukan perlindungan substantif terkait kuota, itu tidak boleh dikenakan biaya apapun dengan alasan dan persyaratan apapun,\" kata Evan Fathurokhman Adiwidjaja, Sekretaris Ditjen Infrastruktur Digital Komdigi, saat konferensi pers di Kantor Komdigi, Sabtu (3/10/2026).",
+        "Kemudian, Kementerian Komunikasi dan Digital menerbitkan Surat Edaran Nomor 4 Tahun 2026 sebagai tindak lanjut keputusan MK.",
+        "Selain itu, SE juga mewajibkan adanya pelaporan pemenuhan kewajiban hingga 28 September 2026."
+      ]
+    },
+    {
+      "slug": "komdigi-ungkap-nasib-sisa-kuota-xl-indosat-telkomsel-usai-putusan-mk",
+      "title": "Komdigi Ungkap Nasib Sisa Kuota XL, Indosat, Telkomsel Usai Putusan MK",
+      "excerpt": "Direktur Strategi dan Kebijakan Infrastruktur Digital Komdigi Denny Setiawan mengatakan, dari evaluasi terhadap Indosat, Telkomsel, dan XLSmart, sebagian paket masih hanya memberik",
+      "category": "Teknologi",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003131455-37-773047/komdigi-ungkap-nasib-sisa-kuota-xl-indosat-telkomsel-usai-putusan-mk",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+      "tags": [
+        "Internet",
+        "Operator",
+        "Komdigi"
+      ],
+      "summary": "Direktur Strategi dan Kebijakan Infrastruktur Digital Komdigi Denny Setiawan mengatakan, dari evaluasi terhadap Indosat, Telkomsel, dan XLSmart, sebagian paket masih hanya memberikan notifikasi kepada pelanggan, bukan mekanisme rollover. \"Secara umum ketiga operator sudah memperluas pilihan paket rollover. Namun, kami juga menemukan bahwa masih terdapat paket-paket non-rollover yang perlindungannya baru diberikan dalam bentuk notifikasi atau peringatan kepada pelanggan,\" ujar Denny saat konferensi pers di Kantor Komdigi, Sabtu (3/10/2026). Ia menjelaskan pada XLSmart, dari 101 paket yang dilaporkan, sebanyak 92 paket sudah menggunakan mekanisme rollover. Sementara 9 paket masih menggunakan penguatan informasi dan notifikasi. Khusus XL dan AXIS, seluruh paket yang ditawarkan saat ini sudah dilengkapi fitur rollover, masing-masing 38 paket XL dan 38 paket AXIS. Untuk Indosat, dari 94 paket yang dilaporkan, baru 23 paket yang menggunakan mekanisme rollover. Sebanyak 71 paket lainnya masih mengandalkan bentuk perlindungan lain, termasuk notifikasi pada H-7 dan H-2 sebelum masa paket berakhir. Sementara Telkomsel memiliki 95 paket yang dilaporkan ke Komdigi. Dari jumlah tersebut, 19 paket sudah menggunakan rollover, sedangkan 76 paket masih menggunakan notifikasi terkait masa berlaku dan sisa kuota. Sehingga menurut evaluasi pemerintah, mekanisme perlindungan tidak cukup hanya bersifat preventif. Harus ada mekanisme yang memberikan perlindungan substantif, yang benar-benar melindungi nilai ekonomi dari sisa kuota pelanggan. \"Notifikasi hanya mengingatkan pelanggan bahwa kuotanya akan berakhir. Yang kami dorong adalah adanya mekanisme yang memberikan kesempatan kepada pelanggan untuk tetap memperoleh manfaat ekonomi dari kuota yang sudah mereka beli,\" tegasnya. .",
+      "keyFacts": [
+        "Namun, kami juga menemukan bahwa masih terdapat paket-paket non-rollover yang perlindungannya baru diberikan dalam bentuk notifikasi atau peringatan kepada pelanggan,\" ujar Denny saat konferensi pers di Kantor Komdigi, Sabtu (3/10/2026).",
+        "Sebanyak 71 paket lainnya masih mengandalkan bentuk perlindungan lain, termasuk notifikasi pada H-7 dan H-2 sebelum masa paket berakhir.",
+        "Ia menjelaskan pada XLSmart, dari 101 paket yang dilaporkan, sebanyak 92 paket sudah menggunakan mekanisme rollover.",
+        "Khusus XL dan AXIS, seluruh paket yang ditawarkan saat ini sudah dilengkapi fitur rollover, masing-masing 38 paket XL dan 38 paket AXIS."
+      ]
+    },
+    {
+      "slug": "kejadian-aneh-di-ri-harga-ayam-di-peternak-turun-warga-beli-mahal",
+      "title": "Kejadian Aneh di RI: Harga Ayam di Peternak Turun, Warga Beli Mahal",
+      "excerpt": "Badan Pusat Statistik (BPS) mencatat rata-rata harga daging ayam ras pada minggu pertama Oktober 2026 turun 0,52% dibandingkan September 2026. Meski demikian, harganya masih berada",
       "category": "Ekonomi",
       "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/market/20261005083949-17-773248/harga-saham-naik-gila-gilaan-perdagangan-emiten-ini-digembok-bursa",
+      "sourceUrl": "https://www.cnbcindonesia.com/news/20261005113848-4-773325/kejadian-aneh-di-ri-harga-ayam-di-peternak-turun-warga-beli-mahal",
       "date": "2026-10-05",
-      "image": "https://awsimages.detik.net.id/visual/2026/06/30/layar-menampilkan-pergerakan-indeks-harga-saham-gabungan-ihsg-di-bursa-efek-indonesia-bei-jakarta-selasa-3062026-1782797018756_169.jpeg?w=1200&q=90",
+      "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80",
       "tags": [
-        "CNBC Indonesia",
-        "Ekonomi"
+        "Ekonomi",
+        "Inflasi",
+        "BPS"
       ],
-      "summary": "BEI menghentikan sementara perdagangan saham PT Bank of India Indonesia (BSWD) mulai 5 Oktober 2026, setelah lonjakan harga signifikan.",
+      "summary": "Badan Pusat Statistik (BPS) mencatat rata-rata harga daging ayam ras pada minggu pertama Oktober 2026 turun 0,52% dibandingkan September 2026. Meski demikian, harganya masih berada di atas H Deputi Bidang Statistik Distribusi dan Jasa BPS Ateng Hartono mengatakan, harga daging ayam ras masih menjadi perhatian pemerintah lantaran kenaikan harga terjadi di banyak daerah. Tercatat ada 217 kabupaten/kota yang mengalami peningkatan Indeks Perkembangan Harga (IPH) daging ayam ras. Dalam paparannya saat Rapat Koordinasi Pengendalian Inflasi Daerah Kementerian Dalam Negeri (Kemendagri), Senin (5/10/2026), rata-rata harga daging ayam ras di tingkat konsumen pada minggu pertama Oktober mencapai sekitar Rp40.501 per kg, atau masih 0,33% di atas H Kondisi berbeda terjadi di tingkat produsen. Data Kementerian Pertanian menunjukkan harga daging ayam ras di tingkat produsen pada periode yang sama berada di sekitar Rp23.458 per kg, turun 3,27% dibandingkan minggu sebelumnya dan sudah 6,17% di bawah H Direktur Hilirisasi Hasil Peternakan Kementerian Pertanian (Kementan) Makmun, mengatakan tren penurunan harga di tingkat produsen memang sudah terjadi. Namun, persoalan masih terlihat di tingkat konsumen. \"Kalau kita lihat daging ayam, sesungguhnya kalau di produsen juga sudah turun, yaitu turun sebesar 0,33% atau harganya di produsennya Rp23.458 (per kg).",
       "keyFacts": [
-        "BEI menghentikan sementara perdagangan saham PT Bank of India Indonesia (BSWD) mulai 5 Oktober 2026, setelah lonjakan harga signifikan."
+        "Dalam paparannya saat Rapat Koordinasi Pengendalian Inflasi Daerah Kementerian Dalam Negeri (Kemendagri), Senin (5/10/2026), rata-rata harga daging ayam ras di tingkat konsumen pada minggu pertama Oktober mencapai sekitar Rp40.501 per kg, atau masih 0,33% di atas HAP konsumen sebesar Rp40.000 per kg.",
+        "Data Kementerian Pertanian menunjukkan harga daging ayam ras di tingkat produsen pada periode yang sama berada di sekitar Rp23.458 per kg, turun 3,27% dibandingkan minggu sebelumnya dan sudah 6,17% di bawah HAP produsen sebesar Rp25.000 per kg.",
+        "Badan Pusat Statistik (BPS) mencatat rata-rata harga daging ayam ras pada minggu pertama Oktober 2026 turun 0,52% dibandingkan September 2026.",
+        "\"Kondisinya sekarang harga pakan rata-rata sudah di atas Rp9.400 per kg untuk starter umur 7-21 hari."
       ]
     },
     {
-      "slug": "CNBC Indonesia-ihsg-masih-volatil-deretan-saham-ini-menarik-buat-dilirik",
-      "title": "IHSG Masih Volatil, Deretan Saham Ini Menarik Buat Dilirik",
-      "excerpt": "IHSG menguat 0,46% di level 6.036,89, didorong saham BBCA dan DCII. Investor asing net sell Rp1,31 triliun. Rekomendasi saham hari ini juga disertakan.",
-      "category": "Berita",
-      "source": "CNBC Indonesia",
-      "sourceUrl": "https://www.cnbcindonesia.com/market/20261005081551-17-773233/ihsg-masih-volatil-deretan-saham-ini-menarik-buat-dilirik",
-      "date": "2026-10-05",
-      "image": "https://awsimages.detik.net.id/visual/2026/10/05/market-1791162951-1791162951468_169.jpeg?w=1200&q=90",
-      "tags": [
-        "CNBC Indonesia"
-      ],
-      "summary": "IHSG menguat 0,46% di level 6.036,89, didorong saham BBCA dan DCII. Investor asing net sell Rp1,31 triliun. Rekomendasi saham hari ini juga disertakan.",
-      "keyFacts": [
-        "IHSG menguat 0,46% di level 6.036,89, didorong saham BBCA dan DCII",
-        "Investor asing net sell Rp1,31 triliun",
-        "Rekomendasi saham hari ini juga disertakan."
-      ]
-    },
-    {
-      "slug": "Politik-ini-12-kode-redeem-free-fire-terbaru-sabtu-3-oktober-2026-politikindonesiaid",
-      "title": "Ini 12 Kode Redeem Free Fire Terbaru Sabtu 3 Oktober 2026 - politikindonesia.id",
-      "excerpt": "Ini 12 Kode Redeem Free Fire Terbaru Sabtu 3 Oktober 2026 politikindonesia.id",
-      "category": "Politik",
-      "source": "Politik",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOajhnZ3dEb1VwT0pYblppV2ZSTkJIUGN3NVp5YXROVjVKcGVPcmt2ZWd0N0Y4TnBxeHRKLVhud0xvMWtnQmRzb2RfX1R6eXlGQzhzS2J6bmRVVF92QldiNTV3LUJwSXJFaXV4TVZrekpiX0pxSWFhbEswcThpSzRzSkxneXduYVM3UGRQa3RKOV9hQ1E?oc=5",
-      "date": "2026-10-04",
-      "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",
-      "tags": [
-        "Politik"
-      ],
-      "summary": "Ini 12 Kode Redeem Free Fire Terbaru Sabtu 3 Oktober 2026 politikindonesia.id",
-      "keyFacts": [
-        "Ini 12 Kode Redeem Free Fire Terbaru Sabtu 3 Oktober 2026 politikindonesia.id"
-      ]
-    },
-    {
-      "slug": "Politik-klaim-sekarang-kode-redeem-ff-4-oktober-2026-bagi-bagi-skin-gratis-politikindone",
-      "title": "Klaim Sekarang! Kode Redeem FF 4 Oktober 2026 Bagi-bagi Skin Gratis - politikindonesia.id",
-      "excerpt": "Klaim Sekarang! Kode Redeem FF 4 Oktober 2026 Bagi-bagi Skin Gratis politikindonesia.id",
-      "category": "Politik",
-      "source": "Politik",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOWDhLdmlQQ0V3WkVJT0JzN1BsSDBYVnRLVXRuR29lRHpCcEQzNk5sUFRwdGphdWw3S1NRMThacXVrdmxITDhsX3MxUHpYdlV3YkxoYXcwQm5OdHRtMmZYcWhkZUNIR0xSSkpoM0tWUzlNQlB2b0FKSHRRUEE5Tm9kYmhMLXZKRzNQZDQ3amtPQkt2WGQ0cUYtd2pFZUVsNjQ?oc=5",
-      "date": "2026-10-04",
-      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-      "tags": [
-        "Politik"
-      ],
-      "summary": "Klaim Sekarang! Kode Redeem FF 4 Oktober 2026 Bagi-bagi Skin Gratis politikindonesia.id",
-      "keyFacts": [
-        "Kode Redeem FF 4 Oktober 2026 Bagi-bagi Skin Gratis politikindonesia.id"
-      ]
-    },
-    {
-      "slug": "Kriminal-terhubung-lewat-pertemuan-virtual-jaringan-teroris-lintas-provinsi-terbongkar-af",
-      "title": "Terhubung Lewat Pertemuan Virtual, Jaringan Teroris Lintas Provinsi Terbongkar - AFU.id",
-      "excerpt": "Terhubung Lewat Pertemuan Virtual, Jaringan Teroris Lintas Provinsi Terbongkar AFU.id",
-      "category": "Viral",
-      "source": "Kriminal",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQNTRXSWlPT2s3c0p1a0dZWFlrYUZFX2dFY1dVaHpGTW01VDRNSEJmR0FCTG50bG56RGlxdFJnSV9fX095RlcybGRrWlpvd0pkUFdvVTMwUmd5M1BpcExld0o3bHpGSFFxaEcwVElvQTltVU8yRzhqVTY1RHhtRTlSOE9VMmdwcEF0UzhpRnRNcGZqLWtFSm5LWnMya3RBb0YxWVFJRmk0Nlk5Znc?oc=5",
-      "date": "2026-10-04",
-      "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
-      "tags": [
-        "Kriminal"
-      ],
-      "summary": "Terhubung Lewat Pertemuan Virtual, Jaringan Teroris Lintas Provinsi Terbongkar AFU.id",
-      "keyFacts": [
-        "Terhubung Lewat Pertemuan Virtual, Jaringan Teroris Lintas Provinsi Terbongkar AFU.id"
-      ]
-    },
-    {
-      "slug": "Ekonomi-bocoran-kondisi-ekonomi-ri-memasuki-kuartal-iv-2026-cnbc-indonesia",
-      "title": "Bocoran Kondisi Ekonomi RI Memasuki Kuartal IV-2026 - CNBC Indonesia",
-      "excerpt": "Bocoran Kondisi Ekonomi RI Memasuki Kuartal IV-2026 CNBC Indonesia",
+      "slug": "harga-cabai-makin-mahal-bps-ungkap-efek-horornya-ke-warga-ri-ini",
+      "title": "Harga Cabai Makin Mahal, BPS Ungkap Efek Horornya ke Warga RI Ini",
+      "excerpt": "Berdasarkan pemantauan BPS, harga rata-rata cabai merah pada minggu pertama Oktober 2026 mencapai Rp63.913 per kg. Angka tersebut naik 11,38% dibandingkan September dan sudah berad",
       "category": "Ekonomi",
-      "source": "Ekonomi",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUzY4RktFMWsxRnVZMGxVT2ZfWHNxRVZNYlQxNVpRSmprY0FCdkRWc2tKRlpTYlhDV2loeG1PMmNGYU44SFo2NzVVbXBSV1B1VGlVMjVPZWJEbWN4bE1jRHFpdkdUQ1NkeFVqTDJFNk9Wb0VjalVodlMwUFNYZHhiVE9jWTVGLTYxZGd6M3pPdl84Rkk1SWdHd0d4MF82OUdHam9fb21IZG50TTQ5OWhN0gG0AUFVX3lxTE5JXzhTLWd6Y1ViVkVSNFI1R2FVSEhYekZFc2dRNGljZ01MeGJzRG0waWx6OTRvQ0MxYnJodzJYLUtCdXhKSWR2cURhYVljYXdiQlFOX3BSSUNnYThsTUpEZTlpOHh5Nzk0Y2t5eUttVld2S0xDUE9nZzZOd0ZZZHFEX0dUS3RSZXRHV3ZDXzFWU2plRmxJQ1ItMkpQZ0V1cmhQbjBZSFJ5SGxESDZJUm1VbFBrUw?oc=5",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/news/20261005133211-4-773374/harga-cabai-makin-mahal-bps-ungkap-efek-horornya-ke-warga-ri-ini",
       "date": "2026-10-05",
-      "image": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
+      "image": "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80",
       "tags": [
-        "Ekonomi"
+        "Ekonomi",
+        "Inflasi",
+        "BPS"
       ],
-      "summary": "Bocoran Kondisi Ekonomi RI Memasuki Kuartal IV-2026 CNBC Indonesia",
+      "summary": "Berdasarkan pemantauan BPS, harga rata-rata cabai merah pada minggu pertama Oktober 2026 mencapai Rp63.913 per kg. Angka tersebut naik 11,38% dibandingkan September dan sudah berada di atas batas atas Harga Acuan Penjualan (HAP) sebesar Rp55.000 per kg. Deputi Bidang Statistik Distribusi dan Jasa BPS Ateng Hartono mengatakan, kenaikan harga cabai merah juga terjadi di banyak daerah. Tercatat sebanyak 292 kabupaten/kota atau 81,11% mengalami kenaikan Indeks Perkembangan Harga (IPH) cabai merah. \"Harga saat ini Rp63.913 rata-ratanya, sedangkan HAP batas atasnya itu Rp55.000 (per kg),\" ujar Ateng dalam Rapat Koordinasi Pengendalian Inflasi Daerah Kementerian Dalam Negeri (Kemendagri), Senin (5/10/2026). Sementara itu, harga cabai rawit juga mengalami kenaikan cukup tinggi. Pada minggu pertama Oktober, harga rata-rata cabai rawit mencapai Rp86.846 per kg, naik 10,21% dibandingkan September yang berada di Rp78.802 per kg. Harga tersebut juga jauh di atas batas atas H \"Cabai rawit naik cukup besar di minggu pertama Oktober, kenaikannya sampai 10,21%. Bahkan kalau kita bandingkan dengan batas atas H BPS mencatat sebanyak 259 kabupaten/kota atau 71,94% mengalami kenaikan IPH cabai rawit pada periode tersebut. Ateng mengatakan, perkembangan harga cabai perlu menjadi perhatian, terutama menjelang akhir tahun. Sebab, apabila tren kenaikan terus berlanjut, harga pada Desember 2026 berpotensi lebih tinggi dibandingkan periode yang sama tahun sebelumnya. \"Ini menjadi catatan, jika cabai rawit selalu meningkat maka jika dibandingkan year on year-nya, kondisi akhir tahun Desember, ini khawatir semakin jauh dibandingkan Desember tahun 2025 yang dampaknya akan terjadi inflasi secara tahunan dan juga year on year-nya pada bulan Desember,\" jelas dia.",
       "keyFacts": [
-        "Bocoran Kondisi Ekonomi RI Memasuki Kuartal IV-2026 CNBC Indonesia"
+        "\"Harga saat ini Rp63.913 rata-ratanya, sedangkan HAP batas atasnya itu Rp55.000 (per kg),\" ujar Ateng dalam Rapat Koordinasi Pengendalian Inflasi Daerah Kementerian Dalam Negeri (Kemendagri), Senin (5/10/2026).",
+        "Pada minggu pertama Oktober, harga rata-rata cabai rawit mencapai Rp86.846 per kg, naik 10,21% dibandingkan September yang berada di Rp78.802 per kg.",
+        "\"Tapi untuk cabai merah keriting sebetulnya secara umum masih di kisaran Rp40.000-Rp50.000 (per kg) ya, hanya beberapa daerah seperti di Kabupaten Batu Bara itu tingkat harganya sudah mencapai Rp90.000 (per kg) di daerah sentra,\" ujar Sudi.",
+        "Berdasarkan pemantauan BPS, harga rata-rata cabai merah pada minggu pertama Oktober 2026 mencapai Rp63.913 per kg."
+      ]
+    },
+    {
+      "slug": "satu-dunia-mulai-ikut-aturan-ri-semua-berubah-total",
+      "title": "Satu Dunia Mulai Ikut Aturan RI, Semua Berubah Total",
+      "excerpt": "PP Tunas tidak hanya mengubah aturan di dalam negeri, tetapi kini diikuti oleh puluhan negara dari Asia hingga Eropa. Bahkan Amerika Serikat pun mulai bergerak ke arah yang sama, m",
+      "category": "Teknologi",
+      "source": "CNBC Indonesia",
+      "sourceUrl": "https://www.cnbcindonesia.com/tech/20261003103138-37-773036/satu-dunia-mulai-ikut-aturan-ri-semua-berubah-total",
+      "date": "2026-10-03",
+      "image": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+      "tags": [
+        "Kebijakan",
+        "Media Sosial",
+        "Anak"
+      ],
+      "summary": "PP Tunas tidak hanya mengubah aturan di dalam negeri, tetapi kini diikuti oleh puluhan negara dari Asia hingga Eropa. Bahkan Amerika Serikat pun mulai bergerak ke arah yang sama, menyadari bahwa langkah yang diambil Indonesia ternyata adalah jawaban yang tepat untuk melindungi generasi mendatang. Menteri Komunikasi dan Digital Meutya Hafid pernah menyampaikan bahwa saat ini kurang lebih 19 negara sedang memantau pelaksanaan aturan di Indonesia untuk kemudian menerapkan kebijakan serupa di wilayah masing-masing. Artinya, apa yang Indonesia tetapkan demi melindungi anak-anak kini bukan lagi sekadar aturan dalam negeri. Aturan ini telah menjadi tolok ukur dunia, membuktikan bahwa Indonesia mampu menjadi pelopor dalam melindungi anak-anak di ruang digital yang tanpa batas negara. Kepatuhan platform digital terhadap aturan ini pun berdampak tidak hanya kepada anak-anak di Indonesia, tetapi juga kepada jutaan anak-anak di belahan dunia lain. Bukti nyata perubahan besar di Amerika Serikat baru saja terlihat pada akhir Agustus 2026. Raksasa teknologi Meta, pemilik Facebook dan Instagram, akhirnya menyerah dan menyepakati denda senilai US$16,7 miliar atau sekitar Rp296 triliun untuk menyelesaikan gugatan hukum dari 29 negara bagian di Amerika Serikat. Meta dituduh dengan sengaja merancang fitur-fitur yang membuat anak-anak kecanduan, lalu menutupi dampak buruknya terhadap kesehatan mental remaja termasuk risiko depresi, gangguan citra tubuh, hingga keinginan bunuh diri. Sebagai bagian dari kesepakatan tersebut, Meta wajib melakukan perubahan besar yang persis sejalan dengan arah kebijakan Indonesia.",
+      "keyFacts": [
+        "Pemerintah resmi melarang anak di bawah usia 16 tahun menggunakan media sosial mulai 28 Maret 2026 berdasarkan Peraturan Menteri Komunikasi dan Digital Nomor 9 Tahun 2026, yang merupakan turunan dari PP Tunas.",
+        "Raksasa teknologi Meta, pemilik Facebook dan Instagram, akhirnya menyerah dan menyepakati denda senilai US$16,7 miliar atau sekitar Rp296 triliun untuk menyelesaikan gugatan hukum dari 29 negara bagian di Amerika Serikat.",
+        "16-17 tahun, bisa mengakses platform dengan risiko tinggi, tetapi harus dengan pendampingan orang tua.",
+        "Menteri Komunikasi dan Digital Meutya Hafid pernah menyampaikan bahwa saat ini kurang lebih 19 negara sedang memantau pelaksanaan aturan di Indonesia untuk kemudian menerapkan kebijakan serupa di wilayah masing-masing."
       ]
     }
   ]
