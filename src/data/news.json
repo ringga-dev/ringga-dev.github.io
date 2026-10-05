@@ -1,4 +1,7 @@
 {
+  "title": "Berita Terkini",
+  "subtitle": "Ringkasan berita terbaru yang diambil dari artikel sumbernya secara penuh, bukan dari judul saja. Setiap item diverifikasi memiliki isi minimal 150 kata.",
+  "updatedAt": "2026-10-05",
   "items": [
     {
       "slug": "pertama-dalam-sejarah-astronom-tangkap-sinyal-radio-dari-planet-jauh",
