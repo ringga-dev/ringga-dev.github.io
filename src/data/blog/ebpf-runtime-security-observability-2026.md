@@ -111,6 +111,31 @@ Beberapa tren yang terlihat:
 - **Hardware offload**: NIC vendor mulai explore offloading eBPF program ke hardware (SmartNIC, DPU). Ini masih early stage tapi menjanjikan untuk performance-critical environment.
 - **Standardisasi**: Linux kernel community terus meningkatkan stabilitas API eBPF. CO-RE (Compile Once, Run Everywhere) sudah standard, mengurangi masalah portability.
 
+## Batasan yang Perlu Diketahui
+
+eBPF punya batasan nyata yang menentukan apakah
+programnya bisa berjalan di produksi.
+
+**Kernel harus menyediakan BTF.**
+Program modern memerlukan metadata tipe untuk memverifikasi akses pointer
+dengan aman. Tanpa itu, sebagian program ditolak._distribusi lama dan banyak
+citra container lama tidak menyediakannya.
+
+**Verifier menolak program yang tidak bisa dibuktikan aman secara statis.**
+Ini yang paling sering mengejutkan. Program yang terlihat benar secara
+logika bisa ditolak karena loop dengan batas yang tidak dapat dibuktikan.
+Mulailah dari program sekecil mungkin lalu tambahkan satu per satu.
+
+**Tracepoint lebih portabel daripada kprobe, tapi tidak selalu tersedia.**
+Kprobe bergantung pada simbol kernel dan bisa hilang saat kernel diperbarui.
+Tracepoint punya kontrak yang lebih stabil, tetapi tidak semua fungsi punya
+tracepoint. Kombinasi keduanya biasanya diperlukan.
+
+**Overhead bukan nol dan tidak selalu dapat diprediksi.**
+Program yang dipanggil terlalu sering bisa menimbulkan biaya nyata. Profilkan
+sebelum menyimpulkan overhead suatu program rendah, karena frekuensi
+peristiwa dan pekerjaan per peristiwa sama-sama berpengaruh.
+
 ## Kesimpulan
 
 eBPF di 2026 bukan sekadar observability tool — ini adalah fondasi runtime security di lingkungan cloud-native. Dengan kemampuan hook ke kernel tanpa overhead agent tradisional, eBPF memungkinkan visibilitas yang sebelumnya impossible, deteksi ancaman yang lebih dini, dan enforcement yang lebih granular.

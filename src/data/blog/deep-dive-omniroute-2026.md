@@ -227,6 +227,37 @@ curl http://localhost:20129/v1/chat/completions \\
   }'
 ```
 
+## Memilih Strategi Routing
+
+Banyak pilihan tidak berarti Anda membutuhkannya semua. Beberapa yang paling
+masuk akal:
+
+**Failover** adalah baseline paling aman. Satu penyedia utama, beberapa
+cadangan. Permintaan berpindah otomatis saat utama sedang dibatasi atau
+tidak tersedia. Kompleksitas rendah, risiko rendah.
+
+**Auto-select** lebih cerdas karena memilih model berdasarkan karakter
+prompt. Untuk beban kerja campuran, ini bisa menekan biaya. Biayanya Anda
+perlu menguji dengan prompt Anda sendiri, bukan mengikuti klaim bawaan.
+
+**Load balancing** berguna ketika batas laju satu penyedia menjadi hambatan.
+Menyebar beban ke beberapa kunci menaikkan throughput, tapi jangan sampai
+menyerahkan stabilitas ke penyedia yang kurang andal.
+
+**Rantai model** yang paling berdaya dan paling mudah salah. Beberapa langkah
+dirangkai dengan model berbeda. Penghematannya bisa besar, dan jumlah titik
+kegagalannya juga bertambah.
+
+## Biaya yang Sebenarnya
+
+Token yang dihemat adalah angka yang terlihat, bukan yang penting. Hitung
+total biaya termasuk permintaan gagal yang dicoba ulang, jawaban yang
+terlalu panjang, dan konteks yang dikirim berulang. Penghematatan token yang
+membuat jawaban terlalu pendek bisa menaikkan biaya total justru karena
+format sampai.
+
+Karena itu ukur biaya per permintaan berhasil, bukan token yang dihemat.
+
 ## Kesimpulan
 
 OmniRoute adalah solusi terbaik untuk mengakses 237 AI providers dengan biaya $0. Dengan:

@@ -258,6 +258,43 @@ Fitur yang direncanakan ke depan:
 - [ ] **CUPS integration** — Linux printing pipeline
 - [ ] **Template engine** — template struk terstruktur
 
+## Checklist Sebelum Dipakai di Produksi
+
+Empat hal perlu dipastikan sebelum library ini dipakai untuk transaksi nyata.
+
+**1. Kecepatan cetak yang sebenarnya.**
+Uji dengan struk terburuk yang akan muncul, bukan struk rata-rata. Struk
+yang memuat barcode atau QR membutuhkan waktu lebih lama karena tiap simbol
+memerlukan ruang kosong minimum agar tetap bisa discan.
+
+**2. Ketahanan koneksi.**
+Kios sering berada di jaringan seluler yang tidak stabil. Pastikan ada batas
+waktu tunggu dan percobaan ulang yang jelas. Perilaku yang benar: pencetakan
+gagal dengan pesan yang dimengerti, bukan menggantung atau mencetak struk
+setengah jadi yang membuat kasir salah hitung.
+
+**3. Codepage dan karakter.**
+Printer thermal umumnya memakai codepage Extended ASCII, bukan UTF-8. Nama
+barang atau catatan bisa mengandung karakter di luar rentang itu. Tentukan
+kebijakan eksplisit: transliterasi, ganti, atau tolak. Yang paling berbahaya
+adalah karakter yang salah baca tanpa memunculkan error.
+
+**4. Ukuran kertas dan margin.**
+Lebar 58 mm dan 80 mm punya area cetak berbeda. Mengabaikan ini membuat
+teks terpotong di tepi. Pada struk berisi nomor transaksi, ini berarti data
+yang hilang.
+
+## Catatan Arsitektur
+
+KMP bekerja dengan memisahkan logic yang sama dari detail platform. Yang
+dipisah di sini adalah lapisan transport dan format struk._ltiga alasan ini
+paling sering berubah di lapangan, sementara logic cetak tidak sering
+berubah.
+
+Karena lisensi MIT, modifikasi terbuka. Untuk kasus titik penjualan, bagian
+yang paling sering perlu disesuaikan adalah tata letak struk dan integrasi
+dengan printer dari produsen tertentu.
+
 ## Kesimpulan
 
 **KmpPrinter** adalah solusi thermal printing multiplatform yang matang, dengan:

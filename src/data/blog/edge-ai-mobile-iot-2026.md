@@ -125,6 +125,37 @@ Perbandingan inferensi model **Gemma 2 2.6B** di berbagai perangkat:
 
 > **Catatan:** Model ini adalah versi terdistilasi dengan kuantisasi INT4. Performa asli (FP16) membutuhkan ~8 GB RAM dan tidak cocok untuk edge.
 
+## Mengukur Biaya Inferensi yang Sebenarnya
+
+Sebagian besar panduan berhenti pada angka kecepatan. Yang lebih berguna
+adalah biaya per inferensi, dan komponennya lebih banyak dari yang terlihat.
+
+**Energi adalah biaya utama di perangkat.**
+Baterai adalah sumber daya terbatas yang tidak bisa diisi di tengah shift.
+Ukur energi per inferensi dalam watt-detik, lalu kalikan dengan jumlah
+inferensi per hari. Untuk kamera yang berjalan sepanjang hari, angka ini
+sering menentukan apakah rancangan layak atau tidak.
+
+**Cold start sering lebih penting dari kecepatan steady-state.**
+ akselerator dissipate modern punya waktu inisialisasi yang bisa mencapai
+ratusan milidetik saat bangun dari status diam. Untuk aplikasi yang harus
+merespons dalam satu detik, cold start bisa mendominasi. Solusi yang umum
+dipakai: model kecil untuk deteksi awal, lalu model besar hanya setelah
+objek benar-benar terdeteksi.
+
+**Kuantisasi memberi rasio terbaik antara biaya dan ketepatan.**
+Mengubah model dari float32 ke int8 umumnya mengecilkan ukuran model empat
+kali lipat dan menaikkan throughput secara signifikan. Untuk tugas deteksi,
+penurunan ketepatan sering tidak berarti. Ini langkah pertama yang layak
+dicoba sebelum membeli akselerator yang lebih besar.
+
+## Urutan Kerja yang Praktis
+
+Mulai dari model terkecil yang masih memenuhi kebutuhan. Ukur energi dan
+waktu respons di perangkat target. Naik ke model lebih besar hanya kalau ada
+kebutuhan nyata yang tidak terpenuhi. Untuk sebagian besar kasus deteksi,
+model kecil yang terukur dengan benar menghasilkan sistem yang lebih andal.
+
 ## Kesimpulan
 
 Edge AI bukan lagi masa depan — ini adalah **keniscayaan** di tahun 2026. Dengan chipset yang semakin powerful, tools yang matang, dan tuntutan privasi yang semakin ketat, pengembang mobile dan IoT wajib menguasai paradigma ini. 

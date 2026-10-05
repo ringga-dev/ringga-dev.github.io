@@ -94,10 +94,38 @@ Developer bisa mulai eksperimen dengan:
 
 Kunci: mulai dari task sederhana, optimalkan dengan quantization (INT8/FP16), dan profile di device target.
 
+## Mulai dari yang Paling Murah
+
+ML Kit adalah titik masuk paling masuk akal untuk sebagian besar pengembang.
+API sudah tersedia, tidak perlu melatih model sendiri, dan berjalan di
+perangkat yang sudah dimiliki. Klasifikasi teks, terjemahan, deteksi objek,
+dan pembacaan barcode tersedia di luar kotak.
+
+Setelah langkah itu, TensorFlow Lite memberi kendali penuh atas model
+sendiri. Jalur ini diperlukan kalau model generik tidak cukup untuk domain
+spesifik, misalnya klasifikasi penyakit dari citra kulit yang jelas butuh
+data yang sangat berbeda.
+
+**Android AI Core adalah lapisan yang sering dilupakan.**
+Banyak perangkat kelas atas sekarang punya akselerator inferensi, tetapi
+menjalankan model di sana biasanya beberapa kali lebih cepat dan lebih
+hemat energi dibanding menjalankannya di CPU.
+
+## Ukur di Perangkat yang Sebenarnya
+
+Sebelum menyimpulkan model terlalu lambat, pastikan pengukuran dilakukan di
+perangkat target yang sebenarnya.tolok di emulator atau di ponsel terbaru
+selalu menghasilkan angka yang terlalu optimistis.
+
+Karena itu kuantisasi layak dicoba lebih awal. Mengubah model dari float32
+ke int8 umumnya memperbaiki ukuran, kecepatan, dan konsumsi energi secara
+serentak. Untuk sebagian besar tugas visual, penurunan ketepatan yang
+timbul masih dapat diterima.
+
 ## Kesimpulan
 
 AI phone di 2026 bukan konsep futuristic — ini sudah nyata. Chip dengan NPU terdedikasi, inferensi LLM offline, dan fitur on-device yang semakin canggih mengubah smartphone dari alat konsumsi menjadi asisten AI pribadi.
 
 Bagi developer, ini adalah peluang besar: aplikasi yang memanfaatkan on-device AI bisa lebih privat, lebih cepat, dan lebih reliable. Memulai eksperimen dengan ML Kit atau TensorFlow Lite di Android adalah langkah yang tepat sekarang.
 
-Masa depan mobile memang di mana intelligence hidup di dalam perangkat kita — bukan di 클라우드.
+Masa depan mobile memang di mana intelligence hidup di dalam perangkat kita — bukan di cloud.

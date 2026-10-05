@@ -32,7 +32,7 @@ Pendekatan modular ini memungkinkan implementasi dari ukuran sangat kecil (RV32I
 
 ## Peta Ekosistem 2026
 
-Pada 2026, ekosistem RISC-V telah matang di beberapa 영역:
+Pada 2026, ekosistem RISC-V telah matang di beberapa area:
 
 ### Core IP & Silicon
 
@@ -66,7 +66,7 @@ Linux Distro utama (Debian, Fedora, Ubuntu) sudah menyediakan paket RISC-V. Buil
 | milk-V Pioneer | SoC RV64 dengan GPU VPU |
 | RISC-V emulator (QEMU) | Software-only, cross-platform |
 
-Untuk development 임베디드, berbagai board berbasis ESP32-C3 (RV32IMC) dan STM32 dengan core RISC-V tersedia dengan harga terjangkuna.
+Untuk development embedded, berbagai board berbasis ESP32-C3 (RV32IMC) dan STM32 dengan core RISC-V tersedia dengan harga terjangkuna.
 
 ## Case Study: Edge AI dengan RISC-V
 
@@ -112,6 +112,36 @@ Anda tidak harus menjadi hardware engineer untuk memanfaatkan RISC-V. Beberapa i
 2. **Embedded development**: Perlu belajar toolchain RISC-V (GCC/LLVM cross-compiler, OpenOCD, GDB untuk RISC-V).
 3. **Performance optimization**: Custom extension bisa dioptimisasi via compiler intrinsic atau assembly — tapi biasanya ditangani vendor core IP.
 4. **Keamanan embedded**: Implementasi RISC-V memungkinkan fitur keamanan custom (PMP, isolation) yang tidak tersedia di core proprietary terbatas.
+
+## Mulai Tanpa Membeli Hardware
+
+Salah satu keunggulan terbesar RISC-V untuk belajar adalah Anda bisa
+menjalankan sistem operasi lengkap di laptop yang sudah dimiliki.
+
+```bash
+# Menjalankan Linux RV64 di QEMU tanpa board fisik
+qemu-system-riscv64 -machine virt -m 4G \
+  -kernel riscv-vmlinux \
+  -drive file=rootfs.ext4,format=raw,if=virtio \
+  -nographic
+```
+
+Debian dan Ubuntu sudah menyediakan citra RV64 yang bisa dijalankan di QEMU.
+Anda tidak perlu konfigurasi board untuk mencobanya.
+
+Ini membuat RISC-V jauh lebih murah untuk dipelajari dibanding arsitektur
+yang biasanya menuntut board seharga puluhan dolar. Untuk memahami
+perbedaan RV32 dan RV64, QEMU sudah memadai.
+
+## Kapan Saatnya Membeli Board
+
+Beli board fisik ketika proyek Anda butuh akses GPIO, peripheral tertentu,
+atau pengukuran performa pada silikon sebenarnya. Untuk sebagian besar
+kebutuhandeveloper, membeli board terlalu awal hanya menambah biaya.
+
+Board entry-level berbasis RV64 tersedia dengan harga terjangkau. Pastikan
+sambungan debug tersedia sebelum membeli, karena beberapa board hanya
+menyediakan hal minimal untuk komunikasi awal.
 
 ## Kesimpulan
 

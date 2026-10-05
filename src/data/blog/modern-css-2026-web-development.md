@@ -122,7 +122,7 @@ Hasilnya: navigasi terasa seperti aplikasi native tanpa *flash* putih atau *layo
 Menggeser logika layout ke CSS membawa manfaat nyata:
 
 - **Bundle JS lebih kecil** — tidak perlu polyfill atau library observer.
-- **Paint lebih cepat** — browser mengoptimalkan style komputasi di main thread渲染.
+- **Paint lebih cepat** — browser mengoptimalkan style komputasi di main thread.
 - **Aksesibilitas lebih baik** — perilaku responsif konsisten tanpa *hydration* error.
 
 Untuk situs statis seperti portfolio Nuxt 4, ini berarti halaman ringan yang tetap interaktif.
