@@ -123,7 +123,7 @@
       </div>
 
       <!-- PAGINATION -->
-      <UiPagination
+      <Pagination
         v-model="currentPage"
         :total-items="newsData.items.length"
         :per-page="NEWS_PER_PAGE"

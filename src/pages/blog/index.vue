@@ -188,7 +188,7 @@
       </div>
 
       <!-- PAGINATION -->
-      <UiPagination
+      <Pagination
         v-if="filteredPosts.length"
         v-model="currentPage"
         :total-items="filteredPosts.length"
