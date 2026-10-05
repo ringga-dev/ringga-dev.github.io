@@ -455,17 +455,59 @@ def parse_rss_date_to_date(date_str: str) -> str:
 
 
 def is_recent(date_str: str) -> bool:
+    """True kalau item publication date-nya dalam PAST_DAYS terakhir.
+
+    PENTING: kalau tanggal gagal di-parse, return False (bukan True).
+    dulu fallback-nya `True`, sehingga semua item — termasuk yang sudah
+    berhari-hari lalu — dianggap "dalam 24 jam". Akibatnya kandidat cuma
+    diduplikasi, news.json tidak pernah bertambah, dan workflow tidak
+    pernah menghasilkan commit.
+    """
     if not date_str:
-        return True
+        return False
+
+    raw = date_str.strip()
+
+    # Format RSS/Atom dengan timezone: "Sat, 04 Oct 2026 09:12:00 GMT",
+    # "... +0700", "... WIB". Pakai email.utilsParsedate_to_datetime.
     try:
-        parsed = datetime.strptime(
-            re.sub(r"\s+WIB$", "", date_str), "%a, %d %b %Y %H:%M:%S"
-        )
-        parsed = parsed.replace(tzinfo=timezone.utc)
+        from email.utils import parsedate_to_datetime
+        dt = parsedate_to_datetime(raw)
+        if dt is not None:
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            cutoff = utc_now() - timedelta(days=PAST_DAYS)
+            return dt >= cutoff
+    except (ValueError, TypeError, IndexError, OverflowError):
+        pass
+
+    # Format tanpa nama hari, dengan offset: "2026-10-04T09:12:00+07:00"
+    try:
+        dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
         cutoff = utc_now() - timedelta(days=PAST_DAYS)
-        return parsed >= cutoff
+        return dt >= cutoff
     except (ValueError, TypeError):
-        return True
+        pass
+
+    # Format polos tanpa timezone
+    for fmt in (
+        "%a, %d %b %Y %H:%M:%S",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%d %H:%M",
+        "%Y-%m-%d",
+        "%d %b %Y %H:%M:%S",
+    ):
+        try:
+            dt = datetime.strptime(raw, fmt).replace(tzinfo=timezone.utc)
+        except (ValueError, TypeError):
+            continue
+        cutoff = utc_now() - timedelta(days=PAST_DAYS)
+        return dt >= cutoff
+
+    # Tanggal tidak bisa dibaca sama sekali -> jangan anggap baru.
+    return False
 
 
 def clean_html(text: str) -> str:
@@ -524,6 +566,25 @@ def is_junk_title(title: str) -> bool:
 
     # Deteksi "Nama Instansi + (Kabupaten/Provinsi/Kota)"
     if re.search(r"\([a-z\s]+kabupaten\)|\([a-z\s]+provinsi\)|\([a-z\s]+kota\)", title_lower):
+        return True
+
+    # Judul yang ISINYA cuma nama situs/domain, tanpa berita, mis
+    # "Surya Indonesia - suryaindonesia.net". Google News kadang memancarkan
+    # entry kosong seperti ini.
+    # PENTING: hanya tolak kalau bagian SEBELUM domain juga pendek (<=3
+    # kata). Judul asli+sumber seperti "Arah Kebijakan Keuangan Inklusif
+    # Indonesia - Kompas.id" punya bagian awal yang panjang dan harus lolos.
+    m_domain = re.search(
+        r"^(.*?)\s*[-–—]\s*[a-z0-9-]+\.(?:net|com|co\.id|org|id|news)\s*$",
+        title_lower,
+    )
+    if m_domain:
+        head_part = m_domain.group(1).strip()
+        if len(re.findall(r"[a-z0-9]+", head_part)) <= 3:
+            return True
+
+    # Judul terlalu pendek untuk jadi berita (kurang dari 4 kata meaningful)
+    if len([w for w in re.split(r"\W+", title_lower) if len(w) > 2]) < 4:
         return True
 
     return False

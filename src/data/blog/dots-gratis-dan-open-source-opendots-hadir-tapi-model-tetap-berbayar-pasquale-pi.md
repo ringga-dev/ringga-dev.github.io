@@ -5,7 +5,11 @@ date: "2026-10-04"
 author: "Ringga Septia Pribadi"
 tags: ["Open Source", "RSS"]
 category: "Open Source"
+<<<<<<< HEAD
 image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80"
+=======
+image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80"
+>>>>>>> 9eb5c8d (fix: berita & blog berhenti update sejak 1 Oktober)
 ---
 
 

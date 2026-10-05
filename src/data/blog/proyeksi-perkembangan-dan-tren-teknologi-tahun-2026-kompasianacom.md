@@ -5,7 +5,11 @@ date: "2026-10-03"
 author: "Ringga Septia Pribadi"
 tags: ["Teknologi", "RSS"]
 category: "Teknologi Informasi"
+<<<<<<< HEAD
 image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80"
+=======
+image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80"
+>>>>>>> 9eb5c8d (fix: berita & blog berhenti update sejak 1 Oktober)
 ---
 
 
