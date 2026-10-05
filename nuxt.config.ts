@@ -32,10 +32,18 @@ const newsRaw = readJsonSync(resolve(process.cwd(), 'src/data/news.json'), 'utf-
 const newsSlugs = (JSON.parse(newsRaw).items || []).map((n: any) => `/news/${n.slug}`)
 const newsRoutes = ['/news', ...newsSlugs]
 
-const POSTS_PER_PAGE = 5
+// Harus sama dengan BLOG_POSTS_PER_PAGE di src/pages/blog/index.vue
+const POSTS_PER_PAGE = 9
 const blogIndexRoutes = Array.from(
   { length: Math.max(1, Math.ceil(blogPostRoutes.length / POSTS_PER_PAGE)) },
   (_, i) => (i === 0 ? '/blog' : `/blog?page=${i + 1}`)
+)
+
+// News juga dipaginate 9 per halaman -> prerender /news?page=N
+const NEWS_PER_PAGE = 9
+const newsIndexRoutes = Array.from(
+  { length: Math.max(1, Math.ceil(newsSlugs.length / NEWS_PER_PAGE)) },
+  (_, i) => (i === 0 ? '/news' : `/news?page=${i + 1}`)
 )
 
 // Explicitly register the dynamic tag route so Nitro prerender can resolve it
@@ -142,7 +150,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
-      routes: ['/', '/sitemap.xml', '/feed.xml', ...blogIndexRoutes, ...blogPostRoutes, ...tagRoutes, ...newsRoutes]
+      routes: ['/', '/sitemap.xml', '/feed.xml', ...blogIndexRoutes, ...blogPostRoutes, ...tagRoutes, ...newsRoutes, ...newsIndexRoutes]
     },
     routeRules: {
       '/tag/**': { prerender: true }

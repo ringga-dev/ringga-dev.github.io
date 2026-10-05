@@ -44,4 +44,4 @@ target/
 # Virtual environments
 .venv/
 venv/
-```
+```bun.lock

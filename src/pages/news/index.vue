@@ -23,7 +23,7 @@
       </div>
 
       <!-- FEATURED NEWS -->
-      <div v-if="newsData.items.length" class="mb-16 animate-reveal" style="animation-delay: 200ms">
+      <div v-if="featured" class="mb-16 animate-reveal" style="animation-delay: 200ms">
         <h2 class="text-xs font-black uppercase tracking-widest text-muted mb-4 font-mono">Headline</h2>
         <NuxtLink
           :to="`/news/${featured.slug}`"
@@ -72,9 +72,9 @@
       </div>
 
       <!-- NEWS GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div v-if="paginatedItems.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <NuxtLink
-          v-for="(item, index) in gridItems"
+          v-for="(item, index) in paginatedItems"
           :key="item.slug"
           :to="`/news/${item.slug}`"
           class="glass-card overflow-hidden group hover:border-brand/40 border border-border/80 rounded-[2.2rem] flex flex-col h-full hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 hover:-translate-y-1.5 animate-reveal"
@@ -121,12 +121,32 @@
           </div>
         </NuxtLink>
       </div>
+
+      <!-- PAGINATION -->
+      <UiPagination
+        v-model="currentPage"
+        :total-items="newsData.items.length"
+        :per-page="NEWS_PER_PAGE"
+        class="mt-12"
+      />
+
+      <!-- EMPTY STATE -->
+      <div
+        v-if="!newsData.items.length"
+        class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border rounded-[2.5rem] shadow-2xl animate-reveal"
+      >
+        <Newspaper class="w-14 h-14 text-muted/30 mx-auto mb-6" />
+        <h3 class="text-xl font-heading font-black text-main mb-3">Belum ada berita</h3>
+        <p class="text-muted text-sm font-semibold leading-relaxed">
+          Feed berita akan terisi otomatis setelah pipeline harian berjalan.
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { Calendar, ArrowRight, Newspaper, RefreshCw } from 'lucide-vue-next'
 import newsData from '~/data/news.json'
 
@@ -137,8 +157,38 @@ useHead({
   ]
 })
 
-const featured = computed(() => newsData.items[0] || null)
-const gridItems = computed(() => newsData.items.slice(1))
+// Jumlah berita per halaman (harus sama dengan NEWS_PER_PAGE di nuxt.config.ts
+// supaya route prerender `?page=N` menghitung jumlah halaman yang sama)
+const NEWS_PER_PAGE = 9
+
+const route = useRoute()
+
+const currentPage = ref(1)
+
+const totalPages = computed(() => Math.max(1, Math.ceil(newsData.items.length / NEWS_PER_PAGE)))
+
+// Headline hanya di halaman 1 supaya layout besar tidak tiap halaman.
+const featured = computed(() => (currentPage.value === 1 ? newsData.items[0] || null : null))
+
+// Memakai pageIndex sebagai sumber kebenaran, bukan nilai `currentPage`:
+// item pertama halaman 1 adalah headline, jadi grid harus mulai dari index 1.
+const pageIndex = computed(() => currentPage.value - 1)
+const paginatedItems = computed(() => {
+  const start = pageIndex.value * NEWS_PER_PAGE
+  const raw = newsData.items.slice(start, start + NEWS_PER_PAGE)
+  return pageIndex.value === 0 ? raw.slice(1) : raw
+})
+
+// Baca ?page=N dari URL saat load supaya route prerender benar.
+const initialPage = parseInt(route.query.page, 10)
+if (Number.isFinite(initialPage) && initialPage >= 1 && initialPage <= totalPages.value) {
+  currentPage.value = initialPage
+}
+
+// Jaga agar halaman tidak melebihi jangkauan saat jumlah berita berkurang.
+watch(totalPages, (tp) => {
+  if (currentPage.value > tp) currentPage.value = tp
+})
 
 const formatDate = (d) => {
   if (!d) return ''

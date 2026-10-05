@@ -188,37 +188,13 @@
       </div>
 
       <!-- PAGINATION -->
-      <div v-if="totalPages > 1" class="flex items-center justify-center gap-2 mt-10 animate-reveal" style="animation-delay: 400ms">
-        <button 
-          @click="currentPage--" 
-          :disabled="currentPage === 1"
-          class="px-4 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border disabled:opacity-50 disabled:cursor-not-allowed"
-          :class="currentPage === 1 ? 'bg-surface-elevated/40 border-border text-muted' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border text-muted hover:text-main hover:border-brand/20'"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        
-        <div class="flex items-center gap-1">
-          <button 
-            v-for="page in visiblePages" 
-            :key="page"
-            @click="currentPage = page"
-            class="w-10 h-10 rounded-xl text-sm font-black transition-all duration-300 cursor-pointer active:scale-95 border"
-            :class="currentPage === page ? 'bg-brand text-brand-dark border-brand shadow-lg shadow-brand/10' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border text-muted hover:text-main hover:border-brand/20'"
-          >
-            {{ page }}
-          </button>
-        </div>
-        
-        <button 
-          @click="currentPage++" 
-          :disabled="currentPage === totalPages"
-          class="px-4 py-2.5 rounded-xl text-sm font-black uppercase tracking-wider transition-all duration-300 cursor-pointer active:scale-95 border disabled:opacity-50 disabled:cursor-not-allowed"
-          :class="currentPage === totalPages ? 'bg-surface-elevated/40 border-border text-muted' : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border text-muted hover:text-main hover:border-brand/20'"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide w-4 h-4 lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
+      <UiPagination
+        v-if="filteredPosts.length"
+        v-model="currentPage"
+        :total-items="filteredPosts.length"
+        :per-page="BLOG_POSTS_PER_PAGE"
+        class="mt-12"
+      />
 
       <!-- EMPTY STATE -->
       <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border rounded-[2.5rem] shadow-2xl animate-reveal">
@@ -241,7 +217,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { Search, Calendar, Clock, ArrowRight, BookOpen, X, ArrowLeft } from 'lucide-vue-next'
 import globalData from '~/data/global.json'
 
@@ -335,16 +311,39 @@ const resetFilters = () => {
   currentPage.value = 1
 }
 
+// Baca ?page=N dari URL saat load supaya route prerender /blog?page=N
+// benar-benar menampilkan isi halaman tersebut (sebelumnya selalu
+// me-render halaman 1 karena paginasi murni client-side).
+const initialPage = parseInt(route.query.page, 10)
+if (Number.isFinite(initialPage) && initialPage >= 1) {
+  currentPage.value = Math.min(initialPage, totalPages.value)
+}
+
+// Ganti filter/search -> kembali ke halaman 1, dan cukup tipe "page"
+// supaya URL lama ikut dibersihkan.
+watch([searchQuery, selectedCategory], () => {
+  currentPage.value = 1
+})
+
+// Jaga agar halaman tidak melebihi jangkauan saat hasil filter berkurang.
+watch(totalPages, (tp) => {
+  if (currentPage.value > tp) currentPage.value = tp
+})
+
 // Pagination
-const postsPerPage = 5
+// Harus sama dengan BLOG_POSTS_PER_PAGE di nuxt.config.ts supaya route
+// prerender `?page=N` menghitung jumlah halaman yang sama.
+const BLOG_POSTS_PER_PAGE = 9
+
+const route = useRoute()
+
 const currentPage = ref(1)
 
-const totalPages = computed(() => Math.ceil(filteredPosts.value.length / postsPerPage))
+const totalPages = computed(() => Math.max(1, Math.ceil(filteredPosts.value.length / BLOG_POSTS_PER_PAGE)))
 
 const paginatedPosts = computed(() => {
-  const start = (currentPage.value - 1) * postsPerPage
-  const end = start + postsPerPage
-  return filteredPosts.value.slice(start, end)
+  const start = (currentPage.value - 1) * BLOG_POSTS_PER_PAGE
+  return filteredPosts.value.slice(start, start + BLOG_POSTS_PER_PAGE)
 })
 
 const gridPosts = computed(() => {
@@ -352,31 +351,6 @@ const gridPosts = computed(() => {
     return paginatedPosts.value.filter(p => p.slug !== featuredPost.value.slug)
   }
   return paginatedPosts.value
-})
-
-const visiblePages = computed(() => {
-  const pages = []
-  const current = currentPage.value
-  const total = totalPages.value
-  
-  if (total <= 7) {
-    for (let i = 1; i <= total; i++) pages.push(i)
-  } else {
-    pages.push(1)
-    if (current > 3) pages.push('...')
-    
-    const start = Math.max(2, current - 1)
-    const end = Math.min(total - 1, current + 1)
-    
-    for (let i = start; i <= end; i++) {
-      if (i !== 1 && i !== total) pages.push(i)
-    }
-    
-    if (current < total - 2) pages.push('...')
-    pages.push(total)
-  }
-  
-  return pages
 })
 
 const formatDate = (dateStr) => {
