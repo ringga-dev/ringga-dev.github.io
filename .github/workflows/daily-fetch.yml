@@ -1,17 +1,22 @@
 name: Fetch News Daily (Google News RSS) & Deploy to GitHub Pages
 
-# Trigger sekali sehari pagi (06:00 UTC = 13:00 WIB)
-# Push hasil commit ke main → trigger deploy.yml → build + deploy ke GitHub Pages
+# NONAKTIF. Pipeline ini menimpa konten terkurasi dengan stub 20-30 kata
+# dari judul RSS saja (tanpa isi artikel), lalu content_gate.py memblokir
+# deploy. Dimatikan atas permintaan pemilik ("gak mau di rutunin").
+# Konten baru harus lewat alur content-pipeline: topik dulu, banyak sumber,
+# tulis setelah data lengkap — bukan scripting judul RSS.
+
+# Tidak ada cron: workflow ini hanya jalan kalau di-trigger manual.
 on:
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:  # biar bisa manual run kalau mau test
+  workflow_dispatch:
 
 permissions:
-  contents: write  # butuh write untuk commit + push
+  contents: write
 
 jobs:
   fetch:
+    # Dinonaktifkan total: job ini tidak akan pernah berjalan.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
