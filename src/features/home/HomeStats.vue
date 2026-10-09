@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { CalendarIcon, FolderIcon, StarIcon, BoxesIcon } from 'lucide-vue-next'
 import homeData from '~/data/home.json'
 
@@ -37,24 +37,7 @@ const getIcon = (name) => {
   }
 }
 
-const findByLabel = (needle) => stats.value.find(s => s.label.toLowerCase().includes(needle))
-
-onMounted(async () => {
-  try {
-    const user = await fetch('https://api.github.com/users/ringga-dev').then(r => r.json())
-    if (user.public_repos != null) {
-      const repoStat = findByLabel('repos')
-      if (repoStat) repoStat.value = String(user.public_repos)
-    }
-
-    const repos = await fetch('https://api.github.com/users/ringga-dev/repos?per_page=100').then(r => r.json())
-    if (Array.isArray(repos)) {
-      const stars = repos.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0)
-      const starsStat = findByLabel('stars')
-      if (starsStat) starsStat.value = String(stars)
-    }
-  } catch (e) {
-    console.warn('[HomeStats] GitHub stats unavailable, using defaults from home.json')
-  }
-})
+// Angka diambil dari home.json (sudah diverifikasi ke GitHub API). Tidak ada
+// fetch runtime: itu menggeser angka setelah paint (layout shift) dan menambah
+// round-trip pihak ketiga di jalan kritikal. Update home.json kalau angkanya berubah.
 </script>
