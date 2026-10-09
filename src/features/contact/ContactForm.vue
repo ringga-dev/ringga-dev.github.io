@@ -1,15 +1,13 @@
 <template>
-  <div class="glass-card p-10 rounded-[2.5rem] bg-surface-card border border-border scroll-reveal relative overflow-hidden h-full">
-    <div class="absolute -left-10 -top-10 w-40 h-40 bg-brand-light/5 rounded-full blur-3xl pointer-events-none"></div>
-
-    <h3 class="text-2xl font-heading font-black text-main mb-8">
+  <div class="glass-card p-10 bg-surface-card border border-border relative overflow-hidden h-full">
+    <h3 class="text-2xl font-display font-semibold text-main mb-8">
       {{ contactData.form.title }}
     </h3>
 
     <form @submit.prevent="submitForm" class="space-y-6">
       <!-- Name Field -->
       <div>
-        <label for="name" class="block text-[10px] font-black uppercase text-muted tracking-widest mb-2">
+        <label for="name" class="block text-[10px] font-semibold uppercase text-muted tracking-widest mb-2">
           {{ contactData.form.nameLabel }}
         </label>
         <input 
@@ -24,7 +22,7 @@
 
       <!-- Email Field -->
       <div>
-        <label for="email" class="block text-[10px] font-black uppercase text-muted tracking-widest mb-2">
+        <label for="email" class="block text-[10px] font-semibold uppercase text-muted tracking-widest mb-2">
           {{ contactData.form.emailLabel }}
         </label>
         <input 
@@ -39,7 +37,7 @@
 
       <!-- Message Field -->
       <div>
-        <label for="message" class="block text-[10px] font-black uppercase text-muted tracking-widest mb-2">
+        <label for="message" class="block text-[10px] font-semibold uppercase text-muted tracking-widest mb-2">
           {{ contactData.form.messageLabel }}
         </label>
         <textarea 
@@ -56,7 +54,7 @@
       <button 
         type="submit" 
         :disabled="isSubmitting"
-        class="w-full btn-primary flex items-center justify-center gap-3 py-4 font-black uppercase tracking-wider text-xs"
+        class="w-full btn-primary flex items-center justify-center gap-3 py-4 font-semibold uppercase tracking-wider text-xs"
       >
         <SendIcon class="w-5 h-5" v-if="!isSubmitting" />
         <LoaderIcon class="w-5 h-5 animate-spin" v-else />

@@ -27,33 +27,21 @@ const config: Config = {
                 main: 'hsl(var(--text-main) / <alpha-value>)',
                 muted: 'hsl(var(--text-muted) / <alpha-value>)',
                 border: 'hsl(var(--border-color) / <alpha-value>)',
+                ink: 'hsl(var(--text-main) / <alpha-value>)',
+                paper: 'hsl(var(--bg-color) / <alpha-value>)',
                 'accent-1': 'hsl(var(--accent-1) / <alpha-value>)',
                 'accent-2': 'hsl(var(--accent-2) / <alpha-value>)',
             },
             fontFamily: {
-                sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                heading: ['"Space Grotesk"', 'sans-serif'],
-            },
-            animation: {
-                'gradient-x': 'gradient-x 15s ease infinite',
-                'float': 'float 6s ease-in-out infinite',
-                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
-            keyframes: {
-                'gradient-x': {
-                    '0%, 100%': {
-                        'background-size': '200% 200%',
-                        'background-position': 'left center'
-                    },
-                    '50%': {
-                        'background-size': '200% 200%',
-                        'background-position': 'right center'
-                    }
-                },
-                'float': {
-                    '0%, 100%': {transform: 'translateY(0)'},
-                    '50%': {transform: 'translateY(-20px)'},
-                }
+                // Display serif for headings/hero (Fraunces, loaded in nuxt.config).
+                display: ['"Fraunces"', 'Georgia', 'serif'],
+                // Readable serif for article body (Newsreader).
+                serif: ['"Newsreader"', 'Georgia', 'serif'],
+                // System monospace for metadata; no webfont needed.
+                mono: ['ui-monospace', '"SF Mono"', '"JetBrains Mono"', 'Menlo', 'Consolas', 'monospace'],
+                // Keep legacy names mapped so existing classes do not break.
+                sans: ['"Newsreader"', 'Georgia', 'serif'],
+                heading: ['"Fraunces"', 'Georgia', 'serif'],
             },
             typography: (theme) => ({
                 brand: {
@@ -64,14 +52,14 @@ const config: Config = {
                         '--tw-prose-links': 'hsl(var(--brand-color))',
                         '--tw-prose-bold': 'hsl(var(--text-main))',
                         '--tw-prose-counters': 'hsl(var(--text-muted))',
-                        '--tw-prose-bullets': 'hsl(var(--brand-dark))',
+                        '--tw-prose-bullets': 'hsl(var(--text-muted))',
                         '--tw-prose-hr': 'hsl(var(--border-color))',
                         '--tw-prose-quotes': 'hsl(var(--text-main))',
                         '--tw-prose-quote-borders': 'hsl(var(--brand-color))',
                         '--tw-prose-captions': 'hsl(var(--text-muted))',
-                        '--tw-prose-code': 'hsl(var(--brand-light))',
+                        '--tw-prose-code': 'hsl(var(--text-main))',
                         '--tw-prose-pre-code': 'hsl(var(--text-main))',
-                        '--tw-prose-pre-bg': '#041a14',
+                        '--tw-prose-pre-bg': 'hsl(var(--surface-elevated))',
                         '--tw-prose-th-borders': 'hsl(var(--border-color))',
                         '--tw-prose-td-borders': 'hsl(var(--border-color))',
 
@@ -79,44 +67,44 @@ const config: Config = {
                         '--tw-prose-invert-headings': 'hsl(var(--text-main))',
                         '--tw-prose-invert-links': 'hsl(var(--brand-color))',
                         '--tw-prose-invert-bold': 'hsl(var(--text-main))',
-                        '--tw-prose-invert-bullets': 'hsl(var(--brand-dark))',
+                        '--tw-prose-invert-bullets': 'hsl(var(--text-muted))',
                         '--tw-prose-invert-quotes': 'hsl(var(--text-main))',
                         '--tw-prose-invert-quote-borders': 'hsl(var(--brand-color))',
-                        '--tw-prose-invert-code': 'hsl(var(--brand-light))',
+                        '--tw-prose-invert-code': 'hsl(var(--text-main))',
                         '--tw-prose-invert-pre-code': 'hsl(var(--text-main))',
-                        '--tw-prose-invert-pre-bg': '#041a14',
+                        '--tw-prose-invert-pre-bg': 'hsl(var(--surface-elevated))',
 
+                        maxWidth: '68ch',
                         a: {
-                            textDecoration: 'none',
-                            borderBottom: '1px solid hsl(var(--brand-color) / 0.3)',
-                            transition: 'all 0.3s',
+                            color: 'hsl(var(--brand-color))',
+                            textDecoration: 'underline',
+                            textDecorationThickness: '1px',
+                            textUnderlineOffset: '3px',
+                            textDecorationColor: 'hsl(var(--brand-color) / 0.4)',
                             '&:hover': {
-                                color: 'hsl(var(--brand-light))',
-                                borderBottomColor: 'hsl(var(--brand-light))'
+                                textDecorationColor: 'hsl(var(--brand-color))'
                             }
                         },
                         blockquote: {
-                            backgroundColor: 'hsl(var(--surface-elevated) / 0.3)',
-                            borderRadius: '0.5rem',
-                            padding: '0.5rem 1rem',
-                            fontStyle: 'normal'
+                            borderLeftWidth: '2px',
+                            borderLeftColor: 'hsl(var(--brand-color))',
+                            fontStyle: 'normal',
+                            paddingLeft: '1.25rem',
+                            color: 'hsl(var(--text-muted))'
                         },
                         pre: {
-                            border: '1px solid hsl(var(--border-color) / 0.5)',
-                            borderRadius: '1rem',
-                            boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)'
+                            border: '1px solid hsl(var(--border-color))',
+                            borderRadius: '4px',
+                            boxShadow: 'none'
                         },
                         img: {
-                            borderRadius: '1.5rem',
-                            boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)',
-                            border: '1px solid hsl(var(--border-color) / 0.3)'
+                            borderRadius: '4px',
+                            boxShadow: 'none',
+                            border: '1px solid hsl(var(--border-color))'
                         }
                     }
                 }
             }),
-            backgroundImage: {
-                'grid-slate': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 220 130 / 0.06)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
-            }
         },
     },
     plugins: [

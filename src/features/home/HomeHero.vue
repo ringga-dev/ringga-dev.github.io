@@ -1,54 +1,46 @@
 <template>
-  <section class="relative min-h-screen flex items-center overflow-hidden bg-surface">
-    <!-- Ambient background -->
-    <div class="absolute inset-0 -z-10 opacity-[0.06] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] bg-grid-slate pointer-events-none"></div>
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[520px] bg-brand/10 blur-[170px] pointer-events-none rounded-full -z-10"></div>
-    <div class="absolute -bottom-32 -right-20 w-[600px] h-[600px] bg-brand-light/10 blur-[170px] pointer-events-none rounded-full -z-10"></div>
-
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-32">
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-surface pt-28 pb-24">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
         <!-- LEFT: copy -->
-        <div class="lg:col-span-7 space-y-7">
-          <!-- Availability -->
-          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-surface-card/80 border border-border/70 text-muted text-[11px] font-bold tracking-widest uppercase backdrop-blur">
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand"></span>
-            </span>
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Availability (mono label, no pill) -->
+          <div class="flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand"></span>
             {{ homeData.hero.badge }}
           </div>
 
           <!-- Headline -->
-          <h1 class="font-heading font-black text-main leading-[1.02] tracking-tight">
-            <span class="block text-2xl sm:text-3xl md:text-4xl lg:text-6xl">{{ homeData.hero.title }}</span>
-            <span class="block mt-2 text-gradient text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{ typedRole || homeData.hero.titleHighlight }}</span><span class="animate-pulse text-brand font-light">|</span>
+          <h1 class="font-display text-main leading-[1.02] tracking-tight">
+            <span class="block text-3xl sm:text-4xl md:text-5xl">{{ homeData.hero.title }}</span>
+            <span class="block mt-2 text-brand text-2xl sm:text-3xl md:text-4xl font-medium">{{ typedRole || homeData.hero.titleHighlight }}</span>
           </h1>
 
           <!-- Description -->
-          <p class="text-muted text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl">
+          <p class="text-muted text-base sm:text-lg md:text-xl font-serif leading-relaxed max-w-xl">
             {{ homeData.hero.description }}
           </p>
 
           <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row gap-4 pt-1">
+          <div class="flex flex-col sm:flex-row gap-3 pt-1">
             <a
               :href="homeData.hero.primaryCta.url"
               target="_blank"
-              class="btn-primary flex items-center justify-center gap-3 px-8 py-4 group font-black uppercase tracking-wider text-xs shadow-lg shadow-brand/10 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+              rel="noopener"
+              class="btn-primary gap-3 px-7 py-3.5 font-mono text-xs uppercase tracking-[0.15em]"
             >
               {{ homeData.hero.primaryCta.text }}
-              <ArrowRightIcon class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <NuxtLink
               :to="homeData.hero.secondaryCta.url"
-              class="btn-secondary flex items-center justify-center gap-3 px-8 py-4 font-black uppercase tracking-wider text-xs hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+              class="btn-secondary gap-3 px-7 py-3.5 font-mono text-xs uppercase tracking-[0.15em]"
             >
               {{ homeData.hero.secondaryCta.text }}
             </NuxtLink>
           </div>
 
           <!-- Mini stats -->
-          <div class="flex flex-wrap gap-x-8 gap-y-4 pt-3">
+          <div class="flex flex-wrap gap-x-10 gap-y-4 pt-4">
             <div
               v-for="stat in homeData.stats"
               :key="stat.label"
@@ -56,8 +48,8 @@
             >
               <component :is="getIcon(stat.icon)" class="w-5 h-5 text-brand" />
               <div>
-                <div class="text-xl font-black text-main leading-none">{{ stat.value }}{{ stat.suffix }}</div>
-                <div class="text-[10px] font-black uppercase tracking-widest text-muted mt-0.5">{{ stat.label }}</div>
+                <div class="text-2xl font-display font-semibold text-main leading-none">{{ stat.value }}{{ stat.suffix }}</div>
+                <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted mt-1">{{ stat.label }}</div>
               </div>
             </div>
           </div>
@@ -66,53 +58,42 @@
         <!-- RIGHT: 3D stage card -->
         <div class="lg:col-span-5">
           <div class="relative">
-            <div class="glass-card rounded-[2.5rem] p-3 shadow-2xl shadow-black/40">
-              <div class="relative aspect-square sm:aspect-[4/5] rounded-[2rem] overflow-hidden bg-surface-elevated/40">
+            <div class="glass-card p-3">
+              <div class="relative aspect-square sm:aspect-[4/5] rounded overflow-hidden bg-surface-elevated">
                 <HeroScene3D class="absolute inset-0" />
 
                 <!-- Stage labels -->
-                <div class="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated/60 backdrop-blur border border-border/30 text-[10px] font-black uppercase tracking-widest text-brand">
-                  <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+                <div class="absolute top-3 left-3 z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
                   Interactive 3D
                 </div>
-                <div class="absolute bottom-4 right-4 z-10 text-[10px] font-bold uppercase tracking-[0.2em] text-muted/70">
+                <div class="absolute bottom-3 right-3 z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Drag to explore
                 </div>
               </div>
             </div>
-            <!-- Floating accent -->
-            <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-3xl bg-gradient-to-br from-brand to-brand-light blur-2xl opacity-30 pointer-events-none"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Tech stack strip -->
-    <div class="absolute bottom-0 inset-x-0 z-20 border-t border-border/60 bg-surface/40 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center gap-6 overflow-x-auto">
-        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-muted shrink-0 hidden sm:block">
+    <!-- Tech stack strip: hairline top rule, no blur -->
+    <div class="absolute bottom-0 inset-x-0 z-20 border-t border-border bg-surface">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-6 overflow-x-auto">
+        <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-muted shrink-0 hidden sm:block">
           {{ homeData.techStack.badge }}
         </span>
-        <div class="flex items-center gap-7">
+        <div class="flex items-center gap-6">
           <div
             v-for="tech in homeData.techStack.techs"
             :key="tech.name"
-            class="flex items-center gap-2.5 group cursor-default shrink-0"
+            class="flex items-center gap-2 shrink-0"
           >
-            <component :is="getIcon(tech.icon)" class="w-5 h-5 text-muted group-hover:text-[var(--glow)] transition-colors duration-300" :style="{ '--glow': tech.color }" />
-            <span class="text-[10px] font-black text-muted tracking-widest uppercase group-hover:text-main transition-colors duration-300">
+            <component :is="getIcon(tech.icon)" class="w-4 h-4 text-muted" />
+            <span class="font-mono text-[10px] text-muted tracking-[0.15em] uppercase">
               {{ tech.name }}
             </span>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2 text-muted/50">
-      <span class="text-[9px] font-black uppercase tracking-[0.3em]">Scroll</span>
-      <div class="w-5 h-8 rounded-full border border-muted/30 flex justify-center pt-1.5">
-        <span class="w-1 h-1.5 rounded-full bg-brand animate-bounce"></span>
       </div>
     </div>
   </section>
@@ -120,14 +101,14 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { 
-  ArrowRightIcon, 
-  SmartphoneIcon, 
-  LayersIcon, 
-  DatabaseIcon, 
-  Code2Icon, 
-  CpuIcon, 
-  BoxIcon 
+import {
+  ArrowRightIcon,
+  SmartphoneIcon,
+  LayersIcon,
+  DatabaseIcon,
+  Code2Icon,
+  CpuIcon,
+  BoxIcon
 } from 'lucide-vue-next'
 import homeData from '~/data/home.json'
 import HeroScene3D from '~/features/home/HeroScene3D.vue'

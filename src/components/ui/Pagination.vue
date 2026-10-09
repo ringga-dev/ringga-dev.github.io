@@ -1,7 +1,7 @@
 <template>
   <nav
     v-if="totalPages > 1"
-    class="flex items-center justify-center gap-2 mt-12 animate-reveal"
+    class="flex items-center justify-center gap-2 mt-12"
     style="animation-delay: 400ms"
     aria-label="Pagination"
   >
@@ -9,7 +9,7 @@
       v-if="current > 1"
       :to="href(current - 1)"
       :aria-label="`Ke halaman ${current - 1}`"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300 active:scale-95"
+      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     </NuxtLink>
@@ -27,9 +27,9 @@
         <NuxtLink
           v-else
           :to="href(page)"
-          class="w-11 h-11 flex items-center justify-center rounded-xl text-sm font-black border transition-all duration-300 active:scale-95"
+          class="w-11 h-11 flex items-center justify-center rounded-xl text-sm font-semibold border transition-all duration-300"
           :class="page === current
-            ? 'bg-brand text-brand-dark border-brand shadow-lg shadow-brand/10'
+            ? 'bg-brand text-brand-dark border-brand'
             : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border text-muted hover:text-main hover:border-brand/20'"
           :aria-current="page === current ? 'page' : undefined"
           :aria-label="`Halaman ${page}`"
@@ -43,7 +43,7 @@
       v-if="current < totalPages"
       :to="href(current + 1)"
       :aria-label="`Ke halaman ${current + 1}`"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300 active:scale-95"
+      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </NuxtLink>

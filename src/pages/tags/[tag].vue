@@ -1,20 +1,18 @@
 <template>
   <div class="min-h-screen pt-28 pb-20 relative overflow-hidden bg-surface">
-    <div class="absolute top-[10%] left-[-10%] w-[30vw] h-[30vw] rounded-full blur-[120px] bg-brand/5 pointer-events-none"></div>
-
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <!-- Header -->
-      <div class="text-center mb-12 animate-reveal">
-        <div class="inline-block px-3.5 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand text-xs font-mono mb-4 uppercase tracking-widest">
+      <div class="text-center mb-12">
+        <div class="inline-block px-3.5 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-xs font-mono mb-4 uppercase tracking-widest">
           Tag
         </div>
-        <h1 class="text-4xl md:text-6xl font-heading font-black tracking-tight leading-none mb-6">
-          #<span class="text-gradient">{{ decodedTag }}</span>
+        <h1 class="text-4xl md:text-6xl font-display font-semibold tracking-tight leading-none mb-6">
+          #<span class="text-brand">{{ decodedTag }}</span>
         </h1>
-        <p class="text-muted max-w-2xl mx-auto text-base md:text-lg font-medium leading-relaxed">
+        <p class="text-muted max-w-2xl mx-auto text-base md:text-lg font-serif leading-relaxed">
           {{ posts.length }} article{{ posts.length === 1 ? '' : 's' }} tagged with "{{ decodedTag }}".
         </p>
-        <NuxtLink to="/blog" class="inline-flex items-center gap-2 mt-6 text-xs font-black uppercase tracking-widest text-brand hover:text-brand-light transition-colors font-mono bg-surface-card/40 border border-brand/20 backdrop-blur-md px-4 py-2.5 rounded-xl hover:border-brand/40">
+        <NuxtLink to="/blog" class="inline-flex items-center gap-2 mt-6 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors font-mono bg-surface-card/40 border border-border px-4 py-2.5 rounded hover:border-brand">
           <ArrowLeft class="w-4 h-4" /> All Articles
         </NuxtLink>
       </div>
@@ -25,7 +23,7 @@
           v-for="(post, index) in posts"
           :key="post.slug"
           :to="post.path"
-          class="glass-card overflow-hidden group hover:border-brand/40 border border-border/80 rounded-[2.2rem] flex flex-col h-full hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 hover:-translate-y-1.5 animate-reveal"
+          class="glass-card overflow-hidden group hover:border-brand border border-border flex flex-col h-full transition-colors"
           :style="`animation-delay: ${150 + (index * 50)}ms`"
         >
           <div class="relative h-56 w-full overflow-hidden border-b border-border/40">
@@ -33,12 +31,12 @@
               v-if="post.image"
               :src="post.image"
               :alt="post.title"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-full object-cover"
             />
             <div v-else class="w-full h-full bg-surface-elevated flex items-center justify-center">
               <BookOpen class="w-12 h-12 text-muted/20" />
             </div>
-            <span class="absolute top-4 left-4 text-[8px] px-2.5 py-1 rounded-md bg-surface-card/80 backdrop-blur-md border border-border/30 text-brand font-black uppercase tracking-widest">
+            <span class="absolute top-4 left-4 text-[8px] px-2.5 py-1 rounded bg-surface-card/80 border border-border/30 text-brand font-mono font-semibold uppercase tracking-widest">
               {{ post.category }}
             </span>
           </div>
@@ -51,16 +49,16 @@
               </span>
             </div>
 
-            <h3 class="text-xl font-heading font-black text-main mb-3 leading-tight group-hover:text-brand transition-colors duration-300 line-clamp-2">
+            <h3 class="text-xl font-display font-semibold text-main mb-3 leading-tight group-hover:text-brand transition-colors line-clamp-2">
               {{ post.title }}
             </h3>
 
-            <p class="text-muted text-sm leading-relaxed font-semibold mb-6 line-clamp-3">
+            <p class="text-muted text-sm leading-relaxed font-serif mb-6 line-clamp-3">
               {{ post.description }}
             </p>
 
             <div class="mt-auto pt-5 border-t border-border/40 flex items-center justify-between">
-              <span class="text-brand text-xs font-black uppercase tracking-wider flex items-center gap-0.5 group-hover:translate-x-1 transition-transform duration-300">
+              <span class="text-brand text-xs font-mono font-semibold uppercase tracking-wider flex items-center gap-0.5">
                 Read
                 <ArrowRight class="w-3.5 h-3.5" />
               </span>
@@ -70,9 +68,9 @@
       </div>
 
       <!-- Empty -->
-      <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border rounded-[2.5rem]">
-        <h3 class="text-xl font-heading font-black text-main mb-3">No Articles Found</h3>
-        <p class="text-muted text-sm font-semibold">Tag "{{ decodedTag }}" has no posts.</p>
+      <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border">
+        <h3 class="text-xl font-display font-semibold text-main mb-3">No Articles Found</h3>
+        <p class="text-muted text-sm font-serif">Tag "{{ decodedTag }}" has no posts.</p>
       </div>
     </div>
   </div>

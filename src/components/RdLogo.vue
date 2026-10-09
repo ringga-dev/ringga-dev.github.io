@@ -1,27 +1,21 @@
 <template>
-  <div class="relative group cursor-pointer" :class="sizeClass">
-    <!-- Animated Outer Ring -->
-    <div class="absolute inset-0 rounded-full border-2 border-brand/10 scale-110 group-hover:scale-125 group-hover:border-brand/35 transition-all duration-700"></div>
-    
-    <img 
-      src="/images/branding/logo-minimal.jpeg" 
-      alt="Ringga Dev Logo" 
+  <div class="relative" :class="sizeClass">
+    <img
+      src="/images/branding/logo-minimal.jpeg"
+      alt="Ringga Dev Logo"
       @error="hasError = true"
       v-if="!hasError"
-      class="w-full h-full object-cover relative z-10 rounded-full transition-all duration-500 group-hover:scale-110"
+      class="w-full h-full object-cover rounded-full border border-border"
     />
-    
+
     <!-- Fallback if logo-minimal.jpeg is missing -->
-    <div 
+    <div
       v-else
-      class="w-full h-full relative z-10 rounded-full bg-brand/10 border border-brand/30 flex items-center justify-center text-brand font-heading font-black tracking-tighter transition-all duration-500 group-hover:scale-110"
+      class="w-full h-full rounded-full bg-surface-card border border-border flex items-center justify-center text-brand font-display font-semibold tracking-tight"
       :class="textClass"
     >
       RD
     </div>
-    
-    <!-- Background Glow on Hover -->
-    <div class="absolute inset-0 bg-brand/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
   </div>
 </template>
 

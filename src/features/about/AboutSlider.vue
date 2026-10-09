@@ -13,17 +13,17 @@
         <div class="flex gap-4">
           <button 
             @click="prev" 
-            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
+            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50"
             aria-label="Previous slide"
           >
             <ChevronLeftIcon class="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
           </button>
           <button 
             @click="next" 
-            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
+            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50"
             aria-label="Next slide"
           >
-            <ChevronRightIcon class="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            <ChevronRightIcon class="w-6 h-6 transition-transform" />
           </button>
         </div>
       </div>
@@ -47,13 +47,13 @@
         :style="{ width: `${100 / itemsPerView}%` }"
       >
         <div 
-          class="relative aspect-[4/3] rounded-3xl overflow-hidden group shadow-2xl shadow-brand/5"
+          class="relative aspect-[4/3] overflow-hidden group"
           :class="{ 'scale-95 opacity-50': index !== currentIndex && itemsPerView === 1 }"
         >
           <MediaLoader
             :media="{ type: 'image', src: img }"
             :alt-text="`About Image ${index + 1}`"
-            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+            class="w-full h-full object-cover transform transition-transform duration-700 group-"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-8 left-8">

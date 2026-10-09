@@ -2,10 +2,10 @@
   <button
     @click="handleClick"
     :class="[
-      'inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2',
+      'inline-flex items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper',
       variantClasses[variant],
       sizeClasses[size],
-      disabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 active:scale-95',
+      disabled ? 'opacity-50 cursor-not-allowed' : '',
       className
     ]"
     :disabled="disabled || loading"
@@ -50,11 +50,11 @@ const emit = defineEmits<{
 }>()
 
 const variantClasses = {
-  primary: 'bg-brand text-brand-dark hover:bg-brand/90 shadow-lg shadow-brand/25 focus:ring-brand',
-  secondary: 'bg-surface-elevated text-main hover:bg-surface-elevated/80 border border-border focus:ring-brand',
-  outline: 'bg-transparent text-main border-2 border-brand hover:bg-brand/10 focus:ring-brand',
-  ghost: 'bg-transparent text-main hover:bg-surface-elevated focus:ring-brand',
-  danger: 'bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-500/25 focus:ring-red-500'
+  primary: 'bg-brand text-white hover:bg-brand-dark focus-visible:ring-brand',
+  secondary: 'bg-surface-elevated text-main hover:bg-surface-elevated/80 border border-border focus-visible:ring-brand',
+  outline: 'bg-transparent text-main border-2 border-brand hover:bg-brand/10 focus-visible:ring-brand',
+  ghost: 'bg-transparent text-main hover:bg-surface-elevated focus-visible:ring-brand',
+  danger: 'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500'
 }
 
 const sizeClasses = {

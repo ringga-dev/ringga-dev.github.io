@@ -28,53 +28,48 @@
     <HomeCapabilities />
 
     <!-- Featured Projects -->
-    <section class="max-w-7xl mx-auto px-6 py-28 relative z-10">
-      <SectionHeader 
-        badge="Technical Milestones" 
-        description="A curated selection of high-impact innovations across the digital landscape."
+    <section class="max-w-7xl mx-auto px-6 py-24 relative z-10">
+      <SectionHeader
+        badge="Selected Work"
+        description="A curated selection of recent engineering work."
       >
         <template #title>
-          Featured <span class="text-gradient">Innovations</span>
+          Featured <span class="text-brand">Projects</span>
         </template>
       </SectionHeader>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <ProjectCard 
-          v-for="(project, index) in featuredProjects" 
-          :key="project.title" 
-          v-bind="project" 
-          class="scroll-reveal"
-          :style="{ transitionDelay: `${(index + 1) * 150}ms` }"
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ProjectCard
+          v-for="project in featuredProjects"
+          :key="project.title"
+          v-bind="project"
         />
       </div>
 
-      <div class="mt-16 text-center scroll-reveal">
-        <NuxtLink to="/projects" class="btn-secondary inline-flex items-center gap-3 py-4 px-10 text-xs font-black uppercase tracking-wider">
-          Explore All Projects
-          <ArrowRightIcon class="w-5 h-5" />
+      <div class="mt-10 text-center">
+        <NuxtLink to="/projects" class="btn-secondary inline-flex items-center gap-3 py-3.5 px-8 font-mono text-xs uppercase tracking-[0.15em]">
+          View All Projects
+          <ArrowRightIcon class="w-4 h-4" />
         </NuxtLink>
       </div>
     </section>
 
     <!-- Call to Action -->
     <section class="relative z-10">
-      <div class="max-w-5xl mx-auto px-6 pb-32 md:pb-40">
-        <div class="glass-card rounded-[3rem] px-8 py-16 md:px-16 md:py-24 text-center relative overflow-hidden scroll-reveal">
-          <div class="absolute -top-24 -left-24 w-72 h-72 bg-brand/10 rounded-full blur-[90px] pointer-events-none"></div>
-          <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-brand-light/10 rounded-full blur-[90px] pointer-events-none"></div>
-
-          <h2 class="relative z-10 mb-6 leading-[1.1] font-heading font-black text-main text-3xl sm:text-4xl md:text-5xl">
-            Let's build something <br /> 
-            <span class="text-gradient underline decoration-brand/30 underline-offset-8">Extraordinary.</span>
+      <div class="max-w-5xl mx-auto px-6 pb-24">
+        <div class="border border-border bg-surface px-8 py-14 md:px-16 md:py-20 text-center">
+          <h2 class="mb-5 leading-[1.1] font-display font-semibold text-main text-3xl sm:text-4xl md:text-5xl">
+            Let's build something <br />
+            <span class="text-brand">solid.</span>
           </h2>
-          <p class="relative z-10 text-muted text-lg md:text-2xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-            Available for freelance projects and technical collaborations. Ready to elevate your digital presence with world-class engineering?
+          <p class="text-muted text-lg md:text-xl mb-10 max-w-2xl mx-auto font-serif leading-relaxed">
+            Available for freelance work and technical collaboration.
           </p>
-          <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a :href="globalData.socials.whatsapp" target="_blank" class="btn-primary py-5 px-12 text-sm shadow-2xl w-full sm:w-auto font-black uppercase tracking-wider">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a :href="globalData.socials.whatsapp" target="_blank" rel="noopener" class="btn-primary py-3.5 px-8 font-mono text-xs uppercase tracking-[0.15em] w-full sm:w-auto">
               Start a Conversation
             </a>
-            <a :href="globalData.socials.email" class="btn-secondary py-5 px-12 text-sm w-full sm:w-auto font-black uppercase tracking-wider">
+            <a :href="globalData.socials.email" class="btn-secondary py-3.5 px-8 font-mono text-xs uppercase tracking-[0.15em] w-full sm:w-auto">
               Email Me
             </a>
           </div>

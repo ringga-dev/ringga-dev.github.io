@@ -1,9 +1,5 @@
 <template>
   <div class="pt-32 md:pt-44 pb-32 px-6 relative overflow-hidden bg-surface">
-    <!-- Nebula blur glow background -->
-    <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-brand/5 blur-[150px] pointer-events-none rounded-full"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-brand-light/5 blur-[150px] pointer-events-none rounded-full"></div>
-
     <div class="max-w-7xl mx-auto relative z-10">
       <!-- Section Header -->
       <SectionHeader 
@@ -12,7 +8,7 @@
         centered
       >
         <template #title>
-          {{ contactData.title }} <span class="text-gradient">{{ contactData.titleHighlight }}</span>
+          {{ contactData.title }} <span class="text-brand">{{ contactData.titleHighlight }}</span>
         </template>
       </SectionHeader>
       

@@ -1,63 +1,65 @@
 <template>
-  <div 
+  <div
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
-    class="glass-card group relative overflow-hidden rounded-[2.5rem] p-2 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-brand/10 bg-surface-card border border-border"
+    class="glass-card group relative overflow-hidden transition-colors duration-200 hover:border-brand/50"
   >
     <!-- Image/Video Media Section -->
-    <NuxtLink :to="`/projects/${slug}`" class="relative overflow-hidden rounded-[2rem] aspect-[16/10] bg-surface-elevated border border-border z-10 block">
-      <MediaLoader 
-        :media="resolvedMedia" 
+    <NuxtLink :to="`/projects/${slug}`" class="relative overflow-hidden aspect-[16/10] bg-surface-elevated border-b border-border block">
+      <MediaLoader
+        :media="resolvedMedia"
         :alt-text="title"
         :hover-play="true"
         :is-hovered="isHovered"
       />
-      
-      <!-- Overlay Badge -->
-      <div class="absolute top-5 right-5 px-4 py-1.5 rounded-xl bg-surface/80 backdrop-blur-md border border-border text-brand text-[9px] font-black uppercase tracking-widest z-20">
+
+      <!-- Category label (mono, top-left) -->
+      <div class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.2em] text-paper bg-ink/80 px-2 py-1 z-20">
         {{ category }}
       </div>
     </NuxtLink>
-    
+
     <!-- Content Section -->
-    <div class="p-8">
-      <div class="flex items-center justify-between mb-4">
+    <div class="p-6">
+      <div class="flex items-start justify-between gap-4 mb-3">
         <NuxtLink :to="`/projects/${slug}`" class="group/title">
-          <h3 class="text-2xl font-heading font-black group-hover/title:text-brand transition-colors duration-300 leading-tight text-main">
+          <h3 class="text-xl font-display font-semibold group-hover/title:text-brand transition-colors duration-200 leading-tight text-main">
             {{ title }}
           </h3>
         </NuxtLink>
-        <div class="flex gap-3 relative z-20">
-          <a 
-            v-if="github" 
-            :href="github" 
-            target="_blank" 
-            class="w-10 h-10 rounded-xl bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/35 transition-all transform hover:scale-110"
+        <div class="flex gap-2 relative z-20 shrink-0">
+          <a
+            v-if="github"
+            :href="github"
+            target="_blank"
+            rel="noopener"
+            class="w-9 h-9 rounded border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
             aria-label="GitHub Repository"
           >
-            <GithubIcon class="w-5 h-5" />
+            <GithubIcon class="w-4 h-4" />
           </a>
-          <a 
-            v-if="link && link !== '#'" 
-            :href="link" 
-            target="_blank" 
-            class="w-10 h-10 rounded-xl bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/35 transition-all transform hover:scale-110"
+          <a
+            v-if="link && link !== '#'"
+            :href="link"
+            target="_blank"
+            rel="noopener"
+            class="w-9 h-9 rounded border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
             aria-label="Project Demo Link"
           >
-            <ExternalLinkIcon class="w-5 h-5" />
+            <ExternalLinkIcon class="w-4 h-4" />
           </a>
         </div>
       </div>
-      
-      <p class="text-muted text-sm leading-relaxed mb-8 line-clamp-2 font-medium">
+
+      <p class="text-muted text-sm leading-relaxed mb-6 line-clamp-2 font-serif">
         {{ description }}
       </p>
-      
+
       <div class="flex flex-wrap gap-2">
-        <span 
-          v-for="tag in tags" 
-          :key="tag" 
-          class="text-[9px] px-3 py-1.5 rounded-lg bg-surface-elevated text-main font-black uppercase tracking-widest border border-border transition-all duration-300 hover:border-brand/50 hover:text-brand"
+        <span
+          v-for="tag in tags"
+          :key="tag"
+          class="font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1 border border-border text-muted"
         >
           {{ tag }}
         </span>

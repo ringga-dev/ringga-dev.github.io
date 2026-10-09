@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-surface flex items-center justify-center px-6 relative overflow-hidden">
     <!-- Glow Background -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 blur-[120px] animate-pulse-slow"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 animate-pulse-slow"></div>
     
     <div class="max-w-xl w-full text-center relative z-10">
       <div class="mb-12 relative inline-block">
-        <h1 class="text-[12rem] md:text-[15rem] font-black leading-none text-muted/10 select-none">404</h1>
+        <h1 class="text-[12rem] md:text-[15rem] font-semibold leading-none text-muted/10 select-none">404</h1>
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="text-3xl md:text-5xl font-heading font-black text-brand tracking-tighter transform -rotate-12">PAGE NOT FOUND</div>
+          <div class="text-3xl md:text-5xl font-display font-semibold text-brand tracking-tighter transform -rotate-12">PAGE NOT FOUND</div>
         </div>
       </div>
       
@@ -16,11 +16,11 @@
       </p>
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <NuxtLink to="/" class="btn-primary flex items-center justify-center gap-3 px-10 py-4 font-black uppercase tracking-wider text-xs">
+        <NuxtLink to="/" class="btn-primary flex items-center justify-center gap-3 px-10 py-4 font-semibold uppercase tracking-wider text-xs">
           <HomeIcon class="w-5 h-5" />
           Back to Home
         </NuxtLink>
-        <button @click="$router.back()" class="btn-secondary flex items-center justify-center gap-3 px-10 py-4 font-black uppercase tracking-wider text-xs">
+        <button @click="$router.back()" class="btn-secondary flex items-center justify-center gap-3 px-10 py-4 font-semibold uppercase tracking-wider text-xs">
           <ArrowLeftIcon class="w-5 h-5" />
           Go Back
         </button>

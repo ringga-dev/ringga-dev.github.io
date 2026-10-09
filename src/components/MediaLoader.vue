@@ -6,7 +6,7 @@
     <!-- Error Fallback -->
     <div v-if="hasError" class="absolute inset-0 flex flex-col items-center justify-center bg-surface-card text-muted">
       <BoxIcon class="w-12 h-12 mb-2 opacity-25" />
-      <span class="text-[10px] font-black uppercase tracking-widest opacity-40">Preview Unavailable</span>
+      <span class="text-[10px] font-semibold uppercase tracking-widest opacity-40">Preview Unavailable</span>
     </div>
 
     <!-- Image / GIF Loader (or Video Fallback) -->
@@ -18,7 +18,7 @@
       @load="onLoad"
       @error="onError"
       class="object-cover w-full h-full transition-all duration-700"
-      :class="[loaded && !hasError ? 'opacity-100' : 'opacity-0', zoomOnHover ? 'group-hover:scale-110' : '']"
+      :class="[loaded && !hasError ? 'opacity-100' : 'opacity-0', zoomOnHover ? 'group-' : '']"
     />
 
     <!-- Local HTML5 Video Loader -->

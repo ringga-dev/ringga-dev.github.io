@@ -1,9 +1,5 @@
 <template>
   <div class="pt-32 md:pt-44 pb-32 px-6 min-h-screen relative overflow-hidden bg-surface text-main">
-    <!-- Nebula bubble glows -->
-    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand/5 blur-[150px] pointer-events-none rounded-full"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-light/5 blur-[150px] pointer-events-none rounded-full"></div>
-
     <div class="max-w-7xl mx-auto relative z-10">
       <!-- Section Header -->
       <SectionHeader 
@@ -12,7 +8,7 @@
         centered
       >
         <template #title>
-          Design & UI <span class="text-gradient">Gallery</span>
+          Design & UI <span class="text-brand">Gallery</span>
         </template>
       </SectionHeader>
 
@@ -61,7 +57,7 @@
         <div class="gallery-empty-icon">
           <ImageOffIcon class="w-10 h-10" />
         </div>
-        <p class="text-lg font-heading font-bold mt-4">No designs found</p>
+        <p class="text-lg font-display font-bold mt-4">No designs found</p>
         <p class="text-sm text-muted mt-1">Try selecting a different category</p>
       </div>
     </div>
@@ -146,7 +142,7 @@ useHead({
 
 <style scoped>
 .gallery-filter-pill {
-  @apply px-5 py-2.5 rounded-xl border text-xs font-black uppercase tracking-wider transition-all duration-300 active:scale-95 cursor-pointer flex items-center;
+  @apply px-5 py-2.5 rounded-xl border text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center;
 }
 
 .gallery-filter-pill--active {
@@ -173,7 +169,7 @@ useHead({
 }
 
 .gallery-empty-icon {
-  @apply w-20 h-20 rounded-2xl flex items-center justify-center;
+  @apply w-20 h-20 flex items-center justify-center;
   background: hsl(var(--surface-card) / 0.5);
   border: 1px solid hsl(var(--border-color) / 0.5);
   color: hsl(var(--text-muted) / 0.5);

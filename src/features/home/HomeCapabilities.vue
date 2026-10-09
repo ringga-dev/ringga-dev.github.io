@@ -7,57 +7,48 @@
       centered
     >
       <template #title>
-        Engineering <span class="text-gradient">Blueprints</span>
+        Engineering <span class="text-brand">Blueprints</span>
       </template>
     </SectionHeader>
 
     <!-- Grid Layout of Capability Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-      <div 
-        v-for="(banner, index) in banners" 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div
+        v-for="(banner, index) in banners"
         :key="banner.id"
         @click="openLightbox(index)"
         :class="[
-          'group relative p-3 rounded-3xl bg-surface-card border border-border hover:border-brand/40 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer scroll-reveal overflow-hidden',
+          'group relative p-3 border border-border bg-surface hover:border-brand/50 transition-colors duration-200 cursor-pointer overflow-hidden',
           (index === 0 || index === 5) ? 'lg:col-span-2' : 'lg:col-span-1'
         ]"
-        :style="{ transitionDelay: `${(index % 4 + 1) * 80}ms` }"
       >
         <!-- Thumbnail with dynamic aspect based on span -->
-        <div :class="['rounded-2xl overflow-hidden relative border border-border/40', (index === 0 || index === 5) ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[16/10]']">
-          <img 
-            :src="banner.image" 
+        <div :class="['overflow-hidden relative border border-border', (index === 0 || index === 5) ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[16/10]']">
+          <img
+            :src="banner.image"
             :alt="banner.title"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            class="w-full h-full object-cover"
             loading="lazy"
           />
-          <!-- Category Badge Overlay -->
-          <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-surface-card/80 backdrop-blur border border-border/50 text-[8px] font-black uppercase tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {{ banner.category }}
-          </div>
-          <!-- Hover Zoom Indicator -->
-          <div class="absolute inset-0 bg-surface/60 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div class="bg-brand text-brand-dark p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-              <Maximize2Icon class="w-5 h-5" />
+          <!-- Hover zoom indicator -->
+          <div class="absolute inset-0 bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+            <div class="bg-paper text-ink p-2.5">
+              <Maximize2Icon class="w-4 h-4" />
             </div>
           </div>
         </div>
 
         <!-- Content -->
-        <div class="mt-3 px-2 pb-2 flex flex-col gap-1.5">
-          <span class="text-[9px] font-black uppercase tracking-widest text-brand/70 block">
+        <div class="mt-3 px-1 pb-1 flex flex-col gap-1.5">
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
             {{ banner.category }}
           </span>
-          <h4 :class="['text-sm font-black text-main group-hover:text-brand transition-colors leading-snug', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-2']">
+          <h4 class="text-sm font-display font-semibold text-main group-hover:text-brand transition-colors leading-snug line-clamp-2">
             {{ banner.title }}
           </h4>
-          <p :class="['text-[11px] text-muted font-medium leading-relaxed mt-0.5', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-7']">
+          <p :class="['text-[11px] text-muted font-serif leading-relaxed mt-0.5', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-7']">
             {{ banner.description }}
           </p>
-          <div class="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-brand/60 group-hover:text-brand transition-colors mt-1">
-            View Details
-            <ChevronRightIcon class="w-3 h-3" />
-          </div>
         </div>
       </div>
     </div>
@@ -132,7 +123,7 @@
                   <img
                     :src="currentBanner?.image"
                     :alt="currentBanner?.title"
-                    class="lightbox-media rounded-2xl max-w-full max-h-[70vh] object-contain shadow-2xl border border-white/10"
+                    class="lightbox-media max-w-full max-h-[70vh] object-contain"
                     draggable="false"
                   />
                   <!-- Subtitle details -->
@@ -324,66 +315,54 @@ onUnmounted(() => {
 <style scoped>
 .lightbox-overlay {
   @apply fixed inset-0 z-[100] flex flex-col items-center justify-center select-none;
-  background: rgba(2, 6, 4, 0.96);
-  backdrop-filter: blur(35px) saturate(0.7);
-}
-
-.lightbox-ambient-glow {
-  @apply absolute inset-0 pointer-events-none;
-  background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--brand-color) / 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(var(--brand-light) / 0.03) 0%, transparent 50%);
+  background: hsl(36 24% 5% / 0.97);
 }
 
 .lightbox-topbar {
   @apply absolute top-0 inset-x-0 px-6 py-5 flex items-center justify-between z-30;
-  background: linear-gradient(to bottom, rgba(2, 6, 4, 0.8) 0%, transparent 100%);
+  border-bottom: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-category-badge {
-  @apply text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-lg shrink-0;
-  color: hsl(var(--brand-color));
-  background: hsl(var(--brand-color) / 0.1);
-  border: 1px solid hsl(var(--brand-color) / 0.25);
+  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1 shrink-0;
+  color: hsl(var(--brand-light));
+  border: 1px solid hsl(var(--brand-color) / 0.4);
 }
 
 .lightbox-title {
-  @apply text-white text-sm sm:text-base font-heading font-bold leading-tight truncate max-w-[50vw];
+  @apply text-sm sm:text-base font-display font-semibold leading-tight truncate max-w-[50vw];
+  color: hsl(36 30% 92%);
 }
 
 .lightbox-counter {
-  @apply text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-lg text-white/50 border border-white/5 bg-slate-900/60 backdrop-blur-md;
+  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5;
+  color: hsl(32 14% 62%);
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-btn {
-  @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-95 w-10 h-10;
-  color: hsl(var(--text-muted) / 0.8);
-  background: hsl(var(--surface-elevated) / 0.7);
-  border: 1px solid hsl(var(--border-color) / 0.2);
-  backdrop-filter: blur(12px);
+  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer w-10 h-10;
+  color: hsl(32 14% 62%);
+  background: transparent;
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-btn:hover {
-  color: hsl(var(--brand-color));
-  background: rgba(15, 30, 22, 0.85);
-  border-color: hsl(var(--brand-color) / 0.35);
-  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.15);
+  color: hsl(var(--brand-light));
+  border-color: hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-nav-btn {
   @apply absolute top-1/2 -translate-y-1/2 w-12 h-12 z-20 hidden sm:flex;
-  @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-90;
-  color: hsl(var(--text-muted) / 0.8);
-  background: hsl(var(--surface-elevated) / 0.65);
-  border: 1px solid hsl(var(--border-color) / 0.2);
-  backdrop-filter: blur(12px);
+  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer;
+  color: hsl(32 14% 62%);
+  background: transparent;
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-nav-btn:hover {
-  color: hsl(var(--brand-color));
-  background: rgba(15, 30, 22, 0.85);
-  border-color: hsl(var(--brand-color) / 0.35);
-  box-shadow: 0 0 30px hsl(var(--brand-color) / 0.15);
+  color: hsl(var(--brand-light));
+  border-color: hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-nav-prev {
@@ -401,14 +380,12 @@ onUnmounted(() => {
 }
 
 .lightbox-media {
-  @apply max-h-[65vh] object-contain select-none shadow-2xl;
-  box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 80px hsl(var(--brand-color) / 0.08);
+  @apply max-h-[65vh] object-contain select-none;
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-swipe-hint {
-  @apply absolute bottom-8 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-widest text-white/30 select-none;
+  @apply absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest select-none;
+  color: hsl(32 14% 45%);
 }
 </style>

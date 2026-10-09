@@ -2,480 +2,247 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Ringga Dev — "The Engineer's Journal" design system.
+  Direction lives in DESIGN.md. Editorial / print: paper + ink + one
+  vermilion accent, serif display, monospaced metadata, hairline rules.
+  No gradients, no glass, no glow, no blur, no pill shapes.
+  Token NAMES are kept stable so every consuming component keeps working;
+  only the VALUES and the component classes change.
+*/
+
 @layer base {
   :root {
-    /* HSL Color System - Premium Emerald Zambrut */
-    --bg-color: 156 20% 98%;
-    --surface-color: 0 0% 100%;
-    --surface-card: 156 50% 97%;
-    --surface-elevated: 156 40% 95%;
-    --text-main: 156 60% 8%;
-    --text-muted: 156 20% 40%;
-    --border-color: 156 30% 88%;
+    /* Paper + Ink + Vermilion. Neutrals are warm, never blue-grey. */
+    --bg-color: 36 43% 96%;          /* paper #FAF7F2 */
+    --surface-color: 36 43% 96%;
+    --surface-card: 36 40% 93%;      /* slightly deeper paper for cards */
+    --surface-elevated: 36 43% 90%;
+    --text-main: 33 30% 8%;          /* ink #17140F */
+    --text-muted: 30 12% 38%;        /* warm grey, AA on paper (6.7:1) */
+    --border-color: 32 20% 84%;
 
-    --brand-color: 156 85% 38%;
-    --brand-light: 165 80% 48%;
-    --brand-dark: 156 90% 28%;
+    --brand-color: 12 78% 43%;       /* vermilion #C23A18, AA on paper (5:1) */
+    --brand-light: 12 78% 52%;
+    --brand-dark: 12 70% 34%;
 
-    --accent-1: 160 70% 50%;
-    --accent-2: 150 80% 42%;
-
-    --glow-1: rgba(0, 198, 117, 0.08);
-    --glow-2: rgba(38, 212, 202, 0.06);
-    --glow-3: rgba(16, 185, 129, 0.05);
+    --accent-1: 12 62% 48%;
+    --accent-2: 22 55% 50%;
   }
-  
+
   .dark {
-    /* HSL Color System - Deep Emerald Darkness (OLED-friendly) */
-    --bg-color: 156 50% 3%;
-    --surface-color: 156 40% 5%;
-    --surface-card: 156 35% 7%;
-    --surface-elevated: 156 30% 10%;
-    --text-main: 156 20% 95%;
-    --text-muted: 156 15% 60%;
-    --border-color: 156 25% 14%;
+    /* Deep warm dark. Vermilion lifts for contrast on dark (AA). */
+    --bg-color: 36 24% 6%;           /* #14120E */
+    --surface-color: 36 24% 6%;
+    --surface-card: 34 20% 9%;
+    --surface-elevated: 34 18% 12%;
+    --text-main: 36 30% 92%;
+    --text-muted: 32 14% 62%;        /* AA on dark (6:1) */
+    --border-color: 32 16% 20%;
 
-    --brand-color: 156 100% 50%;
-    --brand-light: 165 100% 60%;
-    --brand-dark: 156 100% 35%;
+    --brand-color: 12 80% 62%;
+    --brand-light: 12 82% 70%;
+    --brand-dark: 12 70% 50%;
 
-    --accent-1: 160 80% 55%;
-    --accent-2: 150 90% 45%;
-
-    --glow-1: rgba(0, 220, 130, 0.12);
-    --glow-2: rgba(54, 228, 218, 0.10);
-    --glow-3: rgba(16, 185, 129, 0.08);
+    --accent-1: 12 70% 60%;
+    --accent-2: 22 60% 58%;
   }
 
   body {
     background-color: hsl(var(--bg-color));
     color: hsl(var(--text-main));
-    @apply font-sans selection:bg-brand/30 selection:text-white m-0 p-0 transition-colors duration-500;
+    @apply font-serif selection:bg-brand/20 selection:text-ink m-0 p-0 transition-colors duration-300;
     overflow-x: hidden;
     width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Display serif headings. No glow, no text-shadow. */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold tracking-tight leading-tight transition-colors duration-300;
+    @apply font-display font-semibold tracking-tight leading-tight transition-colors duration-300;
+    font-feature-settings: "liga" 1, "kern" 1;
   }
 
-  h1 { 
-    font-size: clamp(3rem, 8vw, 5.5rem); 
-    line-height: 1.0; 
-    letter-spacing: -0.04em;
-    text-shadow: 0 0 80px hsl(var(--brand-color) / 0.15);
+  h1 {
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
   }
-  h2 { 
-    font-size: clamp(2.25rem, 6vw, 4rem); 
-    line-height: 1.05; 
-    letter-spacing: -0.03em;
-    text-shadow: 0 0 60px hsl(var(--brand-color) / 0.12);
-  }
-  h3 { 
-    font-size: clamp(1.75rem, 4vw, 2.5rem); 
-    line-height: 1.1; 
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.08;
     letter-spacing: -0.02em;
   }
-  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
   p {
     @apply leading-relaxed;
+  }
+
+  /* Editorial focus ring, vermilion, on everything interactive. */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid hsl(var(--brand-color));
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Ultra Premium Glass Effect */
-  .glass {
-    background-color: hsl(var(--surface-color) / 0.7);
-    border: 1px solid hsl(var(--border-color) / 0.5);
-    box-shadow: 
-      0 8px 32px -8px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    @apply backdrop-blur-[32px] transition-all duration-700;
+  /* Flat editorial card: paper, hairline border, one soft elevation.
+     Replaces the old glass / gradient / holo / zambrut cards. */
+  .glass,
+  .glass-card,
+  .zambrut-card,
+  .holo-border {
+    background-color: hsl(var(--surface-card));
+    border: 1px solid hsl(var(--border-color));
+    border-radius: 4px;
+    box-shadow: 0 1px 2px hsl(33 20% 8% / 0.04);
+    @apply transition-colors duration-200;
   }
-  
-  .dark .glass {
-    box-shadow: 
-      0 8px 32px -8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border-top: 1px solid hsl(var(--border-color) / 0.7);
+  .glass:hover,
+  .glass-card:hover,
+  .zambrut-card:hover,
+  .holo-border:hover {
+    border-color: hsl(var(--brand-color) / 0.5);
   }
-  
-  /* Luxury Card with Multi-Layer Shadow */
-  .glass-card {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--surface-card) / 0.8) 0%,
-      hsl(var(--surface-elevated) / 0.5) 100%
-    );
-    border: 1px solid hsl(var(--border-color) / 0.3);
-    box-shadow: 
-      0 4px 24px -4px rgba(0, 0, 0, 0.04),
-      0 8px 48px -12px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    @apply backdrop-blur-[24px] transition-all duration-700;
+  .dark .glass,
+  .dark .glass-card,
+  .dark .zambrut-card,
+  .dark .holo-border {
+    box-shadow: 0 1px 2px hsl(0 0% 0% / 0.3);
   }
 
-  .glass-card:hover {
-    border-color: hsl(var(--brand-color) / 0.4);
-    box-shadow: 
-      0 12px 40px -8px rgba(0, 0, 0, 0.08),
-      0 16px 64px -16px hsl(var(--brand-color) / 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-  }
-
-  .dark .glass-card {
-    box-shadow: 
-      0 4px 24px -4px rgba(0, 0, 0, 0.3),
-      0 8px 48px -12px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  }
-
-  .dark .glass-card:hover {
-    box-shadow: 
-      0 12px 40px -8px rgba(0, 0, 0, 0.5),
-      0 16px 64px -16px hsl(var(--brand-color) / 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  /* Cinematic Gradient Text */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand via-brand-light to-brand;
-    background-size: 200% auto;
-    animation: gradient-flow 8s ease infinite;
-    filter: drop-shadow(0 0 40px hsl(var(--brand-color) / 0.3));
-  }
-
+  /* Headline accent: solid vermilion, no gradient, no animation. */
+  .text-gradient,
   .text-gradient-subtle {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-text-main via-text-muted to-text-main;
-    background-size: 200% auto;
-    animation: gradient-flow 10s ease infinite;
+    color: hsl(var(--brand-color));
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+    filter: none;
   }
 
-  /* Premium Primary Button with Glow */
+  /* Primary button: square vermilion, no gradient/glow/shimmer. */
   .btn-primary {
-    @apply relative overflow-hidden px-8 py-4 rounded-[20px] font-bold transition-all duration-500 shadow-2xl;
-    background: linear-gradient(135deg, hsl(var(--brand-color)) 0%, hsl(var(--brand-dark)) 100%);
-    color: white;
-    box-shadow: 
-      0 8px 24px -8px hsl(var(--brand-color) / 0.5),
-      0 0 0 1px hsl(var(--brand-color) / 0.2);
+    @apply inline-flex items-center justify-center font-semibold transition-colors duration-200;
+    background-color: hsl(var(--brand-color));
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid hsl(var(--brand-color));
   }
-  
-  .btn-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%];
-    transition: transform 0.6s ease;
-  }
-  
   .btn-primary:hover {
-    box-shadow: 
-      0 12px 32px -8px hsl(var(--brand-color) / 0.7),
-      0 0 0 1px hsl(var(--brand-color) / 0.4),
-      0 0 40px -10px hsl(var(--brand-color) / 0.5);
-    transform: translateY(-2px);
-  }
-  
-  .btn-primary:hover::before {
-    @apply translate-x-[100%];
-  }
-  
-  .btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 16px -8px hsl(var(--brand-color) / 0.4);
+    background-color: hsl(var(--brand-dark));
+    border-color: hsl(var(--brand-dark));
   }
 
-  /* Elegant Secondary Button */
+  /* Secondary button: hairline outline, square. */
   .btn-secondary {
-    @apply px-8 py-4 rounded-[20px] font-bold transition-all duration-500;
-    background: transparent;
+    @apply inline-flex items-center justify-center font-semibold transition-colors duration-200;
+    background-color: transparent;
     color: hsl(var(--text-main));
     border: 1px solid hsl(var(--border-color));
-    box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.04);
+    border-radius: 2px;
   }
-  
   .btn-secondary:hover {
-    background: hsl(var(--surface-elevated) / 0.8);
-    border-color: hsl(var(--brand-color) / 0.4);
-    box-shadow: 
-      0 8px 24px -8px rgba(0, 0, 0, 0.08),
-      0 0 0 1px hsl(var(--brand-color) / 0.1);
-    transform: translateY(-2px);
-  }
-  
-  .dark .btn-secondary:hover {
-    box-shadow: 
-      0 8px 24px -8px rgba(0, 0, 0, 0.4),
-      0 0 0 1px hsl(var(--brand-color) / 0.2);
+    border-color: hsl(var(--brand-color));
+    color: hsl(var(--brand-color));
   }
 
-  /* Sophisticated Navigation Link */
+  /* Navigation link: hairline underline grows on hover, no glow. */
   .nav-link {
     color: hsl(var(--text-muted));
-    @apply relative hover:text-brand transition-all duration-500 font-medium tracking-wide;
+    @apply relative transition-colors duration-200 font-medium;
   }
-  
+  .nav-link:hover {
+    color: hsl(var(--brand-color));
+  }
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-brand to-accent-1 transition-all duration-500;
-    border-radius: 9999px;
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-brand transition-all duration-200;
   }
   .nav-link:hover::after {
     @apply w-full;
-    box-shadow: 0 0 12px hsl(var(--brand-color) / 0.5);
   }
 
-  /* Smooth Reveal Animation */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Hairline rule. Replaces the glowing gradient divider. */
+  .divider-premium {
+    @apply h-px w-full max-w-7xl mx-auto;
+    background-color: hsl(var(--border-color));
   }
 
-  .reveal-active {
-    opacity: 1;
-    transform: translateY(0);
+  /* Mono metadata eyebrow: section number / label. Editorial voice. */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-muted;
   }
 
-  /* Premium Shimmer Effect */
-  .shimmer {
-    background: linear-gradient(
-      90deg, 
-      transparent, 
-      hsl(var(--surface-elevated) / 0.2), 
-      hsl(var(--brand-color) / 0.05),
-      transparent
-    );
-    animation: shimmer 3s infinite;
+  /* Editorial link: vermilion with hairline underline. */
+  .link-ink {
+    color: hsl(var(--brand-color));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: hsl(var(--brand-color) / 0.4);
+    @apply transition-colors duration-200;
   }
-
-  /* Luxury Holo Border */
-  .holo-border {
-    position: relative;
-    background-color: hsl(var(--surface-card) / 0.4);
-    border: 1px solid hsl(var(--border-color) / 0.4);
-    @apply backdrop-blur-[20px] transition-all duration-700;
-  }
-  .holo-border::before {
-    content: '';
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-30 transition-opacity duration-700;
-    padding: 1px;
-    background: linear-gradient(
-      135deg, 
-      hsl(var(--brand-color) / 0.6), 
-      transparent 30%, 
-      transparent 70%, 
-      hsl(var(--accent-1) / 0.5)
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-  .holo-border:hover::before { @apply opacity-100; }
-  .holo-border:hover { 
-    box-shadow: 
-      0 0 40px -12px hsl(var(--brand-color) / 0.3),
-      0 0 80px -24px hsl(var(--accent-1) / 0.2);
-  }
-
-  /* Ethereal Glow Text */
-  .glow-text {
-    text-shadow: 
-      0 0 24px hsl(var(--brand-color) / 0.3),
-      0 0 48px hsl(var(--brand-color) / 0.2),
-      0 0 72px hsl(var(--brand-color) / 0.1);
-  }
-
-  /* Animated Ring with Aurora Effect */
-  .tech-ring {
-    background: conic-gradient(
-      from 0deg, 
-      hsl(var(--brand-color)), 
-      hsl(var(--accent-1)), 
-      hsl(var(--accent-2)), 
-      hsl(var(--brand-light)), 
-      hsl(var(--brand-color))
-    );
-    background-size: 200% 200%;
-    animation: gradient-flow 10s ease infinite;
-  }
-
-  /* Ultra Premium Card */
-  .zambrut-card {
-    @apply relative overflow-hidden rounded-[32px];
-    background: linear-gradient(
-      135deg,
-      hsl(var(--surface-card) / 0.7) 0%,
-      hsl(var(--surface-elevated) / 0.5) 100%
-    );
-    border: 1px solid hsl(var(--border-color) / 0.3);
-    backdrop-filter: blur(24px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 
-      0 4px 24px -8px rgba(0, 0, 0, 0.04),
-      0 8px 48px -16px rgba(0, 0, 0, 0.08);
-  }
-  
-  .zambrut-card::before {
-    content: '';
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-700;
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      hsl(var(--brand-color) / 0.15),
-      transparent 45%
-    );
-  }
-  
-  .zambrut-card::after {
-    content: '';
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 transition-opacity duration-700;
-    background: radial-gradient(
-      600px circle at var(--mouse-x) var(--mouse-y),
-      hsl(var(--accent-1) / 0.1),
-      transparent 45%
-    );
-  }
-  
-  .zambrut-card:hover {
-    @apply border-brand/40 -translate-y-2;
-    box-shadow: 
-      0 12px 40px -12px rgba(0, 0, 0, 0.08),
-      0 24px 80px -24px hsl(var(--brand-color) / 0.3),
-      0 0 0 1px hsl(var(--brand-color) / 0.1);
-  }
-  
-  .zambrut-card:hover::before,
-  .zambrut-card:hover::after {
-    @apply opacity-100;
+  .link-ink:hover {
+    text-decoration-color: hsl(var(--brand-color));
   }
 }
 
-/* Premium Background Effects */
-.bg-mesh {
-  @apply fixed inset-0 -z-10 opacity-25 dark:opacity-[0.04];
-  background-image: 
-    linear-gradient(hsl(var(--border-color) / 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--border-color) / 0.3) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+/*
+  Scroll reveal is neutralized: MOTION 1 means hover/focus only, no
+  scroll-triggered motion. Content must be visible by default so a static
+  prerender never ships invisible text.
+*/
+.scroll-reveal,
+.reveal-active {
+  opacity: 1;
+  transform: none;
 }
 
-.nebula-bg {
-  @apply fixed inset-0 -z-20 transition-all duration-1000;
-  background: 
-    radial-gradient(at 0% 0%, var(--glow-1) 0px, transparent 60%),
-    radial-gradient(at 100% 0%, var(--glow-2) 0px, transparent 60%),
-    radial-gradient(at 100% 100%, var(--glow-3) 0px, transparent 60%),
-    radial-gradient(at 0% 100%, var(--glow-1) 0px, transparent 60%);
-  animation: nebula-pulse 15s ease-in-out infinite;
+/* Decorative slop neutralized to harmless no-ops (classes kept so the
+   one-off usages in source do not break). */
+.animate-float,
+.glow-text,
+.pulse-glow,
+.shimmer,
+.tech-ring {
+  animation: none;
+  text-shadow: none;
+  box-shadow: none;
 }
 
+.bg-mesh,
+.nebula-bg,
+.noise-bg,
 .glow {
-  @apply absolute -z-10 rounded-full blur-[160px] pointer-events-none opacity-20 mix-blend-screen;
-  filter: saturate(1.2);
-}
-.dark .glow {
-  opacity: 15;
+  display: none;
 }
 
-/* Animations */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes gradient-flow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes nebula-pulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-.animate-reveal {
-  animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Luxury Custom Scrollbar */
+/* Quiet, on-brand scrollbar. */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
-
 ::-webkit-scrollbar-track {
   background: hsl(var(--bg-color));
-  border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    hsl(var(--brand-color) / 0.6) 0%,
-    hsl(var(--brand-dark) / 0.4) 100%
-  );
-  border-radius: 9999px;
+  background: hsl(var(--border-color));
+  border-radius: 2px;
   border: 2px solid hsl(var(--bg-color));
-  @apply transition-all duration-300;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    hsl(var(--brand-color) / 0.8) 0%,
-    hsl(var(--brand-dark) / 0.6) 100%
-  );
-  box-shadow: 0 0 16px -4px hsl(var(--brand-color) / 0.5);
-}
-
-/* Subtle Noise Texture */
-.noise-bg {
-  @apply fixed inset-0 z-[100] pointer-events-none opacity-[0.012];
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-
-/* Premium Divider */
-.divider-premium {
-  @apply h-px max-w-7xl mx-auto;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    hsl(var(--border-color) / 0.4) 20%,
-    hsl(var(--border-color) / 0.6) 50%,
-    hsl(var(--border-color) / 0.4) 80%,
-    transparent 100%
-  );
-}
-
-/* Floating Animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Pulse Glow */
-@keyframes pulse-glow {
-  0%, 100% { 
-    box-shadow: 0 0 20px -8px hsl(var(--brand-color) / 0.4);
-  }
-  50% { 
-    box-shadow: 0 0 40px -8px hsl(var(--brand-color) / 0.7);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+  background: hsl(var(--text-muted) / 0.6);
 }

@@ -1,15 +1,6 @@
 <template>
-  <div class="min-h-screen relative selection:bg-brand/30 selection:text-brand-dark">
-    <!-- Global Background Elements -->
-    <div class="bg-mesh"></div>
-    <div class="nebula-bg"></div>
-    <div class="noise-bg"></div>
-    
-    <!-- Decorative Glows -->
-    <div class="glow w-[500px] h-[500px] bg-brand/5 top-[-100px] left-[-100px]"></div>
-    <div class="glow w-[400px] h-[400px] bg-brand-light/5 bottom-[-50px] right-[-50px]"></div>
-    
-    <NuxtLoadingIndicator :height="3" />
+  <div class="min-h-screen relative selection:bg-brand/20 selection:text-brand-dark">
+    <NuxtLoadingIndicator :height="2" color="hsl(12 78% 43%)" />
     
     <Navbar v-if="!hideNavAndFooter" />
     

@@ -40,8 +40,6 @@
         </div>
       </div>
 
-      <!-- Glow border on hover -->
-      <div class="gallery-card-glow"></div>
     </div>
   </div>
 </template>
@@ -62,35 +60,18 @@ defineEmits<{
 
 <style scoped>
 .gallery-card {
-  @apply relative cursor-pointer rounded-2xl overflow-hidden;
+  @apply relative cursor-pointer overflow-hidden;
   aspect-ratio: 4 / 3;
-  animation: card-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes card-enter {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 .gallery-card-inner {
-  @apply relative w-full h-full overflow-hidden rounded-2xl transition-all duration-500;
+  @apply relative w-full h-full overflow-hidden transition-colors duration-200;
   background: hsl(var(--surface-card) / 0.5);
   border: 1px solid hsl(var(--border-color) / 0.5);
 }
 
 .gallery-card:hover .gallery-card-inner {
-  border-color: hsl(var(--brand-color) / 0.4);
-  transform: translateY(-4px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15),
-    0 0 0 1px hsl(var(--brand-color) / 0.1),
-    0 0 40px hsl(var(--brand-color) / 0.06);
+  border-color: hsl(var(--brand-color) / 0.6);
 }
 
 .gallery-card-image {
@@ -98,12 +79,11 @@ defineEmits<{
 }
 
 .gallery-card:hover .gallery-card-image {
-  transform: scale(1.08);
-  filter: brightness(0.85);
+  filter: brightness(0.8);
 }
 
 .gallery-card-overlay {
-  @apply absolute inset-0 flex flex-col justify-end p-3 sm:p-4 opacity-0 transition-all duration-500;
+  @apply absolute inset-0 flex flex-col justify-end p-3 sm:p-4 opacity-0 transition-opacity duration-300;
   background: linear-gradient(
     to top,
     hsl(var(--bg-color) / 0.95) 0%,
@@ -117,59 +97,37 @@ defineEmits<{
 }
 
 .gallery-zoom-icon {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ease-out;
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded flex items-center justify-center transition-opacity duration-200;
   color: hsl(var(--brand-color));
   background: hsl(var(--brand-color) / 0.12);
   border: 1px solid hsl(var(--brand-color) / 0.35);
-  backdrop-filter: blur(12px);
-  transform: translate(-50%, -50%) scale(0.7);
+  transform: translate(-50%, -50%);
   opacity: 0;
 }
 
 .gallery-card:hover .gallery-zoom-icon {
-  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
 .gallery-card-badge {
-  @apply absolute top-3 left-3 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded-md transition-all duration-500;
+  @apply absolute top-3 left-3 text-[8px] sm:text-[9px] font-mono font-semibold uppercase tracking-[0.15em] px-2 py-0.5 rounded;
   color: hsl(var(--brand-color));
   background: hsl(var(--brand-color) / 0.12);
   border: 1px solid hsl(var(--brand-color) / 0.3);
-  transform: translateY(-6px);
   opacity: 0;
 }
 
 .gallery-card:hover .gallery-card-badge {
-  transform: translateY(0);
   opacity: 1;
 }
 
-.gallery-card-info {
-  @apply transition-all duration-500 ease-out;
-  transform: translateY(8px);
-}
-
-.gallery-card:hover .gallery-card-info {
-  transform: translateY(0);
-}
-
 .gallery-card-title {
-  @apply text-white text-xs sm:text-sm font-heading font-bold leading-tight;
+  @apply text-white text-xs sm:text-sm font-display font-semibold leading-tight;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .gallery-card-subtitle {
-  @apply text-[8px] sm:text-[9px] font-black uppercase tracking-[0.15em] mt-1 flex items-center;
+  @apply text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.15em] mt-1 flex items-center;
   color: hsl(var(--brand-light));
-}
-
-.gallery-card-glow {
-  @apply absolute inset-0 pointer-events-none rounded-2xl opacity-0 transition-opacity duration-500;
-  box-shadow: inset 0 0 30px hsl(var(--brand-color) / 0.06);
-}
-
-.gallery-card:hover .gallery-card-glow {
-  opacity: 1;
 }
 </style>

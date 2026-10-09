@@ -14,17 +14,17 @@
         </div>
 
         <!-- Float Nav Controls & Metadata -->
-        <div class="max-w-7xl mx-auto w-full px-6 pb-12 relative z-20 animate-reveal">
+        <div class="max-w-7xl mx-auto w-full px-6 pb-12 relative z-20">
           <!-- Back Link -->
           <NuxtLink
             to="/news"
-            class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 backdrop-blur-md px-4 py-2.5 rounded-xl hover:border-brand/40"
+            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 px-4 py-2.5 rounded-xl hover:border-brand/40"
           >
             <ArrowLeft class="w-4 h-4" /> Kembali ke Berita
           </NuxtLink>
 
           <div class="flex flex-wrap items-center gap-3 mb-6">
-            <span class="text-[9px] px-2.5 py-1 rounded-md bg-brand/10 border border-brand/25 text-brand font-black uppercase tracking-wider font-mono">
+            <span class="text-[9px] px-2.5 py-1 rounded-md bg-brand/10 border border-brand/25 text-brand font-semibold uppercase tracking-wider font-mono">
               {{ item.category }}
             </span>
             <span class="text-xs text-muted font-mono flex items-center gap-1.5 ml-2">
@@ -47,7 +47,7 @@
             </span>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-heading font-black text-main leading-tight mb-4 max-w-4xl tracking-tight">
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-semibold text-main leading-tight mb-4 max-w-4xl tracking-tight">
             {{ item.title }}
           </h1>
 
@@ -64,30 +64,30 @@
             {{ item.summary }}
           </p>
 
-          <h2 class="mt-10 text-2xl font-heading font-black text-main">Fakta Kunci</h2>
+          <h2 class="mt-10 text-2xl font-display font-semibold text-main">Fakta Kunci</h2>
           <ul class="mt-4 space-y-3">
             <li
               v-for="(fact, i) in item.keyFacts"
               :key="i"
               class="flex items-start gap-3 text-main/80"
             >
-              <span class="mt-1 w-5 h-5 shrink-0 rounded-full bg-brand/15 border border-brand/30 flex items-center justify-center text-brand text-[10px] font-black">
+              <span class="mt-1 w-5 h-5 shrink-0 rounded-full bg-brand/15 border border-brand/30 flex items-center justify-center text-brand text-[10px] font-semibold">
                 {{ i + 1 }}
               </span>
               <span class="leading-relaxed">{{ fact }}</span>
             </li>
           </ul>
 
-          <div class="mt-12 glass-card p-6 md:p-8 rounded-[2rem] bg-surface-card border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="mt-12 glass-card p-6 md:p-8 bg-surface-card border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p class="text-xs font-black uppercase tracking-widest text-muted font-mono mb-1">Sumber Berita</p>
+              <p class="text-xs font-semibold uppercase tracking-widest text-muted font-mono mb-1">Sumber Berita</p>
               <p class="text-main font-bold">{{ item.source }}</p>
             </div>
             <a
               :href="item.sourceUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn-primary flex items-center gap-2 py-3 px-6 text-xs font-black uppercase tracking-wider"
+              class="btn-primary flex items-center gap-2 py-3 px-6 text-xs font-semibold uppercase tracking-wider"
             >
               Baca Artikel Asli
               <ArrowUpRight class="w-4 h-4" />
@@ -106,9 +106,9 @@
       <div class="w-16 h-16 rounded-full bg-surface-elevated/60 border border-border flex items-center justify-center mb-6 text-muted/60">
         <Newspaper class="w-8 h-8" />
       </div>
-      <h3 class="text-xl font-heading font-black text-main mb-3">Berita Tidak Ditemukan</h3>
+      <h3 class="text-xl font-display font-semibold text-main mb-3">Berita Tidak Ditemukan</h3>
       <p class="text-muted text-sm font-semibold max-w-sm mx-auto mb-8">Berita yang Anda cari mungkin telah dipindahkan atau dihapus.</p>
-      <NuxtLink to="/news" class="btn-secondary px-8 py-3.5 text-xs font-black uppercase tracking-wider">
+      <NuxtLink to="/news" class="btn-secondary px-8 py-3.5 text-xs font-semibold uppercase tracking-wider">
         Kembali ke Berita
       </NuxtLink>
     </div>

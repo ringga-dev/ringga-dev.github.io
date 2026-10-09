@@ -1,6 +1,6 @@
-```
 # Nuxt.js build outputs
 .nuxt/
+.output/
 
 # Dependencies
 node_modules/
@@ -44,4 +44,11 @@ target/
 # Virtual environments
 .venv/
 venv/
-```bun.lock
+
+# Lockfile: package-lock.json is authoritative; never commit bun.lock
+bun.lock
+
+# Agent skill tooling (not site content)
+.hermes/
+.agents/
+skills-lock.json

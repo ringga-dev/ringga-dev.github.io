@@ -17,9 +17,6 @@
           aria-modal="true"
           :aria-label="`Image viewer: ${currentItem?.title || ''}`"
         >
-          <!-- Ambient glow based on brand color -->
-          <div class="lightbox-ambient-glow"></div>
-
           <!-- Top Bar -->
           <div class="lightbox-topbar">
             <div class="flex items-center gap-3 min-w-0">
@@ -228,53 +225,41 @@ onUnmounted(() => {
 
 .lightbox-overlay {
   @apply fixed inset-0 z-[100] flex items-center justify-center select-none;
-  background: rgba(2, 6, 4, 0.97);
-  backdrop-filter: blur(40px) saturate(0.6);
-}
-
-.lightbox-ambient-glow {
-  @apply absolute inset-0 pointer-events-none;
-  background: 
-    radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--brand-color) / 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 30% 80%, hsl(var(--brand-light) / 0.025) 0%, transparent 50%);
+  background: hsl(36 24% 5% / 0.97);
 }
 
 .lightbox-topbar {
   @apply absolute top-0 inset-x-0 px-4 sm:px-8 py-5 flex items-center justify-between z-30;
-  background: linear-gradient(to bottom, rgba(2, 6, 4, 0.9) 0%, transparent 100%);
+  border-bottom: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-category-badge {
-  @apply text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-lg shrink-0;
-  color: hsl(var(--brand-color));
-  background: hsl(var(--brand-color) / 0.1);
-  border: 1px solid hsl(var(--brand-color) / 0.25);
+  @apply font-mono text-[9px] uppercase tracking-[0.15em] px-3 py-1 shrink-0;
+  color: hsl(var(--brand-light));
+  border: 1px solid hsl(var(--brand-color) / 0.4);
 }
 
 .lightbox-title {
-  @apply text-white text-sm sm:text-lg font-heading font-bold leading-tight truncate;
+  @apply text-sm sm:text-base font-display font-semibold leading-tight truncate;
+  color: hsl(36 30% 92%);
 }
 
 .lightbox-counter {
-  @apply text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-lg hidden sm:block;
-  color: rgba(180, 200, 190, 0.7);
-  background: rgba(15, 30, 22, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 hidden sm:block;
+  color: hsl(32 14% 62%);
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-btn {
-  @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-90;
-  color: rgba(180, 200, 190, 0.8);
-  background: rgba(15, 30, 22, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
+  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer w-11 h-11;
+  color: hsl(32 14% 62%);
+  background: transparent;
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-btn:hover {
-  color: hsl(var(--brand-color));
-  background: rgba(15, 30, 22, 0.85);
-  border-color: hsl(var(--brand-color) / 0.35);
-  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.15);
+  color: hsl(var(--brand-light));
+  border-color: hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-close-btn {
@@ -283,18 +268,15 @@ onUnmounted(() => {
 
 .lightbox-nav-btn {
   @apply absolute top-1/2 -translate-y-1/2 w-12 h-12 z-20 hidden sm:flex;
-  @apply flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer active:scale-90;
-  color: rgba(180, 200, 190, 0.8);
-  background: rgba(15, 30, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
+  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer;
+  color: hsl(32 14% 62%);
+  background: transparent;
+  border: 1px solid hsl(32 16% 20%);
 }
 
 .lightbox-nav-btn:hover {
-  color: hsl(var(--brand-color));
-  background: rgba(15, 30, 22, 0.85);
-  border-color: hsl(var(--brand-color) / 0.35);
-  box-shadow: 0 0 30px hsl(var(--brand-color) / 0.15);
+  color: hsl(var(--brand-light));
+  border-color: hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-nav-prev {
@@ -323,14 +305,10 @@ onUnmounted(() => {
 }
 
 .lightbox-image {
-  @apply rounded-xl sm:rounded-2xl object-contain select-none pointer-events-none transition-opacity duration-300;
+  @apply object-contain select-none pointer-events-none transition-opacity duration-300;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 12rem);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 0 80px hsl(var(--brand-color) / 0.06);
+  border: 1px solid hsl(32 16% 20%);
 }
 
 @media (min-width: 640px) {
@@ -341,8 +319,8 @@ onUnmounted(() => {
 }
 
 .lightbox-skeleton {
-  @apply absolute inset-0 rounded-2xl overflow-hidden;
-  background: rgba(15, 30, 22, 0.4);
+  @apply absolute inset-0 overflow-hidden;
+  background: hsl(32 16% 12%);
   min-width: 300px;
   min-height: 200px;
 }
@@ -352,7 +330,7 @@ onUnmounted(() => {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(30, 60, 45, 0.2) 50%,
+    hsl(32 16% 22%) 50%,
     transparent 100%
   );
   animation: skeleton-sweep 1.5s ease-in-out infinite;
@@ -369,10 +347,9 @@ onUnmounted(() => {
 }
 
 .lightbox-thumbnail-track {
-  @apply flex gap-1.5 sm:gap-2 overflow-x-auto py-2 px-2 rounded-xl max-w-full;
-  background: rgba(10, 20, 15, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
+  @apply flex gap-1.5 sm:gap-2 overflow-x-auto py-2 px-2 max-w-full;
+  background: transparent;
+  border: 1px solid hsl(32 16% 20%);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -382,8 +359,8 @@ onUnmounted(() => {
 }
 
 .lightbox-thumbnail {
-  @apply w-10 h-8 sm:w-14 sm:h-10 rounded-md sm:rounded-lg overflow-hidden shrink-0 transition-all duration-300 cursor-pointer;
-  border: 2px solid transparent;
+  @apply w-10 h-8 sm:w-14 sm:h-10 overflow-hidden shrink-0 transition-opacity duration-200 cursor-pointer;
+  border: 1px solid transparent;
   opacity: 0.4;
   filter: grayscale(0.6);
 }
@@ -397,13 +374,12 @@ onUnmounted(() => {
   opacity: 1 !important;
   filter: grayscale(0) !important;
   border-color: hsl(var(--brand-color)) !important;
-  box-shadow: 0 0 12px hsl(var(--brand-color) / 0.3);
 }
 
 /* Swipe hint */
 .lightbox-swipe-hint {
-  @apply absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[9px] font-black uppercase tracking-widest z-20;
-  color: rgba(180, 200, 190, 0.4);
+  @apply absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest z-20;
+  color: hsl(32 14% 45%);
 }
 
 /* Transition utility classes */
