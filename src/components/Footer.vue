@@ -53,7 +53,7 @@
         </a>
         <div class="text-muted text-sm font-serif flex items-center gap-3">
           <MapPinIcon class="w-4 h-4" />
-          Pekanbaru, Indonesia
+          Batam, Kepulauan Riau
         </div>
       </div>
     </div>

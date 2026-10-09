@@ -7,12 +7,12 @@ import type { NavItem, FooterLink } from '~/types'
 
 export const SITE_CONFIG = {
   name: 'Ringga Dev',
-  tagline: 'Professional Multi-Platform Engineer',
+  tagline: 'Senior Mobile Developer',
   url: 'https://ringgadev.com',
-  description: 'Premium Portfolio of Ringga Septia Pribadi - Expert Android & Web Developer with 3+ years experience.',
-  keywords: ['Android Developer', 'Web Developer', 'Kotlin', 'Nuxt', 'Vue', 'Full Stack', 'Portfolio'],
+  description: 'Ringga Septia Pribadi — Senior Mobile Developer di Batam, Indonesia. Kotlin, Jetpack Compose, Kotlin Multiplatform, dan Flutter. Pembuat kmp-printer.',
+  keywords: ['Android Developer', 'Mobile Developer', 'Kotlin', 'Jetpack Compose', 'Kotlin Multiplatform', 'Flutter', 'ESC/POS', 'Batam', 'Portfolio'],
   author: 'Ringga Septia Pribadi',
-  themeColor: '#00DC82'
+  themeColor: '#F5F0E6'
 } as const
 
 export const NAVIGATION_ITEMS: NavItem[] = [

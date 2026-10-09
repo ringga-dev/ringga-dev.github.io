@@ -36,10 +36,15 @@ onMounted(() => {
   root.add(coreLight)
 
   // ============ DENSE STAR FIELD (3 layer PointsMaterial) ============
+  // Particle budget scales with viewport width. A phone cannot push 120k
+  // additive-blended points at 60fps; the visual density is barely different
+  // at a third of the count, but the frame time is.
+  const isSmall = typeof window !== 'undefined' && window.innerWidth < 768
+  const DENSITY = isSmall ? 0.25 : 1
   const LAYERS = [
-    { count: 90000, size: 0.16 },
-    { count: 22000, size: 0.3 },
-    { count: 8000, size: 0.55 },
+    { count: Math.round(90000 * DENSITY), size: 0.16 },
+    { count: Math.round(22000 * DENSITY), size: 0.3 },
+    { count: Math.round(8000 * DENSITY), size: 0.55 },
   ]
   const cCore = new THREE.Color('#fff4d6')
   const cBlue = new THREE.Color('#3fa9ff')
@@ -97,7 +102,7 @@ onMounted(() => {
   })
 
   // ============ DUST LANES (asymmetric, opaque dark) ============
-  const DUST_COUNT = 14000
+  const DUST_COUNT = Math.round(14000 * DENSITY)
   const dPos = new Float32Array(DUST_COUNT * 3)
   for (let i = 0; i < DUST_COUNT; i++) {
     const i3 = i * 3

@@ -88,6 +88,6 @@ const props = defineProps({
 
 const resolvedMedia = computed(() => {
   // If there's an explicit media object in json, use it, else fallback to standard cover image
-  return props.media || { type: 'image', src: props.image || '/images/hero/hero-bg-1.png' }
+  return props.media || { type: 'image', src: props.image || '/images/hero/hero-bg-1.webp' }
 })
 </script>

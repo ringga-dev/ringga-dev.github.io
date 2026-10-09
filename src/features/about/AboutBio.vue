@@ -7,6 +7,8 @@
         <img
           :src="aboutData.bio.image"
           :alt="aboutData.bio.titleHighlight"
+          loading="lazy"
+          decoding="async"
           @error="onImgError"
           v-if="!imgError"
           class="w-full aspect-square object-cover grayscale contrast-125 saturate-50 group-hover:grayscale-0 transition-[filter] duration-300"
@@ -44,9 +46,9 @@
           Let's Collaborate
           <ExternalLinkIcon class="w-5 h-5" />
         </a>
-        <a :href="aboutData.bio.cvUrl" class="btn-secondary flex items-center gap-3 px-10 font-mono text-xs font-semibold uppercase tracking-[0.18em] py-4">
-          Download CV
-          <DownloadIcon class="w-5 h-5" />
+        <a :href="aboutData.bio.cvUrl" target="_blank" rel="noopener" class="btn-secondary flex items-center gap-3 px-10 font-mono text-xs font-semibold uppercase tracking-[0.18em] py-4">
+          Full Profile
+          <ExternalLinkIcon class="w-5 h-5" />
         </a>
         <div class="flex gap-4 items-center">
           <a
@@ -71,8 +73,7 @@ import {
   GithubIcon,
   LinkedinIcon,
   MailIcon,
-  ExternalLinkIcon,
-  DownloadIcon
+  ExternalLinkIcon
 } from 'lucide-vue-next'
 import aboutData from '~/data/about.json'
 import globalData from '~/data/global.json'
@@ -94,11 +95,11 @@ const socialList = computed(() => {
 // Highlight specific keywords in bio paragraphs for premium design accent
 const highlightKeywords = (text) => {
   const highlights = [
-    'Multi-Platform Engineer',
+    'Senior Mobile Developer',
     'Kotlin Multiplatform',
-    'Connectivity',
-    'Android POS drivers',
-    'Nuxt applications'
+    'Jetpack Compose',
+    'kmp-printer',
+    'PT Batamfast Indonesia'
   ]
   let result = text
   highlights.forEach(word => {

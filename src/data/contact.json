@@ -9,19 +9,19 @@
     "items": [
       {
         "label": "Email",
-        "value": "ringga.dev@gmail.com",
+        "value": "ringgadev@gmail.com",
         "icon": "MailIcon",
-        "url": "mailto:ringga.dev@gmail.com"
+        "url": "mailto:ringgadev@gmail.com"
       },
       {
         "label": "WhatsApp",
         "value": "+62 822 8462 1151",
         "icon": "MessageSquareIcon",
-        "url": "https://api.whatsapp.com/send?phone=+6282284621151&text=Hallo"
+        "url": "https://api.whatsapp.com/send?phone=6282284621151&text=Hallo%20Ringga"
       },
       {
         "label": "Location",
-        "value": "Pekanbaru, Indonesia",
+        "value": "Batam, Kepulauan Riau, Indonesia",
         "icon": "MapPinIcon",
         "url": "#"
       }

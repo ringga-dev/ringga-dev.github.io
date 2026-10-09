@@ -59,6 +59,8 @@
               v-if="featuredPost.image"
               :src="featuredPost.image"
               :alt="featuredPost.title"
+              fetchpriority="high"
+              decoding="async"
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div v-else class="absolute inset-0 bg-surface-elevated halftone flex items-center justify-center">
@@ -123,6 +125,8 @@
                 v-if="post.image"
                 :src="post.image"
                 :alt="post.title"
+                loading="lazy"
+                decoding="async"
                 class="w-full h-full object-cover"
               />
               <div v-else class="w-full h-full bg-surface-elevated halftone flex items-center justify-center">

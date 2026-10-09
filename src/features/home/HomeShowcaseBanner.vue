@@ -80,6 +80,8 @@
                 <img
                   :src="currentSlide.image"
                   :alt="currentSlide.title"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover select-none pointer-events-none"
                 />
 
@@ -142,7 +144,7 @@ const slides = [
     title: "Universal Engineering.",
     titleHighlight: "No Platform Boundaries.",
     description: "From direct ESC/POS hardware control and socket communications to responsive reactive web layouts and cross-platform mobile apps. I architect complete end-to-end ecosystems designed for durability, lightning speed, and elite design aesthetics.",
-    image: "/images/branding/home_showcase_banner.png",
+    image: "/images/branding/home_showcase_banner.webp",
     tag: "Active Architecture",
     version: "Ver. 2.0",
     highlights: [
@@ -157,7 +159,7 @@ const slides = [
     title: "SOLID Architecture.",
     titleHighlight: "Maintainable & Modular.",
     description: "Strict layer separations (Presentation, Application, Domain, and Data) following modern engineering standards. Designed for ultimate stability, testing scalability, and multi-team collaboration.",
-    image: "/images/infographics/clean-architecture.png",
+    image: "/images/infographics/clean-architecture.webp",
     tag: "Modular Blueprint",
     version: "Ver. 1.8",
     highlights: [
@@ -172,7 +174,7 @@ const slides = [
     title: "Low-Level Drivers.",
     titleHighlight: "Hardware & ESC/POS Sockets.",
     description: "Direct Bluetooth, USB, and TCP Sockets driver communication for receipt printing, cash drawers, and commercial peripherals. Fully optimized command buffer rendering and offline queues.",
-    image: "/images/infographics/secure-reliable.png",
+    image: "/images/infographics/secure-reliable.webp",
     tag: "Hardware Buffers",
     version: "Ver. 2.4",
     highlights: [
@@ -187,7 +189,7 @@ const slides = [
     title: "Native Performance.",
     titleHighlight: "Kotlin Multiplatform Apps.",
     description: "Single-codebase efficiency without compromising native speed or visual precision. Shared business logic compiling directly to native Android SDK and iOS Swift runtime objects.",
-    image: "/images/infographics/cross-platform.png",
+    image: "/images/infographics/cross-platform.webp",
     tag: "Compose / KMP",
     version: "Ver. 3.0",
     highlights: [

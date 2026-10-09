@@ -1,7 +1,7 @@
 <template>
   <div class="relative" :class="sizeClass">
     <img
-      src="/images/branding/logo-minimal.jpeg"
+      src="/images/branding/logo-minimal.webp"
       alt="Ringga Dev Logo"
       @error="hasError = true"
       v-if="!hasError"

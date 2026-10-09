@@ -110,7 +110,7 @@ import globalData from '~/data/global.json'
 import projectsData from '~/data/projects.json'
 
 useHead({
-  title: `${globalData.siteName} | Professional Multi-Platform Engineer`,
+  title: `${globalData.siteName} | Senior Mobile Developer`,
   meta: [
     { name: 'description', content: globalData.seo.description }
   ]

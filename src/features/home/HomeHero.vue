@@ -128,7 +128,7 @@ const getIcon = (name) => {
 }
 
 // Typing Effect for the hero highlight
-const roles = ['Multi-Platform Developer', 'KMP/Compose Expert', 'Systems Architect', 'Fullstack Engineer']
+const roles = ['Senior Mobile Developer', 'Kotlin Multiplatform', 'Jetpack Compose', 'Flutter']
 const typedRole = ref('')
 let roleIndex = 0
 let charIndex = 0

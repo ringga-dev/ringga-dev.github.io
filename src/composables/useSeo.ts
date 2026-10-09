@@ -19,8 +19,8 @@ export function usePageSeo(options: SeoOptions = {}) {
   const config = useRuntimeConfig()
   const siteUrl = config.public.siteUrl || 'https://ringgadev.com'
   
-  const defaultTitle = 'Ringga Dev | Professional Multi-Platform Engineer'
-  const defaultDescription = 'Premium Portfolio of Ringga Septia Pribadi - Expert Android & Web Developer with 3+ years experience.'
+  const defaultTitle = 'Ringga Septia Pribadi | Senior Mobile Developer — Kotlin, KMP & Jetpack Compose'
+  const defaultDescription = 'Senior Mobile Developer di Batam, Indonesia. Kotlin, Jetpack Compose, Kotlin Multiplatform, dan Flutter. Pembuat kmp-printer, pustaka open-source pencetakan termal ESC/POS.'
   const defaultImage = '/og-image.png'
   
   const title = options.title ? `${options.title} | Ringga Dev` : defaultTitle

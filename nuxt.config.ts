@@ -81,7 +81,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@tresjs/nuxt'],
 
   // CSS
-  css: ['~/assets/css/index.css'],
+  css: ['~/assets/css/fonts.css', '~/assets/css/index.css'],
 
   // Static Site Generation for GitHub Pages
   ssr: true,
@@ -95,25 +95,26 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
-      title: 'Ringga Dev | Professional Multi-Platform Engineer',
+      title: 'Ringga Septia Pribadi | Senior Mobile Developer — Kotlin, KMP & Jetpack Compose',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Premium Portfolio of Ringga Septia Pribadi - Expert Android & Web Developer with 3+ years experience.' },
+        { name: 'description', content: 'Ringga Septia Pribadi — Senior Mobile Developer di Batam, Indonesia. Kotlin, Jetpack Compose, Kotlin Multiplatform, dan Flutter. Pembuat kmp-printer.' },
         { name: 'theme-color', content: '#F5F0E6' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: 'Ringga Dev | Full-Stack Developer' },
-        { property: 'og:description', content: 'Crafting premium Android & Web applications with performance and aesthetics in mind.' },
+        { property: 'og:title', content: 'Ringga Septia Pribadi | Senior Mobile Developer' },
+        { property: 'og:description', content: 'Kotlin, Jetpack Compose, Kotlin Multiplatform, dan Flutter. Pembuat kmp-printer — pustaka open-source pencetakan termal ESC/POS.' },
         { property: 'og:image', content: '/og-image.png' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@ringga_dev' },
+        { name: 'author', content: 'Ringga Septia Pribadi' },
+        { name: 'keywords', content: 'Android Developer, Mobile Developer, Kotlin, Jetpack Compose, Kotlin Multiplatform, Flutter, ESC/POS, Batam' },
         { name: 'robots', content: 'index, follow' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap' }
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/fraunces-latin.woff2', crossorigin: '' },
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/newsreader-latin.woff2', crossorigin: '' }
       ]
     },
     pageTransition: { name: 'page', mode: 'out-in' }

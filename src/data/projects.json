@@ -1,168 +1,298 @@
 {
-  "categories": ["All", "Android", "Library", "Backend"],
+  "categories": [
+    "All",
+    "Library",
+    "Android",
+    "Web",
+    "Desktop",
+    "Tooling"
+  ],
   "projects": [
     {
-      "title": "Printer-ESC-POS",
-      "slug": "printer-esc-pos",
-      "description": "A powerful Kotlin library for ESC/POS thermal printers, supporting Bluetooth, USB, and TCP connections.",
-      "image": "/images/projects/kmp-printer.jpg",
-      "category": "Kotlin Library",
-      "tags": ["Kotlin", "Android", "Hardware", "KMP"],
-      "github": "https://github.com/ringga-dev/Printer-ESC-POS",
-      "link": "https://github.com/ringga-dev/Printer-ESC-POS",
-      "media": {
-        "type": "video",
-        "src": "https://assets.mixkit.co/videos/preview/mixkit-code-running-on-a-computer-screen-animated-loop-35380-large.mp4",
-        "poster": "/images/projects/kmp-printer.jpg"
-      },
+      "title": "kmp-printer",
+      "slug": "kmp-printer",
+      "description": "Pustaka Kotlin Multiplatform untuk pencetakan termal ESC/POS — satu API untuk Android, iOS, JVM/Desktop, JS, dan Wasm.",
+      "image": "/images/projects/kmp-printer.webp",
+      "category": "Library",
+      "tags": [
+        "Kotlin Multiplatform",
+        "ESC/POS",
+        "Bluetooth",
+        "BLE",
+        "USB",
+        "Open Source"
+      ],
+      "github": "https://github.com/ringga-dev/kmp-printer",
+      "link": "https://ringga-dev.github.io/kmp-printer/",
+      "media": null,
       "details": {
-        "role": "Lead Open Source Maintainer",
-        "timeline": "2021 - Present",
-        "longDescription": "Printer-ESC-POS is a premier open-source Kotlin library built to solve the fragmentation of thermal printing APIs on Android. It handles character set mapping, bitmap rendering, barcode/QR configurations, and low-level byte-command packaging for various hardware channels.",
+        "role": "Author & Maintainer",
+        "timeline": "2026 - Present",
+        "longDescription": "kmp-printer adalah pustaka open-source Kotlin Multiplatform yang menyatukan penemuan printer termal, koneksi, pembuatan struk ESC/POS, dan pemantauan status di balik satu API. Logika intinya berbagi kode lintas Android, iOS, JVM/Desktop, JS, dan Wasm, sementara implementasi spesifik platform ditulis hanya di sisi yang membutuhkan. Proyek ini lahir dari kebutuhan nyata mencetak tiket, invoice, dan struk pada aplikasi lintas platform.",
         "features": [
-          "Universal ESC/POS byte generator for Bluetooth, USB, and TCP sockets",
-          "Advanced bitmap conversion algorithms for printing high-contrast logos",
-          "Comprehensive multi-language formatting and text alignment",
-          "Supports standard barcodes and high-density QR code prints"
+          "Multiplatform: Android, iOS, JVM/Desktop, JS, dan Wasm dari satu basis kode",
+          "Banyak transport: Bluetooth Classic, BLE, USB, Network TCP, Serial, dan Virtual",
+          "Pembangun struk dengan QR, barcode, dan penyisipan gambar",
+          "Pemantauan status printer (sesuai matriks dukungan per platform)",
+          "Diterbitkan lewat Maven repo di GitHub"
         ],
-        "techStack": ["Kotlin", "Android Sockets", "Bluetooth Serial API", "Coroutines"],
-        "challenges": "Fragmented thermal printer hardware support. Solved by implementing standard buffering, customizable line-feed delays, and custom character-encoding tables."
+        "techStack": [
+          "Kotlin",
+          "Kotlin Multiplatform",
+          "Compose Multiplatform",
+          "Bluetooth LE",
+          "ESC/POS",
+          "Gradle KTS"
+        ],
+        "challenges": "Setiap platform punya cara berbeda membuka koneksi printer dan melaporkan status. Diselesaikan dengan mendefinisikan antarmuka expect/actual yang ketat di modul bersama, lalu mengisolasi driver per platform — sehingga konsumen aplikasi hanya melihat satu API yang sama di semua target."
       }
     },
     {
-      "title": "Diggo POS Android",
-      "slug": "diggo-pos-android",
-      "description": "A comprehensive Point of Sale system for Android, featuring inventory management and transaction tracking.",
-      "image": "/images/projects/project-pos-confirmation.png",
-      "category": "Android App",
-      "tags": ["Kotlin", "MVVM", "Room", "SQLite"],
-      "github": "https://github.com/ringga-dev/diggo-pos-android",
-      "link": "#",
-      "media": {
-        "type": "video",
-        "src": "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-developer-typing-on-a-keyboard-40618-large.mp4",
-        "poster": "/images/projects/project-pos-confirmation.png"
-      },
+      "title": "remote-scrcpy",
+      "slug": "remote-scrcpy",
+      "description": "Aplikasi Kotlin Multiplatform (Compose Desktop) untuk mengelola perangkat Android lewat scrcpy dan adb dari satu tempat.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Desktop",
+      "tags": [
+        "Kotlin Multiplatform",
+        "Compose Desktop",
+        "scrcpy",
+        "adb",
+        "Tooling"
+      ],
+      "github": "https://github.com/ringga-dev/remote-scrcpy",
+      "link": "https://github.com/ringga-dev/remote-scrcpy",
+      "media": null,
       "details": {
-        "role": "Lead Android Engineer",
-        "timeline": "2022 - 2023",
-        "longDescription": "Diggo POS is a modern retail solution that aggregates inventory management, real-time sales reporting, and cash register flows. Built with standard clean design, it operates flawlessly offline and synchronizes data asynchronously when online.",
+        "role": "Author",
+        "timeline": "2026",
+        "longDescription": "Remote adalah aplikasi Kotlin Multiplatform berbasis Compose Desktop untuk mengelola banyak perangkat Android menggunakan scrcpy dan adb. Tooling dikelola terpusat sehingga pengguna tidak perlu mengkonfigurasi System PATH secara manual setiap kali berpindah mesin.",
         "features": [
-          "Offline-first operational state using SQLite/Room buffering",
-          "Dynamic pricing grids and tax computation matrices",
-          "Direct integration with Bluetooth ESC/POS receipt printers via Printer-ESC-POS",
-          "Analytics chart interface for daily and monthly sales reporting"
+          "Otomatisasi unduhan: menarik dan mengekstrak scrcpy (bundel adb) langsung dari rilis resmi Genymobile",
+          "Auto-detect perangkat yang terhubung lewat adb",
+          "Antarmuka Compose Desktop lintas JVM",
+          "Satu basis kode Kotlin Multiplatform"
         ],
-        "techStack": ["Kotlin", "Android Jetpack", "Room Database", "Retrofit", "MPAndroidChart"],
-        "challenges": "Data synchronization conflicts when running multiple POS terminals offline. Solved by implementing vector clocks and conflict-free replicated data strategies."
+        "techStack": [
+          "Kotlin",
+          "Kotlin Multiplatform",
+          "Compose Desktop",
+          "adb",
+          "scrcpy"
+        ],
+        "challenges": "Mengunduh dan mengekstrak toolchain scrcpy lintas sistem operasi menuntut penanganan path, izin eksekusi, dan versi rilis yang berbeda-beda. Diselesaikan dengan merapikan seluruh proses jadi satu alur otomatis yang teruji."
       }
     },
     {
-      "title": "POS LaundryQ",
-      "slug": "pos-laundryq",
-      "description": "Niche POS solution tailored for laundry businesses with order status monitoring and customer database.",
-      "image": "/images/projects/project-layout-preview.png",
-      "category": "Android App",
-      "tags": ["Kotlin", "Jetpack", "Firebase", "Android"],
-      "github": "https://github.com/ringga-dev/POS-LaundryQ",
-      "link": "#",
-      "media": {
-        "type": "image",
-        "src": "/images/projects/project-layout-preview.png"
-      },
+      "title": "undangan",
+      "slug": "undangan",
+      "description": "Undangan pernikahan digital — rebuild dari template statis ke Nuxt 4 (SSG) dengan tampilan 1:1 dipertahankan.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Web",
+      "tags": [
+        "Nuxt 4",
+        "Vue 3",
+        "SSG",
+        "GitHub Actions",
+        "EmailJS"
+      ],
+      "github": "https://github.com/ringga-dev/undangan",
+      "link": "https://github.com/ringga-dev/undangan",
+      "media": null,
       "details": {
-        "role": "Fullstack Mobile Developer",
-        "timeline": "2021 - 2022",
-        "longDescription": "POS LaundryQ is a dedicated workflow app for laundromat services, helping employees track orders through various stages (Received, Washing, Ironing, Ready for Pickup, Delivered) and keeping clients updated via SMS or WhatsApp notifications.",
+        "role": "Author",
+        "timeline": "2026",
+        "longDescription": "Undangan pernikahan digital yang direbuild dari template statis menjadi aplikasi Nuxt 4 dengan static site generation, sambil mempertahankan tampilan asli 1:1. Auto-deploy ke GitHub Pages lewat GitHub Actions setiap push.",
         "features": [
-          "Kanban-style laundry order status tracking board",
-          "Customer deposit packages and balance management",
-          "Automatic automated notification updates based on order status",
-          "Multi-employee role permissions management"
+          "Tampilan dark elegant dengan Bootstrap 5 dan FontAwesome",
+          "Modal pembuka dengan musik latar",
+          "Hitung mundur otomatis ke hari H",
+          "Love Gift: menyalin nomor rekening sekali klik",
+          "Form ucapan dan doa lewat EmailJS",
+          "Rilis otomatis ke GitHub Pages setiap push"
         ],
-        "techStack": ["Kotlin", "Firebase Firestore", "Firebase Auth", "Coroutines", "WorkManager"],
-        "challenges": "Real-time sync of washing queue states across multiple mobile clients. Resolved via Firebase Firestore live query snapshot streams."
+        "techStack": [
+          "Nuxt 4",
+          "Vue 3",
+          "Bootstrap 5",
+          "AOS",
+          "EmailJS",
+          "GitHub Actions"
+        ],
+        "challenges": "Memindahkan template statis ke SSG tanpa menggeser satu piksel pun layout, sekaligus menjaga agar animasi on-scroll tidak pernah menyembunyikan konten di hasil prerender."
       }
     },
     {
-      "title": "Hotel BE",
-      "slug": "hotel-be",
-      "description": "Robust back-end service for hotel management systems, handling bookings, room status, and guest data.",
-      "image": "/images/branding/logo-hitech.jpeg",
-      "category": "Backend",
-      "tags": ["Kotlin", "Spring Boot", "MySQL", "Spring"],
-      "github": "https://github.com/ringga-dev/hotel_be",
-      "link": "#",
-      "media": {
-        "type": "image",
-        "src": "/images/branding/logo-hitech.jpeg"
-      },
+      "title": "show-me",
+      "slug": "show-me",
+      "description": "Aplikasi Blog & Portfolio Management — backend Kotlin, frontend Nuxt 4, basis data MySQL.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Web",
+      "tags": [
+        "Nuxt 4",
+        "Kotlin",
+        "Spring",
+        "MySQL",
+        "Full-Stack"
+      ],
+      "github": "https://github.com/ringga-dev/show-me",
+      "link": "https://github.com/ringga-dev/show-me",
+      "media": null,
       "details": {
-        "role": "Backend Software Architect",
-        "timeline": "2022",
-        "longDescription": "Hotel BE is a microservices backend serving as the central coordinator for reservation channels, room inventory databases, guest profiles, and invoice billing protocols.",
+        "role": "Author",
+        "timeline": "2025",
+        "longDescription": "MyBlog adalah aplikasi manajemen blog dan portfolio dengan backend Kotlin, frontend Nuxt 4, dan basis data MySQL. Full-stack end-to-end: dari penyajian konten sampai panel pengelolaan.",
         "features": [
-          "RESTful APIs for check-in/check-out allocations",
-          "JWT-based security filters and role management controls",
-          "Database transaction isolation to prevent double booking of suites",
-          "Automated PDF invoice email receipts generation"
+          "Manajemen artikel dan portfolio",
+          "Backend Kotlin dengan REST API",
+          "Frontend Nuxt 4",
+          "Basis data MySQL"
         ],
-        "techStack": ["Spring Boot", "Spring Security", "Hibernate/JPA", "MySQL", "JasperReports"],
-        "challenges": "Handling concurrent room reservation races at peak hours. Resolved using optimistic locking annotations on room records."
+        "techStack": [
+          "Kotlin",
+          "Nuxt 4",
+          "MySQL",
+          "REST API"
+        ],
+        "challenges": "Menyatukan dua ekosistem yang berbeda (JVM dan Node) dalam satu alur kerja yang konsisten, termasuk strategi build dan deployment untuk kedua sisi."
       }
     },
     {
-      "title": "TV Schedule",
-      "slug": "tv-schedule",
-      "description": "Real-time television scheduling application with reminder notifications and channel listings.",
-      "image": "/images/branding/logo-initials.jpeg",
-      "category": "Android App",
-      "tags": ["Kotlin", "Retrofit", "Coroutines", "Android"],
-      "github": "https://github.com/ringga-dev/TV-schedule",
-      "link": "#",
-      "media": {
-        "type": "image",
-        "src": "/images/branding/logo-initials.jpeg"
-      },
+      "title": "indo-chord",
+      "slug": "indo-chord",
+      "description": "Aplikasi chord gitar offline dengan Jetpack Compose — pencarian, diagram interaktif, dan transpose nada.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Android",
+      "tags": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Offline-first",
+        "Android"
+      ],
+      "github": "https://github.com/ringga-dev/indo-chord",
+      "link": "https://github.com/ringga-dev/indo-chord",
+      "media": null,
       "details": {
-        "role": "Android Developer",
-        "timeline": "2020",
-        "longDescription": "An android application that queries live schedule API providers to display channel showtimes, cataloging movies and series, and setting system notifications to alert users before shows start.",
+        "role": "Author",
+        "timeline": "2024",
+        "longDescription": "Aplikasi chord gitar offline yang dibangun dengan Android Jetpack Compose. Menyediakan referensi chord untuk banyak lagu, dengan pencarian dan penyimpanan chord favorit yang semuanya berjalan tanpa koneksi internet.",
         "features": [
-          "Live show schedule timelines with smooth paging lists",
-          "Notification scheduler using Android AlarmManager API",
-          "Favorites lists caching utilizing local SQLite database",
-          "Material Design search filters for channels and categories"
+          "Pencarian chord lintas banyak lagu",
+          "Diagram gitar interaktif",
+          "Transpose chord naik-turun nada",
+          "Simpan chord favorit, sepenuhnya offline"
         ],
-        "techStack": ["Kotlin", "Retrofit", "AlarmManager", "SQLite/Room", "Glide"],
-        "challenges": "Alarm triggers not firing consistently on customized Android OEM OS skins. Solved using WorkManager and precise battery optimization whitelist intents."
+        "techStack": [
+          "Kotlin",
+          "Jetpack Compose",
+          "Material 3",
+          "Room",
+          "MVVM"
+        ],
+        "challenges": "Merender diagram gitar yang tetap terbaca di semua ukuran layar, plus logika transpose yang benar secara musikal, semuanya di dalam UI deklaratif Compose."
       }
     },
     {
-      "title": "Synapse",
-      "slug": "synapse",
-      "description": "Innovative development project focused on data processing and system synchronization.",
-      "image": "/images/hero/hero-bg-1.png",
-      "category": "Development",
-      "tags": ["Kotlin", "KMP", "Architecture", "CMP"],
-      "github": "https://github.com/ringga-dev/Synapse",
-      "link": "#",
-      "media": {
-        "type": "image",
-        "src": "/images/hero/hero-bg-1.png"
-      },
+      "title": "FinePhone",
+      "slug": "finephone",
+      "description": "Aplikasi Android dengan Jetpack Compose untuk mengelola informasi dan pengaturan ponsel, memakai arsitektur MVVM.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Android",
+      "tags": [
+        "Kotlin",
+        "Jetpack Compose",
+        "MVVM",
+        "Android"
+      ],
+      "github": "https://github.com/ringga-dev/FinePhone",
+      "link": "https://github.com/ringga-dev/FinePhone",
+      "media": null,
       "details": {
-        "role": "System Integration Engineer",
-        "timeline": "2023 - Present",
-        "longDescription": "Synapse is a research project aiming to develop cross-platform background data synchronization libraries using Kotlin Multiplatform. It abstracts background workers across Android (WorkManager) and iOS (BackgroundTasks) to maintain consistent offline databases.",
+        "role": "Author",
+        "timeline": "2024",
+        "longDescription": "FinePhone adalah aplikasi Android modern untuk mengelola informasi dan pengaturan ponsel. Dibangun dengan Jetpack Compose dan arsitektur MVVM agar pemisahan concern bersih dan mengikuti praktik terbaik Android.",
         "features": [
-          "Shared KMP business logic module compiled to iOS framework and Android AAR",
-          "Cross-platform SQLite database schema sharing via SQLDelight",
-          "Durable batch synchronization queues with automated exponential backoff retry",
-          "Low-battery network connection awareness"
+          "Menampilkan informasi perangkat secara ringkas",
+          "Akses cepat ke pengaturan ponsel",
+          "UI Jetpack Compose dengan Material 3",
+          "Arsitektur MVVM untuk pemisahan concern"
         ],
-        "techStack": ["Kotlin Multiplatform", "SQLDelight", "Ktor HTTP Client", "Coroutines Flow"],
-        "challenges": "Managing asynchronous threading consistency on iOS native dispatch queues within KMP. Solved using Coroutines Native-MT and state isolation wrappers."
+        "techStack": [
+          "Kotlin",
+          "Jetpack Compose",
+          "MVVM",
+          "Android SDK"
+        ],
+        "challenges": "Membaca informasi perangkat lintas versi Android yang API-nya berbeda, tanpa mengorbankan keterbacaan kode."
+      }
+    },
+    {
+      "title": "shoppe",
+      "slug": "shoppe",
+      "description": "Aplikasi web e-commerce berbasis Vue — katalog produk, keranjang, dan alur checkout.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Web",
+      "tags": [
+        "Vue 3",
+        "Vite",
+        "E-Commerce",
+        "Tailwind CSS"
+      ],
+      "github": "https://github.com/ringga-dev/shoppe",
+      "link": "https://github.com/ringga-dev/shoppe",
+      "media": null,
+      "details": {
+        "role": "Author",
+        "timeline": "2026",
+        "longDescription": "Aplikasi web e-commerce berbasis Vue: katalog produk, keranjang belanja, dan alur checkout. Dibangun untuk menguasai pola state management serta komposisi komponen di Vue 3.",
+        "features": [
+          "Katalog produk dengan pencarian dan filter",
+          "Keranjang belanja dengan state terpusat",
+          "Alur checkout bertahap",
+          "Tata letak responsif"
+        ],
+        "techStack": [
+          "Vue 3",
+          "Vite",
+          "Vue Router",
+          "Pinia",
+          "Tailwind CSS"
+        ],
+        "challenges": "Mengelola state keranjang agar konsisten lintas halaman tanpa library state management yang berlebihan."
+      }
+    },
+    {
+      "title": "Laundry App Design",
+      "slug": "laundry-app-design",
+      "description": "Rancangan dan purwarupa aplikasi laundry — alur penerimaan, pencatatan pesanan, dan pengelolaan keuangan.",
+      "image": "/images/projects/project-layout-preview.webp",
+      "category": "Android",
+      "tags": [
+        "Kotlin",
+        "POS",
+        "UI/UX",
+        "Android"
+      ],
+      "github": "https://github.com/ringga-dev/Laundry-App-Rancangan",
+      "link": "https://github.com/ringga-dev/Laundry-App-Rancangan",
+      "media": null,
+      "details": {
+        "role": "Author",
+        "timeline": "2025",
+        "longDescription": "Rancangan aplikasi laundry yang mengalirkan operasional harian: menerima pakaian, mencatat pesanan, sampai mengelola inventori dan keuangan cabang. Purwarupa ini menjadi dasar produk kasir yang terbit di Google Play.",
+        "features": [
+          "Alur penerimaan dan pencatatan pesanan",
+          "Pengelolaan inventori",
+          "Pembukuan keuangan sederhana",
+          "Purwarupa antarmuka siap produksi"
+        ],
+        "techStack": [
+          "Kotlin",
+          "Android SDK",
+          "Jetpack Compose",
+          "Room"
+        ],
+        "challenges": "Menyederhanakan alur kasir yang padat menjadi beberapa langkah jelas, tanpa kehilangan informasi yang dibutuhkan operator."
       }
     }
   ]

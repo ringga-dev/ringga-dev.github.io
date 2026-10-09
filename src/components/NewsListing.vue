@@ -27,6 +27,8 @@
             <img
               :src="featured.image"
               :alt="featured.title"
+              fetchpriority="high"
+              decoding="async"
               class="absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -77,6 +79,8 @@
             <img
               :src="item.image"
               :alt="item.title"
+              loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover"
             />
             <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 bg-ink text-paper border-[1.5px] border-paper rounded-sm">
