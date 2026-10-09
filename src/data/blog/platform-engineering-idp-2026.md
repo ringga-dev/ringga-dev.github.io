@@ -144,6 +144,89 @@ helm install kyverno kyverno/kyverno -n kyverno --create-namespace
 dagger run go run main.go
 ```
 
+## Mengukur Kematangan: Model CNCF
+
+Kalimat "platform engineering itu penting" tidak bisa dipakai untuk memutuskan roadmap. Yang bisa dipakai adalah penilaian terstruktur, dan acuan yang paling banyak dipakai adalah **CNCF Platform Engineering Maturity Model**. Versi keduanya dirilis pada Platform Engineering Day di Amsterdam, 23 Maret 2026, oleh Platform Engineering Technical Community Group. Struktur intinya tidak berubah: empat tingkat kematangan (**Provisional, Operational, Scalable, Optimizing**) dinilai di lima aspek (**Investment, Adoption, Interfaces, Operations, Measurement**), masing-masing secara independen.
+
+Yang membuat model ini berguna bukan skornya, tapi klaimnya yang bisa diuji ulang. Menulis "Interfaces masih level 2 dan ada roadmap item untuk menutupnya" adalah pernyataan yang bisa diperiksa lagi enam bulan kemudian. Menulis "platform kita cukup matang" tidak bisa.
+
+Contoh alur progresi pada aspek Investment: tiger team sukarela (Provisional), tim terpusat dengan pendanaan tetap (Operational), product management dengan roadmap dan chargeback (Scalable), lalu ekosistem di mana spesialis ikut memperluas platform (Optimizing).
+
+## Data Adopsi yang Perlu Diketik Ulang
+
+Angka yang beredar di blog biasanya tidak menyebut sumbernya. Data yang bisa dirujuk antara lain:
+
+- Survei Q1 2026 CNCF bersama SlashData terhadap lebih dari 400 developer cloud native: **28% organisasi punya tim platform engineering khusus**, dan model paling umum justru bukan itu, melainkan **kolaborasi multi-tim (41%)**.
+- Survei yang sama: **35% organisasi memakai platform hibrida** yang menggabungkan developer platform eksisting dengan tooling AI khusus, untuk menampung beban kerja AI.
+- Radar application delivery CNCF menempatkan **Helm, Backstage, dan kro** di posisi "Adopt". Di kategori workflow automation, ArgoCD, Armada, Buildpacks, GitHub Actions, dan Jenkins yang masuk "Adopt".
+- Laporan DORA 2025: **90% responden memakai AI di tempat kerja**, lebih dari 80% merasa produktivitas naik, tetapi adopsi AI masih berkorelasi negatif dengan stabilitas pengiriman software. DORA menyimpulkan bahwa AI mempercepat penulisan kode, dan akselerasi itu membongkar kelemahan di hilir kalau tidak ada sistem kendali seperti automated testing yang kuat, version control yang matang, dan feedback loop cepat.
+- State of Platform Engineering Report Volume 4: **29,6% tim masih tidak mengukur keberhasilan platform sama sekali**, dan **24,2% mengukur tapi tidak tahu apakah metriknya membaik**. Ini kemacetan terbesar, bukan kekurangan tool.
+
+Pelajaran praktisnya: masalah paling umum bukan memilih portal, tapi tidak punya definisi keberhasilan yang bisa diverifikasi.
+
+## Backstage: Framework, Bukan Produk
+
+Sering keliru dianggap portal yang tinggal dipasang. Backstage adalah framework untuk membangun portal Anda sendiri. Status CNCF-nya perlu dicatat jujur: masuk CNCF 8 September 2020, naik ke **Incubating 15 Maret 2022**, dan per pertengahan 2026 masih berstatus Incubating, belum Graduated. Direktori plugin publiknya mencatat sekitar 188 plugin pada September 2026, dengan rilis stabil berkala sekitar sebulan sekali.
+
+Konsekuensi operasionalnya: Backstage adalah aplikasi React dengan backend Node yang harus Anda kembangkan dan operasikan sendiri. Monorepo-nya memisahkan core framework di `packages/*` dan plugin di `plugins/*`. Plugin adalah kode, upgrade menyentuh kode itu. Perkirakan alokasi dua sampai empat engineer untuk mengoperasikannya, bukan satu orang paruh waktu. Dan katalog yang tidak ada yang merawatnya lebih buruk dibanding tidak punya katalog: informasi owner dan dependensi yang kedaluwarsa menyesatkan orang yang sedang butuh jawaban cepat.
+
+## Kratix, Crossplane, dan Pembagian Kerja
+
+Kalau Backstage berperan sebagai pintu depan, lapisan di belakangnya punya beberapa pilihan dengan batas tanggung jawab yang jelas.
+
+**Crossplane** adalah control plane yang mengubah resource cloud menjadi Kubernetes custom resource, direkonsiliasi secara kontinu lewat provider. Ia unggul sebagai primitif provisioning: deklaratif, mengoreksi drift, dan GitOps-native. Tapi ia sengaja tidak menyediakan antarmuka permintaan untuk developer, approval gate, maupun operasi hari kedua.
+
+**Kratix** mengisi celah antara portal dan control plane dengan konsep **Promise**, definisi versi dari sebuah kapabilitas platform yang memuat definisi API (CRD), pekerjaan yang memenuhi permintaan, dan dependensinya. Kratix tidak bersaing dengan Crossplane; keduanya saling melengkapi, karena satu Promise bisa mendelegasikan ke Crossplane Composition, Terraform module, atau Helm chart, dan menambahkan langkah di antaranya seperti pemeriksaan keamanan, audit, dan billing check sebelum delegasi terjadi. Kratix juga multi-cluster secara bawaan: satu platform cluster mengorkestrasi resource di banyak worker cluster, dengan state dikelola GitOps.
+
+```yaml
+apiVersion: platform.kratix.io/v1alpha1
+kind: Promise
+metadata:
+  name: postgres
+spec:
+  api:
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: postgresqls.kratix.platform.co.id
+    spec:
+      group: kratix.platform.co.id
+      names:
+        kind: Postgresql
+        plural: postgresqls
+      scope: Namespaced
+  workflows:
+    resource:
+      configure:
+        - apiVersion: platform.kratix.io/v1alpha1
+          kind: Pipeline
+          metadata:
+            name: render-database
+          spec:
+            containers:
+              - image: registry.contoh.co.id/kratix-postgres-pipeline:v0.1.0
+```
+
+Developer cukup mengirim resource request, dan pipeline yang mengeluarkan resource aktual. Yang mereka lihat adalah kapabilitas "database", bukan detail provider.
+
+## Pitfall yang Muncul Setelah Adopsi
+
+Empat kegagalan yang berulang, semuanya bisa dicegah di awal.
+
+Pertama, **golden path berubah jadi sangkar**. Begitu paved road menjadi satu-satunya jalan yang didukung, tim dengan kebutuhan wajar mulai memilih jalan gelap. Sediakan jalur keluar yang terdokumentasi untuk penyimpangan yang dibenarkan, bukan larangan mutlak.
+
+Kedua, **self-service tanpa guardrail**. Templat yang menghasilkan cluster Kubernetes tanpa namespace quota, network policy, dan policy-as-code hanya memindahkan masalah ke produksi lebih cepat. Templat yang bagus membawa kebijakannya bersama kodenya, dan itu tugas Kyverno atau OPA, bukan instruksi di wiki.
+
+Ketiga, **portal jadi gudang katalog mati**. Entitas yang tidak terhubung ke pemilik, repo, pipeline, atau dashboard apa pun hanya menambah klik tanpa mengurangi waktu pencarian.
+
+Keempat, **tidak ada measurement**. Tanpa metrik seperti waktu dari permintaan resource sampai siap pakai, persentase provisioning lewat portal dibanding manual, dan angka penyimpangan dari golden path, platform tidak punya cara membuktikan nilainya saat budget ditinjau.
+
+## Urutan Adopsi yang Masuk Akal
+
+Urutan yang jarang gagal dimulai dari inventarisasi dan pemetaan dependensi, bukan dari pembelian portal. Kemudian ambil satu beban kerja nyata yang paling menyakitkan, misalnya provisioning database untuk environment staging, dan bangun satu golden path untuk itu saja. Pakai satu metrik keberhasilan yang disepakati sebelum membangun, ukur, baru perluas ke kapabilitas berikutnya.
+
+Setelah ada beberapa kapabilitas, barulah portal seperti Backstage atau Port masuk sebagai lapisan penemuan dan permintaan. Kratix atau Crossplane masuk ketika jumlah cluster dan provider membuat pembuatan resource manual tidak lagi terkelola. Observability ditaruh lebih awal, karena tanpa jejak dari request sampai resource, debugging platform menjadi menebak.
+
 ## Kesimpulan
 
 Platform Engineering bukan sekadar *tooling* — ini adalah **perubahan paradigma** dalam cara kita mengelola infrastruktur cloud. Dengan IDP yang tepat, developer bisa fokus pada *business logic* sementara platform menangani kompleksitas operasional.

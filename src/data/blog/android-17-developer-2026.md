@@ -95,6 +95,96 @@ Android Studio Iguana (versi 2026.1) hadir dengan seperangkat tools AI-native:
 
 Salah satu kejutan terbesar adalah Android 17 berjalan mulus di perangkat dengan RAM 2GB berkat **Project Treble 2.0** dan **AI Memory Compression**. Google bekerja sama dengan Qualcomm, MediaTek, dan Unisoc untuk memastikan pembaruan sistem yang lebih cepat dan efisien.
 
+## AppFunctions: Membuka Aplikasi untuk AI Agent
+
+Android 17 memperluas **AppFunctions**, sebuah platform API dengan library Jetpack pendamping yang masih berstatus alpha. Idenya: aplikasi mendaftarkan kapabilitasnya sebagai "tool" yang bisa ditemukan dan dijalankan agent AI di perangkat, lewat Android MCP, padanan on-device dari Model Context Protocol. Assistant seperti Gemini lalu bisa menyelesaikan tugas atas nama pengguna dengan akses langsung ke state lokal aplikasi, bukan lewat scraping UI.
+
+Library Jetpack membuatnya singkat: anotasi sebuah class, lalu lengkapi KDoc-nya. Google juga merilis agent skill `appfunctions` yang menganalisis workflow utama aplikasi, menghasilkan kode Kotlin yang dibutuhkan, mengoptimalkan KDoc supaya enak dipakai untuk tool-calling LLM, dan menyediakan perintah ADB untuk pengujian.
+
+```kotlin
+class NoteFunctions(private val noteRepository: NoteRepository) {
+
+    /** Menambahkan catatan baru ke aplikasi. */
+    @AppFunction(isDescribedByKDoc = true)
+    suspend fun createNote(
+        appFunctionContext: AppFunctionContext,
+        title: String,
+        content: String
+    ): Note = noteRepository.createNote(title, content)
+}
+```
+
+Integrasi dengan Gemini masih dalam private preview dengan tester terpercaya, tapi persiapannya bisa mulai sekarang. Verifikasi dilakukan lewat perintah ADB, dan Google menyediakan test agent app untuk meniru cara agent menemukan serta mengeksekusi AppFunctions Anda.
+
+## Adaptive-First: Resizability Tidak Lagi Opsional
+
+Ini perubahan yang paling sering membuat aplikasi lama rusak. Untuk target API level 37, sistem mengabaikan `screenOrientation`, `setRequestedOrientation()`, `resizeableActivity=false`, serta batasan `minAspectRatio` dan `maxAspectRatio` di perangkat large screen (sw > 600 dp). Flag opt-out sudah tidak ada. Kategori game di Google Play masih dikecualikan, jadi kalau aplikasi Anda bukan game, layout harus benar-benar responsif: tahan terhadap window bebas, mengikuti posture perangkat, dan siap berjalan dalam mode desktop di layar eksternal.
+
+Windowing baru di Android 17 menaikkan bebannya lagi. **App Bubbles** mengubah aplikasi apa pun menjadi bubble mengambang lewat long-press ikon di launcher. **Bubble Bar** di taskbar perangkat besar mengatur dan men-dock bubble tersebut. **Desktop interactive PiP** mempertahankan window yang tetap interaktif dan selalu di atas, berbeda dari PiP lama yang hanya bisa dilihat.
+
+## Debugging Tanpa Menebak: ProfilingManager dan JobDebugInfo
+
+Dulu, profiling biasanya harus direproduksi manual dan hasilnya datang terlambat. Android 17 menambah trigger sistem pada `ProfilingManager`, termasuk `TRIGGER_TYPE_COLD_START`, `TRIGGER_TYPE_OOM`, `TRIGGER_TYPE_KILL_EXCESSIVE_CPU_USAGE`, dan `TRIGGER_TYPE_ANOMALY`. Trigger anomali memantau perilaku boros resource, misalnya binder call berlebihan atau pemakaian memori di atas batas, dan mengirimkan heap dump atau stack sampling sebelum sistem menegakkan sanksi seperti menghentikan proses aplikasi.
+
+```kotlin
+val profilingManager =
+    applicationContext.getSystemService(ProfilingManager::class.java)
+
+val triggers = listOf(
+    ProfilingTrigger.Builder(ProfilingTrigger.TRIGGER_TYPE_ANOMALY).build(),
+    ProfilingTrigger.Builder(ProfilingTrigger.TRIGGER_TYPE_OOM).build()
+)
+
+val executor = Executors.newSingleThreadExecutor()
+val callback = Consumer<ProfilingResult> { result ->
+    if (result.errorCode == ProfilingResult.ERROR_NONE) {
+        uploadProfilingWorker(result.resultFilePath)
+    }
+}
+
+profilingManager.registerForAllProfilingResults(executor, callback)
+profilingManager.addProfilingTriggers(triggers)
+```
+
+Sisi background work juga dibantu. `JobDebugInfo` lewat `getPendingJobReasonStats()` mengembalikan alasan sebuah job bertahan di state pending beserta durasi kumulatifnya, contohnya `PENDING_JOB_REASON_CONSTRAINT_CHARGING` selama 60000 ms. Jadi pertanyaan "kenapa job saya tidak jalan" akhirnya punya jawaban terukur, bukan tebakan soal Doze atau baterai.
+
+## Hybrid Inference: Kapan On-Device Tidak Cukup
+
+Inferensi on-device punya batas nyata: token limit lebih kecil, kapabilitas model terbatas, dan ketersediaan tergantung hardware perangkat. Untuk menutup celah itu Android menyediakan hybrid inference. Firebase AI Logic Hybrid API memberi satu antarmuka dengan mode `PREFER_ON_DEVICE` (jatuh ke cloud kalau Gemini Nano tidak tersedia), `PREFER_IN_CLOUD`, `ONLY_ON_DEVICE`, dan `ONLY_IN_CLOUD`.
+
+```kotlin
+val model = Firebase.ai(backend = GenerativeBackend.googleAI())
+    .generativeModel(
+        modelName = "gemini-3.5-flash",
+        onDeviceConfig = OnDeviceConfig(mode = InferenceMode.PREFER_ON_DEVICE)
+    )
+
+val response = model.generateContent("Ringkas ulasan restoran ini untuk saya.")
+println(response.text)
+```
+
+Kalau butuh kontrol lebih halus, routing bisa dibuat sendiri dari faktor nyata: latensi jaringan, level baterai, beban prosesor, dan kompleksitas query. Jalur inilah yang dipakai Gboard untuk fitur proofread dan rewrite. Kasus yang dilaporkan Google, Kakao Mobility, memakai hybrid inference kustom untuk ekstraksi entitas nama penerima, alamat, dan nomor telepon dari pesan bahasa alami pada layanan paket, dan melaporkan penurunan biaya serta kenaikan konversi panggilan 45 persen.
+
+Catatan penting untuk produksi: distribusi dan pembaruan model ditangani AICore, termasuk prefix caching yang menyimpan ulang state LLM dari bagian prompt yang berulang supaya inferensi berikutnya lebih cepat, serta Structured Output API yang memaksa keluaran mengikuti kelas objek yang Anda definisikan. Tanpa itu, parsing hasil LLM di klien akan jadi sumber bug yang sulit direproduksi.
+
+## Privasi dan Keamanan yang Mengubah Perilaku Aplikasi
+
+Beberapa perubahan Android 17 berlaku otomatis begitu Anda menaikkan targetSdk, dan itu perlu dicek sebelum rilis. Certificate transparency aktif secara default. Akses ke local network diblokir secara default, dan akses persisten kini minta izin runtime `ACCESS_LOCAL_NETWORK`, sehingga perangkat seperti printer dan smart TV di jaringan yang sama tidak lagi bisa ditemukan diam-diam. Native dynamic code loading ikut aturan Safer Dynamic Code Loading: file yang dimuat dengan `System.load()` harus read-only, kalau tidak aplikasi melempar `UnsatisfiedLinkError`.
+
+Untuk jaringan, Android 17 menambahkan dukungan platform Encrypted Client Hello, ekstensi TLS 1.3 yang mengenkripsi Server Name Indication saat handshake sehingga perantara jaringan lebih sulit mengetahui domain yang dituju. `DnsResolver` bisa mengquery HTTPS DNS record berisi konfigurasi ECH, dan perilakunya diatur lewat elemen `<domainEncryption>` di network security config. Defaultnya `enabled` untuk aplikasi yang menargetkan API level 37.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.contoh.co.id</domain>
+        <domainEncryption mode="enabled"/>
+    </domain-config>
+</network-security-config>
+```
+
+Di sisi izin, contacts picker baru memberi akses baca berbasis sesi hanya ke field yang diminta pengguna, sehingga bisa menggantikan permintaan `READ_CONTACTS` yang luas. Di sisi keamanan, Android Advanced Protection Mode menonaktifkan instalasi sideload, membatasi signaling data USB, dan mewajibkan pemindaian Play Protect; aplikasi bisa membaca statusnya lewat `AdvancedProtectionManager` dan menyesuaikan posture sendiri. Android juga mendukung skema tanda tangan APK hibrida yang memasangkan kunci klasik RSA atau EC dengan algoritma post-quantum ML-DSA, jadi identitas signing tetap aman terhadap serangan berbasis komputasi kuantum tanpa kehilangan kompatibilitas dengan versi Android lama.
+
 ## Kesimpulan
 
 Android 17 (I) bukan sekadar versi baru — ini adalah fondasi ulang Android untuk era AI. Dengan AI Platform API, Secure Enclave, dan Velocity Engine, Google memberikan platform yang siap untuk 5 tahun ke depan. Bagi developer Android, tidak ada waktu yang lebih baik untuk mulai mengeksplorasi API-API baru ini dan membangun aplikasi AI-native yang benar-benar memanfaatkan potensi perangkat.
