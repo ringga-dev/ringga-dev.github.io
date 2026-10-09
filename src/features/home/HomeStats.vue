@@ -1,14 +1,14 @@
 <template>
   <section class="relative z-10 py-16">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 border border-border divide-x divide-border">
+      <div class="grid grid-cols-2 md:grid-cols-4 border-[1.5px] border-ink/80 rounded-sm overflow-hidden shadow-riso divide-x divide-ink/20">
         <div
           v-for="stat in stats"
           :key="stat.label"
-          class="text-center px-4 py-8"
+          class="text-center px-4 py-8 bg-surface-card"
         >
           <component :is="getIcon(stat.icon)" class="w-5 h-5 text-brand mx-auto mb-4" />
-          <div class="text-4xl md:text-5xl font-display font-semibold text-main mb-2">
+          <div class="numeral text-4xl md:text-5xl mb-2">
             <AnimatedCounter :target="stat.value" /><span class="text-brand">{{ stat.suffix }}</span>
           </div>
           <div class="font-mono text-[10px] text-muted uppercase tracking-[0.2em]">

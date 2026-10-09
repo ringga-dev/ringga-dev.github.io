@@ -9,8 +9,10 @@
             :alt="item.title"
             class="w-full h-full object-cover scale-105"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-surface/80 z-10"></div>
-          <div class="absolute inset-0 bg-surface/30 z-0"></div>
+          <!-- Printed plate: flat paper block + halftone screen over the cover -->
+          <div class="absolute inset-x-0 bottom-0 h-3/5 bg-surface z-10"></div>
+          <div class="halftone absolute inset-x-0 bottom-0 h-3/5 z-10 opacity-60" aria-hidden="true"></div>
+          <div class="absolute inset-0 bg-surface/20 z-0"></div>
         </div>
 
         <!-- Float Nav Controls & Metadata -->
@@ -18,13 +20,13 @@
           <!-- Back Link -->
           <NuxtLink
             to="/news"
-            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 px-4 py-2.5 rounded-xl hover:border-brand/40"
+            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card border-[1.5px] border-ink/60 px-4 py-2.5 rounded-sm shadow-[2px_2px_0_hsl(var(--brand-color)/0.35)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)]"
           >
             <ArrowLeft class="w-4 h-4" /> Kembali ke Berita
           </NuxtLink>
 
           <div class="flex flex-wrap items-center gap-3 mb-6">
-            <span class="text-[9px] px-2.5 py-1 rounded-md bg-brand/10 border border-brand/25 text-brand font-semibold uppercase tracking-wider font-mono">
+            <span class="stamp">
               {{ item.category }}
             </span>
             <span class="text-xs text-muted font-mono flex items-center gap-1.5 ml-2">
@@ -41,13 +43,13 @@
             <span
               v-for="tag in item.tags"
               :key="tag"
-              class="text-[10px] px-2.5 py-1 rounded-md bg-surface-card/60 border border-border text-muted font-semibold"
+              class="text-[10px] px-2.5 py-1 rounded-sm bg-surface-card/60 border-[1.5px] border-ink/60 text-muted font-semibold font-mono"
             >
               #{{ tag }}
             </span>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-semibold text-main leading-tight mb-4 max-w-4xl tracking-tight">
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-main leading-tight mb-4 max-w-4xl tracking-tight">
             {{ item.title }}
           </h1>
 
@@ -64,21 +66,21 @@
             {{ item.summary }}
           </p>
 
-          <h2 class="mt-10 text-2xl font-display font-semibold text-main">Fakta Kunci</h2>
+          <h2 class="mt-10 text-2xl font-display font-bold text-main">Fakta Kunci</h2>
           <ul class="mt-4 space-y-3">
             <li
               v-for="(fact, i) in item.keyFacts"
               :key="i"
               class="flex items-start gap-3 text-main/80"
             >
-              <span class="mt-1 w-5 h-5 shrink-0 rounded-full bg-brand/15 border border-brand/30 flex items-center justify-center text-brand text-[10px] font-semibold">
+              <span class="mt-1 w-5 h-5 shrink-0 rounded-sm bg-surface-elevated border-[1.5px] border-ink/70 shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] flex items-center justify-center text-brand text-[10px] font-semibold font-mono">
                 {{ i + 1 }}
               </span>
               <span class="leading-relaxed">{{ fact }}</span>
             </li>
           </ul>
 
-          <div class="mt-12 glass-card p-6 md:p-8 bg-surface-card border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="mt-12 riso-card p-6 md:p-8 bg-surface-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <p class="text-xs font-semibold uppercase tracking-widest text-muted font-mono mb-1">Sumber Berita</p>
               <p class="text-main font-bold">{{ item.source }}</p>
@@ -103,10 +105,10 @@
 
     <!-- NOT FOUND -->
     <div v-else class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-      <div class="w-16 h-16 rounded-full bg-surface-elevated/60 border border-border flex items-center justify-center mb-6 text-muted/60">
+      <div class="w-16 h-16 rounded-sm bg-surface-elevated/60 border-[1.5px] border-ink/60 shadow-[3px_3px_0_hsl(var(--brand-color)/0.6)] flex items-center justify-center mb-6 text-muted">
         <Newspaper class="w-8 h-8" />
       </div>
-      <h3 class="text-xl font-display font-semibold text-main mb-3">Berita Tidak Ditemukan</h3>
+      <h3 class="text-xl font-display font-bold text-main mb-3">Berita Tidak Ditemukan</h3>
       <p class="text-muted text-sm font-semibold max-w-sm mx-auto mb-8">Berita yang Anda cari mungkin telah dipindahkan atau dihapus.</p>
       <NuxtLink to="/news" class="btn-secondary px-8 py-3.5 text-xs font-semibold uppercase tracking-wider">
         Kembali ke Berita

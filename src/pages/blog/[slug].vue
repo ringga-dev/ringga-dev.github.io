@@ -21,23 +21,26 @@
           <div v-else class="w-full h-full bg-surface-elevated flex items-center justify-center">
             <BookOpen class="w-20 h-20 text-muted/30" />
           </div>
-          <!-- Cinema Overlay Gradients -->
-          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-surface/80 z-10"></div>
-          <div class="absolute inset-0 bg-surface/30 z-0"></div>
+          <!-- Printed plate: a FLAT paper block with a hard edge over the cover,
+               plus a halftone screen. Reads as a plate printed over the photo,
+               not a soft blend. -->
+          <div class="absolute inset-x-0 bottom-0 h-3/5 bg-surface z-10"></div>
+          <div class="halftone absolute inset-x-0 bottom-0 h-3/5 z-10 opacity-60" aria-hidden="true"></div>
+          <div class="absolute inset-0 bg-surface/20 z-0"></div>
         </div>
 
         <!-- Float Nav Controls & Metadata -->
         <div class="max-w-7xl mx-auto w-full px-6 pb-12 relative z-20">
-          <!-- Back Link -->
+          <!-- Back Link: a plate label with a hairline, not a pill -->
           <NuxtLink 
             to="/blog" 
-            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card/40 border border-brand/20 px-4 py-2.5 rounded-xl hover:border-brand/40"
+            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors mb-8 font-mono bg-surface-card border-[1.5px] border-ink/60 px-4 py-2.5 rounded-sm shadow-[2px_2px_0_hsl(var(--brand-color)/0.35)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)]"
           >
             <ArrowLeft class="w-4 h-4" /> Back to Blog
           </NuxtLink>
 
           <div class="flex flex-wrap items-center gap-3 mb-6">
-            <span class="text-[9px] px-2.5 py-1 rounded-md bg-brand/10 border border-brand/25 text-brand font-semibold uppercase tracking-wider font-mono">
+            <span class="stamp">
               {{ page.category }}
             </span>
             <span class="text-xs text-muted font-mono flex items-center gap-1.5 ml-2">
@@ -50,19 +53,19 @@
             </span>
           </div>
 
-          <!-- Tags -->
+          <!-- Tags: mono hairline chips -->
           <div v-if="page.tags && page.tags.length" class="flex flex-wrap gap-2 mb-6">
             <NuxtLink
               v-for="tag in page.tags"
               :key="tag"
               :to="`/tag/${slugifyTag(tag)}`"
-              class="text-[10px] px-2.5 py-1 rounded-md bg-surface-card/60 border border-border text-muted hover:text-brand hover:border-brand/40 font-semibold transition-colors"
+              class="text-[10px] px-2.5 py-1 rounded-sm bg-surface-card/60 border-[1.5px] border-ink/60 text-muted hover:text-brand hover:border-brand/40 font-semibold font-mono transition-colors"
             >
               #{{ tag }}
             </NuxtLink>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-semibold text-main leading-tight mb-4 max-w-4xl tracking-tight">
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-main leading-tight mb-4 max-w-4xl tracking-tight">
             {{ page.title }}
           </h1>
 
@@ -91,16 +94,16 @@
           <div class="lg:col-span-4 space-y-8 lg:sticky lg:top-24" style="animation-delay: 200ms">
             
             <!-- Table of Contents Widget -->
-            <div v-if="toc.length" class="glass-card p-6 md:p-8 bg-surface-card border border-border">
+            <div v-if="toc.length" class="riso-card p-6 md:p-8 bg-surface-card">
               <h3 class="text-xs font-semibold uppercase tracking-widest text-muted border-b border-border/60 pb-3.5 mb-5 font-mono">
                 On This Page
               </h3>
               <nav class="space-y-3 max-h-[40vh] overflow-y-auto pr-2">
                 <a 
                   v-for="item in toc" 
-                  :key="item.id" 
+                  :key="item.id"
                   :href="`#${item.id}`"
-                  class="block text-xs font-semibold leading-relaxed transition-all duration-300 hover:text-brand"
+                  class="block text-xs font-semibold leading-relaxed transition-colors duration-150 hover:text-brand"
                   :class="[
                     item.level === 3 ? 'pl-4 text-muted/80' : 'text-muted',
                     activeHeading === item.id ? 'text-brand! font-semibold border-l-2 border-brand pl-2' : ''
@@ -112,12 +115,12 @@
             </div>
 
             <!-- Author & Share Info -->
-            <div class="glass-card p-6 md:p-8 bg-surface-card border border-border space-y-6">
+            <div class="riso-card-2 p-6 md:p-8 bg-surface-card space-y-6">
               <!-- Author Card -->
               <div>
                 <h3 class="text-[10px] font-semibold uppercase tracking-widest text-muted mb-4 font-mono">Author</h3>
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-brand/10 border border-brand/30 flex items-center justify-center text-brand font-semibold font-mono text-sm shadow-inner">
+                  <div class="w-10 h-10 rounded-full bg-surface-elevated border-[1.5px] border-ink/70 flex items-center justify-center text-brand font-semibold font-mono text-sm">
                     {{ page.author.charAt(0) }}
                   </div>
                   <div>
@@ -127,7 +130,7 @@
                 </div>
               </div>
 
-              <!-- Share Buttons -->
+              <!-- Share Buttons: icon boxes with ink hairlines and tiny hard shadows -->
               <div class="border-t border-border/50 pt-5">
                 <h3 class="text-[10px] font-semibold uppercase tracking-widest text-muted mb-4 font-mono">Share Article</h3>
                 <div class="flex flex-wrap gap-2.5">
@@ -135,7 +138,7 @@
                   <a 
                     :href="twitterShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300"
+                    class="w-9 h-9 rounded-sm bg-surface-elevated/40 border-[1.5px] border-ink/60 flex items-center justify-center text-muted hover:text-brand hover:border-brand shadow-[2px_2px_0_hsl(var(--text-main)/0.4)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)] transition-[transform,box-shadow,color,border-color] duration-150"
                     title="Share on Twitter / X"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -144,16 +147,16 @@
                   <a 
                     :href="linkedinShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300"
+                    class="w-9 h-9 rounded-sm bg-surface-elevated/40 border-[1.5px] border-ink/60 flex items-center justify-center text-muted hover:text-brand hover:border-brand shadow-[2px_2px_0_hsl(var(--text-main)/0.4)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)] transition-[transform,box-shadow,color,border-color] duration-150"
                     title="Share on LinkedIn"
                   >
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                   </a>
                   <!-- WhatsApp -->
                   <a 
                     :href="whatsappShareUrl" 
                     target="_blank"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300"
+                    class="w-9 h-9 rounded-sm bg-surface-elevated/40 border-[1.5px] border-ink/60 flex items-center justify-center text-muted hover:text-brand hover:border-brand shadow-[2px_2px_0_hsl(var(--text-main)/0.4)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)] transition-[transform,box-shadow,color,border-color] duration-150"
                     title="Share on WhatsApp"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.101-2.885-6.963C16.588 1.917 14.12 .891 11.5 .891 6.063.891 1.639 5.313 1.636 10.75c-.001 1.764.467 3.491 1.357 5.011l-.994 3.634 3.72-.975z"/></svg>
@@ -161,7 +164,7 @@
                   <!-- Copy Link -->
                   <button 
                     @click="copyLink"
-                    class="w-9 h-9 rounded-xl bg-surface-elevated/40 hover:bg-surface-elevated border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-all duration-300 cursor-pointer"
+                    class="w-9 h-9 rounded-sm bg-surface-elevated/40 border-[1.5px] border-ink/60 flex items-center justify-center text-muted hover:text-brand hover:border-brand shadow-[2px_2px_0_hsl(var(--text-main)/0.4)] hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.8)] transition-[transform,box-shadow,color,border-color] duration-150 cursor-pointer"
                     title="Copy Article URL"
                   >
                     <Check v-if="copiedLink" class="w-4 h-4 text-brand" />
@@ -170,14 +173,14 @@
                 </div>
                 <!-- Copy link confirmation toast -->
                 <transition 
-                  enter-active-class="transition duration-300 ease-out"
+                  enter-active-class="transition duration-150 ease-out"
                   enter-from-class="opacity-0 translate-y-1"
                   enter-to-class="opacity-100 translate-y-0"
-                  leave-active-class="transition duration-250 ease-in"
+                  leave-active-class="transition duration-150 ease-in"
                   leave-from-class="opacity-100 translate-y-0"
                   leave-to-class="opacity-0 translate-y-1"
                 >
-                  <div v-if="copiedLink" class="text-[10px] text-brand font-bold mt-2 bg-brand/5 border border-brand/10 p-2.5 rounded-xl flex items-center gap-1.5">
+                  <div v-if="copiedLink" class="text-[10px] text-brand font-bold mt-2 bg-brand/5 border-[1.5px] border-brand/10 p-2.5 rounded-sm flex items-center gap-1.5">
                     <Check class="w-3.5 h-3.5 shrink-0" /> Link copied to clipboard!
                   </div>
                 </transition>
@@ -188,21 +191,24 @@
 
         <!-- RECOMMENDED POSTS FOOTER SECTION -->
         <div v-if="recommendedPosts.length" class="mt-24 pt-16 border-t border-border/60" style="animation-delay: 300ms">
-          <h2 class="text-xs font-semibold uppercase tracking-widest text-muted mb-8 font-mono">Recommended Articles</h2>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="numeral text-2xl text-brand leading-none">02</span>
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-muted font-mono">Recommended Articles</h2>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <NuxtLink 
               v-for="post in recommendedPosts" 
-              :key="post.slug" 
+              :key="post.slug"
               :to="post.path"
-              class="glass-card overflow-hidden group hover:border-brand/40 border border-border/80 grid grid-cols-1 sm:grid-cols-12 gap-0 sm:gap-6 p-4 hover: hover: transition-all duration-500 block"
+              class="riso-card overflow-hidden group hover:border-ink grid grid-cols-1 sm:grid-cols-12 gap-0 sm:gap-6 p-4 block"
             >
               <!-- Image (Col Span 5) -->
-              <div class="sm:col-span-5 relative aspect-[16/10] sm:aspect-auto overflow-hidden min-h-[140px]">
+              <div class="sm:col-span-5 relative aspect-[16/10] sm:aspect-auto overflow-hidden min-h-[140px] border-[1.5px] border-ink/50">
                 <img 
                   v-if="post.image" 
                   :src="post.image" 
                   :alt="post.title"
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-"
+                  class="absolute inset-0 w-full h-full object-cover"
                 />
                 <div v-else class="absolute inset-0 bg-surface-elevated flex items-center justify-center">
                   <BookOpen class="w-10 h-10 text-muted/20" />
@@ -212,11 +218,11 @@
               <!-- Content (Col Span 7) -->
               <div class="sm:col-span-7 p-4 flex flex-col justify-center">
                 <div class="flex items-center gap-2.5 mb-3 text-[10px] text-muted font-mono">
-                  <span class="px-2 py-0.5 rounded bg-brand/10 border border-brand/20 text-brand font-semibold uppercase tracking-wider text-[8px]">{{ post.category }}</span>
+                  <span class="px-2 py-0.5 rounded-sm border-[1.5px] border-ink/60 text-brand font-semibold uppercase tracking-wider text-[8px]">{{ post.category }}</span>
                   <span>{{ formatDate(post.date) }}</span>
                 </div>
                 
-                <h3 class="text-lg font-display font-semibold text-main mb-2 leading-tight group-hover:text-brand transition-colors duration-300 line-clamp-2">
+                <h3 class="text-lg font-display font-bold text-main mb-2 leading-tight group-hover:text-brand transition-colors duration-150 line-clamp-2">
                   {{ post.title }}
                 </h3>
                 
@@ -224,7 +230,7 @@
                   {{ post.description }}
                 </p>
 
-                <div class="text-brand text-xs font-semibold uppercase tracking-widest flex items-center gap-0.5 mt-auto transition-transform duration-300">
+                <div class="text-brand text-xs font-semibold uppercase tracking-widest flex items-center gap-0.5 mt-auto group-hover:translate-x-1 transition-transform duration-150">
                   Read Article
                   <ArrowRight class="w-3.5 h-3.5" />
                 </div>
@@ -475,7 +481,7 @@ const renderedContent = computed(() => {
   html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-12 mb-8 text-main font-display">$1</h1>')
   
   // Blockquotes
-  html = html.replace(/^\> (.*$)/gim, '<blockquote class="border-l-4 border-brand pl-6 italic my-6 text-muted font-medium bg-brand/5 py-4 pr-4 rounded-r-xl border-t border-b border-r border-brand/10">$1</blockquote>')
+  html = html.replace(/^\> (.*$)/gim, '<blockquote class="border-l-4 border-brand pl-6 italic my-6 text-muted font-medium bg-brand/5 py-4 pr-4 rounded-r-sm border-t border-b border-r border-brand/10">$1</blockquote>')
   
   // Lists
   html = html.replace(/^\* (.*$)/gim, '<li class="ml-6 list-disc my-2 text-muted font-medium">$1</li>')
@@ -487,7 +493,7 @@ const renderedContent = computed(() => {
   html = html.replace(/\*(.*?)\*/g, '<em class="italic text-muted">$1</em>')
   
   // Inline code
-  html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded text-sm border border-border font-mono text-brand font-bold">$1</code>')
+  html = html.replace(/`([^`]+)`/g, '<code class="bg-surface-elevated px-2 py-0.5 rounded-sm text-sm border-[1.5px] border-ink/50 font-mono text-brand font-bold">$1</code>')
 
   // Tables (GFM markdown tables -> HTML tables)
   html = html.replace(/^(\|[^\n]+\|)\n(\|[\-\t :|]+)\n((?:\|[^\n]+\|\n)*\|[^\n]+\|)/gm, (match, header, sep, body) => {
@@ -523,7 +529,7 @@ const renderedContent = computed(() => {
     const displayLang = lang ? lang.toUpperCase() : 'CODE'
     const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
     return `
-      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border border-border my-8 overflow-hidden font-mono text-sm">
+      <div class="code-block-wrapper relative group/code bg-surface-elevated/40 border-[1.5px] border-ink/60 my-8 overflow-hidden font-mono text-sm shadow-riso">
         <div class="flex items-center justify-between px-6 py-3 bg-surface-elevated border-b border-border/80 text-[10px] font-semibold text-muted uppercase tracking-widest">
           <span>${displayLang}</span>
           <button class="copy-code-btn hover:text-brand transition-colors flex items-center gap-1.5 opacity-60 hover:opacity-100 cursor-pointer text-[10px] font-semibold uppercase tracking-wider">

@@ -5,13 +5,13 @@
       alt="Ringga Dev Logo"
       @error="hasError = true"
       v-if="!hasError"
-      class="w-full h-full object-cover rounded-full border border-border"
+      class="w-full h-full object-cover rounded-sm border-[1.5px] border-ink/85 shadow-riso"
     />
 
-    <!-- Fallback if logo-minimal.jpeg is missing -->
+    <!-- Fallback: a printed plate, square with a hard offset ink shadow -->
     <div
       v-else
-      class="w-full h-full rounded-full bg-surface-card border border-border flex items-center justify-center text-brand font-display font-semibold tracking-tight"
+      class="w-full h-full rounded-sm bg-surface-card border-[1.5px] border-ink/85 shadow-riso flex items-center justify-center text-brand font-display font-black tracking-tight"
       :class="textClass"
     >
       RD

@@ -18,21 +18,21 @@
         :key="banner.id"
         @click="openLightbox(index)"
         :class="[
-          'group relative p-3 border border-border bg-surface hover:border-brand/50 transition-colors duration-200 cursor-pointer overflow-hidden',
+          'group relative p-3 bg-surface cursor-pointer overflow-hidden riso-card',
           (index === 0 || index === 5) ? 'lg:col-span-2' : 'lg:col-span-1'
         ]"
       >
         <!-- Thumbnail with dynamic aspect based on span -->
-        <div :class="['overflow-hidden relative border border-border', (index === 0 || index === 5) ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[16/10]']">
+        <div :class="['overflow-hidden relative border-[1.5px] border-ink', (index === 0 || index === 5) ? 'aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[16/10]']">
           <img
             :src="banner.image"
             :alt="banner.title"
             class="w-full h-full object-cover"
             loading="lazy"
           />
-          <!-- Hover zoom indicator -->
-          <div class="absolute inset-0 bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-            <div class="bg-paper text-ink p-2.5">
+          <!-- Hover indicator -->
+          <div class="absolute inset-0 bg-ink/55 opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center">
+            <div class="bg-paper text-ink p-2.5 rounded-sm border-[1.5px] border-ink shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)]">
               <Maximize2Icon class="w-4 h-4" />
             </div>
           </div>
@@ -40,10 +40,10 @@
 
         <!-- Content -->
         <div class="mt-3 px-1 pb-1 flex flex-col gap-1.5">
-          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
+          <span class="stamp self-start">
             {{ banner.category }}
           </span>
-          <h4 class="text-sm font-display font-semibold text-main group-hover:text-brand transition-colors leading-snug line-clamp-2">
+          <h4 class="text-sm font-display font-bold text-main group-hover:text-brand transition-colors duration-150 leading-snug line-clamp-2">
             {{ banner.title }}
           </h4>
           <p :class="['text-[11px] text-muted font-serif leading-relaxed mt-0.5', (index === 0 || index === 5) ? 'line-clamp-2' : 'line-clamp-7']">
@@ -72,26 +72,23 @@
             aria-modal="true"
             :aria-label="`Methodology viewer: ${currentBanner?.title || ''}`"
           >
-            <!-- Background glow -->
-            <div class="lightbox-ambient-glow"></div>
-
             <!-- Top Header Bar -->
             <div class="lightbox-topbar">
               <div class="flex items-center gap-3 min-w-0">
                 <span class="lightbox-category-badge">
                   {{ currentBanner?.category }}
                 </span>
-                <h3 class="lightbox-title text-white">
+                <h3 class="lightbox-title">
                   {{ currentBanner?.title }}
                 </h3>
               </div>
               <div class="flex items-center gap-2">
-                <div class="lightbox-counter text-xs">
+                <div class="lightbox-counter">
                   {{ activeIndex + 1 }} / {{ banners.length }}
                 </div>
                 <button 
                   @click="closeLightbox" 
-                  class="lightbox-btn"
+                  class="lightbox-btn lightbox-close-btn"
                   aria-label="Close modal"
                 >
                   <XIcon class="w-5 h-5" />
@@ -127,7 +124,7 @@
                     draggable="false"
                   />
                   <!-- Subtitle details -->
-                  <p class="text-white/70 font-semibold text-center text-xs max-w-2xl px-6">
+                  <p class="lightbox-caption">
                     {{ currentBanner?.description }}
                   </p>
                 </div>
@@ -315,54 +312,71 @@ onUnmounted(() => {
 <style scoped>
 .lightbox-overlay {
   @apply fixed inset-0 z-[100] flex flex-col items-center justify-center select-none;
+  /* Flat ink stock. No backdrop blur, no ambient glow. */
   background: hsl(36 24% 5% / 0.97);
 }
 
 .lightbox-topbar {
   @apply absolute top-0 inset-x-0 px-6 py-5 flex items-center justify-between z-30;
-  border-bottom: 1px solid hsl(32 16% 20%);
+  border-bottom: 1.5px solid hsl(32 16% 22%);
 }
 
 .lightbox-category-badge {
-  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1 shrink-0;
+  @apply inline-flex items-center font-mono text-[10px] font-bold uppercase tracking-[0.18em] px-2 py-1 shrink-0;
   color: hsl(var(--brand-light));
-  border: 1px solid hsl(var(--brand-color) / 0.4);
+  border: 2px solid hsl(var(--brand-color));
+  border-radius: 2px;
+  transform: rotate(-2.5deg);
+  box-shadow: 1px 1px 0 hsl(var(--brand-color) / 0.4);
 }
 
 .lightbox-title {
-  @apply text-sm sm:text-base font-display font-semibold leading-tight truncate max-w-[50vw];
+  @apply text-sm sm:text-base font-display font-bold leading-tight truncate max-w-[50vw];
   color: hsl(36 30% 92%);
+  text-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-counter {
-  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5;
+  @apply font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5;
   color: hsl(32 14% 62%);
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
 }
 
 .lightbox-btn {
-  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer w-10 h-10;
+  @apply flex items-center justify-center transition-[transform,box-shadow,border-color,color] duration-150 cursor-pointer w-10 h-10;
   color: hsl(32 14% 62%);
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
 }
 
 .lightbox-btn:hover {
   color: hsl(var(--brand-light));
-  border-color: hsl(var(--brand-color) / 0.5);
+  border-color: hsl(var(--brand-color));
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.6);
+}
+
+.lightbox-close-btn {
+  box-shadow: 2px 2px 0 hsl(32 16% 26% / 0.9);
 }
 
 .lightbox-nav-btn {
-  @apply absolute top-1/2 -translate-y-1/2 w-12 h-12 z-20 hidden sm:flex;
-  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer;
+  @apply absolute top-1/2 w-12 h-12 z-20 hidden sm:flex;
+  @apply flex items-center justify-center transition-[transform,box-shadow,border-color,color] duration-150 cursor-pointer;
   color: hsl(32 14% 62%);
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
+  transform: translateY(-50%);
 }
 
 .lightbox-nav-btn:hover {
   color: hsl(var(--brand-light));
-  border-color: hsl(var(--brand-color) / 0.5);
+  border-color: hsl(var(--brand-color));
+  transform: translate(-1px, -50%);
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.6);
 }
 
 .lightbox-nav-prev {
@@ -381,7 +395,13 @@ onUnmounted(() => {
 
 .lightbox-media {
   @apply max-h-[65vh] object-contain select-none;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 22%);
+  box-shadow: 6px 6px 0 hsl(var(--brand-color) / 0.35);
+}
+
+.lightbox-caption {
+  @apply font-serif text-center text-xs max-w-2xl px-6;
+  color: hsl(36 24% 78%);
 }
 
 .lightbox-swipe-hint {

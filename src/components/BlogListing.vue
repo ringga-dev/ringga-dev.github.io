@@ -3,8 +3,8 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Title & Header -->
       <div class="mb-10 border-b border-border pb-8">
-        <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">Knowledge Base</span>
-        <h1 class="text-4xl md:text-6xl font-display font-semibold tracking-tight leading-none mt-3 mb-4 text-main">
+        <span class="stamp">Knowledge Base</span>
+        <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight leading-none mt-4 mb-4 text-main riso-ghost">
           Writings &amp; Thoughts
         </h1>
         <p class="text-muted max-w-2xl text-base md:text-lg font-serif leading-relaxed">
@@ -20,12 +20,12 @@
             v-model="searchQuery"
             type="text"
             placeholder="Search articles, tags..."
-            class="w-full pl-10 pr-10 py-3 bg-surface border border-border focus:border-brand text-sm font-serif placeholder:text-muted text-main outline-none transition-colors"
+            class="w-full pl-10 pr-10 py-3 bg-surface border-[1.5px] border-ink/60 focus:border-brand rounded-sm text-sm font-serif placeholder:text-muted text-main outline-none transition-colors duration-150"
           />
           <button
             v-if="searchQuery"
             @click="searchQuery = ''"
-            class="absolute right-3 top-3.5 text-muted hover:text-brand transition-colors"
+            class="absolute right-3 top-3.5 text-muted hover:text-brand transition-colors duration-150"
             aria-label="Clear search"
           >
             <X class="w-4 h-4" />
@@ -37,10 +37,10 @@
             v-for="cat in categories"
             :key="cat"
             @click="selectedCategory = cat"
-            class="px-3.5 py-2 font-mono text-xs uppercase tracking-[0.1em] whitespace-nowrap transition-colors cursor-pointer border"
+            class="px-3.5 py-2 font-mono text-xs uppercase tracking-[0.1em] whitespace-nowrap rounded-sm transition-[transform,box-shadow,border-color,background-color] duration-150 cursor-pointer border-[1.5px]"
             :class="selectedCategory === cat
-              ? 'bg-brand text-white border-brand'
-              : 'bg-transparent border-border text-muted hover:text-main hover:border-brand'"
+              ? 'bg-brand text-white border-ink shadow-riso-ink -translate-y-0.5'
+              : 'bg-transparent border-ink/60 text-muted hover:text-brand hover:border-brand hover:shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] hover:-translate-y-0.5'"
           >
             {{ cat }}
           </button>
@@ -52,7 +52,7 @@
         <h2 class="font-mono text-xs uppercase tracking-[0.25em] text-muted mb-4">Featured Article</h2>
         <NuxtLink
           :to="featuredPost.path"
-          class="border border-border bg-surface-card group grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 hover:border-brand/50 transition-colors duration-200 block"
+          class="riso-card group grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 block"
         >
           <div class="lg:col-span-7 relative aspect-video lg:aspect-auto min-h-[280px] overflow-hidden">
             <img
@@ -61,14 +61,14 @@
               :alt="featuredPost.title"
               class="absolute inset-0 w-full h-full object-cover"
             />
-            <div v-else class="absolute inset-0 bg-surface-elevated flex items-center justify-center">
-              <BookOpen class="w-14 h-14 text-muted" />
+            <div v-else class="absolute inset-0 bg-surface-elevated halftone flex items-center justify-center">
+              <BookOpen class="w-14 h-14 text-brand" />
             </div>
           </div>
 
           <div class="lg:col-span-5 p-8 md:p-10 flex flex-col justify-center">
             <div class="flex items-center gap-3 mb-5 flex-wrap">
-              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand border border-brand/40 px-2 py-1">
+              <span class="stamp">
                 {{ featuredPost.category }}
               </span>
               <span class="font-mono text-xs text-muted flex items-center gap-1.5">
@@ -81,7 +81,7 @@
               </span>
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-display font-semibold text-main mb-4 leading-tight group-hover:text-brand transition-colors">
+            <h3 class="text-2xl md:text-3xl font-display font-bold text-main mb-4 leading-tight group-hover:text-brand transition-colors duration-150">
               {{ featuredPost.title }}
             </h3>
 
@@ -91,7 +91,7 @@
 
             <div class="flex items-center justify-between border-t border-border pt-5 mt-auto">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-surface-elevated border border-border flex items-center justify-center text-brand font-mono text-xs">
+                <div class="w-8 h-8 rounded-sm bg-surface-elevated border-[1.5px] border-ink/60 shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] flex items-center justify-center text-brand font-mono text-xs font-bold">
                   {{ featuredPost.author.charAt(0) }}
                 </div>
                 <span class="font-mono text-xs text-main">{{ featuredPost.author }}</span>
@@ -112,23 +112,24 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <NuxtLink
-            v-for="post in gridPosts"
+            v-for="(post, idx) in gridPosts"
             :key="post.slug"
             :to="post.path"
-            class="border border-border bg-surface-card group hover:border-brand/50 transition-colors duration-200 flex flex-col h-full"
+            class="group flex flex-col h-full"
+            :class="idx % 2 === 0 ? 'riso-card' : 'riso-card-2'"
           >
-            <div class="relative h-52 w-full overflow-hidden border-b border-border">
+            <div class="relative h-52 w-full overflow-hidden border-b-[1.5px] border-ink/40">
               <img
                 v-if="post.image"
                 :src="post.image"
                 :alt="post.title"
                 class="w-full h-full object-cover"
               />
-              <div v-else class="w-full h-full bg-surface-elevated flex items-center justify-center">
-                <BookOpen class="w-10 h-10 text-muted" />
+              <div v-else class="w-full h-full bg-surface-elevated halftone flex items-center justify-center">
+                <BookOpen class="w-10 h-10 text-brand" />
               </div>
 
-              <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 bg-ink/80 text-paper">
+              <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 bg-ink text-paper border-[1.5px] border-paper rounded-sm">
                 {{ post.category }}
               </span>
             </div>
@@ -139,14 +140,14 @@
                   <Calendar class="w-3.5 h-3.5 text-brand" />
                   {{ formatDate(post.date) }}
                 </span>
-                <span class="w-1 h-1 rounded-full bg-border"></span>
+                <span class="w-1 h-1 bg-ink/40"></span>
                 <span class="flex items-center gap-1">
                   <Clock class="w-3.5 h-3.5 text-brand" />
                   {{ post.readTime }} min
                 </span>
               </div>
 
-              <h3 class="text-xl font-display font-semibold text-main mb-3 leading-tight group-hover:text-brand transition-colors line-clamp-2">
+              <h3 class="text-xl font-display font-bold text-main mb-3 leading-tight group-hover:text-brand transition-colors duration-150 line-clamp-2">
                 {{ post.title }}
               </h3>
 
@@ -156,7 +157,7 @@
 
               <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
                 <span class="font-mono text-xs text-muted flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full bg-surface-elevated flex items-center justify-center text-[10px] text-brand border border-border">{{ post.author.charAt(0) }}</span>
+                  <span class="w-6 h-6 rounded-sm bg-surface-elevated flex items-center justify-center text-[10px] text-brand border-[1.5px] border-ink/60 font-mono font-bold">{{ post.author.charAt(0) }}</span>
                   {{ post.author }}
                 </span>
 
@@ -180,11 +181,11 @@
       />
 
       <!-- EMPTY STATE -->
-      <div v-else class="max-w-xl mx-auto text-center py-16 px-8 border border-border bg-surface-card">
-        <div class="w-14 h-14 rounded-full bg-surface-elevated border border-border flex items-center justify-center mx-auto mb-5 text-muted">
+      <div v-else class="riso-card max-w-xl mx-auto text-center py-16 px-8">
+        <div class="w-14 h-14 rounded-sm bg-surface-elevated border-[1.5px] border-ink/60 shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] flex items-center justify-center mx-auto mb-5 text-brand">
           <Search class="w-6 h-6" />
         </div>
-        <h3 class="text-xl font-display font-semibold text-main mb-3">No Articles Found</h3>
+        <h3 class="text-xl font-display font-bold text-main mb-3">No Articles Found</h3>
         <p class="text-muted text-sm font-serif max-w-sm mx-auto mb-6 leading-relaxed">
           <template v-if="isFirstPage">
             No articles match "{{ searchQuery }}" or the selected category.
@@ -210,7 +211,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { Search, Calendar, Clock, ArrowRight, BookOpen, X } from 'lucide-vue-next'
 import globalData from '~/data/global.json'
 import { collectBlogPosts } from '~/composables/useBlog'
@@ -285,7 +286,7 @@ const formatDate = (dateStr) => {
 useHead({
   title: isFirstPage.value
     ? `Writings & Thoughts | ${globalData.siteName}`
-    : `Writings & Thoughts — Page ${page.value} | ${globalData.siteName}`,
+    : `Writings & Thoughts | Page ${page.value} | ${globalData.siteName}`,
   meta: [
     { name: 'description', content: 'Explore my latest thoughts, tutorials, and insights on mobile engineering, clean architecture, and modern web development.' },
     { property: 'og:title', content: `Writings & Thoughts | ${globalData.siteName}` },
@@ -296,15 +297,6 @@ useHead({
   ]
 })
 
-onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('reveal-active')
-    })
-  }, { threshold: 0.05 })
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el))
-})
 </script>
 
 <style scoped>

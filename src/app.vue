@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen relative selection:bg-brand/20 selection:text-brand-dark">
-    <NuxtLoadingIndicator :height="2" color="hsl(12 78% 43%)" />
+  <div class="min-h-screen relative selection:bg-brand/25 selection:text-main">
+    <NuxtLoadingIndicator :height="3" color="hsl(12 78% 45%)" />
     
     <Navbar v-if="!hideNavAndFooter" />
     
@@ -15,10 +15,8 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useScrollReveal } from '~/composables/useScrollReveal'
 import { useTheme } from '~/composables/useThemeEnhanced'
 
-const { reveal } = useScrollReveal()
 // Pre-initialize theme hooks
 useTheme()
 
@@ -37,14 +35,15 @@ onMounted(() => {
 </script>
 
 <style>
+/* Page transition: a printed sheet sliding into place. Translate + fade
+   only, no blur (blur is the old glassy slop). Snappy, 200ms. */
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  transform: translateY(10px);
-  filter: blur(10px);
+  transform: translateY(8px);
 }
 </style>

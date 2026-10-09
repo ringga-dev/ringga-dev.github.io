@@ -1,7 +1,7 @@
 <template>
   <nav
     v-if="totalPages > 1"
-    class="flex items-center justify-center gap-2 mt-12"
+    class="flex items-center justify-center flex-wrap gap-2 mt-12"
     style="animation-delay: 400ms"
     aria-label="Pagination"
   >
@@ -9,14 +9,14 @@
       v-if="current > 1"
       :to="href(current - 1)"
       :aria-label="`Ke halaman ${current - 1}`"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300"
+      class="w-11 h-11 flex items-center justify-center rounded-sm border-[1.5px] border-ink/60 bg-surface text-muted hover:text-brand hover:border-brand hover:shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] hover:-translate-x-px hover:-translate-y-px transition-[transform,box-shadow,border-color,color] duration-150"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     </NuxtLink>
     <span
       v-else
       aria-hidden="true"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted/40"
+      class="w-11 h-11 flex items-center justify-center rounded-sm border-[1.5px] border-ink/25 bg-surface text-muted/40"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     </span>
@@ -27,10 +27,10 @@
         <NuxtLink
           v-else
           :to="href(page)"
-          class="w-11 h-11 flex items-center justify-center rounded-xl text-sm font-semibold border transition-all duration-300"
+          class="w-11 h-11 flex items-center justify-center rounded-sm text-sm font-mono font-bold border-[1.5px] transition-[transform,box-shadow,border-color,background-color,color] duration-150"
           :class="page === current
-            ? 'bg-brand text-brand-dark border-brand'
-            : 'bg-surface-elevated/40 hover:bg-surface-elevated/80 border-border text-muted hover:text-main hover:border-brand/20'"
+            ? 'bg-brand text-white border-ink shadow-riso-ink -translate-x-px -translate-y-px'
+            : 'bg-surface border-ink/60 text-muted hover:text-brand hover:border-brand hover:shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] hover:-translate-x-px hover:-translate-y-px'"
           :aria-current="page === current ? 'page' : undefined"
           :aria-label="`Halaman ${page}`"
         >
@@ -43,14 +43,14 @@
       v-if="current < totalPages"
       :to="href(current + 1)"
       :aria-label="`Ke halaman ${current + 1}`"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted hover:bg-surface-elevated/80 hover:text-main hover:border-brand/20 transition-all duration-300"
+      class="w-11 h-11 flex items-center justify-center rounded-sm border-[1.5px] border-ink/60 bg-surface text-muted hover:text-brand hover:border-brand hover:shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] hover:-translate-x-px hover:-translate-y-px transition-[transform,box-shadow,border-color,color] duration-150"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </NuxtLink>
     <span
       v-else
       aria-hidden="true"
-      class="w-11 h-11 flex items-center justify-center rounded-xl border border-border bg-surface-elevated/40 text-muted/40"
+      class="w-11 h-11 flex items-center justify-center rounded-sm border-[1.5px] border-ink/25 bg-surface text-muted/40"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </span>

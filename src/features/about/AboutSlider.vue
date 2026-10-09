@@ -3,33 +3,33 @@
     <div class="max-w-7xl mx-auto px-6 mb-12">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <span class="text-brand font-medium tracking-wider uppercase text-sm mb-3 block">
+          <span class="eyebrow text-brand mb-3 block">
             {{ sliderData.title }}
           </span>
-          <h2 class="text-4xl md:text-5xl font-bold text-main">
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-main leading-tight">
             {{ sliderData.subtitle }}
           </h2>
         </div>
         <div class="flex gap-4">
-          <button 
-            @click="prev" 
-            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50"
+          <button
+            @click="prev"
+            class="p-4 rounded-sm border-[1.5px] border-ink/70 hover:border-brand text-muted hover:text-brand hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.6)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-[transform,box-shadow,border-color,color] duration-150 group bg-surface-card"
             aria-label="Previous slide"
           >
-            <ChevronLeftIcon class="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+            <ChevronLeftIcon class="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-150" />
           </button>
-          <button 
-            @click="next" 
-            class="p-4 rounded-full border border-border/20 hover:border-brand text-muted hover:text-brand transition-all duration-300 group bg-surface/50"
+          <button
+            @click="next"
+            class="p-4 rounded-sm border-[1.5px] border-ink/70 hover:border-brand text-muted hover:text-brand hover:shadow-[3px_3px_0_hsl(var(--brand-color)/0.6)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-[transform,box-shadow,border-color,color] duration-150 group bg-surface-card"
             aria-label="Next slide"
           >
-            <ChevronRightIcon class="w-6 h-6 transition-transform" />
+            <ChevronRightIcon class="w-6 h-6 transition-transform duration-150" />
           </button>
         </div>
       </div>
     </div>
 
-    <div 
+    <div
       class="relative flex transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing"
       :style="{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }"
       @mousedown="startDrag"
@@ -40,25 +40,25 @@
       @touchend="endDrag"
       @mouseleave="endDrag"
     >
-      <div 
-        v-for="(img, index) in sliderData.images" 
+      <div
+        v-for="(img, index) in sliderData.images"
         :key="index"
-        class="flex-shrink-0 px-3 transition-all duration-500"
+        class="flex-shrink-0 px-3 transition-[opacity] duration-500"
         :style="{ width: `${100 / itemsPerView}%` }"
       >
-        <div 
-          class="relative aspect-[4/3] overflow-hidden group"
-          :class="{ 'scale-95 opacity-50': index !== currentIndex && itemsPerView === 1 }"
+        <div
+          class="relative aspect-[4/3] overflow-hidden group border-[1.5px] border-ink/70 shadow-riso-2 bg-surface-elevated"
+          :class="{ 'opacity-40': index !== currentIndex && itemsPerView === 1 }"
         >
           <MediaLoader
             :media="{ type: 'image', src: img }"
             :alt-text="`About Image ${index + 1}`"
-            class="w-full h-full object-cover transform transition-transform duration-700 group-"
+            class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-[filter] duration-300"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div class="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
             <div class="absolute bottom-8 left-8">
-              <p class="text-main font-medium text-lg">Moments of Creation</p>
-              <p class="text-muted text-sm">Professional Journey</p>
+              <p class="text-main font-display font-bold text-lg">Moments of Creation</p>
+              <p class="eyebrow text-muted">Professional Journey</p>
             </div>
           </div>
         </div>
@@ -67,9 +67,9 @@
 
     <!-- Progress Bar -->
     <div class="max-w-7xl mx-auto px-6 mt-12">
-      <div class="h-1.5 w-full bg-border/10 rounded-full overflow-hidden">
-        <div 
-          class="h-full bg-brand transition-all duration-500 ease-out"
+      <div class="h-2 w-full bg-surface-elevated border-[1.5px] border-ink/70 rounded-sm overflow-hidden">
+        <div
+          class="h-full bg-brand transition-[width] duration-700 ease-out"
           :style="{ width: `${((currentIndex + 1) / sliderData.images.length) * 100}%` }"
         ></div>
       </div>
@@ -123,7 +123,7 @@ let autoplayInterval
 onMounted(() => {
   updateItemsPerView()
   window.addEventListener('resize', updateItemsPerView)
-  
+
   autoplayInterval = setInterval(() => {
     if (!isDragging.value) {
       next()

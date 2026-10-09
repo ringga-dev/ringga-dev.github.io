@@ -1,33 +1,36 @@
 <template>
   <div class="mb-40 bg-surface">
-    <SectionHeader 
-      badge="Expertise" 
+    <SectionHeader
+      badge="Expertise"
       description="A specialized toolkit refined through years of professional development and complex problem-solving."
       centered
     >
       <template #title>Technical <span class="text-brand">Toolkit</span></template>
     </SectionHeader>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
-      <NuxtLink 
-        v-for="skill in skillsData" 
+      <NuxtLink
+        v-for="(skill, index) in skillsData"
         :key="skill.name"
         :to="`/skills/${skill.slug}`"
         :ref="(el) => { if (el) skillRefs[skill.name] = el }"
-        class="glass-card p-6 group bg-surface-card border border-border block transition-all duration-300"
+        :class="[
+          'group p-6 bg-surface-card block',
+          index % 2 === 1 ? 'riso-card-2' : 'riso-card'
+        ]"
       >
         <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-brand/5 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-brand-dark transition-all duration-500 border border-brand/10">
+          <div class="w-10 h-10 rounded-sm border-[1.5px] border-ink flex items-center justify-center text-brand shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)] group-hover:bg-brand group-hover:text-paper transition-[transform,box-shadow,color,background-color] duration-150">
             <component :is="getIcon(skill.icon)" class="w-5 h-5" />
           </div>
           <div class="flex-1">
-            <div class="flex justify-between items-end mb-1">
-              <span class="text-xs font-semibold text-main uppercase tracking-widest">{{ skill.name }}</span>
-              <span class="text-xs font-semibold text-brand">{{ skill.level }}%</span>
+            <div class="flex justify-between items-end mb-1 gap-2">
+              <span class="font-display font-bold text-sm text-main leading-tight">{{ skill.name }}</span>
+              <span class="font-mono text-xs font-semibold text-brand whitespace-nowrap">{{ skill.level }}%</span>
             </div>
-            <div class="h-1.5 w-full bg-surface-elevated rounded-full overflow-hidden border border-border">
-              <div 
-                class="h-full bg-gradient-to-r from-brand to-brand-light rounded-full transition-all duration-1000 ease-out origin-left"
+            <div class="h-2 w-full bg-surface-elevated rounded-sm overflow-hidden border-[1.5px] border-ink/70">
+              <div
+                class="h-full bg-brand rounded-sm transition-[width] duration-700 ease-out origin-left"
                 :style="{ width: visibleSkills[skill.name] ? `${skill.level}%` : '0%' }"
               ></div>
             </div>
@@ -40,13 +43,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { 
-  SmartphoneIcon, 
-  ZapIcon, 
-  LayersIcon, 
-  CodeIcon, 
-  DatabaseIcon, 
-  CpuIcon 
+import {
+  SmartphoneIcon,
+  ZapIcon,
+  LayersIcon,
+  CodeIcon,
+  DatabaseIcon,
+  CpuIcon
 } from 'lucide-vue-next'
 import aboutData from '~/data/about.json'
 

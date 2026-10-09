@@ -2,10 +2,10 @@
   <button
     @click="handleClick"
     :class="[
-      'inline-flex items-center justify-center font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper',
+      'inline-flex items-center justify-center font-mono font-bold uppercase tracking-[0.15em] rounded-sm border-[1.5px] transition-[transform,box-shadow,background-color,border-color,color] duration-150 focus:outline-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-brand active:translate-x-[1px] active:translate-y-[1px]',
       variantClasses[variant],
       sizeClasses[size],
-      disabled ? 'opacity-50 cursor-not-allowed' : '',
+      disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
       className
     ]"
     :disabled="disabled || loading"
@@ -50,17 +50,17 @@ const emit = defineEmits<{
 }>()
 
 const variantClasses = {
-  primary: 'bg-brand text-white hover:bg-brand-dark focus-visible:ring-brand',
-  secondary: 'bg-surface-elevated text-main hover:bg-surface-elevated/80 border border-border focus-visible:ring-brand',
-  outline: 'bg-transparent text-main border-2 border-brand hover:bg-brand/10 focus-visible:ring-brand',
-  ghost: 'bg-transparent text-main hover:bg-surface-elevated focus-visible:ring-brand',
-  danger: 'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500'
+  primary: 'bg-brand text-white border-ink shadow-riso-ink hover:bg-brand-dark hover:shadow-riso-lg hover:-translate-x-px hover:-translate-y-px active:shadow-[1px_1px_0_hsl(var(--text-main))]',
+  secondary: 'bg-surface-elevated text-main border-ink/60 hover:border-ink hover:-translate-x-px hover:-translate-y-px hover:shadow-riso-ink active:shadow-[1px_1px_0_hsl(var(--text-main))]',
+  outline: 'bg-transparent text-brand border-brand hover:bg-brand hover:text-white hover:shadow-riso-ink hover:-translate-x-px hover:-translate-y-px active:shadow-[1px_1px_0_hsl(var(--text-main))]',
+  ghost: 'bg-transparent text-main border-transparent hover:border-ink/60 hover:-translate-x-px hover:-translate-y-px hover:shadow-riso-ink active:shadow-[1px_1px_0_hsl(var(--text-main))]',
+  danger: 'bg-red-600 text-white border-ink shadow-riso-ink hover:bg-red-700 hover:-translate-x-px hover:-translate-y-px hover:shadow-riso-lg active:shadow-[1px_1px_0_hsl(var(--text-main))]'
 }
 
 const sizeClasses = {
-  sm: 'px-4 py-2 text-sm gap-1.5',
-  md: 'px-6 py-3 text-base gap-2',
-  lg: 'px-8 py-4 text-lg gap-2.5'
+  sm: 'px-4 py-2 text-xs gap-1.5',
+  md: 'px-6 py-3 text-sm gap-2',
+  lg: 'px-8 py-4 text-base gap-2.5'
 }
 
 const handleClick = (event: MouseEvent) => {

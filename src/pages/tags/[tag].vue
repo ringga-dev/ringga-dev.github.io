@@ -3,16 +3,16 @@
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <!-- Header -->
       <div class="text-center mb-12">
-        <div class="inline-block px-3.5 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-xs font-mono mb-4 uppercase tracking-widest">
-          Tag
+        <div class="flex justify-center mb-4">
+          <span class="stamp text-brand">Tag</span>
         </div>
-        <h1 class="text-4xl md:text-6xl font-display font-semibold tracking-tight leading-none mb-6">
+        <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight leading-none mb-6 riso-ghost">
           #<span class="text-brand">{{ decodedTag }}</span>
         </h1>
         <p class="text-muted max-w-2xl mx-auto text-base md:text-lg font-serif leading-relaxed">
           {{ posts.length }} article{{ posts.length === 1 ? '' : 's' }} tagged with "{{ decodedTag }}".
         </p>
-        <NuxtLink to="/blog" class="inline-flex items-center gap-2 mt-6 text-xs font-semibold uppercase tracking-widest text-brand hover:text-brand-light transition-colors font-mono bg-surface-card/40 border border-border px-4 py-2.5 rounded hover:border-brand">
+        <NuxtLink to="/blog" class="inline-flex items-center gap-2 mt-6 text-xs font-semibold uppercase tracking-widest text-brand hover:shadow-riso hover:-translate-x-0.5 hover:-translate-y-0.5 transition-[transform,box-shadow] duration-150 font-mono bg-surface-card border-[1.5px] border-ink/70 px-4 py-2.5 hover:border-brand">
           <ArrowLeft class="w-4 h-4" /> All Articles
         </NuxtLink>
       </div>
@@ -23,7 +23,8 @@
           v-for="(post, index) in posts"
           :key="post.slug"
           :to="post.path"
-          class="glass-card overflow-hidden group hover:border-brand border border-border flex flex-col h-full transition-colors"
+          class="riso-card overflow-hidden group hover:border-brand flex flex-col h-full"
+          :class="index % 3 === 2 ? 'riso-card-2' : ''"
           :style="`animation-delay: ${150 + (index * 50)}ms`"
         >
           <div class="relative h-56 w-full overflow-hidden border-b border-border/40">
@@ -36,7 +37,7 @@
             <div v-else class="w-full h-full bg-surface-elevated flex items-center justify-center">
               <BookOpen class="w-12 h-12 text-muted/20" />
             </div>
-            <span class="absolute top-4 left-4 text-[8px] px-2.5 py-1 rounded bg-surface-card/80 border border-border/30 text-brand font-mono font-semibold uppercase tracking-widest">
+            <span class="absolute top-4 left-4 text-[8px] px-2.5 py-1 bg-paper border-[1.5px] border-ink/60 text-brand font-mono font-semibold uppercase tracking-widest rotate-stamp-l">
               {{ post.category }}
             </span>
           </div>
@@ -49,7 +50,7 @@
               </span>
             </div>
 
-            <h3 class="text-xl font-display font-semibold text-main mb-3 leading-tight group-hover:text-brand transition-colors line-clamp-2">
+            <h3 class="text-xl font-display font-bold text-main mb-3 leading-tight group-hover:text-brand transition-colors line-clamp-2">
               {{ post.title }}
             </h3>
 
@@ -68,8 +69,8 @@
       </div>
 
       <!-- Empty -->
-      <div v-else class="glass-card max-w-xl mx-auto text-center py-16 px-8 border border-border">
-        <h3 class="text-xl font-display font-semibold text-main mb-3">No Articles Found</h3>
+      <div v-else class="riso-card max-w-xl mx-auto text-center py-16 px-8">
+        <h3 class="text-xl font-display font-bold text-main mb-3">No Articles Found</h3>
         <p class="text-muted text-sm font-serif">Tag "{{ decodedTag }}" has no posts.</p>
       </div>
     </div>

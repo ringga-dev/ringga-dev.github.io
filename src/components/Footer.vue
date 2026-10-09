@@ -1,10 +1,12 @@
 <template>
-  <footer class="pt-20 pb-10 border-t border-border px-6 bg-surface">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+  <footer class="pt-20 pb-10 border-t border-border px-6 bg-surface relative">
+    <!-- Halftone corner: riso screen bleeding from the top-left -->
+    <div class="halftone absolute top-0 left-0 w-40 h-40 pointer-events-none opacity-70"></div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
       <div class="lg:col-span-2">
         <NuxtLink to="/" class="flex items-center gap-3 mb-6">
           <RdLogo size="md" />
-          <span class="text-2xl font-display font-semibold tracking-tight text-main">
+          <span class="text-2xl font-display font-black tracking-tight text-main">
             {{ siteNameParts[0] }} <span class="text-brand">{{ siteNameParts[1] }}</span>
           </span>
         </NuxtLink>
@@ -19,7 +21,7 @@
             :href="social.url"
             target="_blank"
             rel="noopener"
-            class="w-10 h-10 rounded border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
+            class="w-10 h-10 rounded-sm border-[1.5px] border-ink/70 flex items-center justify-center text-muted hover:text-brand hover:border-brand hover:shadow-riso transition-[color,border-color,box-shadow,transform] hover:-translate-x-0.5 hover:-translate-y-0.5"
             :aria-label="social.name"
           >
             <component :is="social.icon" class="w-4 h-4" />

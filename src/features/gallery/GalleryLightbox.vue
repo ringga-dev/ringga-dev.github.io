@@ -225,58 +225,72 @@ onUnmounted(() => {
 
 .lightbox-overlay {
   @apply fixed inset-0 z-[100] flex items-center justify-center select-none;
+  /* Flat, near-opaque ink stock. No backdrop blur, no glow. */
   background: hsl(36 24% 5% / 0.97);
 }
 
 .lightbox-topbar {
   @apply absolute top-0 inset-x-0 px-4 sm:px-8 py-5 flex items-center justify-between z-30;
-  border-bottom: 1px solid hsl(32 16% 20%);
+  border-bottom: 1.5px solid hsl(32 16% 22%);
 }
 
 .lightbox-category-badge {
-  @apply font-mono text-[9px] uppercase tracking-[0.15em] px-3 py-1 shrink-0;
+  @apply inline-flex items-center font-mono text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-1 shrink-0;
   color: hsl(var(--brand-light));
-  border: 1px solid hsl(var(--brand-color) / 0.4);
+  border: 2px solid hsl(var(--brand-color));
+  border-radius: 2px;
+  transform: rotate(-2.5deg);
+  box-shadow: 1px 1px 0 hsl(var(--brand-color) / 0.4);
 }
 
 .lightbox-title {
-  @apply text-sm sm:text-base font-display font-semibold leading-tight truncate;
+  @apply text-sm sm:text-base font-display font-bold leading-tight truncate;
   color: hsl(36 30% 92%);
+  text-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-counter {
-  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 hidden sm:block;
+  @apply font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 hidden sm:block;
   color: hsl(32 14% 62%);
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
 }
 
 .lightbox-btn {
-  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer w-11 h-11;
+  @apply flex items-center justify-center transition-[transform,box-shadow,border-color,color] duration-150 cursor-pointer w-11 h-11;
   color: hsl(32 14% 62%);
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
 }
 
 .lightbox-btn:hover {
   color: hsl(var(--brand-light));
-  border-color: hsl(var(--brand-color) / 0.5);
+  border-color: hsl(var(--brand-color));
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.6);
 }
 
 .lightbox-close-btn {
   @apply w-11 h-11;
+  box-shadow: 2px 2px 0 hsl(32 16% 26% / 0.9);
 }
 
 .lightbox-nav-btn {
-  @apply absolute top-1/2 -translate-y-1/2 w-12 h-12 z-20 hidden sm:flex;
-  @apply flex items-center justify-center transition-colors duration-200 cursor-pointer;
+  @apply absolute top-1/2 w-12 h-12 z-20 hidden sm:flex;
+  @apply flex items-center justify-center transition-[transform,box-shadow,border-color,color] duration-150 cursor-pointer;
   color: hsl(32 14% 62%);
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 26%);
+  border-radius: 2px;
+  transform: translateY(-50%);
 }
 
 .lightbox-nav-btn:hover {
   color: hsl(var(--brand-light));
-  border-color: hsl(var(--brand-color) / 0.5);
+  border-color: hsl(var(--brand-color));
+  transform: translate(-1px, -50%);
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.6);
 }
 
 .lightbox-nav-prev {
@@ -308,7 +322,8 @@ onUnmounted(() => {
   @apply object-contain select-none pointer-events-none transition-opacity duration-300;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 12rem);
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 22%);
+  box-shadow: 6px 6px 0 hsl(var(--brand-color) / 0.35);
 }
 
 @media (min-width: 640px) {
@@ -325,15 +340,15 @@ onUnmounted(() => {
   min-height: 200px;
 }
 
+/* Halftone sweep instead of a shimmer gradient: the riso screen. */
 .lightbox-skeleton-pulse {
   @apply absolute inset-0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    hsl(32 16% 22%) 50%,
-    transparent 100%
+  background-image: radial-gradient(
+    hsl(32 16% 24%) 1.1px,
+    transparent 1.3px
   );
-  animation: skeleton-sweep 1.5s ease-in-out infinite;
+  background-size: 7px 7px;
+  animation: skeleton-sweep 1.5s steps(12, end) infinite;
 }
 
 @keyframes skeleton-sweep {
@@ -349,7 +364,8 @@ onUnmounted(() => {
 .lightbox-thumbnail-track {
   @apply flex gap-1.5 sm:gap-2 overflow-x-auto py-2 px-2 max-w-full;
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 22%);
+  border-radius: 2px;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -359,8 +375,9 @@ onUnmounted(() => {
 }
 
 .lightbox-thumbnail {
-  @apply w-10 h-8 sm:w-14 sm:h-10 overflow-hidden shrink-0 transition-opacity duration-200 cursor-pointer;
-  border: 1px solid transparent;
+  @apply w-10 h-8 sm:w-14 sm:h-10 overflow-hidden shrink-0 transition-[transform,box-shadow,opacity] duration-150 cursor-pointer;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
   opacity: 0.4;
   filter: grayscale(0.6);
 }
@@ -368,12 +385,15 @@ onUnmounted(() => {
 .lightbox-thumbnail:hover {
   opacity: 0.7;
   filter: grayscale(0.2);
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.5);
 }
 
 .lightbox-thumbnail-active {
   opacity: 1 !important;
   filter: grayscale(0) !important;
   border-color: hsl(var(--brand-color)) !important;
+  box-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.8) !important;
 }
 
 /* Swipe hint */

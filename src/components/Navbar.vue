@@ -1,8 +1,10 @@
 <template>
   <nav
     class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 border-b"
-    :class="[isScrolled ? 'py-3 bg-paper/90 border-border' : 'py-5 md:py-6 bg-transparent border-transparent']"
+    :class="[isScrolled ? 'py-3 bg-paper/95 border-border' : 'py-5 md:py-6 bg-transparent border-transparent']"
   >
+    <!-- Riso rule tick: a vermilion plate-mark under the masthead when scrolled -->
+    <span v-if="isScrolled" class="absolute bottom-0 left-0 h-[4px] w-24 bg-brand"></span>
     <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
       <!-- Logo / wordmark -->
       <NuxtLink to="/" class="group flex items-center gap-3">

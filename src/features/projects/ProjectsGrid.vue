@@ -11,13 +11,13 @@
     </SectionHeader>
 
     <!-- Filters -->
-    <div class="flex flex-wrap justify-center gap-4 mb-16">
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16">
       <button
         v-for="cat in categories"
         :key="cat"
         @click="activeCategory = cat"
-        class="px-8 py-2.5 rounded text-xs font-mono font-semibold transition-colors duration-200 border uppercase tracking-widest"
-        :class="[activeCategory === cat ? 'bg-brand border-brand text-brand-dark' : 'bg-surface-card border-border text-muted hover:border-brand hover:text-brand']"
+        class="px-6 py-2.5 rounded-sm text-xs font-mono font-bold uppercase tracking-widest border-[1.5px] transition-[transform,box-shadow,background-color,border-color,color] duration-150"
+        :class="activeCategory === cat ? 'bg-ink text-paper border-ink shadow-riso' : 'bg-surface-card text-muted border-ink/60 hover:border-brand hover:text-brand hover:shadow-riso'"
       >
         {{ cat }}
       </button>
@@ -35,10 +35,10 @@
 
     <!-- Bottom CTA -->
     <div class="mt-32 text-center">
-      <div class="glass-card p-12 rounded border border-border inline-block max-w-2xl bg-surface-card">
-        <h3 class="mb-6 font-display font-semibold text-main text-2xl">Interested in Collaboration?</h3>
-        <p class="text-muted mb-8 font-serif">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-        <a :href="globalData.socials.whatsapp" target="_blank" class="btn-primary py-4 px-10 text-xs font-mono font-semibold uppercase tracking-wider">
+      <div class="riso-card p-10 sm:p-12 inline-block max-w-2xl">
+        <h3 class="mb-6 font-display font-bold text-main text-2xl">Interested in Collaboration?</h3>
+        <p class="text-muted mb-8 font-serif">Always open to new projects, creative ideas, or opportunities to be part of your vision.</p>
+        <a :href="globalData.socials.whatsapp" target="_blank" class="btn-primary py-4 px-10 text-xs font-mono font-bold uppercase tracking-wider">
           Get Started Now
         </a>
       </div>

@@ -100,7 +100,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Premium Portfolio of Ringga Septia Pribadi - Expert Android & Web Developer with 3+ years experience.' },
-        { name: 'theme-color', content: '#FAF7F2' },
+        { name: 'theme-color', content: '#F5F0E6' },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: 'Ringga Dev | Full-Stack Developer' },
         { property: 'og:description', content: 'Crafting premium Android & Web applications with performance and aesthetics in mind.' },

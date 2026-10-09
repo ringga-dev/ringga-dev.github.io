@@ -1,12 +1,12 @@
 <template>
   <div class="relative w-full h-full overflow-hidden">
-    <!-- Shimmer Placeholder -->
-    <div v-if="!loaded && !hasError" class="absolute inset-0 shimmer z-10"></div>
-    
+    <!-- Halftone Placeholder -->
+    <div v-if="!loaded && !hasError" class="absolute inset-0 halftone z-10"></div>
+
     <!-- Error Fallback -->
     <div v-if="hasError" class="absolute inset-0 flex flex-col items-center justify-center bg-surface-card text-muted">
-      <BoxIcon class="w-12 h-12 mb-2 opacity-25" />
-      <span class="text-[10px] font-semibold uppercase tracking-widest opacity-40">Preview Unavailable</span>
+      <BoxIcon class="w-12 h-12 mb-2 opacity-40 text-brand" />
+      <span class="text-[10px] font-mono font-bold uppercase tracking-[0.18em] opacity-70">Preview Unavailable</span>
     </div>
 
     <!-- Image / GIF Loader (or Video Fallback) -->
@@ -17,7 +17,7 @@
       loading="lazy"
       @load="onLoad"
       @error="onError"
-      class="object-cover w-full h-full transition-all duration-700"
+      class="object-cover w-full h-full transition-opacity duration-300"
       :class="[loaded && !hasError ? 'opacity-100' : 'opacity-0', zoomOnHover ? 'group-' : '']"
     />
 
@@ -114,7 +114,7 @@ const onLoad = () => {
 
 const onError = () => {
   hasError.value = true
-  loaded.value = true // stop shimmer
+  loaded.value = true // stop halftone placeholder
 }
 
 const onVideoError = (err) => {

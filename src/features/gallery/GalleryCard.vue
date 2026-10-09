@@ -8,7 +8,10 @@
     tabindex="0"
     @keydown.enter="$emit('select', item.id)"
   >
-    <div class="gallery-card-inner">
+    <div
+      class="gallery-card-inner w-full h-full overflow-hidden"
+      :class="index % 2 === 1 ? 'riso-card-2' : 'riso-card'"
+    >
       <img 
         :src="item.image" 
         :alt="item.title"
@@ -60,70 +63,85 @@ defineEmits<{
 
 <style scoped>
 .gallery-card {
-  @apply relative cursor-pointer overflow-hidden;
+  @apply relative cursor-pointer;
   aspect-ratio: 4 / 3;
 }
 
 .gallery-card-inner {
-  @apply relative w-full h-full overflow-hidden transition-colors duration-200;
-  background: hsl(var(--surface-card) / 0.5);
-  border: 1px solid hsl(var(--border-color) / 0.5);
+  @apply relative;
 }
 
-.gallery-card:hover .gallery-card-inner {
-  border-color: hsl(var(--brand-color) / 0.6);
+/* Keyboard focus reads as a printed plate edge: vermilion, offset. */
+.gallery-card:focus-visible {
+  outline: none;
+}
+
+.gallery-card:focus-visible .gallery-card-inner {
+  outline: 2px solid hsl(var(--brand-color));
+  outline-offset: 3px;
 }
 
 .gallery-card-image {
-  @apply w-full h-full object-cover object-top transition-all duration-700 ease-out;
+  @apply w-full h-full object-cover object-top transition-[filter] duration-150;
 }
 
 .gallery-card:hover .gallery-card-image {
-  filter: brightness(0.8);
+  filter: brightness(0.82) contrast(1.05);
 }
 
+/* Flat ink wash on hover. No gradient scrim, no glow. */
 .gallery-card-overlay {
-  @apply absolute inset-0 flex flex-col justify-end p-3 sm:p-4 opacity-0 transition-opacity duration-300;
-  background: linear-gradient(
-    to top,
-    hsl(var(--bg-color) / 0.95) 0%,
-    hsl(var(--bg-color) / 0.5) 40%,
-    transparent 100%
-  );
+  @apply absolute inset-0 flex flex-col justify-end p-3 sm:p-4 opacity-0 transition-opacity duration-150;
+  background: hsl(var(--text-main) / 0.55);
 }
 
-.gallery-card:hover .gallery-card-overlay {
+.gallery-card:hover .gallery-card-overlay,
+.gallery-card:focus-visible .gallery-card-overlay {
   opacity: 1;
 }
 
+/* Icon box: square, ink hairline, tiny hard offset shadow. */
 .gallery-zoom-icon {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded flex items-center justify-center transition-opacity duration-200;
-  color: hsl(var(--brand-color));
-  background: hsl(var(--brand-color) / 0.12);
-  border: 1px solid hsl(var(--brand-color) / 0.35);
+  @apply absolute top-1/2 left-1/2 w-12 h-12 rounded-sm flex items-center justify-center opacity-0 transition-opacity duration-150;
+  color: hsl(var(--text-main));
+  background: hsl(var(--bg-color));
+  border: 1.5px solid hsl(var(--text-main));
+  box-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.6);
   transform: translate(-50%, -50%);
-  opacity: 0;
 }
 
-.gallery-card:hover .gallery-zoom-icon {
+.gallery-card:hover .gallery-zoom-icon,
+.gallery-card:focus-visible .gallery-zoom-icon {
   opacity: 1;
 }
 
+/* Category label: rotated rubber stamp, square corners, hard shadow. */
 .gallery-card-badge {
-  @apply absolute top-3 left-3 text-[8px] sm:text-[9px] font-mono font-semibold uppercase tracking-[0.15em] px-2 py-0.5 rounded;
-  color: hsl(var(--brand-color));
-  background: hsl(var(--brand-color) / 0.12);
-  border: 1px solid hsl(var(--brand-color) / 0.3);
-  opacity: 0;
+  @apply absolute top-3 left-3 font-mono text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-1 opacity-0 transition-opacity duration-150;
+  color: hsl(var(--text-main));
+  background: hsl(var(--bg-color));
+  border: 2px solid hsl(var(--text-main));
+  border-radius: 2px;
+  transform: rotate(-2.5deg);
+  box-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.55);
 }
 
-.gallery-card:hover .gallery-card-badge {
+.gallery-card:hover .gallery-card-badge,
+.gallery-card:focus-visible .gallery-card-badge {
   opacity: 1;
+}
+
+/* Title bar: solid ink block, paper text, vermilion misregister ghost. */
+.gallery-card-info {
+  @apply p-2.5;
+  background: hsl(var(--text-main));
+  border: 1.5px solid hsl(var(--bg-color));
 }
 
 .gallery-card-title {
-  @apply text-white text-xs sm:text-sm font-display font-semibold leading-tight;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  @apply text-xs sm:text-sm font-display font-bold leading-tight;
+  color: hsl(var(--bg-color));
+  text-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.75);
 }
 
 .gallery-card-subtitle {

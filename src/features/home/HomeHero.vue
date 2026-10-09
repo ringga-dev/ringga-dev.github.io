@@ -4,16 +4,18 @@
       <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
         <!-- LEFT: copy -->
         <div class="lg:col-span-7 space-y-6">
-          <!-- Availability (mono label, no pill) -->
-          <div class="flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
-            <span class="inline-block w-2 h-2 rounded-full bg-brand"></span>
-            {{ homeData.hero.badge }}
+          <!-- Availability: hand-pressed stamp, a few degrees off axis -->
+          <div>
+            <span class="stamp">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand"></span>
+              {{ homeData.hero.badge }}
+            </span>
           </div>
 
-          <!-- Headline -->
+          <!-- Headline: misregistered spot-ink ghost behind the display line -->
           <h1 class="font-display text-main leading-[1.02] tracking-tight">
             <span class="block text-3xl sm:text-4xl md:text-5xl">{{ homeData.hero.title }}</span>
-            <span class="block mt-2 text-brand text-2xl sm:text-3xl md:text-4xl font-medium">{{ typedRole || homeData.hero.titleHighlight }}</span>
+            <span class="riso-ghost block mt-2 text-brand text-2xl sm:text-3xl md:text-4xl font-medium min-h-[1.2em]">{{ typedRole || homeData.hero.titleHighlight }}</span>
           </h1>
 
           <!-- Description -->
@@ -39,7 +41,7 @@
             </NuxtLink>
           </div>
 
-          <!-- Mini stats -->
+          <!-- Mini stats: oversize numerals, mono labels -->
           <div class="flex flex-wrap gap-x-10 gap-y-4 pt-4">
             <div
               v-for="stat in homeData.stats"
@@ -48,23 +50,23 @@
             >
               <component :is="getIcon(stat.icon)" class="w-5 h-5 text-brand" />
               <div>
-                <div class="text-2xl font-display font-semibold text-main leading-none">{{ stat.value }}{{ stat.suffix }}</div>
-                <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted mt-1">{{ stat.label }}</div>
+                <div class="numeral text-3xl leading-none">{{ stat.value }}{{ stat.suffix }}</div>
+                <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-muted mt-1.5">{{ stat.label }}</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT: 3D stage card -->
+        <!-- RIGHT: 3D stage card, printed plate with hard offset shadow -->
         <div class="lg:col-span-5">
           <div class="relative">
-            <div class="glass-card p-3">
-              <div class="relative aspect-square sm:aspect-[4/5] rounded overflow-hidden bg-surface-elevated">
+            <div class="riso-card p-3">
+              <div class="relative aspect-square sm:aspect-[4/5] rounded-sm overflow-hidden bg-surface-elevated">
                 <HeroScene3D class="absolute inset-0" />
 
-                <!-- Stage labels -->
-                <div class="absolute top-3 left-3 z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
-                  Interactive 3D
+                <!-- Stage labels: stamped, rotated -->
+                <div class="absolute top-3 left-3 z-10">
+                  <span class="stamp stamp-2 !text-[9px] !px-2 !py-1">Interactive 3D</span>
                 </div>
                 <div class="absolute bottom-3 right-3 z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Drag to explore

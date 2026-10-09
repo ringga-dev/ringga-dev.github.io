@@ -1,9 +1,13 @@
 <template>
   <div class="pt-32 md:pt-44 pb-32 px-6 relative overflow-hidden bg-surface">
+    <!-- Halftone plate accent, corner of the printed page -->
+    <div class="halftone pointer-events-none absolute top-24 right-0 h-56 w-56 opacity-70" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto relative z-10">
       <!-- Section Header -->
       <SectionHeader 
-        :badge="contactData.badge"
+        badge="Get In Touch"
+        number="05"
         :description="contactData.description"
         centered
       >

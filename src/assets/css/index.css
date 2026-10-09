@@ -3,237 +3,302 @@
 @tailwind utilities;
 
 /*
-  Ringga Dev — "The Engineer's Journal" design system.
-  Direction lives in DESIGN.md. Editorial / print: paper + ink + one
-  vermilion accent, serif display, monospaced metadata, hairline rules.
-  No gradients, no glass, no glow, no blur, no pill shapes.
-  Token NAMES are kept stable so every consuming component keeps working;
-  only the VALUES and the component classes change.
+  Ringga Dev — "Risograph Zine" design system.
+  Direction lives in DESIGN.md. A hand-printed zine: warm paper stock,
+  two spot inks (vermilion + riso blue) that overprint and misregister,
+  halftone dots, rubber-stamp labels, marker highlights, oversize numerals.
+  The "flaws" of the print process (offset ink, grain, slight rotation)
+  are the identity, not things to hide. Token NAMES stay stable so every
+  consuming component keeps working; only VALUES and component classes change.
 */
 
 @layer base {
   :root {
-    /* Paper + Ink + Vermilion. Neutrals are warm, never blue-grey. */
-    --bg-color: 36 43% 96%;          /* paper #FAF7F2 */
-    --surface-color: 36 43% 96%;
-    --surface-card: 36 40% 93%;      /* slightly deeper paper for cards */
-    --surface-elevated: 36 43% 90%;
-    --text-main: 33 30% 8%;          /* ink #17140F */
-    --text-muted: 30 12% 38%;        /* warm grey, AA on paper (6.7:1) */
-    --border-color: 32 20% 84%;
+    /* Paper + Ink (core). Paper is warm stock, never blue-grey. */
+    --bg-color: 40 40% 94%;          /* paper #F5F0E6 */
+    --surface-color: 40 40% 94%;
+    --surface-card: 40 36% 91%;      /* deeper stock for cards */
+    --surface-elevated: 40 34% 88%;
+    --text-main: 30 25% 9%;          /* ink #171310 */
+    --text-muted: 28 12% 36%;        /* warm grey, AA on paper (6.5:1) */
+    --border-color: 30 18% 76%;
 
-    --brand-color: 12 78% 43%;       /* vermilion #C23A18, AA on paper (5:1) */
-    --brand-light: 12 78% 52%;
-    --brand-dark: 12 70% 34%;
+    /* Spot ink 1: vermilion. Primary accent for text/links (AA on paper). */
+    --brand-color: 12 78% 45%;       /* #CE4423, AA on paper (4.9:1) */
+    --brand-light: 12 80% 55%;
+    --brand-dark: 12 72% 36%;
+
+    /* Spot ink 2: riso blue. Second plate, used decoratively
+       (misregistration ghost, halftone, offset shadow). Complementary
+       to vermilion, the classic two-ink riso pairing. */
+    --ink-2: 222 62% 48%;            /* #2E56D2 */
+    --ink-2-light: 222 64% 60%;
+    --ink-2-dark: 222 60% 38%;
 
     --accent-1: 12 62% 48%;
-    --accent-2: 22 55% 50%;
+    --accent-2: 222 58% 52%;
+
+    /* Riso overprint shadow (hard, not blurred, like ink on paper). */
+    --riso-offset: 4px;
+    --riso-offset-hover: 6px;
   }
 
   .dark {
-    /* Deep warm dark. Vermilion lifts for contrast on dark (AA). */
-    --bg-color: 36 24% 6%;           /* #14120E */
-    --surface-color: 36 24% 6%;
-    --surface-card: 34 20% 9%;
-    --surface-elevated: 34 18% 12%;
-    --text-main: 36 30% 92%;
-    --text-muted: 32 14% 62%;        /* AA on dark (6:1) */
-    --border-color: 32 16% 20%;
+    /* Dark stock: ink base lifted to warm charcoal, both spot inks
+       brightened so overprint still reads. Contrast AA in both. */
+    --bg-color: 220 20% 8%;          /* #10131B */
+    --surface-color: 220 20% 8%;
+    --surface-card: 220 16% 11%;
+    --surface-elevated: 220 14% 15%;
+    --text-main: 40 30% 93%;
+    --text-muted: 220 14% 68%;       /* AA on dark (6:1) */
+    --border-color: 220 12% 26%;
 
-    --brand-color: 12 80% 62%;
-    --brand-light: 12 82% 70%;
-    --brand-dark: 12 70% 50%;
+    --brand-color: 12 84% 64%;
+    --brand-light: 12 86% 72%;
+    --brand-dark: 12 76% 54%;
 
-    --accent-1: 12 70% 60%;
-    --accent-2: 22 60% 58%;
+    --ink-2: 222 74% 68%;
+    --ink-2-light: 222 76% 76%;
+    --ink-2-dark: 222 70% 58%;
+
+    --accent-1: 12 70% 62%;
+    --accent-2: 222 68% 66%;
   }
 
   body {
     background-color: hsl(var(--bg-color));
     color: hsl(var(--text-main));
-    @apply font-serif selection:bg-brand/20 selection:text-ink m-0 p-0 transition-colors duration-300;
+    @apply font-serif selection:bg-brand/25 selection:text-ink m-0 p-0 transition-colors duration-300;
     overflow-x: hidden;
     width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Display serif headings. No glow, no text-shadow. */
+  /* Paper grain: a faint fixed noise veil over the whole page, the
+     texture of uncoated zine stock. Identity (R-07), kept very low so
+     it never muddies text contrast. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+  }
+  .dark body::after {
+    mix-blend-mode: screen;
+    opacity: 0.06;
+  }
+
+  /* Display headings: heavy Fraunces, tight, no glow. */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-semibold tracking-tight leading-tight transition-colors duration-300;
+    @apply font-display font-bold tracking-tight leading-none transition-colors duration-300;
     font-feature-settings: "liga" 1, "kern" 1;
   }
 
   h1 {
-    font-size: clamp(2.75rem, 7vw, 5rem);
+    font-size: clamp(2.9rem, 8vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
   }
-  h2 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-  }
   h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
   }
 
   p {
     @apply leading-relaxed;
   }
 
-  /* Editorial focus ring, vermilion, on everything interactive. */
+  /* Focus ring: solid vermilion, offset, on everything interactive. */
   a:focus-visible,
   button:focus-visible,
   [tabindex]:focus-visible,
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    outline: 2px solid hsl(var(--brand-color));
+    outline: 3px solid hsl(var(--brand-color));
     outline-offset: 2px;
     border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Flat editorial card: paper, hairline border, one soft elevation.
-     Replaces the old glass / gradient / holo / zambrut cards. */
-  .glass,
-  .glass-card,
-  .zambrut-card,
-  .holo-border {
+  /* Riso card: ink hairline border with a HARD offset spot-ink shadow,
+     like a plate printed slightly off. Hover clicks the plate into
+     register (shadow grows, card lifts a touch). Replaces glass/holo. */
+  .riso-card {
     background-color: hsl(var(--surface-card));
-    border: 1px solid hsl(var(--border-color));
-    border-radius: 4px;
-    box-shadow: 0 1px 2px hsl(33 20% 8% / 0.04);
-    @apply transition-colors duration-200;
+    border: 1.5px solid hsl(var(--text-main) / 0.85);
+    border-radius: 3px;
+    box-shadow: var(--riso-offset) var(--riso-offset) 0 hsl(var(--brand-color) / 0.9);
+    @apply transition-[transform,box-shadow,border-color] duration-150;
   }
-  .glass:hover,
-  .glass-card:hover,
-  .zambrut-card:hover,
-  .holo-border:hover {
-    border-color: hsl(var(--brand-color) / 0.5);
+  .riso-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--riso-offset-hover) var(--riso-offset-hover) 0 hsl(var(--brand-color));
+    border-color: hsl(var(--text-main));
   }
-  .dark .glass,
-  .dark .glass-card,
-  .dark .zambrut-card,
-  .dark .holo-border {
-    box-shadow: 0 1px 2px hsl(0 0% 0% / 0.3);
+  .dark .riso-card {
+    border-color: hsl(var(--text-main) / 0.7);
+    box-shadow: var(--riso-offset) var(--riso-offset) 0 hsl(var(--brand-color) / 0.85);
   }
 
-  /* Headline accent: solid vermilion, no gradient, no animation. */
-  .text-gradient,
-  .text-gradient-subtle {
+  /* A variant whose offset shadow is the SECOND spot ink (blue), for
+     variety without introducing a third hue. */
+  .riso-card-2 {
+    background-color: hsl(var(--surface-card));
+    border: 1.5px solid hsl(var(--text-main) / 0.85);
+    border-radius: 3px;
+    box-shadow: var(--riso-offset) var(--riso-offset) 0 hsl(var(--ink-2) / 0.9);
+    @apply transition-[transform,box-shadow] duration-150;
+  }
+  .riso-card-2:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--riso-offset-hover) var(--riso-offset-hover) 0 hsl(var(--ink-2));
+  }
+
+  /* Misregistration: solid vermilion ghost offset behind dark display
+     text, the look of a plate printed a hair out of register. */
+  .riso-ghost {
+    text-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.55);
+  }
+
+  /* Marker highlight: a hand-drawn swipe behind the lower half of text,
+     in the second spot ink. Used on one keyword per headline, sparingly. */
+  .marker {
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--ink-2) / 0.30),
+      hsl(var(--ink-2) / 0.30)
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 0.55em;
+    background-position: 0 0.78em;
+    padding: 0 0.1em;
+  }
+  .dark .marker {
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--ink-2) / 0.4),
+      hsl(var(--ink-2) / 0.4)
+    );
+  }
+
+  /* Halftone: dot field in a spot ink, the riso screen. Section accents. */
+  .halftone {
+    background-image: radial-gradient(
+      hsl(var(--brand-color) / 0.22) 1.1px,
+      transparent 1.3px
+    );
+    background-size: 7px 7px;
+  }
+  .halftone-2 {
+    background-image: radial-gradient(
+      hsl(var(--ink-2) / 0.22) 1.1px,
+      transparent 1.3px
+    );
+    background-size: 7px 7px;
+  }
+
+  /* Rubber stamp label: rotated, double-bordered, mono, imperfect. */
+  .stamp {
+    @apply inline-flex items-center gap-1.5 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.18em];
     color: hsl(var(--brand-color));
-    background: none;
-    -webkit-text-fill-color: currentColor;
-    animation: none;
-    filter: none;
+    border: 2px solid hsl(var(--brand-color));
+    border-radius: 2px;
+    padding: 0.25rem 0.6rem;
+    transform: rotate(-2.5deg);
+    box-shadow: 1px 1px 0 hsl(var(--brand-color) / 0.35);
+  }
+  .stamp-2 {
+    color: hsl(var(--ink-2));
+    border-color: hsl(var(--ink-2));
+    box-shadow: 1px 1px 0 hsl(var(--ink-2) / 0.35);
+    transform: rotate(2deg);
   }
 
-  /* Primary button: square vermilion, no gradient/glow/shimmer. */
+  /* Oversize numeral: section numbers, stats. Fraunces 900. */
+  .numeral {
+    @apply font-display font-black leading-none;
+    color: hsl(var(--text-main));
+  }
+  .numeral-outline {
+    @apply font-display font-black leading-none;
+    color: transparent;
+    -webkit-text-stroke: 2px hsl(var(--brand-color) / 0.85);
+  }
+
+  /* Primary button: solid vermilion, hard offset shadow, square. */
   .btn-primary {
-    @apply inline-flex items-center justify-center font-semibold transition-colors duration-200;
+    @apply inline-flex items-center justify-center font-semibold transition-[transform,box-shadow,background-color] duration-150;
     background-color: hsl(var(--brand-color));
     color: #fff;
-    border-radius: 2px;
-    border: 1px solid hsl(var(--brand-color));
+    border-radius: 3px;
+    border: 1.5px solid hsl(var(--text-main));
+    box-shadow: 3px 3px 0 hsl(var(--text-main) / 0.9);
   }
   .btn-primary:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 hsl(var(--text-main));
     background-color: hsl(var(--brand-dark));
-    border-color: hsl(var(--brand-dark));
+  }
+  .btn-primary:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 hsl(var(--text-main));
   }
 
-  /* Secondary button: hairline outline, square. */
+  /* Secondary button: ink hairline outline, hard offset on hover. */
   .btn-secondary {
-    @apply inline-flex items-center justify-center font-semibold transition-colors duration-200;
+    @apply inline-flex items-center justify-center font-semibold transition-[transform,box-shadow,border-color,color] duration-150;
     background-color: transparent;
     color: hsl(var(--text-main));
-    border: 1px solid hsl(var(--border-color));
-    border-radius: 2px;
+    border: 1.5px solid hsl(var(--text-main) / 0.7);
+    border-radius: 3px;
   }
   .btn-secondary:hover {
     border-color: hsl(var(--brand-color));
     color: hsl(var(--brand-color));
+    box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.5);
+    transform: translate(-1px, -1px);
   }
 
-  /* Navigation link: hairline underline grows on hover, no glow. */
+  /* Nav link: thick marker underline sweeps in on hover. */
   .nav-link {
-    color: hsl(var(--text-muted));
-    @apply relative transition-colors duration-200 font-medium;
+    color: hsl(var(--text-main));
+    @apply relative transition-colors duration-150 font-medium;
   }
   .nav-link:hover {
     color: hsl(var(--brand-color));
   }
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-brand transition-all duration-200;
+    @apply absolute -bottom-1 left-0 h-[3px] w-0 bg-brand transition-all duration-200;
   }
   .nav-link:hover::after {
     @apply w-full;
   }
 
-  /* Hairline rule. Replaces the glowing gradient divider. */
-  .divider-premium {
-    @apply h-px w-full max-w-7xl mx-auto;
-    background-color: hsl(var(--border-color));
-  }
-
-  /* Mono metadata eyebrow: section number / label. Editorial voice. */
+  /* Mono metadata eyebrow: section number / label. Notebook voice. */
   .eyebrow {
     @apply font-mono text-xs uppercase tracking-[0.25em] text-muted;
   }
-
-  /* Editorial link: vermilion with hairline underline. */
-  .link-ink {
-    color: hsl(var(--brand-color));
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    text-decoration-color: hsl(var(--brand-color) / 0.4);
-    @apply transition-colors duration-200;
-  }
-  .link-ink:hover {
-    text-decoration-color: hsl(var(--brand-color));
-  }
-}
-
-/*
-  Scroll reveal is neutralized: MOTION 1 means hover/focus only, no
-  scroll-triggered motion. Content must be visible by default so a static
-  prerender never ships invisible text.
-*/
-.scroll-reveal,
-.reveal-active {
-  opacity: 1;
-  transform: none;
-}
-
-/* Decorative slop neutralized to harmless no-ops (classes kept so the
-   one-off usages in source do not break). */
-.animate-float,
-.glow-text,
-.pulse-glow,
-.shimmer,
-.tech-ring {
-  animation: none;
-  text-shadow: none;
-  box-shadow: none;
-}
-
-.bg-mesh,
-.nebula-bg,
-.noise-bg,
-.glow {
-  display: none;
 }
 
 /* Quiet, on-brand scrollbar. */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--bg-color));
@@ -241,8 +306,8 @@
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--border-color));
   border-radius: 2px;
-  border: 2px solid hsl(var(--bg-color));
+  border: 3px solid hsl(var(--bg-color));
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--text-muted) / 0.6);
+  background: hsl(var(--brand-color) / 0.7);
 }

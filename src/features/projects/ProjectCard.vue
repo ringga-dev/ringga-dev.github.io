@@ -2,10 +2,10 @@
   <div
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
-    class="glass-card group relative overflow-hidden transition-colors duration-200 hover:border-brand/50"
+    class="riso-card group relative overflow-hidden"
   >
     <!-- Image/Video Media Section -->
-    <NuxtLink :to="`/projects/${slug}`" class="relative overflow-hidden aspect-[16/10] bg-surface-elevated border-b border-border block">
+    <NuxtLink :to="`/projects/${slug}`" class="relative overflow-hidden aspect-[16/10] bg-surface-elevated border-b border-ink/70 block">
       <MediaLoader
         :media="resolvedMedia"
         :alt-text="title"
@@ -13,17 +13,17 @@
         :is-hovered="isHovered"
       />
 
-      <!-- Category label (mono, top-left) -->
-      <div class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.2em] text-paper bg-ink/80 px-2 py-1 z-20">
+      <!-- Category: printed plate label, rotated slightly -->
+      <span class="absolute top-3 left-3 z-20 font-mono text-[10px] uppercase tracking-[0.18em] text-paper bg-ink px-2 py-1 rotate-stamp-l inline-block">
         {{ category }}
-      </div>
+      </span>
     </NuxtLink>
 
     <!-- Content Section -->
     <div class="p-6">
       <div class="flex items-start justify-between gap-4 mb-3">
         <NuxtLink :to="`/projects/${slug}`" class="group/title">
-          <h3 class="text-xl font-display font-semibold group-hover/title:text-brand transition-colors duration-200 leading-tight text-main">
+          <h3 class="text-xl font-display font-bold group-hover/title:text-brand transition-colors duration-150 leading-tight text-main">
             {{ title }}
           </h3>
         </NuxtLink>
@@ -33,7 +33,7 @@
             :href="github"
             target="_blank"
             rel="noopener"
-            class="w-9 h-9 rounded border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
+            class="w-9 h-9 rounded-sm border-[1.5px] border-ink/70 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
             aria-label="GitHub Repository"
           >
             <GithubIcon class="w-4 h-4" />
@@ -43,7 +43,7 @@
             :href="link"
             target="_blank"
             rel="noopener"
-            class="w-9 h-9 rounded border border-border flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
+            class="w-9 h-9 rounded-sm border-[1.5px] border-ink/70 flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors"
             aria-label="Project Demo Link"
           >
             <ExternalLinkIcon class="w-4 h-4" />
@@ -59,7 +59,7 @@
         <span
           v-for="tag in tags"
           :key="tag"
-          class="font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1 border border-border text-muted"
+          class="font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1 border-[1.5px] border-ink/60 text-muted bg-paper/40"
         >
           {{ tag }}
         </span>

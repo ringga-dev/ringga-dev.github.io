@@ -4,7 +4,7 @@
     <!-- Floating Back Button -->
     <NuxtLink 
       to="/projects" 
-      class="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center justify-center w-12 h-12 rounded-full glass hover:border-brand text-main transition-colors group"
+      class="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center justify-center w-12 h-12 rounded-sm riso-card hover:border-brand text-main transition-[transform,box-shadow] duration-150 group"
       aria-label="Back to projects"
     >
       <ArrowLeftIcon class="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
@@ -12,7 +12,7 @@
 
     <!-- Floating Theme Toggle wrapper to align with back button -->
     <div class="fixed top-6 right-6 md:top-8 md:right-8 z-50 flex items-center gap-3">
-      <div class="w-12 h-12 rounded-full glass flex items-center justify-center hover:border-brand transition-colors">
+      <div class="w-12 h-12 rounded-sm riso-card flex items-center justify-center hover:border-brand transition-[transform,box-shadow] duration-150">
         <ThemeToggle />
       </div>
     </div>
@@ -56,11 +56,11 @@
 
         <!-- Floating Hero Content -->
         <div class="max-w-6xl mx-auto w-full px-6 pb-16 relative z-20">
-          <div class="inline-block px-3 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-[9px] font-mono font-semibold uppercase tracking-widest mb-4">
+          <div class="stamp inline-block px-3 py-1 text-brand mb-4">
             {{ project.category }}
           </div>
           
-          <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-semibold text-brand leading-tight tracking-tight mb-4 max-w-4xl">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-bold text-brand leading-tight tracking-tight mb-4 max-w-4xl riso-ghost">
             {{ project.title }}
           </h1>
           
@@ -68,13 +68,13 @@
             {{ project.description }}
           </p>
 
-          <!-- Meta Pill Badges -->
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono font-semibold text-muted bg-surface-card/30 border border-border p-4 rounded w-fit">
+          <!-- Meta Stamp Badges -->
+          <div class="flex flex-wrap items-center gap-4 text-xs font-mono font-semibold text-muted bg-surface-card border-[1.5px] border-ink/70 shadow-riso p-4 rounded-sm w-fit">
             <span class="flex items-center gap-2">
               <UserIcon class="w-4 h-4 text-brand" />
               <span class="text-main font-semibold">Role:</span> {{ project.details.role }}
             </span>
-            <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-border"></div>
+            <div class="hidden sm:block w-1.5 h-1.5 bg-brand rotate-45"></div>
             <span class="flex items-center gap-2">
               <CalendarIcon class="w-4 h-4 text-brand" />
               <span class="text-main font-semibold">Timeline:</span> {{ project.details.timeline }}
@@ -85,7 +85,7 @@
         <!-- Scroll indicator -->
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 opacity-70">
           <span class="text-[9px] font-mono font-semibold uppercase tracking-widest text-muted">Scroll Details</span>
-          <div class="w-1 h-3 rounded-full bg-brand"></div>
+          <div class="w-1 h-3 bg-brand"></div>
         </div>
       </div>
 
@@ -100,7 +100,7 @@
             <!-- Project Media Showcase Card -->
             <div 
               @click="openLightbox"
-              class="group glass-card p-3 bg-surface-card border border-border relative overflow-hidden aspect-[16/10] cursor-pointer"
+              class="group riso-card p-3 bg-surface-card relative overflow-hidden aspect-[16/10] cursor-pointer hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <MediaLoader 
                 :media="project.media" 
@@ -112,7 +112,7 @@
               
               <!-- Hover Overlay -->
               <div class="absolute inset-0 bg-surface/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <div class="bg-surface-card/90 border border-brand/30 p-4 rounded text-brand flex items-center gap-2">
+                <div class="bg-surface-card border-[1.5px] border-ink p-4 shadow-riso text-brand flex items-center gap-2">
                   <Maximize2Icon class="w-5 h-5" />
                   <span class="text-xs font-mono font-semibold uppercase tracking-wider pr-1">Fullscreen Preview</span>
                 </div>
@@ -120,12 +120,12 @@
             </div>
 
             <!-- Project Description Bento -->
-            <div class="glass-card p-8 md:p-10 bg-surface-card border border-border">
+            <div class="riso-card p-8 md:p-10 bg-surface-card">
               <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-                <div class="w-8 h-8 rounded bg-brand/5 border border-brand/20 flex items-center justify-center text-brand">
+                <div class="w-8 h-8 rounded-sm border-[1.5px] border-ink flex items-center justify-center text-brand shadow-[2px_2px_0_hsl(var(--brand-color)/0.6)]">
                   <BriefcaseIcon class="w-4 h-4" />
                 </div>
-                <h3 class="text-xl font-display font-semibold text-main uppercase tracking-wider">Project Overview</h3>
+                <h3 class="text-xl font-display font-bold text-main uppercase tracking-wider">Project Overview</h3>
               </div>
               <p class="text-muted leading-relaxed font-serif text-lg whitespace-pre-line">
                 {{ project.details.longDescription }}
@@ -133,20 +133,20 @@
             </div>
 
             <!-- Deliverables Bento -->
-            <div class="glass-card p-8 md:p-10 bg-surface-card border border-border">
+            <div class="riso-card-2 p-8 md:p-10 bg-surface-card">
               <div class="flex items-center gap-3 mb-6 border-b border-border pb-4">
-                <div class="w-8 h-8 rounded bg-brand/5 border border-brand/20 flex items-center justify-center text-brand">
+                <div class="w-8 h-8 rounded-sm border-[1.5px] border-ink flex items-center justify-center text-ink-2 shadow-[2px_2px_0_hsl(var(--ink-2)/0.6)]">
                   <ShieldCheckIcon class="w-4 h-4" />
                 </div>
-                <h3 class="text-xl font-display font-semibold text-main uppercase tracking-wider">Key Deliverables</h3>
+                <h3 class="text-xl font-display font-bold text-main uppercase tracking-wider">Key Deliverables</h3>
               </div>
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <li 
                   v-for="feature in project.details.features" 
                   :key="feature" 
-                  class="flex items-start gap-3 text-muted leading-relaxed font-serif p-4 rounded bg-surface-elevated/20 border border-border hover:border-brand transition-colors"
+                  class="flex items-start gap-3 text-muted leading-relaxed font-serif p-4 rounded-sm bg-surface-elevated/20 border-[1.5px] border-ink/60 hover:border-brand hover:-translate-x-0.5 hover:-translate-y-0.5 transition-[transform,box-shadow,border-color] duration-150"
                 >
-                  <div class="w-5 h-5 rounded-full bg-brand/10 border border-brand/25 text-brand flex items-center justify-center mt-0.5 flex-shrink-0">
+                  <div class="w-5 h-5 bg-brand/15 border-[1.5px] border-brand text-brand flex items-center justify-center mt-0.5 flex-shrink-0">
                     <span class="text-[10px] font-semibold">✓</span>
                   </div>
                   <span class="text-sm font-serif text-main">{{ feature }}</span>
@@ -159,7 +159,7 @@
           <div class="lg:col-span-4 space-y-8">
             
             <!-- Actions Panel -->
-            <div class="glass-card p-8 bg-surface-card border border-border space-y-4">
+            <div class="riso-card-2 p-8 bg-surface-card space-y-4">
               <h3 class="text-xs font-mono font-semibold uppercase tracking-widest text-muted border-b border-border pb-3 mb-4">Project Links</h3>
               
               <div class="flex flex-col gap-3">
@@ -178,15 +178,15 @@
                 <a 
                   v-if="project.link && project.link !== '#'" 
                   :href="project.link" 
-                  target="_blank" 
-                  class="btn-secondary w-full flex items-center justify-center gap-3 px-6 py-4 text-xs font-mono font-semibold uppercase tracking-wider hover:border-brand hover:bg-surface-card/60 transition-colors"
+                  target="_blank"
+                  class="btn-secondary w-full flex items-center justify-center gap-3 px-6 py-4 text-xs font-mono font-semibold uppercase tracking-wider hover:border-brand"
                 >
                   <ExternalLinkIcon class="w-4 h-4 text-brand" />
                   Live Application
                 </a>
                 <div 
                   v-else 
-                  class="w-full flex items-center justify-center gap-2 px-6 py-4 text-[10px] font-mono font-semibold uppercase tracking-wider bg-surface-elevated/30 border border-border text-muted rounded cursor-not-allowed select-none"
+                  class="w-full flex items-center justify-center gap-2 px-6 py-4 text-[10px] font-mono font-semibold uppercase tracking-wider bg-surface-elevated/30 border-[1.5px] border-ink/40 text-muted rounded-sm cursor-not-allowed select-none"
                 >
                   <ShieldCheckIcon class="w-4 h-4 opacity-50" />
                   Internal Access Only
@@ -196,7 +196,7 @@
                 <a 
                   :href="whatsappUrl" 
                   target="_blank"
-                  class="w-full flex items-center justify-center gap-2 px-6 py-4 text-[10px] font-mono font-semibold uppercase tracking-wider border border-border hover:border-brand bg-brand/5 hover:bg-brand/10 text-brand rounded transition-colors mt-2"
+                  class="w-full flex items-center justify-center gap-2 px-6 py-4 text-[10px] font-mono font-semibold uppercase tracking-wider border-[1.5px] border-ink/60 hover:border-brand bg-brand/5 hover:bg-brand/10 text-brand rounded-sm transition-[transform,box-shadow,border-color] duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 mt-2"
                 >
                   Discuss Project Details
                   <ArrowUpRightIcon class="w-3.5 h-3.5" />
@@ -205,13 +205,13 @@
             </div>
 
             <!-- Tech Stack Bento -->
-            <div class="glass-card p-8 bg-surface-card border border-border">
+            <div class="riso-card p-8 bg-surface-card">
               <h3 class="text-xs font-mono font-semibold uppercase tracking-widest text-muted border-b border-border pb-3 mb-5">Tech Stack</h3>
               <div class="flex flex-wrap gap-2">
                 <span 
                   v-for="tech in project.details.techStack" 
                   :key="tech"
-                  class="text-[9px] px-3.5 py-2.5 rounded bg-surface-elevated/40 text-main font-mono font-semibold uppercase tracking-widest border border-border transition-colors hover:border-brand hover:text-brand"
+                  class="text-[9px] px-3.5 py-2 bg-surface-elevated text-main font-mono font-semibold uppercase tracking-widest border-[1.5px] border-ink/60 transition-[transform,box-shadow,border-color] duration-150 hover:border-brand hover:text-brand hover:-translate-x-0.5 hover:-translate-y-0.5"
                 >
                   {{ tech }}
                 </span>
@@ -219,12 +219,12 @@
             </div>
 
             <!-- Architectural Challenges Bento -->
-            <div class="glass-card p-8 bg-surface-card border border-border">
+            <div class="riso-card-2 p-8 bg-surface-card">
               <h3 class="text-xs font-mono font-semibold uppercase tracking-widest text-muted border-b border-border pb-3 mb-4">Engineering Challenges</h3>
               <p class="text-muted leading-relaxed font-serif text-sm">
                 {{ project.details.challenges }}
               </p>
-              <div class="mt-6 p-4 rounded bg-brand/5 border border-brand/10 text-brand text-xs font-semibold flex items-center gap-3">
+              <div class="mt-6 p-4 bg-ink-2/10 border-[1.5px] border-ink-2/40 text-ink-2 text-xs font-semibold flex items-center gap-3">
                 <ShieldCheckIcon class="w-5 h-5 flex-shrink-0" />
                 <span>Resolved and implemented in production.</span>
               </div>
@@ -297,7 +297,7 @@
                 loop
                 muted
                 playsinline
-                class="lightbox-media max-w-full max-h-[80vh] border border-border/30"
+                class="lightbox-media max-w-full max-h-[80vh]"
               ></video>
 
               <!-- Iframe embedded Video -->
@@ -307,7 +307,7 @@
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen
-                class="lightbox-media w-[85vw] h-[55vw] max-w-[1000px] max-h-[600px] border border-border/30"
+                class="lightbox-media w-[85vw] h-[55vw] max-w-[1000px] max-h-[600px]"
               ></iframe>
 
               <!-- Fallback Image -->
@@ -315,7 +315,7 @@
                 v-else
                 :src="project?.media?.src || project?.image"
                 :alt="project?.title"
-                class="lightbox-media max-w-full max-h-[80vh] object-contain border border-border/30"
+                class="lightbox-media max-w-full max-h-[80vh] object-contain"
                 draggable="false"
               />
             </div>
@@ -456,26 +456,28 @@ onUnmounted(() => {
 }
 
 .lightbox-category-badge {
-  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1 shrink-0;
-  color: hsl(var(--brand-light));
-  border: 1px solid hsl(var(--brand-color) / 0.4);
+  @apply font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1 shrink-0 rotate-stamp-l inline-block;
+  color: hsl(var(--brand-color));
+  border: 1.5px solid hsl(var(--brand-color) / 0.6);
 }
 
 .lightbox-title {
-  @apply text-sm sm:text-base font-display font-semibold leading-tight truncate;
+  @apply text-sm sm:text-base font-display font-bold leading-tight truncate;
   color: hsl(36 30% 92%);
 }
 
 .lightbox-btn {
-  @apply flex items-center justify-center transition-colors cursor-pointer w-10 h-10;
+  @apply flex items-center justify-center transition-[color,border-color,box-shadow,transform] duration-150 cursor-pointer w-10 h-10;
   color: hsl(32 14% 62%);
   background: transparent;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1.5px solid hsl(32 16% 20%);
 }
 
 .lightbox-btn:hover {
-  color: hsl(var(--brand-light));
-  border-color: hsl(var(--brand-color) / 0.5);
+  color: hsl(var(--brand-color));
+  border-color: hsl(var(--brand-color) / 0.6);
+  box-shadow: 2px 2px 0 hsl(var(--brand-color) / 0.5);
+  transform: translate(-1px, -1px);
 }
 
 .lightbox-content-container {
@@ -486,6 +488,7 @@ onUnmounted(() => {
 
 .lightbox-media {
   @apply max-h-[75vh] object-contain select-none;
-  border: 1px solid hsl(32 16% 20%);
+  border: 1px solid hsl(var(--text-main) / 0.2);
+  box-shadow: 4px 4px 0 hsl(var(--brand-color) / 0.55);
 }
 </style>

@@ -3,8 +3,8 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Title & Header -->
       <div class="mb-12 border-b border-border pb-8">
-        <span class="font-mono text-xs uppercase tracking-[0.25em] text-brand">News Feed</span>
-        <h1 class="text-4xl md:text-6xl font-display font-semibold tracking-tight leading-none mt-3 mb-4 text-main">
+        <span class="stamp">News Feed</span>
+        <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight leading-none mt-4 mb-4 text-main riso-ghost">
           {{ newsData.title }}
         </h1>
         <p class="text-muted max-w-2xl text-base md:text-lg font-serif leading-relaxed">
@@ -21,7 +21,7 @@
         <h2 class="font-mono text-xs uppercase tracking-[0.25em] text-muted mb-4">Headline</h2>
         <NuxtLink
           :to="`/news/${featured.slug}`"
-          class="border border-border bg-surface-card group grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 hover:border-brand/50 transition-colors duration-200 block"
+          class="riso-card group grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 block"
         >
           <div class="lg:col-span-7 relative aspect-video lg:aspect-auto min-h-[280px] overflow-hidden">
             <img
@@ -33,7 +33,7 @@
 
           <div class="lg:col-span-5 p-8 md:p-10 flex flex-col justify-center">
             <div class="flex items-center gap-3 mb-5 flex-wrap">
-              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-brand border border-brand/40 px-2 py-1">
+              <span class="stamp">
                 {{ featured.category }}
               </span>
               <span class="font-mono text-xs text-muted flex items-center gap-1.5">
@@ -42,7 +42,7 @@
               </span>
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-display font-semibold text-main mb-4 leading-tight group-hover:text-brand transition-colors">
+            <h3 class="text-2xl md:text-3xl font-display font-bold text-main mb-4 leading-tight group-hover:text-brand transition-colors duration-150">
               {{ featured.title }}
             </h3>
 
@@ -67,18 +67,19 @@
       <!-- NEWS GRID -->
       <div v-if="paginatedItems.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <NuxtLink
-          v-for="item in paginatedItems"
+          v-for="(item, idx) in paginatedItems"
           :key="item.slug"
           :to="`/news/${item.slug}`"
-          class="border border-border bg-surface-card group hover:border-brand/50 transition-colors duration-200 flex flex-col h-full"
+          class="group flex flex-col h-full"
+          :class="idx % 2 === 0 ? 'riso-card' : 'riso-card-2'"
         >
-          <div class="relative h-52 w-full overflow-hidden border-b border-border">
+          <div class="relative h-52 w-full overflow-hidden border-b-[1.5px] border-ink/40">
             <img
               :src="item.image"
               :alt="item.title"
               class="w-full h-full object-cover"
             />
-            <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 bg-ink/80 text-paper">
+            <span class="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 bg-ink text-paper border-[1.5px] border-paper rounded-sm">
               {{ item.category }}
             </span>
           </div>
@@ -91,7 +92,7 @@
               </span>
             </div>
 
-            <h3 class="text-xl font-display font-semibold text-main mb-3 leading-tight group-hover:text-brand transition-colors line-clamp-2">
+            <h3 class="text-xl font-display font-bold text-main mb-3 leading-tight group-hover:text-brand transition-colors duration-150 line-clamp-2">
               {{ item.title }}
             </h3>
 
@@ -123,9 +124,9 @@
       />
 
       <!-- EMPTY STATE -->
-      <div v-if="!paginatedItems.length" class="max-w-xl mx-auto text-center py-16 px-8 border border-border bg-surface-card">
-        <Newspaper class="w-12 h-12 text-muted mx-auto mb-5" />
-        <h3 class="text-xl font-display font-semibold text-main mb-3">
+      <div v-if="!paginatedItems.length" class="riso-card max-w-xl mx-auto text-center py-16 px-8">
+        <Newspaper class="w-12 h-12 text-brand mx-auto mb-5" />
+        <h3 class="text-xl font-display font-bold text-main mb-3">
           {{ newsData.items.length ? 'Halaman tidak tersedia' : 'Belum ada berita' }}
         </h3>
         <p class="text-muted text-sm font-serif leading-relaxed mb-6">
@@ -186,7 +187,7 @@ const formatDate = (d) => {
 useHead({
   title: isFirstPage.value
     ? `Berita | RINGGA DEV`
-    : `Berita — Halaman ${page.value} | RINGGA DEV`,
+    : `Berita | Halaman ${page.value} | RINGGA DEV`,
   meta: [
     { name: 'description', content: newsData.subtitle }
   ]

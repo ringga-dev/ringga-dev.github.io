@@ -11,7 +11,7 @@
     </SectionHeader>
 
     <div
-      class="mt-12 border border-border relative group bg-surface overflow-hidden"
+      class="mt-12 relative group bg-surface p-2 overflow-hidden"
       @mouseenter="pauseAutoplay"
       @mouseleave="startAutoplay"
       @touchstart="handleTouchStart"
@@ -24,17 +24,17 @@
         >
           <div
             :key="currentSlideIndex"
-            class="grid grid-cols-1 lg:grid-cols-12 gap-10 p-8 sm:p-12 lg:p-16 items-center w-full"
+            class="riso-card grid grid-cols-1 lg:grid-cols-12 gap-10 p-6 sm:p-10 lg:p-14 items-center w-full"
           >
             <!-- Left: Details -->
             <div class="lg:col-span-7 space-y-5 text-left">
-              <span class="font-mono text-xs uppercase tracking-[0.2em] text-brand">
+              <span class="stamp">
                 {{ currentSlide.category }}
               </span>
 
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-main leading-[1.1] tracking-tight">
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-main leading-[1.05] tracking-tight">
                 {{ currentSlide.title }} <br />
-                <span class="text-brand">{{ currentSlide.titleHighlight }}</span>
+                <span class="text-brand riso-ghost">{{ currentSlide.titleHighlight }}</span>
               </h2>
 
               <p class="text-muted text-base md:text-lg font-serif leading-relaxed max-w-xl">
@@ -47,7 +47,7 @@
                   :key="idx"
                   class="space-y-1"
                 >
-                  <h4 class="text-2xl sm:text-3xl font-display font-semibold text-brand">
+                  <h4 class="numeral text-2xl sm:text-3xl text-brand">
                     {{ hl.value }}
                   </h4>
                   <p class="font-mono text-[10px] sm:text-xs text-muted uppercase tracking-wider">
@@ -76,21 +76,21 @@
 
             <!-- Right: Visual -->
             <div class="lg:col-span-5 w-full flex justify-center">
-              <div class="relative overflow-hidden border border-border bg-surface-card w-full aspect-square flex items-center justify-center">
+              <div class="relative overflow-hidden border-[1.5px] border-ink bg-surface-card w-full aspect-square flex items-center justify-center shadow-riso-2">
                 <img
                   :src="currentSlide.image"
                   :alt="currentSlide.title"
                   class="w-full h-full object-cover select-none pointer-events-none"
                 />
 
-                <div class="absolute bottom-0 left-0 right-0 px-5 py-3 border-t border-border bg-surface flex items-center justify-between z-20">
+                <div class="absolute bottom-0 left-0 right-0 px-5 py-3 border-t-[1.5px] border-ink bg-surface flex items-center justify-between z-20">
                   <div class="flex items-center gap-2.5">
-                    <span class="w-2 h-2 rounded-full bg-brand"></span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-main">
+                    <span class="w-2 h-2 bg-brand"></span>
+                    <span class="font-mono text-[10px] font-bold uppercase tracking-widest text-main">
                       {{ currentSlide.tag }}
                     </span>
                   </div>
-                  <span class="font-mono text-[9px] text-muted uppercase">
+                  <span class="font-mono text-[9px] font-bold text-muted uppercase">
                     {{ currentSlide.version }}
                   </span>
                 </div>
@@ -103,14 +103,14 @@
       <!-- Navigation Arrows -->
       <button
         @click="prevSlide"
-        class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 border border-border bg-surface flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors z-30 cursor-pointer hidden md:flex"
+        class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-sm border-[1.5px] border-ink bg-surface flex items-center justify-center text-main hover:text-brand hover:border-brand hover:shadow-riso hover:-translate-x-0.5 transition-[transform,box-shadow,border-color,color] duration-150 z-30 cursor-pointer hidden md:flex"
         aria-label="Previous Slide"
       >
         <ChevronLeftIcon class="w-5 h-5" />
       </button>
       <button
         @click="nextSlide"
-        class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 border border-border bg-surface flex items-center justify-center text-muted hover:text-brand hover:border-brand transition-colors z-30 cursor-pointer hidden md:flex"
+        class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-sm border-[1.5px] border-ink bg-surface flex items-center justify-center text-main hover:text-brand hover:border-brand hover:shadow-riso hover:translate-x-0.5 transition-[transform,box-shadow,border-color,color] duration-150 z-30 cursor-pointer hidden md:flex"
         aria-label="Next Slide"
       >
         <ChevronRightIcon class="w-5 h-5" />
@@ -122,8 +122,8 @@
           v-for="(_, index) in slides"
           :key="index"
           @click="setSlide(index)"
-          class="w-8 h-1 transition-colors duration-200 cursor-pointer"
-          :class="index === currentSlideIndex ? 'bg-brand' : 'bg-border hover:bg-muted'"
+          class="w-6 h-2 rounded-sm border-[1.5px] border-ink/60 bg-surface transition-[transform,box-shadow,background-color,border-color] duration-150 cursor-pointer"
+          :class="index === currentSlideIndex ? 'bg-ink border-ink shadow-riso' : 'hover:border-brand hover:shadow-riso'"
           :aria-label="`Go to slide ${index + 1}`"
         ></button>
       </div>

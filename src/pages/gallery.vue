@@ -4,6 +4,7 @@
       <!-- Section Header -->
       <SectionHeader 
         badge="Creative Showcase"
+        number="03"
         description="A visual showcase of interface designs, product mockups, and custom branding assets built throughout our engineering journey."
         centered
       >
@@ -37,11 +38,11 @@
       <TransitionGroup
         tag="div"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5 mt-16"
-        enter-active-class="transition-all duration-500 ease-out"
-        leave-active-class="transition-all duration-300 ease-in"
-        enter-from-class="opacity-0 scale-90 translate-y-4"
-        leave-to-class="opacity-0 scale-90 -translate-y-4"
-        move-class="transition-all duration-500 ease-out"
+        enter-active-class="transition-all duration-150 ease-out"
+        leave-active-class="transition-all duration-150 ease-in"
+        enter-from-class="opacity-0 translate-y-2"
+        leave-to-class="opacity-0 -translate-y-2"
+        move-class="transition-all duration-300 ease-out"
       >
         <GalleryCard
           v-for="(item, idx) in filteredItems"
@@ -141,26 +142,35 @@ useHead({
 </script>
 
 <style scoped>
+/* Filter chips read as printed plate labels, not pills: square corners,
+   ink hairline, and a hard offset shadow on the active one. */
 .gallery-filter-pill {
-  @apply px-5 py-2.5 rounded-xl border text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center;
+  @apply px-4 py-2 rounded-sm border-[1.5px] text-[0.7rem] font-mono font-semibold uppercase tracking-[0.18em] transition-[transform,box-shadow,border-color,color] duration-150 cursor-pointer flex items-center bg-surface-card;
 }
 
 .gallery-filter-pill--active {
-  color: hsl(var(--brand-color));
-  background: hsl(var(--brand-color) / 0.1);
-  border-color: hsl(var(--brand-color) / 0.5);
-  box-shadow: 0 0 20px hsl(var(--brand-color) / 0.12), inset 0 0 15px hsl(var(--brand-color) / 0.05);
+  color: hsl(var(--bg-color));
+  background: hsl(var(--text-main));
+  border-color: hsl(var(--text-main));
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.9);
+}
+
+.gallery-filter-pill--active:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 hsl(var(--brand-color));
 }
 
 .gallery-filter-pill--inactive {
   color: hsl(var(--text-muted));
-  background: hsl(var(--surface-card) / 0.45);
-  border-color: hsl(var(--border-color));
+  border-color: hsl(var(--text-main) / 0.6);
+  box-shadow: 2px 2px 0 hsl(var(--text-main) / 0.35);
 }
 
 .gallery-filter-pill--inactive:hover {
-  color: hsl(var(--text-main));
-  border-color: hsl(var(--brand-color) / 0.3);
+  color: hsl(var(--brand-color));
+  border-color: hsl(var(--brand-color));
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 hsl(var(--brand-color) / 0.8);
 }
 
 .gallery-empty-state {
@@ -169,9 +179,9 @@ useHead({
 }
 
 .gallery-empty-icon {
-  @apply w-20 h-20 flex items-center justify-center;
-  background: hsl(var(--surface-card) / 0.5);
-  border: 1px solid hsl(var(--border-color) / 0.5);
-  color: hsl(var(--text-muted) / 0.5);
+  @apply w-20 h-20 flex items-center justify-center rounded-sm border-[1.5px];
+  border-color: hsl(var(--text-main) / 0.6);
+  box-shadow: 4px 4px 0 hsl(var(--brand-color) / 0.6);
+  color: hsl(var(--text-muted));
 }
 </style>

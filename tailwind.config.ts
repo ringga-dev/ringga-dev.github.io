@@ -29,6 +29,12 @@ const config: Config = {
                 border: 'hsl(var(--border-color) / <alpha-value>)',
                 ink: 'hsl(var(--text-main) / <alpha-value>)',
                 paper: 'hsl(var(--bg-color) / <alpha-value>)',
+                // Second spot ink (riso blue). Complementary to brand.
+                'ink-2': {
+                    DEFAULT: 'hsl(var(--ink-2) / <alpha-value>)',
+                    light: 'hsl(var(--ink-2-light) / <alpha-value>)',
+                    dark: 'hsl(var(--ink-2-dark) / <alpha-value>)',
+                },
                 'accent-1': 'hsl(var(--accent-1) / <alpha-value>)',
                 'accent-2': 'hsl(var(--accent-2) / <alpha-value>)',
             },
@@ -42,6 +48,21 @@ const config: Config = {
                 // Keep legacy names mapped so existing classes do not break.
                 sans: ['"Newsreader"', 'Georgia', 'serif'],
                 heading: ['"Fraunces"', 'Georgia', 'serif'],
+            },
+            fontWeight: {
+                black: '900',
+            },
+            boxShadow: {
+                // Hard riso offset shadows (no blur), one per spot ink.
+                riso: '4px 4px 0 hsl(var(--brand-color) / 0.9)',
+                'riso-2': '4px 4px 0 hsl(var(--ink-2) / 0.9)',
+                'riso-ink': '4px 4px 0 hsl(var(--text-main) / 0.9)',
+                'riso-lg': '6px 6px 0 hsl(var(--brand-color))',
+            },
+            rotate: {
+                // Stamp-style micro-rotations.
+                'stamp-l': '-2.5deg',
+                'stamp-r': '2.5deg',
             },
             typography: (theme) => ({
                 brand: {
